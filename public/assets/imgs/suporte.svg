@@ -1,17 +1,0 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
-<svg width="64px" height="64px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" fill="#87502F" style="--darkreader-inline-fill: var(--darkreader-background-87502f, #6c4026); --darkreader-inline-stroke: var(--darkreader-text-87502f, #d19b7b);" stroke="#87502F" data-darkreader-inline-fill="" data-darkreader-inline-stroke="">
-<g id="SVGRepo_bgCarrier" stroke-width="0"/>
-<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-<g id="SVGRepo_iconCarrier">
-<defs>
-<style>.cls-1{fill:none;stroke:#87502F;stroke-miterlimit:10;stroke-width:1.91px;}</style>
-<style class="darkreader darkreader--sync" media="screen"/>
-</defs>
-<rect class="cls-1" x="6.27" y="5.32" width="11.45" height="15.27" rx="5.73"/>
-<path class="cls-1" d="M17.73,9.14h1.91A2.86,2.86,0,0,1,22.5,12v1.91a2.86,2.86,0,0,1-2.86,2.86H17.73a0,0,0,0,1,0,0V9.14A0,0,0,0,1,17.73,9.14Z"/>
-<path class="cls-1" d="M1.5,9.14H3.41A2.86,2.86,0,0,1,6.27,12v1.91a2.86,2.86,0,0,1-2.86,2.86H1.5a0,0,0,0,1,0,0V9.14A0,0,0,0,1,1.5,9.14Z" transform="translate(7.77 25.91) rotate(180)"/>
-<path class="cls-1" d="M4.36,9.14h0A7.64,7.64,0,0,1,12,1.5h0a7.64,7.64,0,0,1,7.64,7.64h0"/>
-<path class="cls-1" d="M19.64,16.77v1a4.78,4.78,0,0,1-4.78,4.77"/>
-</g>
-</svg>
