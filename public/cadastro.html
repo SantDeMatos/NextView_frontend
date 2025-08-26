@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="assets/styles/cadastro.css">
+    <link rel="shortcut icon" href="assets/imgs/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/styles/erro.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+    <script src="assets/js/cadastro.js"></script>
+</head>
+
+<body id="body" translate="no">
+
+
+    
+    <div class="div_erro" id="div_erro">
+
+
+        <div class="img_erro" id="img_erro"></div>
+
+        <span style="color: black; font-size: 25px;"  id="span_tipo">Cadastro Inválido!</span>
+
+        <span style="color: black; font-size: 20px;" id="span_erro">Preencha todos os campos!</span>
+
+        <button class="btn_again" id="btn_again" onclick="tentar()">Tente Novamente</button>
+
+    </div>
+
+    <div class="container" id="container">
+
+        <div class="sidebar">
+
+
+            <a href="index.html" class="seta-retorno" title="Voltar">
+
+                &#8592;
+            </a>
+            <div class="conteudo">
+                <div class="seedTech">
+                    <img src="assets/imgs/icon.png">
+                    <p>SEED TECH</p>
+                </div>
+                <div class="formulario">
+
+                    <p id="p_razao">Razão social:</p>
+                    <input type="text" id="input_razao_social" placeholder="SeedTech">
+                    <p id="erro_razao" class="erro hidden">Preencha a razão social</p>
+
+                    <p id="p_nome">Nome fantasia:</p>
+                    <input type="text" id="input_nome_fantasia" placeholder="SeedTech">
+                    <p id="erro_nome" class="erro hidden">Preencha o nome fantasia</p>
+
+                    <p id="p_cnpj">CNPJ:</p>
+                    <input type="text" id="input_cnpj" placeholder="XX.XXX.XXX/0001-XX">
+                    <p id="erro_cnpj" class="erro hidden">Preencha o CNPJ</p>    
+                
+                    <script type="text/javascript">
+                        $("#input_cnpj").mask("00.000.000/0001-00");
+                    </script>
+
+                    <p class="hidden" id="p_email">Email:</p>
+                    <input type="email" class="hidden" id="input_usuario" placeholder="seuEmail@SeedTech.com" maxlength="45">
+                    <p id="erro_usuario" class="erro hidden"></p>
+
+                    <p class="hidden" id="p_senha">Senha:</p>
+                    <input type="password" class="hidden" id="input_senha" placeholder="********" maxlength="45">
+                    <p id="erro_senha" class="erro hidden"></p>
+
+                    <p class="hidden" id="p_telefone">Celular:</p>
+                    <input type="tel" class="hidden" id="input_telefone" placeholder="********" >
+                    <p id="erro_telefone" class="erro hidden"></p>
+
+                    <script type="text/javascript">
+                        $("#input_telefone").mask("(00) 00000-0000");
+                    </script>
+
+
+                </div>
+                <button onclick="proximosCampos()" class="botao" id="button_continuar">Continuar <img
+                        src="assets/imgs/right-arrow.png"></button>
+
+                <button class="hidden botao" onclick="cadastrar()" id="button_logar">Cadastrar</button>
+            </div>
+        </div>
+
+        <img src="assets/imgs/sol.png" id="sol" class="sol" onclick="modoDark()">
+        <img src="assets/imgs/lua.png" id="lua" class="lua" onclick="modoWhite()">
+
+
+        <div class="slogan">
+            <img src="assets/imgs/icon.png">
+            <div class="texto">
+                <p id="seed">SEED <span>TECH</span></p>
+                <p id="inovacao">INOVAÇÃO QUE CULTIVA O FUTURO</p>
+            </div>
+        </div>
+    </div>
+    <div id="mensagem" class="mensagem hidden"></div>
+</body>
+
+</html>
+
+<script>
+
+    function tentar(){
+
+           div_erro.style.animation = 'sumir 0.5s ease-in-out forwards';
+             container.style.opacity = '100%';
+             input_razao_social.disabled = false;
+             input_nome_fantasia.disabled = false;
+             input_cnpj.disabled = false;
+             input_usuario.disabled = false;
+            input_senha.disabled = false;
+            input_telefone.disabled = false;
+            button_continuar.disabled = false;
+            button_logar.disabled = false;
+
+     }
+
+
+</script>

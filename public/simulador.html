@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador SeedTech</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="shortcut icon" href="assets/imgs/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/styles/simulador.css">
+</head>
+
+<body id="body" translate="no">
+
+
+    <div class="div_navbar">
+
+        <div class="div_img_navbar"></div>
+
+    <div class="div_textos_navbar">
+
+        <span class="span_navbar">Simulador Financeiro - <span class="span_navbar_2"> SeedTech</span></span>
+    </div>
+
+    <button class="btn_light" id="btn_light" onclick="dark()"></button>
+
+    <button class="btn_dark" id="btn_dark" style="display: none;" onclick="light()"></button>
+
+
+
+    <div class="div_linhas"></div>
+
+    </div>
+
+
+    <div class="div_container">
+
+        <button class="btn_voltar" onclick="home()"><img src="assets/imgs/seta_direita.png" class="img_btn"></button>
+
+
+
+        <div class="div_form">
+
+            
+
+            <div class="div_form_campos">
+
+                
+
+                <span class="span_form">Descubra a diferença que a <span style="color: #7fcc2a;">SeedTech </span> pode proporcionar para o seu negócio!</span>
+
+                <span class="span_form_2">Quantos viveiros há em sua propriedade?</span>
+
+                <input type="text" class="input_form" id="input_qtd" placeholder="quantidade total" min="1" >
+
+                <span class="span_form_2">Qual o tamanho em média de cada viveiro?</span>
+
+                <input type="text" class="input_form" id="input_metros" placeholder="Em metros quadrados" min="1">
+
+                <span class="span_form_2">Qual o valor das manutenções dos viveiros anual?</span>
+
+                <input type="text" class="input_form" id="input_valor" placeholder=" em R$ anualmente" min="1">
+
+                <button class="btn_form" onclick="calcular()">Calcular</button>
+
+
+
+
+            </div>
+
+
+            <div class="div_barra_form"></div>
+
+            <div class="div_form_results">
+
+                <span class="span_form_results">Resultados:</span>
+
+                <div class="div_form_graphics" style="display: none;" id="div_graphics">
+
+                    <div class="chart_graph" >
+                        <canvas id="myChart" width="600" height="500" ></canvas>
+                      </div>
+
+                      
+                    <div class="chart_graph">
+                        <canvas id="myChart2" width="750" height="500" ></canvas>
+                      </div>
+
+
+
+                     
+
+                </div>
+
+                <div  id="div_result_mensagem" class="div_results_spans">
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+  
+
+
+</body>
+
+</html>
+
+<script>
+
+    
+        function dark(){
+
+            body.style.backgroundColor = '#191919';
+            btn_light.style.display = 'none';
+            btn_dark.style.display = 'flex';
+        }
+
+        function light(){
+
+            body.style.backgroundColor = 'white';
+            btn_light.style.display = 'flex';
+            btn_dark.style.display = 'none';
+
+
+        }
+
+        function home(){
+        window.location = 'index.html'
+    }
+
+        //1 viveiro = 1000m²
+        //save até 15% por viveiro
+        //tamanho do hectare 10.000m²
+        //save até 10% por muda
+        //aproximadamente 200 mudas por metro quadrado de viveiro
+        //200.000 mudas por viveiro
+        //aumente em até 10% o lucro
+        //custo de uma muda de café = 1.2
+        //Valor de manutenção anual de um viveiro = R$30.000
+        //uma muda de café equivale a mais ou menos R$25,00
+
+       
+        
+            function calcular(){
+
+                div_graphics.style.display = 'flex';
+
+
+                var totalmudas = 0;
+                var lucromudas  = 0;
+                var seedlucro = 0;
+                var manutseed = 0;
+                var totalseed = 0;
+                var valormudas = 0;
+                var porcentmanu= 0;
+                var qtd = Number(input_qtd.value);
+                var metros = Number(input_metros.value);
+                var manutencao = Number(input_valor.value);
+
+              
+
+
+                if( !qtd == '' && !metros == '' && !manutencao == ''){
+
+                    // Cálculo do primeiro gráfico
+
+                    totalmudas = (qtd * metros) * 200;
+                    valormudas = totalmudas * 25;
+                    lucromudas =  valormudas - manutencao;
+
+                    manutseed = manutencao - (manutencao * 0.20)
+                    seedlucro = (valormudas + (valormudas * 0.10)) ;
+                    totalseed = seedlucro - manutseed;
+
+                    div_result_mensagem.innerHTML = `Nós da SeedTech proporcionamos com o nosso serviço a <b style="color:#7fcc2a;"> diminuição da manutenção em até 20%  e  aumento em até 10% do lucro. </b> <br> <br>
+                    
+                    Os lucros que eram de R$${lucromudas} </b>  passariam a ser com a SeedTech de <b style="color:#7fcc2a;">R$${totalseed}</b>.<br> <br>
+
+                    Já os custos de manutenção que eram de R$${manutencao}</b> passariam a ser com a Seedtech <b style="color:#7fcc2a;">R$${manutseed} </b>.
+                    `;
+
+
+                   
+
+                    Chart.defaults.backgroundColor = '#9BD0F5';
+                    Chart.defaults.borderColor = 'black';
+                    Chart.defaults.color = 'black';
+                    Chart.defaults.font.family = "Raleway";
+                    Chart.defaults.font.weight = "bold";
+
+
+
+                
+                                
+                        const labels = [
+
+                    ' Lucro x Lucro SeedTech '	
+
+
+                    ];
+
+
+                    const data = {
+
+                    labels: labels,
+                    datasets: [{
+
+                    label: 'Atual',
+                    backgroundColor: '	#32CD32',
+                    data: [lucromudas],
+
+                    }, {
+
+                  
+                    
+                    label: 'com SeedTech',
+                    backgroundColor: '#006400',
+                    data: [seedlucro],
+
+
+                    } 
+                    ]
+
+
+                    };
+
+
+
+
+
+                    const config = {
+
+                    type:  'bar',
+                    data: data,
+                    options:  {
+
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    size: 10
+                                }
+                            }
+                        }
+                    }
+                   }
+
+                    };
+
+                    
+                    const myChart = new Chart(
+
+                    document.getElementById('myChart'),
+                    config
+
+                    );
+
+                    // Segundo Gráfico
+                        
+                    
+                                
+                    const labels2 = [
+
+                    ' Manutenção x Manutenção SeedTech '	
+
+
+                    ];
+
+
+                    const data2 = {
+
+                    labels: labels2,
+                    datasets: [{
+
+                        label: 'Atual',
+                    backgroundColor: 'red',
+                    data: [manutencao],
+
+
+
+                    }, {
+
+
+
+                        label: 'com SeedTech',
+                    backgroundColor: '#FF6347',
+                    data: [manutseed],
+
+
+
+                    } ,
+                    ]
+
+
+                    };
+
+
+
+
+
+                    const config2 = {
+
+                    type:  'bar',
+                    data: data2,
+                    options:  {
+
+                    plugins: {
+                        legend: {
+                            labels: {
+                                font: {
+                                    size: 10
+                                }
+                            }
+                        }
+                    }
+                    }
+
+                    };
+
+
+                    const myChart2 = new Chart(
+
+                    document.getElementById('myChart2'),
+                    config2
+
+                    );
+
+                                    
+
+
+                   
+
+                }else{
+
+                    alert('Insira dados em todos os campos para continuar');
+
+                }
+
+                
+
+
+        }
+
+</script>

@@ -1,0 +1,14 @@
+.erro {
+
+    color: red;
+    font-size: 20px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-weight: 500;
+
+}
+
+.hidden {
+
+    display: none !important;
+}

@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Rochester&family=Six+Caps&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: "Josefin Sans";
+    transition: background-color 0.3s ease;
+}
+
+
+
+.div_erro{
+
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 25%;
+    background-color: #fff;
+    border: solid 3px #38B622;
+    position: fixed;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 6px rgba(14, 14, 17, 0.2);
+    transform: translate(-50%,-50%);
+    left: 50%;
+    align-items: center;
+    top: 50%;
+    justify-content: space-evenly;
+    opacity: 0;
+    z-index: 10000;
+}
+
+.img_acerto{
+
+    width: 40%;
+    height: 20vh;
+    background-image: url(../imgs/correct.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;    
+}
+
+
+
+@keyframes surgir{
+
+    from{
+
+        opacity: 0%;
+    }
+
+    to{
+
+        opacity: 100%;
+    }
+
+}
+
+@keyframes sumir{
+
+    from{
+
+        opacity: 100%;
+    }
+
+    to{
+
+        opacity: 0%;
+    }
+
+}
+
+.img_erro{
+
+    width: 40%;
+    height: 20vh;
+    background-image: url(../imgs/error.svg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;    
+}
+
+.btn_again{
+
+    background-color: red;
+    width: 50%;
+    height: 7vh;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor:pointer;
+    transition: 0.2s ease-in-out;
+    text-align: center;
+
+}
+
+
+.container{
+    display: flex;
+}
+
+.sidebar{
+    width: 400px;
+    height: 100vh;
+    background-color: #6D3718;
+    color: white;
+    display: flex;
+}
+
+
+.seta-retorno {
+
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.03s, color 0.03;
+}
+
+
+
+.seta-retorno:hover {
+
+    background-color: white;
+    color: #5e2b17;
+    transition: 0.5s;
+
+}
+
+
+.conteudo{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+    min-height: 300px;
+    gap: 15px;
+}
+
+.seedTech{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.seedTech img{
+    width: 60px;
+}
+
+.conteudo .formulario input{
+    width: 250px;
+    height: 30px;
+    border-radius: 10px;
+    border: #87502F solid 2px;  
+    text-align: center;
+}
+
+.conteudo .formulario{
+    align-items: flex-start;
+    flex-direction: column;
+    display: flex;
+    gap: 10px;
+}
+
+.botao{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    border-radius: 8px;
+    border: solid 1px;
+    width: 130px;
+    height: 40px;
+    background-color: #87502F;
+    color: #FFFFFF;
+    font-size: 18px;
+    cursor: pointer;
+    transition: ease; 
+}
+
+.botao img{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    margin-left: 5px;
+}
+
+
+
+.slogan{
+    width: 1000px;
+    height: 603px;
+    background-image: url("../imgs/linhas.png");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.sol{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 80px;
+    top: 30px;
+    cursor: pointer;
+}
+
+.lua{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 80px;
+    top: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+.texto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#seed{
+    font-size: 70px;
+    color: #6D3718;
+}
+
+#seed span{
+    color: #38B622;
+}
+
+#inovacao{
+    font-size: 18px;
+}
+
+.hidden{
+    display: none;
+}
+
+.mensagem {
+
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-size: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    /* controla a ordem de empilhamento dos elementos da pagina */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+
+}
+
+.mensagem.visivel {
+
+    opacity: 1;
+}
+
