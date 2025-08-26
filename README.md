@@ -12,14 +12,14 @@
   
   <p align=center>
 
-<strong>🔧 Tecnologias Utilizadas:</strong><br>
-<img src="Site/assets/imgs/logoJs.png" width="30"> JavaScript<br><br>
-<img src="Site/assets/imgs/iconHTML.png" width="30"> HTML<br><br>
-<img src="Site/assets/imgs/iconCSS.png" width="30"> CSS<br><br>
-<img src="Site/assets/imgs/iconMysql.png" width="30"> Banco de Dados SQL<br><br>
+## 🔧 Tecnologias Utilizadas:
+<img src="website/public/assets/imgs/jslogo.png" width="30"> JavaScript<br><br>
+<img src="website/public/assets/imgs/htmllogo.png" width="30"> HTML<br><br>
+<img src="website/public/assets/imgs/csslogo.png" width="30"> CSS<br><br>
+<img src="website/public/assets/imgs/mysqllogo.png" width="30"> Banco de Dados SQL<br><br>
 
 
-<strong>📊 Funcionalidades do projeto:</strong>
+## 📊 Funcionalidades do projeto:
 
 - Recomendações em tempo real
 - Análise dos contéudos mais consumidos pelos usuários em cada gênero
