@@ -3,7 +3,7 @@
 
 
 <div align="center">
-  <strong> Projeto de um sistema de recomendação de filmes e séries - NextView</strong>
+  <strong>🎞️ Projeto de um sistema de recomendação de filmes e séries - NextView 🎟️</strong>
 </div>
 
 <div align="center">
