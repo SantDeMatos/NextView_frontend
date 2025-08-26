@@ -13,10 +13,10 @@
   <p align=center>
 
 ## 🔧 Tecnologias Utilizadas:
-<img src="website/public/assets/imgs/jslogo.png" width="50"><br> JavaScript<br><br>
-<img src="website/public/assets/imgs/htmllogo.png" width="50"><br> HTML<br><br>
-<img src="website/public/assets/imgs/csslogo.png" width="50"><br> CSS<br><br>
-<img src="website/public/assets/imgs/mysqllogo.png" width="50"><br> Banco de Dados SQL<br><br>
+<img src="website/public/assets/imgs/jslogo.png" width="80"><br> JavaScript<br><br>
+<img src="website/public/assets/imgs/htmllogo.png" width="80"><br> HTML<br><br>
+<img src="website/public/assets/imgs/csslogo.png" width="80"><br> CSS<br><br>
+<img src="website/public/assets/imgs/mysqllogo.png" width="80"><br> Banco de Dados SQL<br><br>
 
 
 ## 📊 Funcionalidades do projeto:
