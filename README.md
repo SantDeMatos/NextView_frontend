@@ -1,20 +1,20 @@
 # site_streaming
 
-<body style="display: flex; justify-content: center;">
-
-<img src="Site/assets/imgs/logo-seedtech.svg"> <br>
 
 
+<img align="center" src="Site/assets/imgs/logo-seedtech.svg"> <br>
 
-<div >
+
+
+<div align="center">
   <strong>🌱 Projeto de Monitoramento de Cultivo de Café ☕️</strong>
 </div>
 
-<div >
+<div align="center">
   <p>Este repositório contém um sistema de monitoramento para viveiros de café, focado na otimização do crescimento das plantas através da análise de dados de CO₂ e outras variáveis ambientais. O objetivo é fornecer uma solução eficiente para agricultores, melhorando a qualidade e a produtividade do cultivo.☕️</p>
 
   
-  <p>
+  <p align=center>
 
 <strong>🔧 Tecnologias Utilizadas:</strong><br>
 <img src="Site/assets/imgs/logoJs.png" width="30"> JavaScript<br><br>
@@ -35,7 +35,7 @@
   
 </div>
 
-<div >
+<div align=center>
 
 ## 🔭 Visão Geral
 
@@ -95,5 +95,3 @@ Detecta gases como CO₂, fumaça, propano, metano.
 Muito usado para medir qualidade do ar e segurança.
 
 </div>
-
-</body>
