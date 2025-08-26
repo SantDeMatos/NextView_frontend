@@ -1,17 +1,13 @@
-# site_streaming
-
-
-
-<img align="center" src="Site/assets/imgs/logo-seedtech.svg"> <br>
+# NextView Website
 
 
 
 <div align="center">
-  <strong>🌱 Projeto de Monitoramento de Cultivo de Café ☕️</strong>
+  <strong> Projeto de um sistema de recomendação de filmes e séries - NextView</strong>
 </div>
 
 <div align="center">
-  <p>Este repositório contém um sistema de monitoramento para viveiros de café, focado na otimização do crescimento das plantas através da análise de dados de CO₂ e outras variáveis ambientais. O objetivo é fornecer uma solução eficiente para agricultores, melhorando a qualidade e a produtividade do cultivo.☕️</p>
+  <p>Este repositório contém o site institucional da empresa NextView responsável por um projeto que consiste no desenvolvimento de um software que utiliza bases consolidadas, como o IMDb Dataset, para coletar, tratar e armazenar dados sobre filmes e séries, transformando essas informações em dashboards, gráficos e insights personalizados. Seu objetivo é auxiliar as plataformas de streaming na tomada de decisão estratégica para a elaboração de catálogos mais atrativos e diversificados, alinhados às preferências dos usuários e às tendências do mercado</p>
 
   
   <p align=center>
@@ -21,16 +17,13 @@
 <img src="Site/assets/imgs/iconHTML.png" width="30"> HTML<br><br>
 <img src="Site/assets/imgs/iconCSS.png" width="30"> CSS<br><br>
 <img src="Site/assets/imgs/iconMysql.png" width="30"> Banco de Dados SQL<br><br>
-<img src="Site/assets/imgs/iconArduino.png" width="30"> Arduino UNO R3<br><br>
-<img src="Site/assets/imgs/iconNodeJs.png" width="30"> NODE<br><br>
-<img src="Site/assets/imgs/iconC++.png" width="30"> C++
 
 
-<strong>📊 Funcionalidades:</strong>
+<strong>📊 Funcionalidades do projeto:</strong>
 
-- Monitoramento em tempo real
-- Análise de dados históricos
-- Alertas de condições ambientais
+- Recomendações em tempo real
+- Análise dos contéudos mais consumidos pelos usuários em cada gênero
+- Ranking dos Top 5 filmes ou séries de um gênero
 </p>
   
 </div>
@@ -39,7 +32,7 @@
 
 ## 🔭 Visão Geral
 
-Este projeto tem como objetivo o desenvolvimento de um sistema web integrado com sensores de CO₂ (MQ2) para monitoramento da qualidade do ar em ambientes controlados, como viveiros. A solução inclui o desenvolvimento completo do site, integração com hardware (Arduino UNO R3) e leitura em tempo real dos níveis de CO₂ (PPM).
+Desenvolvimento de um sistema capaz de consumir, tratar e armazenar dados referentes as plataformas de filmes e séries, que posteriormente gera recomendações e notificações direcionadas para as empresas de streaming, baseadas nas informações capturadas pelo sistema. 
 <br>
  <h1>🔧 Tecnologias:</h1>
 <br>
@@ -60,11 +53,6 @@ Linguagem de programação para web.
 
 Adiciona interatividade e dinamismo às páginas.
 
-<br>
-⚙️ Node.js
-Executa JavaScript no servidor.
-
-Ideal para criar APIs, servidores e apps em tempo real.
 
 <br>
 🗃️ Banco de Dados SQL
@@ -73,25 +61,5 @@ Armazena e gerencia dados de forma estruturada.
 Usado com MySQL, PostgreSQL, SQLite, entre outros.
 
 <br>
-🧠 C++
-Linguagem de programação poderosa e rápida.
-
-Usada em sistemas embarcados, jogos e aplicações de alto desempenho.
-<br>
-
-<br>
-<h1>⚡ Tecnologias de Hardware e Sensoriamento</h1>
-
-<br>
-🧩 Arduino UNO R3
-Placa de prototipagem com microcontrolador.
-
-Usada para controlar sensores, LEDs, motores, etc.
-
-<br>
-🌫️ Sensor de Gás MQ2
-Detecta gases como CO₂, fumaça, propano, metano.
-
-Muito usado para medir qualidade do ar e segurança.
 
 </div>
