@@ -1,8 +1,165 @@
 
-*{
-
+*
+{
     margin: 0;
     padding: 0;
-    
 }
+
+.banner {
+    width: 100%;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 2em; 
+    left: 0;
+    width: 100%;
+    height: 4em;
+    z-index: 10;
+    background: rgba(255,255,255,0.9); 
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+    gap: 8em;
+
+}
+
+
+.navbar li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: 500;
+    font-size: 1em;
+    transition: 0.3s;
+    display: flex;
+}
+
+.navbar li a:hover {
+    color: #05009A;
+}
+.navbar li a:active {
+    color: #0FBBFF;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.header-buttons button.btn1 {
+    margin-left: 1em;
+    padding: 0.6em 2.5em;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(90deg, #05009A 0%, #0FBBFF 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.header-buttons button.btn2{
+    margin-left: 1em;
+    padding: 0.6em 2.5em;
+    border: none;
+    border-radius: 15px;
+    color: #05009A;
+    border: 2px solid #05009A;
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.header-buttons button:hover {
+    transform: scale(1.05);
+}
+
+
+
+/* Banner */
+
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner {
+    width: 100%;
+    display: block;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.banner-text h1 {
+    font-size: 5em;
+    font-weight: bold;
+}
+
+.banner-text p {
+    font-size: 1.7em;
+    font-weight: 600;
+}
+
+/* Sobre Nós */
+
+.SobreNos-container {
+    width: 100%;
+    height: 20em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    flex-direction: column;
+}
+
+.SobreNos-container h1 {
+    font-size: 3em;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+.SobreNos-container p {
+    font-size: 1.2em;
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    max-width: 800px;
+    text-align: center;
+    line-height: 1.5em;
+    margin-top: 1em;
+}
+
+
+
+
 
