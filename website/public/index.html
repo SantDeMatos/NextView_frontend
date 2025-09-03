@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=M+PLUS+Rounded+1c&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wg
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=M+PLUS+Rounded+1c&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wg
 ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>NextView</title>
 </head>
+
 <body>
 
     <header>
@@ -20,7 +21,10 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
                     <a href="#">HOME</a>
                 </li>
                 <li>
-                    <a href="">SOBRE NÓS</a>
+                    <a href="#SobreNos">SOBRE NÓS</a>
+                </li>
+                <li>
+                    <a href="#planos-section">PLANOS</a>
                 </li>
                 <li>
                     <a href="">CONTATO</a>
@@ -33,7 +37,7 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
         </div>
     </header>
 
-  <div class="banner-container">
+    <div class="banner-container">
         <img class="banner" src="assets/imgs/banner-inicial.png" alt>
         <div class="banner-text">
             <h1>NEXTVIEW</h1>
@@ -41,17 +45,94 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
         </div>
     </div>
 
-    <section>
+    <section id="SobreNos">
         <div class="SobreNos-container">
             <h1>Inovando o Streaming</h1>
             <p>Somos uma equipe dedicada a transformar o mercado de streaming
-                 por meio da tecnologia e análise de dados. Desenvolvemos <span style="color: blue;">soluções 
-                 inteligentes</span> que ajudam plataformas a criarem catálogos mais 
-                 atrativos, personalizados e relevantes, garantindo melhor 
-                 experiência para o usuário e fortalecendo a competitividade no 
-                 setor.</p>
+                por meio da tecnologia e análise de dados. Desenvolvemos <span style="color: blue;">soluções
+                    inteligentes</span> que ajudam plataformas a criarem catálogos mais
+                atrativos, personalizados e relevantes, garantindo melhor
+                experiência para o usuário e fortalecendo a competitividade no
+                setor.</p>
         </div>
     </section>
+
+
+    <section class="cards-section">
+        <div class="cards-header">
+            <h2>Quais são os</h2>
+            <p>Benefícios do nosso sistema?</p>
+        </div>
+        <div class="cards-container">
+            <div class="card">
+                <img src="assets/imgs/img-card1.png" alt="Recurso 1">
+                <h3>Dashboards e Relatórios Personalizados</h3>
+            </div>
+            <div class="card">
+                <img src="assets/imgs/img-card2.png" alt="Recurso 2">
+                <h3>Análise de Tendências de Consumo</h3>
+            </div>
+            <div class="card">
+                <img src="assets/imgs/img-card3.png" alt="Recurso 3">
+                <h3>Catalogo Atrativo para o usuário</h3>
+            </div>
+        </div>
+    </section>
+
+
+<section class="mvv-section">
+    <div class="mvv-header">
+        <h2>Missão, Visão e Valores</h2>
+        <p class="mvv-desc">Conheça os pilares que guiam a NextView na transformação do mercado de streaming.</p>
+    </div>
+    <div class="mvv-cards">
+        <div class="mvv-card">
+            <h3>Missão</h3>
+            <p>Oferecer soluções inovadoras para empresas de streaming, potencializando a experiência dos usuários e impulsionando o crescimento dos nossos clientes.</p>
+        </div>
+        <div class="mvv-card destaque">
+            <h3>Visão</h3>
+            <p>Ser referência em tecnologia e inteligência para plataformas de streaming, promovendo personalização, eficiência e resultados excepcionais.</p>
+        </div>
+        <div class="mvv-card">
+            <h3>Valores</h3>
+            <p>Inovação, ética, colaboração, foco no cliente e excelência em cada entrega.</p>
+        </div>
+    </div>
+</section>
+
+
+    <section class="contact-section">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Entre em contato</h2>
+                <p>Fale com nossa equipe para tirar dúvidas!</p>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Nome completo" required>
+                <input type="email" placeholder="E-mail" required>
+                <input type="tel" placeholder="Telefone" required>
+                <textarea placeholder="Digite sua mensagem" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+
+
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 NextView. Todos os direitos reservados.</p>
+            <ul class="footer-links">
+                <li><a href="#SobreNos">Sobre Nós</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </footer>
+
 
 
 </body
