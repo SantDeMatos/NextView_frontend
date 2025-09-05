@@ -1,0 +1,99 @@
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden; 
+}
+
+.cadastro-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; 
+}
+
+.cadastro-img {
+    flex: 1;
+    background-size: cover;
+    min-width: 0; 
+}
+
+
+.cadastro-form-bg {
+    flex: 1;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    width: 60vw; 
+    min-width: 400px;
+    box-shadow: 0 0 20px #00000010;
+}
+
+.cadastro-form-bg h2 {
+    margin-bottom: 0.5em;
+    font-size: 2em;
+    color: #05009A;
+}
+
+.cadastro-form-bg h3 {
+    margin-bottom: 1em;
+    margin-top: 0;
+    font-size: 1.2em;
+    color: #333;
+    font-weight: 400;
+}
+
+.cadastro-form-bg form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 70%;
+    max-width: 350px;
+}
+.cadastro-form-bg label {
+    color: #05009A;
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 0.2em;
+    display: block;
+}
+
+.cadastro-form-bg input {
+    padding: 0.8em;
+    border-radius: 8px;
+    border: 2px solid #05009A;
+    font-size: 1em;
+    margin-bottom: 1.2em;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cadastro-form-bg input:focus {
+    border-color: #0FBBFF;
+}
+
+.cadastro-form-bg button {
+    padding: 0.8em;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(90deg, #05009A 0%, #0FBBFF 100%);
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.cadastro-form-bg button:hover {
+    transform: scale(1.05);
+}
+
