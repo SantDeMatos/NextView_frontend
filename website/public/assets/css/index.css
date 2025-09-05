@@ -19,7 +19,7 @@ header {
     width: 90%;
     height: 4em;
     z-index: 10;
-    background: rgba(255,255,255,0.9);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 30px;
     display: flex;
     align-items: center;
@@ -154,7 +154,7 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent; 
+    text-fill-color: transparent;
     font-family: 'Poppins', sans-serif;
     text-align: center;
 }
@@ -442,7 +442,7 @@ header {
     list-style: none;
     display: flex;
     gap: 2em;
-  
+
 }
 
 .footer-links li a {
@@ -456,3 +456,151 @@ header {
     color: #eaf6ff;
 }
 
+/* Responsividade */
+
+@media (min-width: 320px) and (max-width: 375px) {
+
+    .banner {
+        height: 250px;
+    }
+
+    .banner-text h1 {
+        font-size: 2em;
+    }
+
+    .banner-text p {
+        font-size: 0.6em;
+        width: 300px;
+    }
+
+    .SobreNos-container {
+        min-height: 16em;
+        padding: 5em 0;
+    }
+
+    .SobreNos-container h1 {
+        font-size: 1.4em;
+    }
+
+    .SobreNos-container p {
+        font-size: 0.7em;
+        max-width: 270px;
+    }
+
+    .cards-section {
+        padding: 4em 0;
+    }
+
+    .cards-header h2 {
+        font-size: 1.4em;
+    }
+
+    .cards-header p {
+        font-size: 1em;
+    }
+
+    .card {
+        padding: 2em 1.5em;
+        width: 190px;
+    }
+
+    .card img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .card h3 {
+        font-size: 0.7em;
+    }
+
+    .mvv-section {
+        padding: 4em 0;
+    }
+
+    .mvv-header h2 {
+        font-size: 1.2em;
+    }
+
+    .mvv-desc {
+        font-size: 0.8em;
+        max-width: 280px;
+    }
+
+    .mvv-card {
+        padding: 2.5em 2em;
+        width: 240px;
+        height: 240px;
+    }
+
+    .mvv-card h3 {
+        font-size: 1.2em;
+    }
+
+    .mvv-card p {
+        font-size: 0.7em;
+    }
+
+    .contact-section {
+        padding: 4em 0;
+    }
+
+    .contact-content {
+        width: 80%;
+        flex-direction: column;
+    }
+
+    .contact-info {
+        padding: 2em 1.8em;
+        align-items: center;
+    }
+
+    .contact-info h2 {
+        font-size: 1.4em;
+        margin-bottom: 0.8em;
+    }
+
+    .contact-info p {
+        font-size: 0.8em;
+        text-align: center;
+        margin-bottom: 0em;
+    }
+
+    .contact-form {
+        padding: 2em;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 0.8em;
+    }
+
+    .contact-form textarea {
+        min-height: 100px;
+    }
+
+    .contact-form button {
+        padding: 0.8em 4em;
+        font-size: 1em;
+    }
+
+    .footer {
+        padding: 2em 0;
+    }
+
+    .footer-content p {
+        font-size: 0.7em;
+
+    }
+
+    .footer-links li a {
+        font-size: 0.6em;
+    }
+
+
+}
+
+@media (min-width: 375px) and (max-width: 425px) {}
+
+@media (min-width: 425px) and (max-width: 768px) {}
+
+@media (min-width: 768px) and (max-width: 1024px) {}
