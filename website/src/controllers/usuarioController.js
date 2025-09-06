@@ -107,7 +107,6 @@ function cadastrarEmpresa(req, res) {
 
 
 function contato(req, res) {
-    
     var nome = req.body.nome
     var email = req.body.email
     var telefone = req.body.telefone

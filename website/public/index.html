@@ -9,7 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=M+PLUS+Rounded+1c&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wg
 ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="assets/js/index.js"></script>
     <title>NextView</title>
+    <script src="../app.js"></script>
 </head>
 
 <body>
@@ -35,8 +37,8 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
                 </li>
             </ul>
             <div class="header-buttons">
-                <button class="btn1">Entrar</button>
-                <button class="btn2">Registrar</button>
+                <button class="btn1" onclick="window.location = 'login.html'">Entrar</button>
+                <button class="btn2" onclick="window.location = 'cadastro.html'">Registrar</button>
             </div>
         </div>
 
@@ -129,11 +131,11 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
                 <p>Fale com nossa equipe para tirar dúvidas!</p>
             </div>
             <form class="contact-form">
-                <input type="text" placeholder="Nome completo" required>
-                <input type="email" placeholder="E-mail" required>
-                <input type="tel" placeholder="Telefone" required>
-                <textarea placeholder="Digite sua mensagem" required></textarea>
-                <button type="submit">Enviar</button>
+                <input type="text" placeholder="Nome completo" id="nomeContato" required>
+                <input type="email" placeholder="E-mail" id="emailContato" required>
+                <input type="tel" placeholder="Telefone" id="telefoneContato" required>
+                <textarea placeholder="Digite sua mensagem" id="mensagemContato" required></textarea>
+                <button type="submit" onclick="enviar()">Enviar</button>
             </form>
         </div>
     </section>
@@ -149,7 +151,7 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
             </ul>
         </div>
     </footer>
-  
+
 </body>
 
 </html>
@@ -168,6 +170,45 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
         btn_menu_abrir.style.display = "block";
         menu_lateral.style.display = "none";
 
+    }
+
+    function enviar() {
+
+        var nome = nomeContato.value
+        var email = emailContato.value
+        var telefone = telefoneContato.value
+        var mensagem = mensagemContato.value
+
+        if (nome == "" || email == "" || telefone == "" || mensagem == "") {
+            alert("Preencha todos os campos!")
+            return false
+        }
+
+        fetch("/usuarios/contato", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nome: nome,
+                email: email,
+                telefone: telefone,
+                mensagem: mensagem
+            }),
+        }).then(function (resposta) {
+            console.log("resposta: ", resposta);
+            if (resposta.ok) {
+                alert("Mensagem enviada com sucesso!");
+                nomeContato.value = ""
+                emailContato.value = ""
+                telefoneContato.value = ""
+                mensagemContato.value = ""
+            } else {
+                throw ("Houve um erro ao tentar enviar a mensagem!");
+            }
+        })
     }
 
 </script>
