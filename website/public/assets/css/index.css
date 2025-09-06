@@ -8,8 +8,6 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-
-
 /* header */
 header {
     position: fixed;
@@ -37,7 +35,7 @@ header {
 .navbar {
     display: flex;
     align-items: center;
-    gap: 4em;
+    gap: 3em;
     list-style: none;
 }
 
@@ -456,9 +454,64 @@ header {
     color: #eaf6ff;
 }
 
+/* Menu hambúrguer */
+
+.btn_menu {
+    background: none;
+    border: none;
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    z-index: 101;
+    cursor: pointer;
+}
+
+.btn_menu img {
+    display: none;
+    width: 50px;
+    height: 50px;
+}
+
 /* Responsividade */
 
-@media (min-width: 320px) and (max-width: 375px) {
+@media screen and (max-width: 1370px) {
+
+    header {
+        display: none;
+    }
+
+    .btn_menu img {
+        display: block;
+    }
+
+    #btn_menu_abrir {
+        display: block;
+    }
+
+    #btn_menu_fechar {
+        display: block;
+        right: 240px;
+        top: 20px;
+    }
+
+    #btn_menu_fechar img {
+        width: 30px;
+        height: 30px;
+    }
+
+    #menu_lateral {
+        display: none;
+        background-color: #05009A;
+        width: 300px;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        z-index: 100;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 375px) {
 
     .banner {
         height: 250px;
@@ -596,9 +649,55 @@ header {
         font-size: 0.6em;
     }
 
+    .btn_menu {
+        background: none;
+        border: none;
+        display: none;
+        position: absolute;
+        top: 17px;
+        right: 17px;
+        z-index: 101;
+        cursor: pointer;
+    }
+
+    .btn_menu img {
+        display: none;
+        width: 25px;
+        height: 25px;
+    }
+
+    .btn_menu img {
+        display: block;
+    }
+
+    #btn_menu_abrir {
+        display: block;
+    }
+
+    #btn_menu_fechar {
+        display: block;
+        right: 155px;
+        top: 20px;
+    }
+
+    #btn_menu_fechar img {
+        width: 25px;
+        height: 25px;
+    }
+
+    #menu_lateral {
+        display: none;
+        background-color: #05009A;
+        width: 200px;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        z-index: 100;
+    }
+
 }
 
-@media (min-width: 375px) and (max-width: 425px) {
+@media screen and (min-width: 375px) and (max-width: 425px) {
 
     .banner {
         height: 250px;
@@ -736,9 +835,55 @@ header {
         font-size: 0.6em;
     }
 
+    .btn_menu {
+        background: none;
+        border: none;
+        display: none;
+        position: absolute;
+        top: 17px;
+        right: 17px;
+        z-index: 101;
+        cursor: pointer;
+    }
+
+    .btn_menu img {
+        display: none;
+        width: 25px;
+        height: 25px;
+    }
+
+    .btn_menu img {
+        display: block;
+    }
+
+    #btn_menu_abrir {
+        display: block;
+    }
+
+    #btn_menu_fechar {
+        display: block;
+        right: 170px;
+        top: 20px;
+    }
+
+    #btn_menu_fechar img {
+        width: 25px;
+        height: 25px;
+    }
+
+    #menu_lateral {
+        display: none;
+        background-color: #05009A;
+        width: 220px;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        z-index: 100;
+    }
+
 }
 
-@media (min-width: 425px) and (max-width: 768px) {
+@media screen and (min-width: 425px) and (max-width: 768px) {
 
     .banner {
         height: 330px;
@@ -876,10 +1021,56 @@ header {
         font-size: 0.7em;
     }
 
+    .btn_menu {
+        background: none;
+        border: none;
+        display: none;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 101;
+        cursor: pointer;
+    }
+
+    .btn_menu img {
+        display: none;
+        width: 35px;
+        height: 35px;
+    }
+
+    .btn_menu img {
+        display: block;
+    }
+
+    #btn_menu_abrir {
+        display: block;
+    }
+
+    #btn_menu_fechar {
+        display: block;
+        right: 200px;
+        top: 20px;
+    }
+
+    #btn_menu_fechar img {
+        width: 25px;
+        height: 25px;
+    }
+
+    #menu_lateral {
+        display: none;
+        background-color: #05009A;
+        width: 250px;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        z-index: 100;
+    }
+
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-    
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
     .banner {
         height: 470px;
     }
@@ -1010,6 +1201,52 @@ header {
 
     .footer-links li a {
         font-size: 0.8em;
+    }
+
+    .btn_menu {
+        background: none;
+        border: none;
+        display: none;
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        z-index: 101;
+        cursor: pointer;
+    }
+
+    .btn_menu img {
+        display: none;
+        width: 35px;
+        height: 35px;
+    }
+
+    .btn_menu img {
+        display: block;
+    }
+
+    #btn_menu_abrir {
+        display: block;
+    }
+
+    #btn_menu_fechar {
+        display: block;
+        right: 290px;
+        top: 20px;
+    }
+
+    #btn_menu_fechar img {
+        width: 25px;
+        height: 25px;
+    }
+
+    #menu_lateral {
+        display: none;
+        background-color: #05009A;
+        width: 340px;
+        height: 100%;
+        position: absolute;
+        right: 0px;
+        z-index: 100;
     }
 
 }
