@@ -14,18 +14,16 @@ public class Log {
 
             for(int i = 1; i <= 4; i++) {
                 if(i == 1) {
-                    mensagem += dataFormatada + " - INFO: Iniciando processamento de dados.\n";
+                    System.out.println(dataFormatada+" - INFO: Iniciando processamento de dados.");
                 } if(i == 2) {
-                    mensagem += dataFormatada + " - DEBUG: Acessando arquivo dados.csv\n";
+                    System.out.println(dataFormatada + " - DEBUG: Acessando arquivo dados.csv");
                 } else if(i == 3) {
-                    mensagem += dataFormatada + " - TRACE: Lendo linhas 1..100\n";
+                    System.out.println(dataFormatada + " - TRACE: Lendo linhas 1..100\n");
                     for (int j = 1; j <= 1000; j++) {
-                        mensagem += dataFormatada + " Analisando linha " + j + "... \n";
+                        System.out.println(dataFormatada + " Analisando linha " + j + "... ");
                         if(j == 359) {
-                            mensagem += dataFormatada + " - ERROR - Erro ao analisar a linha " + j + "\n";
-                            break;
-//                            RuntimeException erro = new RuntimeException("Erro ao analisar a linha 359");
-//                            throw erro; == Irei tratar sobre a implementação deste erro amanhã (06\09)
+                            throw new RuntimeException("Erro ao analisar a linha 359");
+
                         }
                     }
                 } else if(i == 4) {
