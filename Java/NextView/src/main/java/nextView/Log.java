@@ -20,10 +20,9 @@ public class Log {
                 } else if(i == 3) {
                     System.out.println(dataFormatada + " - TRACE: Lendo linhas 1..100\n");
                     for (int j = 1; j <= 1000; j++) {
-                        System.out.println(dataFormatada + " Analisando linha " + j + "... ");
+                        System.out.println(dataFormatada + " - TRACE: Analisando linha " + j + "... ");
                         if(j == 359) {
-                            throw new RuntimeException("Erro ao analisar a linha 359");
-
+                            throw new RuntimeException(" - INFO: Erro ao analisar a linha 359");
                         }
                     }
                 } else if(i == 4) {
