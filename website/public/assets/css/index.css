@@ -596,11 +596,420 @@ header {
         font-size: 0.6em;
     }
 
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+
+    .banner {
+        height: 250px;
+    }
+
+    .banner-text h1 {
+        font-size: 2.5em;
+    }
+
+    .banner-text p {
+        font-size: 0.7em;
+        width: 300px;
+    }
+
+    .SobreNos-container {
+        min-height: 16em;
+        padding: 5em 0;
+    }
+
+    .SobreNos-container h1 {
+        font-size: 1.7em;
+    }
+
+    .SobreNos-container p {
+        font-size: 0.8em;
+        max-width: 310px;
+    }
+
+    .cards-section {
+        padding: 4em 0;
+    }
+
+    .cards-header h2 {
+        font-size: 1.7em;
+    }
+
+    .cards-header p {
+        font-size: 1.2em;
+    }
+
+    .card {
+        padding: 2em 1.2em;
+        width: 220px;
+    }
+
+    .card img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .card h3 {
+        font-size: 0.9em;
+    }
+
+    .mvv-section {
+        padding: 4em 0;
+    }
+
+    .mvv-header h2 {
+        font-size: 1.5em;
+    }
+
+    .mvv-desc {
+        font-size: 0.9em;
+        max-width: 330px;
+    }
+
+    .mvv-card {
+        padding: 3.5em 2em;
+        width: 280px;
+        height: 280px;
+    }
+
+    .mvv-card h3 {
+        font-size: 1.4em;
+    }
+
+    .mvv-card p {
+        font-size: 0.8em;
+    }
+
+    .contact-section {
+        padding: 4em 0;
+    }
+
+    .contact-content {
+        width: 80%;
+        flex-direction: column;
+    }
+
+    .contact-info {
+        padding: 2em 1.8em;
+        align-items: center;
+    }
+
+    .contact-info h2 {
+        font-size: 1.4em;
+        margin-bottom: 0.8em;
+    }
+
+    .contact-info p {
+        font-size: 0.8em;
+        text-align: center;
+        margin-bottom: 0em;
+    }
+
+    .contact-form {
+        padding: 2em;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 0.8em;
+    }
+
+    .contact-form textarea {
+        min-height: 100px;
+    }
+
+    .contact-form button {
+        padding: 0.8em 4em;
+        font-size: 1em;
+    }
+
+    .footer {
+        padding: 2em 0;
+    }
+
+    .footer-content p {
+        font-size: 0.7em;
+
+    }
+
+    .footer-links li a {
+        font-size: 0.6em;
+    }
 
 }
 
-@media (min-width: 375px) and (max-width: 425px) {}
+@media (min-width: 425px) and (max-width: 768px) {
 
-@media (min-width: 425px) and (max-width: 768px) {}
+    .banner {
+        height: 330px;
+    }
 
-@media (min-width: 768px) and (max-width: 1024px) {}
+    .banner-text h1 {
+        font-size: 3em;
+    }
+
+    .banner-text p {
+        font-size: 0.9em;
+        width: 390px;
+    }
+
+    .SobreNos-container {
+        min-height: 16em;
+        padding: 5em 0;
+    }
+
+    .SobreNos-container h1 {
+        font-size: 1.9em;
+    }
+
+    .SobreNos-container p {
+        font-size: 0.9em;
+        max-width: 360px;
+    }
+
+    .cards-section {
+        padding: 4em 0;
+    }
+
+    .cards-header h2 {
+        font-size: 2em;
+    }
+
+    .cards-header p {
+        font-size: 1.5em;
+    }
+
+    .card {
+        padding: 2em 1.2em;
+        width: 220px;
+    }
+
+    .card img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .card h3 {
+        font-size: 0.9em;
+    }
+
+    .mvv-section {
+        padding: 4em 0;
+    }
+
+    .mvv-header h2 {
+        font-size: 1.8em;
+    }
+
+    .mvv-desc {
+        font-size: 1em;
+        max-width: 400px;
+    }
+
+    .mvv-card {
+        padding: 3.5em 2em;
+        width: 300px;
+        height: 300px;
+    }
+
+    .mvv-card h3 {
+        font-size: 1.6em;
+    }
+
+    .mvv-card p {
+        font-size: 0.9em;
+    }
+
+    .contact-section {
+        padding: 4em 0;
+    }
+
+    .contact-content {
+        width: 80%;
+        flex-direction: column;
+    }
+
+    .contact-info {
+        padding: 2em 1.8em;
+        align-items: center;
+    }
+
+    .contact-info h2 {
+        font-size: 1.8em;
+        margin-bottom: 0.8em;
+    }
+
+    .contact-info p {
+        font-size: 1em;
+        text-align: center;
+        margin-bottom: 0em;
+    }
+
+    .contact-form {
+        padding: 2em;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1em;
+    }
+
+    .contact-form textarea {
+        min-height: 130px;
+    }
+
+    .contact-form button {
+        padding: 1em 5em;
+        font-size: 1em;
+    }
+
+    .footer {
+        padding: 2em 0;
+    }
+
+    .footer-content p {
+        font-size: 0.8em;
+
+    }
+
+    .footer-links li a {
+        font-size: 0.7em;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    
+    .banner {
+        height: 470px;
+    }
+
+    .banner-text h1 {
+        font-size: 4em;
+    }
+
+    .banner-text p {
+        font-size: 1.3em;
+        width: 550px;
+    }
+
+    .SobreNos-container {
+        min-height: 35em;
+        padding: 5em 0;
+    }
+
+    .SobreNos-container h1 {
+        font-size: 2.5em;
+    }
+
+    .SobreNos-container p {
+        font-size: 1em;
+        max-width: 660px;
+    }
+
+    .cards-section {
+        padding: 5.5em 0;
+    }
+
+    .cards-header h2 {
+        font-size: 2.3em;
+    }
+
+    .cards-header p {
+        font-size: 1.5em;
+    }
+
+    .card {
+        padding: 2em 1.2em;
+        width: 220px;
+    }
+
+    .card img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .card h3 {
+        font-size: 0.9em;
+    }
+
+    .mvv-section {
+        padding: 7em 0;
+    }
+
+    .mvv-header h2 {
+        font-size: 2.3em;
+    }
+
+    .mvv-desc {
+        font-size: 1.1em;
+        max-width: 600px;
+    }
+
+    .mvv-card {
+        padding: 3.5em 2em;
+        width: 300px;
+        height: 300px;
+    }
+
+    .mvv-card h3 {
+        font-size: 1.6em;
+    }
+
+    .mvv-card p {
+        font-size: 0.9em;
+    }
+
+    .contact-section {
+        padding: 5em 0;
+    }
+
+    .contact-content {
+        width: 80%;
+    }
+
+    .contact-info {
+        padding: 2em 1.8em;
+    }
+
+    .contact-info h2 {
+        font-size: 2.2em;
+        margin-bottom: 0.8em;
+    }
+
+    .contact-info p {
+        font-size: 1em;
+    }
+
+    .contact-form {
+        padding: 2em;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 1em;
+    }
+
+    .contact-form textarea {
+        min-height: 130px;
+    }
+
+    .contact-form button {
+        padding: 1em 5em;
+        font-size: 1em;
+    }
+
+    .footer {
+        padding: 2em 0;
+    }
+
+    .footer-content p {
+        font-size: 0.9em;
+
+    }
+
+    .footer-links li a {
+        font-size: 0.8em;
+    }
+
+}
