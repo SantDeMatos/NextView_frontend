@@ -4,9 +4,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-    Log Log = new Log();
+        Log log = new Log();
 
-    System.out.println(Log.IniciarProcessamentoDados());
+        System.out.println(log.IniciarProcessamentoDados());
 
     }
 }
