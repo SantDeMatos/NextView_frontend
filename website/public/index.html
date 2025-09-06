@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 <body>
 
-    <header style="display: none;">
+    <header>
         <div class="container">
             <ul class="navbar">
                 <img src="assets/imgs/Logo.png" alt="">
@@ -24,10 +25,13 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
                     <a href="#SobreNos">SOBRE NÓS</a>
                 </li>
                 <li>
-                    <a href="#planos-section">PLANOS</a>
+                    <a href="#CardSection">BENEFÍCIOS</a>
                 </li>
                 <li>
-                    <a href="">CONTATO</a>
+                    <a href="#mvvSection">VALORES</a>
+                </li>
+                <li>
+                    <a href="#contactSection">CONTATO</a>
                 </li>
             </ul>
             <div class="header-buttons">
@@ -35,9 +39,23 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
                 <button class="btn2">Registrar</button>
             </div>
         </div>
+
     </header>
 
     <div class="banner-container">
+
+        <!-- Botão menu -->
+        <button onclick="abrirMenu()" class="btn_menu" id="btn_menu_abrir"><img src="assets/imgs/menu.png"
+                alt=""></button>
+
+        <!-- Menu Lateral -->
+        <div id="menu_lateral">
+
+            <button onclick="fecharMenu()" class="btn_menu" id="btn_menu_fechar"><img src="assets/imgs/fechar.png"
+                    alt=""></button>
+
+        </div>
+
         <img class="banner" src="assets/imgs/banner-inicial.png" alt>
         <div class="banner-text">
             <h1>NEXTVIEW</h1>
@@ -58,7 +76,7 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </section>
 
 
-    <section class="cards-section">
+    <section class="cards-section" id="CardSection">
         <div class="cards-header">
             <h2>Quais são os</h2>
             <p>Benefícios do nosso sistema?</p>
@@ -80,29 +98,31 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </section>
 
 
-<section class="mvv-section">
-    <div class="mvv-header">
-        <h2>Missão, Visão e Valores</h2>
-        <p class="mvv-desc">Conheça os pilares que guiam a NextView na transformação do mercado de streaming.</p>
-    </div>
-    <div class="mvv-cards">
-        <div class="mvv-card">
-            <h3>Missão</h3>
-            <p>Oferecer soluções inovadoras para empresas de streaming, potencializando a experiência dos usuários e impulsionando o crescimento dos nossos clientes.</p>
+    <section class="mvv-section" id="mvvSection">
+        <div class="mvv-header">
+            <h2>Missão, Visão e Valores</h2>
+            <p class="mvv-desc">Conheça os pilares que guiam a NextView na transformação do mercado de streaming.</p>
         </div>
-        <div class="mvv-card destaque">
-            <h3>Visão</h3>
-            <p>Ser referência em tecnologia e inteligência para plataformas de streaming, promovendo personalização, eficiência e resultados excepcionais.</p>
+        <div class="mvv-cards">
+            <div class="mvv-card">
+                <h3>Missão</h3>
+                <p>Oferecer soluções inovadoras para empresas de streaming, potencializando a experiência dos usuários e
+                    impulsionando o crescimento dos nossos clientes.</p>
+            </div>
+            <div class="mvv-card destaque">
+                <h3>Visão</h3>
+                <p>Ser referência em tecnologia e inteligência para plataformas de streaming, promovendo personalização,
+                    eficiência e resultados excepcionais.</p>
+            </div>
+            <div class="mvv-card">
+                <h3>Valores</h3>
+                <p>Inovação, ética, colaboração, foco no cliente e excelência em cada entrega.</p>
+            </div>
         </div>
-        <div class="mvv-card">
-            <h3>Valores</h3>
-            <p>Inovação, ética, colaboração, foco no cliente e excelência em cada entrega.</p>
-        </div>
-    </div>
-</section>
+    </section>
 
 
-    <section class="contact-section">
+    <section class="contact-section" id="contactSection">
         <div class="contact-content">
             <div class="contact-info">
                 <h2>Entre em contato</h2>
@@ -119,9 +139,6 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </section>
 
 
-
-
-
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 NextView. Todos os direitos reservados.</p>
@@ -132,5 +149,25 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
             </ul>
         </div>
     </footer>
+  
+</body>
 
-</body
+</html>
+
+<script>
+
+    function abrirMenu() {
+
+        btn_menu_abrir.style.display = "none";
+        menu_lateral.style.display = "flex";
+
+    }
+
+    function fecharMenu() {
+
+        btn_menu_abrir.style.display = "block";
+        menu_lateral.style.display = "none";
+
+    }
+
+</script>
