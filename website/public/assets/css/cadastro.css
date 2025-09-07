@@ -50,7 +50,7 @@ body, html {
     font-weight: 400;
 }
 
-.cadastro-form-bg form {
+.cadastro-form-bg .form {
     display: flex;
     flex-direction: column;
     gap: 1em;

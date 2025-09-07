@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,26 +11,78 @@
 ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
 
- <div class="cadastro-container">
+    <div class="cadastro-container">
         <div class="cadastro-img">
             <img src="assets/imgs/banner-cadastro-login.png" alt="">
         </div>
         <div class="cadastro-form-bg">
             <h2>Bem-vindo</h2>
             <h3>Faça seu Cadastro</h3>
-            <form>
-                <input type="text" placeholder="Nome" required>
-                <input type="text" placeholder="Nome da Empresa" required>
-                <input type="email" placeholder="Email" required>
-                <input type="text" placeholder="CNPJ" required>
-                <input type="text" placeholder="Telefone" required>
-                <input type="password" placeholder="Senha" required>
-                <button onclick="cadastrar()" type="submit">Registrar</button>
-            </form>
+            <div class="form">
+                <input type="text" placeholder="Nome" required id="nome" maxlength="50">
+                <input type="text" placeholder="Nome da Empresa" required id="nomeEmpresa" maxlength="50">
+                <input type="email" placeholder="Email" required id="emailEmpresa" maxlength="50">
+                <input type="text" placeholder="CNPJ" required id="cnpjEmpresa" maxlength="14">
+                <input type="number" placeholder="Telefone" required id="telefoneEmpresa"">
+                <input type=" password" placeholder="Senha" required id="senhaEmpresa" maxlength="50"">
+                <button onclick=" cadastro()" >Registrar</button>
+            </div>
         </div>
     </div>
-    
+
 </body>
+
 </html>
+
+<script>
+    function cadastro() {
+
+        var nomeVar = nome.value;
+        var nomeEmpresaVar = nomeEmpresa.value
+        var emailVar = emailEmpresa.value;
+        var senhaVar = senhaEmpresa.value;
+        var cpnjVar = cnpjEmpresa.value;
+        var telefoneVar = telefoneEmpresa.value;
+
+        if (
+            nomeVar == "" ||
+            emailVar == "" ||
+            senhaVar == "" ||
+            nomeEmpresaVar == "" ||
+            cpnjVar == "" ||
+            telefoneVar == ""
+        ) {
+            alert("Não deixe nenhum espaço em branco")
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                cnpjServer: cpnjVar,
+                telefoneServer: telefoneVar,
+                nomeEmpresaServer: nomeEmpresaVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+                setTimeout(() => {
+                    window.location = "login.html"
+                }, 1000)
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+</script>
