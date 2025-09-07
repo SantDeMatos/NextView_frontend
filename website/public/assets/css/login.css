@@ -41,7 +41,7 @@ body, html {
     font-weight: 400;
 }
 
-.login-form-bg form {
+.login-form-bg .form {
     display: flex;
     flex-direction: column;
     gap: 1em;

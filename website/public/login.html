@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,25 +11,84 @@
 ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
+
 <body>
 
- <div class="cadastro-container">
+    <div class="cadastro-container">
         <div class="login-form-bg">
             <h2>Bem-vindo de volta!</h2>
             <h3>Faça seu Login</h3>
-            <form>
+            <div class="form">
                 <label for="email">Email</label>
                 <input id="email" type="email" placeholder="Digite seu email" required>
                 <label for="senha">Senha</label>
                 <input id="senha" type="password" placeholder="Digite sua senha" required>
-                <button type="submit">Entrar</button>
-            </form>
+                <button onclick="entrar()">Entrar</button>
+            </div>
             <a href="cadastro.html" class="cadastro-link">Não tem login? Faça cadastro</a>
         </div>
         <div class="cadastro-img">
             <img src="assets/imgs/banner-cadastro-login.png" alt="">
         </div>
     </div>
-    
+
 </body>
+
 </html>
+
+<script>
+    function entrar() {
+
+        var emailVar = email.value;
+        var senhaVar = senha.value;
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.emailEmpresa;
+                    sessionStorage.NOME_USUARIO = json.nomeEmpresa;
+                    sessionStorage.ID_EMPRESA = json.idEmpresa;
+                    // sessionStorage.ID_USUARIO = json.id;
+                    // sessionStorage.CARGO = json.cargo;
+
+                    // document.getElementById('aviso2').style.display = 'flex'
+
+                    setTimeout(() => {
+                        window.location = "index.html";
+                    }, "1000");
+                });
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    document.getElementById('aviso1').style.display = 'flex'
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+</script>
