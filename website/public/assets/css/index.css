@@ -35,7 +35,7 @@ header {
 .navbar {
     display: flex;
     align-items: center;
-    gap: 3em;
+    gap: 2.6em;
     list-style: none;
 }
 
@@ -475,7 +475,7 @@ header {
 
 /* Responsividade */
 
-@media screen and (max-width: 1370px) {
+@media screen and (max-width: 1330px) {
 
     header {
         display: none;
