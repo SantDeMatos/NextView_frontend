@@ -41,22 +41,43 @@ ht@0,100..900;1,100..900&display=swap" rel="stylesheet">
                 <button class="btn2" onclick="window.location = 'cadastro.html'">Registrar</button>
             </div>
         </div>
-
     </header>
 
-    <div class="banner-container">
+    <!-- Botão menu lateral-->
+    <button onclick="abrirMenu()" class="btn_menu" id="btn_menu_abrir"><img src="assets/imgs/menu.png" alt=""></button>
 
-        <!-- Botão menu -->
-        <button onclick="abrirMenu()" class="btn_menu" id="btn_menu_abrir"><img src="assets/imgs/menu.png"
+    <!-- Menu Lateral -->
+    <div id="menu_lateral">
+
+        <button onclick="fecharMenu()" class="btn_menu" id="btn_menu_fechar"><img src="assets/imgs/fechar.png"
                 alt=""></button>
 
-        <!-- Menu Lateral -->
-        <div id="menu_lateral">
-
-            <button onclick="fecharMenu()" class="btn_menu" id="btn_menu_fechar"><img src="assets/imgs/fechar.png"
-                    alt=""></button>
-
+        <div class="container">
+            <ul class="navbar">
+                <li>
+                    <a href="#">HOME</a>
+                </li>
+                <li>
+                    <a href="#SobreNos">SOBRE NÓS</a>
+                </li>
+                <li>
+                    <a href="#CardSection">BENEFÍCIOS</a>
+                </li>
+                <li>
+                    <a href="#mvvSection">VALORES</a>
+                </li>
+                <li>
+                    <a href="#contactSection">CONTATO</a>
+                </li>
+            </ul>
+            <div class="header-buttons">
+                <button class="btn1" onclick="window.location = 'login.html'">Entrar</button>
+                <button class="btn2" onclick="window.location = 'cadastro.html'">Registrar</button>
+            </div>
         </div>
+    </div>
+
+    <div class="banner-container">
 
         <img class="banner" src="assets/imgs/banner-inicial.png" alt>
         <div class="banner-text">
