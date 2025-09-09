@@ -789,6 +789,9 @@ header {
     transition: 0.3s ease-in-out;
 }
 
+.navbar li a:hover {
+    color: white;
+}
     
 
 }
@@ -1003,6 +1006,10 @@ header {
     bottom: 0;
     left: 0;
     transition: 0.3s ease-in-out;
+}
+
+.navbar li a:hover {
+    color: white;
 }
 
 }
@@ -1223,6 +1230,10 @@ header {
     transition: 0.3s ease-in-out;
 }
 
+.navbar li a:hover {
+    color: white;
+}
+
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -1424,6 +1435,24 @@ header {
     #menu_lateral .container .header-buttons button {
         font-size: 1.2em;
     }
+
+    
+    .navbar a::after{
+
+    content: "";
+    width: 0%;
+    height: 4px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar li a:hover {
+    color: white;
+}
+
 
 }
 

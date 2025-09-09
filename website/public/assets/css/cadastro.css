@@ -6,19 +6,20 @@ body, html {
     padding: 0;
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden; 
+    background-image: url(../imgs/banner-cadastro-login.png);
+}
+
+body{
+
+    display: flex;
+    justify-content: flex-end;
 }
 
 .cadastro-container {
     display: flex;
     height: 100vh;
-    width: 100vw;
+    width: 45vw;
     overflow: hidden; 
-}
-
-.cadastro-img {
-    flex: 1;
-    background-size: cover;
-    min-width: 0; 
 }
 
 
@@ -37,13 +38,13 @@ body, html {
 }
 
 .cadastro-form-bg h2 {
-    margin-bottom: 0.5em;
-    font-size: 2em;
+    margin-bottom: 0.3em;
+    font-size: 1.7em;
     color: #05009A;
 }
 
 .cadastro-form-bg h3 {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     margin-top: 0;
     font-size: 1.2em;
     color: #333;
@@ -52,29 +53,34 @@ body, html {
 
 .cadastro-form-bg .form {
     display: flex;
-    flex-direction: column;
-    gap: 1em;
+    flex-direction:column;
     width: 70%;
+    height: 90vh;
     max-width: 350px;
 }
 .cadastro-form-bg label {
     color: #05009A;
-    font-size: 1.2em;
+    font-size: 0.9em;
     font-weight: 500;
-    margin-bottom: 0.2em;
     display: block;
 }
 
 .cadastro-form-bg input {
-    padding: 0.8em;
     border-radius: 8px;
     border: 2px solid #05009A;
     font-size: 1em;
-    margin-bottom: 1.2em;
+    margin-bottom: 5%;
+    height: 7vh;
     outline: none;
     transition: border-color 0.2s;
     width: 100%;
     box-sizing: border-box;
+}
+
+input::placeholder{
+
+    padding-left: 1.5%;
+    
 }
 
 .cadastro-form-bg input:focus {
