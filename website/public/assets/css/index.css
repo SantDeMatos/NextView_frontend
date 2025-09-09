@@ -186,7 +186,6 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
     font-family: 'Poppins', sans-serif;
     text-align: center;
 }
@@ -732,6 +731,7 @@ header {
     }
 
     #menu_lateral {
+        display: flex;
         width: 200px;
     }
 
@@ -929,6 +929,7 @@ header {
     }
 
     #menu_lateral {
+        display: flex;
         width: 250px;
     }
 
@@ -1126,6 +1127,7 @@ header {
     }
 
     #menu_lateral {
+        display: flex;
         width: 300px;
     }
 

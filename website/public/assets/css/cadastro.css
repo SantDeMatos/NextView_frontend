@@ -1,4 +1,6 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@900&display=swap');
 
 body, html {
     height: 100%;
@@ -27,7 +29,7 @@ body{
     flex: 1;
     background: #fff;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     border-top-left-radius: 40px;
@@ -37,15 +39,23 @@ body{
     box-shadow: 0 0 20px #00000010;
 }
 
+.btn_back{
+
+    align-self: flex-start;
+    margin-top: 5%;
+}
+
 .cadastro-form-bg h2 {
     margin-bottom: 0.3em;
     font-size: 1.7em;
+    text-align: center;
     color: #05009A;
 }
 
 .cadastro-form-bg h3 {
     margin-bottom: 0.5em;
     margin-top: 0;
+    text-align: center;
     font-size: 1.2em;
     color: #333;
     font-weight: 400;
@@ -58,6 +68,8 @@ body{
     height: 90vh;
     max-width: 350px;
 }
+
+
 .cadastro-form-bg label {
     color: #05009A;
     font-size: 0.9em;
@@ -102,4 +114,5 @@ input::placeholder{
 .cadastro-form-bg button:hover {
     transform: scale(1.05);
 }
+
 
