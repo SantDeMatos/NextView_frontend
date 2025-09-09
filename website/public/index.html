@@ -42,12 +42,12 @@
     </header>
 
     <!-- Botão menu lateral-->
-    <button onclick="abrirMenu()" class="btn_menu" id="btn_menu_abrir"><img src="assets/imgs/menu.png" alt=""></button>
+    <button class="btn_menu" id="btn_menu_abrir"><img src="assets/imgs/menu.png" alt=""></button>
 
     <!-- Menu Lateral -->
     <div id="menu_lateral">
 
-        <button onclick="fecharMenu()" class="btn_menu" id="btn_menu_fechar"><img src="assets/imgs/fechar.png"
+        <button class="btn_menu" id="btn_menu_fechar"><img src="assets/imgs/fechar.png"
                 alt=""></button>
 
         <div class="container">
@@ -177,18 +177,18 @@
 
 <script>
 
-    function abrirMenu() {
+    const btnAbrir = document.getElementById('btn_menu_abrir');
+    const btnFechar = document.getElementById('btn_menu_fechar');
+    const menuLateral = document.getElementById('menu_lateral');
 
-        btn_menu_abrir.style.display = "none";
-        menu_lateral.style.display = "flex";
+    btnAbrir.addEventListener('click', () => {
+        menuLateral.classList.add('aberto');
+    });
 
-    }
+    btnFechar.addEventListener('click', () => {
+        menuLateral.classList.remove('aberto');
+    });
 
-    function fecharMenu() {
-
-        btn_menu_abrir.style.display = "block";
-        menu_lateral.style.display = "none";
-    }
 
     function enviar() {
 
