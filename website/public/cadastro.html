@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/cadastro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <link rel="shortcut icon" href="assets/imgs/icon.png" type="image/x-icon">
 
     <title>Cadastro</title>
@@ -30,7 +32,7 @@
                 <label for="cnpjEmpresa">CNPJ da Empresa:</label>
                 <input type="text" placeholder="CNPJ" required id="cnpjEmpresa" maxlength="14">
                 <label for="nomeEmpresa">Telefone da Empresa:</label>
-                <input type="number" placeholder="Telefone" required id="telefoneEmpresa">
+                <input type="text" placeholder="Telefone" required id="telefoneEmpresa">
                 <label for="nomeEmpresa">Senha:</label>
                 <input type=" password" placeholder="Senha" required id="senhaEmpresa" maxlength="50">
                 <button onclick=" cadastro()" >Registrar</button>
@@ -42,7 +44,16 @@
 
 </html>
 
+ <script type="text/javascript">
+                        $("#telefoneEmpresa").mask("(00)00000-0000");
+    </script>
+
+    <script type="text/javascript">
+                        $("#cnpjEmpresa").mask("00.000.000/0000-00");
+    </script>
 <script>
+
+    
     function cadastro() {
 
         var nomeEmpresaVar = nomeEmpresa.value
