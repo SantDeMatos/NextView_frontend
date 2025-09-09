@@ -1,12 +1,20 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@900&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+
+}
+html {
+  scroll-behavior: smooth;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-}
 
 /* header */
 header {
@@ -17,7 +25,7 @@ header {
     width: 90%;
     height: 4em;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.9);
+    background: white;
     border-radius: 30px;
     display: flex;
     align-items: center;
@@ -57,6 +65,28 @@ header {
     transition: 0.3s;
     display: flex;
     align-items: center;
+}
+
+.navbar a{
+
+    position: relative;
+}
+
+.navbar a::after{
+
+    content: "";
+    width: 0%;
+    height: 4px;
+    background-color: #05009A;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar a:hover::after{
+
+    width: 100%;
 }
 
 .navbar li a:hover {
@@ -124,12 +154,16 @@ header {
 
 .banner-text h1 {
     font-size: 5em;
-    font-weight: bold;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 900;
 }
 
 .banner-text p {
     font-size: 1.7em;
-    font-weight: 600;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 900;
+
+
 }
 
 /* sobre Nós */
@@ -324,6 +358,8 @@ header {
 .contact-form button:hover {
     transform: scale(1.05);
     background: linear-gradient(90deg, #0FBBFF 0%, #05009A 100%);
+        transition:  0.5s ease-in-out;
+
 }
 
 /* Planos */
@@ -740,6 +776,19 @@ header {
     #menu_lateral .container .header-buttons button {
         font-size: 0.8em;
     }
+
+    .navbar a::after{
+
+    content: "";
+    width: 0%;
+    height: 4px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease-in-out;
+}
+
     
 
 }
@@ -943,6 +992,18 @@ header {
     #menu_lateral .container .header-buttons button {
         font-size: 1em;
     }
+
+    .navbar a::after{
+
+    content: "";
+    width: 0%;
+    height: 4px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease-in-out;
+}
 
 }
 
@@ -1149,6 +1210,18 @@ header {
     #menu_lateral .container .header-buttons button {
         font-size: 1em;
     }
+
+    .navbar a::after{
+
+    content: "";
+    width: 0%;
+    height: 4px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s ease-in-out;
+}
 
 }
 
