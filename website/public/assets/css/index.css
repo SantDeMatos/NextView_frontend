@@ -731,7 +731,6 @@ header {
     }
 
     #menu_lateral {
-        display: flex;
         width: 200px;
     }
 
@@ -929,7 +928,6 @@ header {
     }
 
     #menu_lateral {
-        display: flex;
         width: 250px;
     }
 
@@ -1127,7 +1125,6 @@ header {
     }
 
     #menu_lateral {
-        display: flex;
         width: 300px;
     }
 
@@ -1300,17 +1297,32 @@ header {
     }
 
     .btn_menu {
+        background: none;
+        border: none;
         display: flex;
+        position: absolute;
         top: 30px;
         right: 30px;
+        z-index: 101;
+        cursor: pointer;
     }
 
     .btn_menu img {
+        display: none;
         width: 35px;
         height: 35px;
     }
 
+    .btn_menu img {
+        display: block;
+    }
+
+    #btn_menu_abrir {
+        display: block;
+    }
+
     #btn_menu_fechar {
+        display: block;
         right: 300px;
         top: 20px;
     }
@@ -1323,6 +1335,14 @@ header {
     #menu_lateral {
         display: flex;
         width: 350px;
+    }
+
+    #menu_lateral .container {
+        display: flex;
+    }
+
+    #menu_lateral .container .header-buttons {
+        display: flex;
     }
 
     #menu_lateral .container .navbar {
@@ -1497,17 +1517,32 @@ header {
     }
 
     .btn_menu {
-        display: flex;
+        background: none;
+        border: none;
+        display: none;
+        position: absolute;
         top: 30px;
         right: 30px;
+        z-index: 101;
+        cursor: pointer;
     }
 
     .btn_menu img {
+        display: none;
         width: 35px;
         height: 35px;
     }
 
+    .btn_menu img {
+        display: block;
+    }
+
+    #btn_menu_abrir {
+        display: block;
+    }
+
     #btn_menu_fechar {
+        display: block;
         right: 350px;
         top: 20px;
     }
@@ -1522,7 +1557,16 @@ header {
         width: 400px;
     }
 
+    #menu_lateral .container {
+        display: flex;
+    }
+
+    #menu_lateral .container .header-buttons {
+        display: flex;
+    }
+
     #menu_lateral .container .navbar {
+        display: flex;
         gap: 2em;
     }
 
