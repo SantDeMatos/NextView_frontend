@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Log {
 
-        String IniciarProcessamentoDados() {
+        void IniciarProcessamentoDados() {
 
             LocalDateTime data = LocalDateTime.now();
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss:mm:SSS");
@@ -18,19 +18,14 @@ public class Log {
                 } if(i == 2) {
                     System.out.println(dataFormatada + " - DEBUG: Acessando arquivo dados.csv");
                 } else if(i == 3) {
-                    System.out.println(dataFormatada + " - TRACE: Lendo linhas 1..100\n");
+                    System.out.println(dataFormatada + " - TRACE: Lendo linhas 1..400");
                     for (int j = 1; j <= 1000; j++) {
                         System.out.println(dataFormatada + " - TRACE: Analisando linha " + j + "... ");
                         if(j == 359) {
                             throw new RuntimeException(" - INFO: Erro ao analisar a linha 359");
                         }
                     }
-                } else if(i == 4) {
-                    mensagem += dataFormatada + " - INFO: Processo finalizado com erro!";
                 }
             }
-
-            return mensagem;
-
         }
 }

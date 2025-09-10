@@ -6,7 +6,7 @@ public class Main {
 
         Log log = new Log();
 
-        System.out.println(log.IniciarProcessamentoDados());
+      log.IniciarProcessamentoDados();
 
     }
 }
