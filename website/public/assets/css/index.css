@@ -731,6 +731,7 @@ header {
     }
 
     #menu_lateral {
+        display: flex;
         width: 200px;
     }
 
@@ -928,6 +929,7 @@ header {
     }
 
     #menu_lateral {
+        display: flex;
         width: 250px;
     }
 
@@ -1125,6 +1127,7 @@ header {
     }
 
     #menu_lateral {
+        display: flex;
         width: 300px;
     }
 

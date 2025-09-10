@@ -1,17 +1,17 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@900&display=swap');
 
-body, html {
+body,
+html {
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     background-image: url(../imgs/banner-cadastro-login.png);
 }
 
-body{
+body {
 
     display: flex;
     justify-content: flex-end;
@@ -21,9 +21,8 @@ body{
     display: flex;
     height: 100vh;
     width: 45vw;
-    overflow: hidden; 
+    overflow: hidden;
 }
-
 
 .cadastro-form-bg {
     flex: 1;
@@ -34,16 +33,16 @@ body{
     justify-content: space-evenly;
     border-top-left-radius: 40px;
     border-bottom-left-radius: 40px;
-    width:60vw; 
+    width: 60vw;
     min-width: 400px;
     box-shadow: 0 0 20px #00000010;
 }
 
-.btn_back{
+.btn_back {
 
     align-self: flex-start;
     margin-top: 5%;
-    
+
 }
 
 .cadastro-form-bg h2 {
@@ -64,7 +63,7 @@ body{
 
 .cadastro-form-bg .form {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     width: 70%;
     height: 90vh;
     margin-right: 7%;
@@ -91,10 +90,10 @@ body{
     box-sizing: border-box;
 }
 
-input::placeholder{
+input::placeholder {
 
     padding-left: 1.5%;
-    
+
 }
 
 .cadastro-form-bg input:focus {
@@ -117,4 +116,386 @@ input::placeholder{
     transform: scale(1.05);
 }
 
+/* Responsividade */
 
+@media screen and (min-width: 320px) and (max-width: 375px) {
+
+    body,
+    html {
+        height: 100%;
+        background: none;
+    }
+
+    .cadastro-container {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+    }
+
+
+    .cadastro-form-bg {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        width: 100vw;
+        min-width: 320px;
+    }
+
+    .btn_back {
+        position: absolute;
+        top: 2.5%;
+        left: 6%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.8em;
+        height: 2.8em;
+    }
+
+    .cadastro-form-bg h2 {
+        margin-top: 0;
+        font-size: 1.3em;
+        margin-bottom: 0.5em;
+    }
+
+    .cadastro-form-bg h3 {
+        margin-bottom: 1.5em;
+        margin-top: 0;
+        font-size: 0.8em;
+    }
+
+    .cadastro-form-bg .form {
+        width: 75%;
+        height: 80vh;
+        margin-right: 0%;
+        max-width: 400px;
+    }
+
+
+    .cadastro-form-bg label {
+        font-size: 0.7em;
+    }
+
+    .cadastro-form-bg input {
+        font-size: 0.7em;
+        margin-bottom: 7%;
+        height: 5vh;
+        width: 100%;
+    }
+
+    .cadastro-form-bg button {
+        padding: 1em;
+        font-size: 0.8em;
+        margin-top: 1em;
+    }
+
+}
+
+@media screen and (min-width: 375px) and (max-width: 425px) {
+
+    body,
+    html {
+        height: 100%;
+        background: none;
+    }
+
+    .cadastro-container {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+    }
+
+
+    .cadastro-form-bg {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        width: 100vw;
+        min-width: 320px;
+    }
+
+    .btn_back {
+        position: absolute;
+        top: 2.5%;
+        left: 6%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.1em;
+        height: 3.1em;
+    }
+
+    .cadastro-form-bg h2 {
+        margin-top: 0;
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+    }
+
+    .cadastro-form-bg h3 {
+        margin-bottom: 1.5em;
+        margin-top: 0;
+        font-size: 0.9em;
+    }
+
+    .cadastro-form-bg .form {
+        width: 75%;
+        height: 90vh;
+        margin-right: 0%;
+        max-width: 400px;
+    }
+
+
+    .cadastro-form-bg label {
+        font-size: 0.9em;
+        margin-bottom: 0.4em;
+    }
+
+    .cadastro-form-bg input {
+        font-size: 0.8em;
+        margin-bottom: 4%;
+        height: 6vh;
+        width: 100%;
+    }
+
+    .cadastro-form-bg button {
+        padding: 1em;
+        font-size: 0.8em;
+        margin-top: 0.7em;
+    }
+
+}
+
+@media screen and (min-width: 425px) and (max-width: 768px) {
+
+    body,
+    html {
+        height: 100%;
+        background: none;
+    }
+
+    .cadastro-container {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+    }
+
+
+    .cadastro-form-bg {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        width: 100vw;
+        min-width: 320px;
+    }
+
+    .btn_back {
+        position: absolute;
+        top: 2.5%;
+        left: 6%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.3em;
+        height: 3.3em;
+    }
+
+    .cadastro-form-bg h2 {
+        margin-top: 0;
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+    }
+
+    .cadastro-form-bg h3 {
+        margin-bottom: 1.5em;
+        margin-top: 0;
+        font-size: 0.9em;
+    }
+
+    .cadastro-form-bg .form {
+        width: 75%;
+        height: 90vh;
+        margin-right: 0%;
+        max-width: 400px;
+    }
+
+
+    .cadastro-form-bg label {
+        font-size: 0.9em;
+        margin-bottom: 0.4em;
+    }
+
+    .cadastro-form-bg input {
+        font-size: 0.8em;
+        margin-bottom: 4%;
+        height: 6vh;
+        width: 100%;
+    }
+
+    .cadastro-form-bg button {
+        padding: 1em;
+        font-size: 0.8em;
+        margin-top: 0.7em;
+    }
+
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+    body,
+    html {
+        height: 100%;
+        background-image: url(../imgs/banner-cadastro-login.png);
+    }
+
+    .cadastro-container {
+        display: flex;
+        height: 100vh;
+        width: 60vw;
+    }
+
+
+    .cadastro-form-bg {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 40px;
+        border-bottom-left-radius: 40px;
+        width: 100vw;
+        min-width: 320px;
+    }
+
+    .btn_back {
+        position: absolute;
+        top: 2.5%;
+        right: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.4em;
+        height: 3.4em;
+    }
+
+    .cadastro-form-bg h2 {
+        margin-top: 0;
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+    }
+
+    .cadastro-form-bg h3 {
+        margin-bottom: 1.5em;
+        margin-top: 0;
+        font-size: 0.9em;
+    }
+
+    .cadastro-form-bg .form {
+        width: 75%;
+        height: 90vh;
+        margin-right: 0%;
+        max-width: 400px;
+        margin-top: 2em;
+    }
+
+
+    .cadastro-form-bg label {
+        font-size: 0.9em;
+        margin-bottom: 0.4em;
+    }
+
+    .cadastro-form-bg input {
+        font-size: 0.8em;
+        margin-bottom: 4%;
+        height: 6vh;
+        width: 100%;
+    }
+
+    .cadastro-form-bg button {
+        padding: 1em;
+        font-size: 0.8em;
+        margin-top: 0.7em;
+    }
+
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1330px) {
+
+
+    body,
+    html {
+        height: 100%;
+        background-image: url(../imgs/banner-cadastro-login.png);
+    }
+
+    .cadastro-container {
+        display: flex;
+        height: 100vh;
+        width: 45vw;
+    }
+
+
+    .cadastro-form-bg {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: 40px;
+        border-bottom-left-radius: 40px;
+        width: 100vw;
+        min-width: 320px;
+    }
+
+    .btn_back {
+        position: absolute;
+        top: 2.5%;
+        right: 37%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.4em;
+        height: 3.4em;
+    }
+
+    .cadastro-form-bg h2 {
+        margin-top: 0;
+        font-size: 1.6em;
+        margin-bottom: 0.4em;
+    }
+
+    .cadastro-form-bg h3 {
+        margin-bottom: 0.8em;
+        margin-top: 0;
+        font-size: 1.1em;
+    }
+
+    .cadastro-form-bg .form {
+        width: 75%;
+        height: 90vh;
+        margin-right: 0%;
+        max-width: 400px;
+    }
+
+
+    .cadastro-form-bg label {
+        font-size: 1em;
+        margin-bottom: 0.4em;
+    }
+
+    .cadastro-form-bg input {
+        font-size: 0.9em;
+        margin-bottom: 4%;
+        height: 7vh;
+        width: 100%;
+    }
+
+    .cadastro-form-bg button {
+        padding: 1em;
+        font-size: 0.9em;
+        margin-top: 0.7em;
+    }
+
+
+}
