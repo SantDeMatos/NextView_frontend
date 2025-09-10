@@ -11,6 +11,15 @@ public class Log {
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss:mm:SSS");
             String dataFormatada = formato.format(data);
 
+            System.out.println("""
+                     _   _                 _    __      __  _                  \s
+                    | \\ | |               | |   \\ \\    / / (_)                 \s
+                    |  \\| |   ___  __  __ | |_   \\ \\  / /   _    ___  __      __
+                    | . ` |  / _ \\ \\ \\/ / | __|   \\ \\/ /   | |  / _ \\ \\ \\ /\\ / /
+                    | |\\  | |  __/  >  <  | |_     \\  /    | | |  __/  \\ V  V /\s
+                    |_| \\_|  \\___| /_/\\_\\  \\__|     \\/     |_|  \\___|   \\_/\\_/ \s
+                    """);
+
             for(int i = 1; i <= 4; i++) {
                 if(i == 1) {
                     System.out.println(dataFormatada+" - INFO: Iniciando processamento de dados.");
