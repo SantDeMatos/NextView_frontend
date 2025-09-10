@@ -10,7 +10,6 @@ public class Log {
             LocalDateTime data = LocalDateTime.now();
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss:mm:SSS");
             String dataFormatada = formato.format(data);
-            String mensagem = "";
 
             for(int i = 1; i <= 4; i++) {
                 if(i == 1) {
