@@ -44,7 +44,7 @@ function executar(instrucao) {
             if (erro) {
                 reject(erro);
             }
-            console.log("Resultados da query:", resultados); // ← isso deve mostrar um array ou objeto
+            console.log("Resultados da query:", resultados);
             resolve(resultados);
         });
     });
