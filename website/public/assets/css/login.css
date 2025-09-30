@@ -59,7 +59,6 @@ html {
 .login-form-bg .form {
     display: flex;
     flex-direction: column;
-    gap: 1em;
     width: 70%;
     max-width: 350px;
     margin-bottom: 15%;
@@ -111,6 +110,15 @@ html {
     text-align: center;
     font-size: 1em;
     font-weight: 500;
+}
+
+.exibirSenha{
+    margin-top: -2vh;
+    display: flex;
+    input{
+        margin-top: 2.6vh;
+        width: 2.3vh;
+    }
 }
 
 /* Responsividade */
