@@ -112,18 +112,19 @@ html {
     font-weight: 500;
 }
 
-.exibirSenha{
+.exibirSenha {
     margin-top: -2vh;
     display: flex;
-    input{
+
+    input {
         margin-top: 2.6vh;
         width: 2.3vh;
     }
 }
 
-.alerta-ruim{
+.alerta-ruim {
     background-color: red;
-    top: -100px;
+    top: -9vh;
     position: absolute;
     justify-content: center;
     align-items: center;
@@ -133,25 +134,26 @@ html {
     display: none;
     padding: 0vh 0.4vw;
     font-size: 1.2vw;
-    font-weight: 600;
-}
-.alerta-bom{
-    top: -100px;
-    display: none;
-    background-color: rgb(8, 176, 8);
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.8vw;
-    color: white;
-    left: 13vw;
-    font-size: 1.2vw;
-    padding: 0vh 0.4vw;
     font-weight: 600;
 }
 
-.textoVazio{
-    visibility: hidden;
+.alerta-bom {
+    background-color: rgb(8, 176, 8);
+    top: -9vh;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8vw;
+    color: white;
+    left: 12vw;
+    display: none;
+    padding: 0vh 0.4vw;
+    font-size: 1.2vw;
+    font-weight: 600;
+}
+
+.textoVazio {
+    display: none;
     padding: 0px;
     margin: 0px;
     margin-top: -2vh;

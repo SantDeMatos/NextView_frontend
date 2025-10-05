@@ -71,18 +71,15 @@
         var emailVar = email.value;
         var senhaVar = senha.value;
 
-        if ((senhaVar == "" || senhaVar == null) || (emailVar == "" || emailVar == null)) {
-                document.getElementById("emailVazio").style.visibility = "hidden"
-                document.getElementById("senhaVazio").style.visibility = "hidden"
-
-            if (senhaVar == "" || senhaVar == null) {
-                document.getElementById("senhaVazio").style.visibility = "visible"
-            } if (emailVar == "" || emailVar == null){
-                document.getElementById("emailVazio").style.visibility = "visible"
+        if (!senhaVar || !emailVar) {
+                document.getElementById("emailVazio").style.display = "none"
+                document.getElementById("senhaVazio").style.display = "none"
+            if (!senhaVar) {
+                document.getElementById("senhaVazio").style.display = "flex"
+            } if (!emailVar){
+                document.getElementById("emailVazio").style.display = "flex"
             }
         } else {
-            document.getElementById("emailVazio").style.visibility = "hidden"
-            document.getElementById("senhaVazio").style.visibility = "hidden"
 
             console.log("FORM LOGIN: ", emailVar);
             console.log("FORM SENHA: ", senhaVar);
@@ -113,7 +110,6 @@
 
                         // document.getElementById('aviso2').style.display = 'flex'
                         mostrarAlerta("bom");
-
                         setTimeout(() => {
                             window.location = "index.html";
                         }, "1000");
@@ -145,21 +141,20 @@
     }
 
     function mostrarAlerta(id) {
-        document.getElementById('bom').style.display = 'none'
+        // document.getElementById('bom').style.display = 'none'
         document.getElementById('ruim').style.display = 'none'
 
         var alerta = document.getElementById(id);
-        var pos = -100;
+        var pos = -9;
         alerta.style.display = "flex";
-
         var timer = setInterval(() => {
-            if (pos < 20) {
-                pos += 2; // velocidade da descida
-                alerta.style.top = pos + "px";
+            if (pos < 3.3) {
+                pos += 0.6;
+                alerta.style.top = pos + "vh";
             } else {
-                clearInterval(timer); // para quando chega em 20
+                clearInterval(timer);
             }
-        });
+        },10);
     }
 
 </script>

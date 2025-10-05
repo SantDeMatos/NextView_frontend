@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/cadastro.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <link rel="shortcut icon" href="assets/imgs/icon.png" type="image/x-icon">
 
@@ -16,26 +18,40 @@
 <body>
 
     <div class="cadastro-container">
+        <div class="alerta-bom" id="bom">
+            <p>Cadastro realizado com sucesso</p>
+        </div>
+
         <div class="cadastro-form-bg">
 
-            <button class="btn_back" onclick="voltar()"><i class="fa-solid fa-arrow-left"></i></button>  
+            <button class="btn_back" onclick="voltar()"><i class="fa-solid fa-arrow-left"></i></button>
 
             <div class="form">
-                
-            <h2>Bem-vindo!</h2>
-            <h3>Faça seu Cadastro</h3>
+
+                <h2>Bem-vindo!</h2>
+                <h3>Faça seu Cadastro</h3>
 
                 <label for="nomeEmpresa">Nome da Empresa:</label>
                 <input type="text" placeholder="Nome da Empresa" required id="nomeEmpresa" maxlength="50">
+                <p class="textoVazio" id="nomeVazio">Campo obrigatório</p>
+
                 <label for="emailEmpresa">Email da Empresa:</label>
                 <input type="email" placeholder="Email" required id="emailEmpresa" maxlength="50">
+                <p class="textoVazio" id="emailVazio">Campo obrigatório</p>
+
                 <label for="cnpjEmpresa">CNPJ da Empresa:</label>
                 <input type="text" placeholder="CNPJ" required id="cnpjEmpresa" maxlength="14">
+                <p class="textoVazio" id="cnpjVazio">Campo obrigatório</p>
+
                 <label for="nomeEmpresa">Telefone da Empresa:</label>
                 <input type="text" placeholder="Telefone" required id="telefoneEmpresa">
+                <p class="textoVazio" id="telefoneVazio">Campo obrigatório</p>
+
                 <label for="nomeEmpresa">Senha:</label>
-                <input type=" password" placeholder="Senha" required id="senhaEmpresa" maxlength="50">
-                <button onclick=" cadastro()" >Registrar</button>
+                <input placeholder="Senha" required id="senhaEmpresa" maxlength="50">
+                <p class="textoVazio" id="senhaVazio">Campo obrigatório</p>
+
+                <button onclick=" cadastro()">Registrar</button>
             </div>
         </div>
     </div>
@@ -44,16 +60,16 @@
 
 </html>
 
- <script type="text/javascript">
-                        $("#telefoneEmpresa").mask("(00)00000-0000");
-    </script>
+<script type="text/javascript">
+    $("#telefoneEmpresa").mask("(00)00000-0000");
+</script>
 
-    <script type="text/javascript">
-                        $("#cnpjEmpresa").mask("00.000.000/0000-00");
-    </script>
+<script type="text/javascript">
+    $("#cnpjEmpresa").mask("00.000.000/0000-00");
+</script>
 <script>
 
-    
+
     function cadastro() {
 
         var nomeEmpresaVar = nomeEmpresa.value
@@ -63,46 +79,84 @@
         var telefoneVar = telefoneEmpresa.value;
 
         if (
-            emailVar == "" ||
-            senhaVar == "" ||
-            nomeEmpresaVar == "" ||
-            cpnjVar == "" ||
-            telefoneVar == ""
+            !emailVar ||
+            !senhaVar ||
+            !nomeEmpresaVar ||
+            !cpnjVar ||
+            !telefoneVar
         ) {
-            alert("Não deixe nenhum espaço em branco")
-        }
+            document.getElementById("emailVazio").style.display = "none"
+            document.getElementById("senhaVazio").style.display = "none"
+            document.getElementById("nomeVazio").style.display = "none"
+            document.getElementById("cnpjVazio").style.display = "none"
+            document.getElementById("telefoneVazio").style.display = "none"
 
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                cnpjServer: cpnjVar,
-                telefoneServer: telefoneVar,
-                nomeEmpresaServer: nomeEmpresaVar
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-                setTimeout(() => {
-                    window.location = "login.html"
-                }, 1000)
+            if (!emailVar) {
+                document.getElementById("emailVazio").style.display = "flex"
+            }
+            if (!senhaVar) {
+                document.getElementById("senhaVazio").style.display = "flex"
+            }
+            if (!nomeEmpresaVar) {
+                document.getElementById("nomeVazio").style.display = "flex"
+            }
+            if (!cpnjVar) {
+                document.getElementById("cnpjVazio").style.display = "flex"
+            }
+            if (!telefoneVar) {
+                document.getElementById("telefoneVazio").style.display = "flex"
+            }
+        } else {
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    cnpjServer: cpnjVar,
+                    telefoneServer: telefoneVar,
+                    nomeEmpresaServer: nomeEmpresaVar
+                }),
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                    mostrarAlerta("bom");
+                    setTimeout(() => {
+                        window.location = "login.html"
+                    }, 1000)
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+        }
     }
 
-     function voltar(){
+    function voltar() {
 
         window.location = "index.html";
 
 
+    }
+
+    function mostrarAlerta(id) {
+        // document.getElementById('bom').style.display = 'none'
+        // document.getElementById('ruim').style.display = 'none'
+
+        var alerta = document.getElementById(id);
+        var pos = -9;
+        alerta.style.display = "flex";
+
+        var timer = setInterval(() => {
+            if (pos < 0.5) {
+                pos += 0.8;
+                alerta.style.top = pos + "vh";
+            } else {
+                clearInterval(timer);
+            }
+        }, 10);
     }
 </script>
