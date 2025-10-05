@@ -13,6 +13,13 @@
 </head>
 
 <body>
+    <div class="alerta-ruim" id="ruim">
+        <p>Email ou senha incorretos</p>
+    </div>
+
+    <div class="alerta-bom" id="bom">
+        <p>Login realizado com sucesso</p>
+    </div>
 
     <div class="cadastro-container">
 
@@ -25,8 +32,10 @@
             <div class="form">
                 <label for="email">Email</label>
                 <input id="email" type="email" placeholder="Digite seu email" required>
+                <p class="textoVazio" id="emailVazio">Preencha este campo</p>
                 <label for="senha">Senha</label>
                 <input id="senha" type="password" placeholder="Digite sua senha" required>
+                <p class="textoVazio" id="senhaVazio">Preencha este campo</p>
                 <div class="exibirSenha">
                     <input type="checkbox" id="exibirSenha">
                     <p class="">Exibir senha</p>
@@ -50,74 +59,107 @@
 
     checkbox.addEventListener("change", function () {
         if (checkbox.checked) {
-            senha.type = "text";   // mostra a senha
+            senha.type = "text";
         } else {
-            senha.type = "password"; // esconde a senha
+            senha.type = "password"; //
         }
     });
 
 
 
     function entrar() {
-
         var emailVar = email.value;
         var senhaVar = senha.value;
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+        if ((senhaVar == "" || senhaVar == null) || (emailVar == "" || emailVar == null)) {
+                document.getElementById("emailVazio").style.visibility = "hidden"
+                document.getElementById("senhaVazio").style.visibility = "hidden"
 
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.emailEmpresa;
-                    sessionStorage.NOME_USUARIO = json.nomeEmpresa;
-                    sessionStorage.ID_EMPRESA = json.idEmpresa;
-                    // sessionStorage.ID_USUARIO = json.id;
-                    // sessionStorage.CARGO = json.cargo;
-
-                    // document.getElementById('aviso2').style.display = 'flex'
-
-                    setTimeout(() => {
-                        window.location = "index.html";
-                    }, "1000");
-                });
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    document.getElementById('aviso1').style.display = 'flex'
-                });
+            if (senhaVar == "" || senhaVar == null) {
+                document.getElementById("senhaVazio").style.visibility = "visible"
+            } if (emailVar == "" || emailVar == null){
+                document.getElementById("emailVazio").style.visibility = "visible"
             }
+        } else {
+            document.getElementById("emailVazio").style.visibility = "hidden"
+            document.getElementById("senhaVazio").style.visibility = "hidden"
 
-        }).catch(function (erro) {
-            console.log(erro);
-        })
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
 
-        return false;
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.emailEmpresa;
+                        sessionStorage.NOME_USUARIO = json.nomeEmpresa;
+                        sessionStorage.ID_EMPRESA = json.idEmpresa;
+                        // sessionStorage.ID_USUARIO = json.id;
+                        // sessionStorage.CARGO = json.cargo;
+
+                        // document.getElementById('aviso2').style.display = 'flex'
+                        mostrarAlerta("bom");
+
+                        setTimeout(() => {
+                            window.location = "index.html";
+                        }, "1000");
+                    });
+                } else {
+                    // alert("Não funfou")
+
+                    console.log("Houve um erro ao tentar realizar o login!");
+
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        mostrarAlerta("ruim");
+                    });
+                }
+
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+
+            return false;
+        }
+
     }
 
 
     function voltar() {
 
         window.location = "index.html";
-
-
     }
+
+    function mostrarAlerta(id) {
+        document.getElementById('bom').style.display = 'none'
+        document.getElementById('ruim').style.display = 'none'
+
+        var alerta = document.getElementById(id);
+        var pos = -100;
+        alerta.style.display = "flex";
+
+        var timer = setInterval(() => {
+            if (pos < 20) {
+                pos += 2; // velocidade da descida
+                alerta.style.top = pos + "px";
+            } else {
+                clearInterval(timer); // para quando chega em 20
+            }
+        });
+    }
+
 </script>

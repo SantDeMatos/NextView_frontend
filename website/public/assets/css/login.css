@@ -121,6 +121,45 @@ html {
     }
 }
 
+.alerta-ruim{
+    background-color: red;
+    top: -100px;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8vw;
+    color: white;
+    left: 13vw;
+    display: none;
+    padding: 0vh 0.4vw;
+    font-size: 1.2vw;
+    font-weight: 600;
+}
+.alerta-bom{
+    top: -100px;
+    display: none;
+    background-color: rgb(8, 176, 8);
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8vw;
+    color: white;
+    left: 13vw;
+    font-size: 1.2vw;
+    padding: 0vh 0.4vw;
+    font-weight: 600;
+}
+
+.textoVazio{
+    visibility: hidden;
+    padding: 0px;
+    margin: 0px;
+    margin-top: -2vh;
+    margin-bottom: 1vh;
+    color: red;
+}
+
+
 /* Responsividade */
 
 @media screen and (min-width: 320px) and (max-width: 375px) {
