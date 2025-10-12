@@ -31,6 +31,7 @@ CREATE TABLE conteudos(
 
 idConteudo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 tipoConteudo VARCHAR(8) NOT NULL,
+constraint checktipo check (tipoConteudo in('Movie', 'TV Show')),
 tituloConteudo VARCHAR(255) NOT NULL,
 diretorConteudo VARCHAR(255) NOT NULL,
 atoresConteudo VARCHAR(255) NOT NULL,
