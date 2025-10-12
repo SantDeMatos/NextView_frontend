@@ -1,23 +1,23 @@
 CREATE DATABASE nextview;
 USE nextview;
 
-CREATE TABLE empresa (
+CREATE TABLE Empresa (
   idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
   nomeEmpresa VARCHAR(50) NOT NULL,
   emailEmpresa VARCHAR(50) NOT NULL,
   cnpjEmpresa VARCHAR(14) UNIQUE NOT NULL,
-  telefoneEmpresa VARCHAR(11) NOT NULL,
+  telefoneEmpresa VARCHAR(14) NOT NULL,
   senhaEmpresa VARCHAR(128) NOT NULL
 );
-CREATE TABLE contato (
+CREATE TABLE Contato (
     idContato INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nomeContato VARCHAR(45) NOT NULL,
+    nomeContato VARCHAR(50) NOT NULL,
     emailContato VARCHAR(50) NOT NULL,
-    mensagemContato VARCHAR(200) NOT NULL,
+    mensagemContato VARCHAR(255) NOT NULL,
     telefoneContato VARCHAR(14) NOT NULL
 );
 
-CREATE TABLE log(
+CREATE TABLE Log(
 
 idLog INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 dtLog DATETIME NOT NULL,
@@ -27,11 +27,11 @@ tipo VARCHAR(50)
 );
 
 
-CREATE TABLE conteudos(
+CREATE TABLE Conteudo(
 
 idConteudo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 tipoConteudo VARCHAR(8) NOT NULL,
-constraint checktipo check (tipoConteudo in('Movie', 'TV Show')),
+CONSTRAINT checktipo CHECK (tipoConteudo IN('Movie', 'TV Show')),
 tituloConteudo VARCHAR(255) NOT NULL,
 diretorConteudo VARCHAR(255) NOT NULL,
 atoresConteudo VARCHAR(255) NOT NULL,
@@ -41,5 +41,15 @@ notaConteudo DECIMAL NOT NULL,
 sinopseCont VARCHAR(255) NOT NULL,
 numVotosCont INT NOT NULL
 
+
+);
+
+CREATE TABLE ConteudosFavoritos(
+
+idContFavoritos INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+fkEmpresa INT NOT NULL,
+fkConteudo INT NOT NULL,
+CONSTRAINT ConsfkEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
+CONSTRAINT ConsfkConteudo FOREIGN KEY (fkConteudo) REFERENCES Conteudo(idConteudo)
 
 );
