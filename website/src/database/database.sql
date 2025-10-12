@@ -26,10 +26,19 @@ qtdErro INT NOT NULL,
 tipo VARCHAR(50)
 );
 
-describe log;
+
+CREATE TABLE conteudos(
+
+idConteudo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+tipoConteudo VARCHAR(8) NOT NULL,
+tituloConteudo VARCHAR(255) NOT NULL,
+diretorConteudo VARCHAR(255) NOT NULL,
+atoresConteudo VARCHAR(255) NOT NULL,
+dtLancamentoCont DATE NOT NULL,
+generosConteudo VARCHAR(255) NOT NULL,
+notaConteudo DECIMAL NOT NULL,
+sinopseCont VARCHAR(255) NOT NULL,
+numVotosCont INT NOT NULL
 
 
-
-select * from contato;
-
-select * from empresa;
+);
