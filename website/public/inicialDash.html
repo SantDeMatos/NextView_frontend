@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/inicialDash.css">
+    <link rel="shortcut icon" href="assets/imgs/icon.png" type="image/x-icon">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <ul>
+                <li><img src="assets/imgs/icon.png" alt=""></li>
+                <li class="active"><img src="assets/imgs/ion--person-outline.png"></li>
+                <li><img src="assets/imgs/ion--analytics.png"></li>
+                <li><img src="assets/imgs/ion--search-outline.png"></li>
+                <li><img src="assets/imgs/ion--star-outline.png"></li>
+                <li><img src="assets/imgs/ion--settings-outline.png"></li>
+                <li><img src="assets/imgs/ion--log-out-outline.png"></li>
+            </ul>
+        </aside>
+        <main class="profile-main">
+            <h1>Perfil</h1>
+            <div class="profile-header">
+                <div class="profile-icon">
+                    <label for="profile-photo-upload">
+                        <img id="profile-photo" src="assets/imgs/user.png" alt="Foto de perfil">
+                        <input type="file" id="profile-photo-upload" accept="image/*" style="display:none">
+                    </label>
+                </div>
+                <div>
+                    <h2>Informações gerais</h2>
+                </div>
+            </div>
+            <div class="profile-info-cards">
+                <div class="profile-info-card">
+                    <span class="label">empresa</span>
+                    <span>XptoFlix</span>
+                </div>
+                <div class="profile-info-card">
+                    <span class="label">CNPJ</span>
+                    <span>70.658.106/0001-62</span>
+                </div>
+                <div class="profile-info-card">
+                    <span class="label">Departamento</span>
+                    <span>Administração</span>
+                </div>
+                <div class="profile-info-card">
+                    <span class="label">Responsável</span>
+                    <span>Marlene Santani</span>
+                </div>
+                <div class="profile-info-card">
+                    <span class="label">E-mail</span>
+                    <span>XptoFlix@SPmail.com</span>
+                </div>
+                <div class="profile-info-card">
+                    <span class="label">Endereço</span>
+                    <span>Rua Haddock Lobo, 595 – Cerqueira César, <br>São Paulo – SP, 01414-001</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+    // adiciona funcionalidade de upload de foto de perfil
+    document.getElementById('profile-photo-upload').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (ev) {
+                document.getElementById('profile-photo').src = ev.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

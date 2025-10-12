@@ -24,7 +24,7 @@ header {
     width: 90%;
     height: 4em;
     z-index: 10;
-    background: white;
+    background: rgba(255, 255, 255, 0.847);
     border-radius: 30px;
     display: flex;
     align-items: center;
@@ -134,6 +134,8 @@ header {
 
 .banner {
     width: 100%;
+    max-height: 750px;
+    object-fit: cover;
     display: block;
 }
 
@@ -173,9 +175,12 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     padding: 4em 0;
 }
+
+
+
 
 
 /* texto do sobre nós com gradiente */
@@ -309,7 +314,7 @@ header {
 
 .contact-info p {
     font-size: 1.2em;
-    color: #333;
+    color: #05009A;
     margin-bottom: 2em;
 }
 
@@ -363,11 +368,11 @@ header {
 
 }
 
-/* Planos */
+/* missao visao e valores */
 
 .mvv-section {
     width: 100%;
-    padding: 7em 0;
+    padding: 9em 0;
     background: linear-gradient(290deg, #05009A 40%, #0FBBFF 100%);
     display: flex;
     flex-direction: column;
@@ -388,6 +393,7 @@ header {
     margin-bottom: 0.5em;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 2px;
+    
 }
 
 .mvv-desc {
@@ -403,7 +409,9 @@ header {
     justify-content: center;
     flex-wrap: wrap;
     align-items: stretch;
+    cursor: pointer;
 }
+
 
 .mvv-card {
     background: #fff;
@@ -414,36 +422,33 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: 
+        transform 0.4s, 
+        box-shadow 0.4s,
+        background 0.6s,
+        color 0.6s;
     position: relative;
     justify-content: flex-start;
     text-align: center;
 }
 
-.mvv-card.destaque {
-    border: 2px solid #0FBBFF;
-    box-shadow: 0 8px 32px rgba(15, 187, 255, 0.15);
-    background: linear-gradient(120deg, #eaf6ff 60%, #A9D8FF 100%);
-}
-
-.mvv-card h3 {
-    font-size: 1.6em;
-    color: #05009A;
-    margin-bottom: 0.7em;
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 1px;
-}
-
-.mvv-card p {
-    font-size: 1.15em;
-    color: #333;
-    font-family: 'Poppins', sans-serif;
-    margin-bottom: 0.5em;
-}
 
 .mvv-card:hover {
+    background: linear-gradient(120deg, #05009A 60%, #0FBBFF 100%);
+    color: #fff;
     transform: translateY(-8px) scale(1.04);
     box-shadow: 0 8px 32px rgba(15, 187, 255, 0.18);
+}
+
+.mvv-card h3,
+.mvv-card p {
+    color: #05009A;
+    transition: color 0.6s;
+}
+
+.mvv-card:hover h3,
+.mvv-card:hover p {
+    color: #fff;
 }
 
 
