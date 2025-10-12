@@ -1,0 +1,176 @@
+body, html {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.dashboard-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    width: 80px;
+    background: #05009A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2em;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.sidebar li {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+
+
+.sidebar img {
+    width: 28px;
+    height: 28px;
+}
+
+
+
+
+
+
+
+
+
+
+.pesquisa-main {
+    flex: 1;
+    background: #fff;
+    padding: 2.5em 3em;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.pesquisa-header {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
+.pesquisa-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #05009A;
+}
+
+.pesquisa-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #f5faff;
+    border-radius: 20px;
+    padding: 0.5em 1.2em;
+    min-width: 320px;
+}
+
+.pesquisa-search input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 1em;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    padding-right: 2.2em; 
+}
+
+.pesquisa-search .search-icon {
+    position: absolute;
+    right: 1.2em;
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.pesquisa-search img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+}
+
+.pesquisa-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5em;
+    font-family: 'Poppins', sans-serif;
+}
+
+.pesquisa-table thead th {
+    color: #0033FF;
+    font-size: 1em;
+    font-weight: 600;
+    text-align: left;
+    padding-bottom: 0.7em;
+    background: #fff;
+}
+
+.pesquisa-table thead th span {
+    font-size: 0.8em;
+    margin-left: 0.2em;
+}
+
+.pesquisa-table tbody td {
+    color: #05009A;
+    font-size: 1.1em;
+    font-weight: 500;
+    padding: 0.7em 0;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+.pesquisa-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.star {
+    width: 18px;
+    height: 18px;
+    margin-right: 0.5em;
+    vertical-align: middle;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+    .pesquisa-main {
+        padding: 1.2em 0.5em;
+    }
+    .pesquisa-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1em;
+    }
+    .pesquisa-search {
+        min-width: 180px;
+        width: 100%;
+    }
+    .pesquisa-table {
+        font-size: 0.95em;
+    }
+}

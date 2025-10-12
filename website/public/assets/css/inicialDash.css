@@ -119,13 +119,13 @@ body, html {
 }
 
 .profile-info-card {
-    background: #eaf6ff;
+    background: #ffffff;
     box-shadow: 0 4px 16px rgba(15, 187, 255, 0.10);
 }
 
 
 .profile-info-card .label {
-    color: #0FBBFF;
+    color: #0033FF;
 }
 
 
