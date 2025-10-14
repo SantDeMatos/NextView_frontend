@@ -38,7 +38,7 @@ diretorConteudo VARCHAR(255) NOT NULL,
 atoresConteudo VARCHAR(255) NOT NULL,
 dtLancamentoCont DATE NOT NULL,
 generosConteudo VARCHAR(255) NOT NULL,
-notaConteudo DECIMAL NOT NULL,
+notaConteudo DECIMAL(5,2) NOT NULL,
 sinopseCont VARCHAR(255) NOT NULL,
 numVotosCont INT NOT NULL
 
