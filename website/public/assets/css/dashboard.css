@@ -52,12 +52,19 @@ html {
 }
 
 
+
+
+
+
+
+
+
+
 .dashboard-main {
     flex: 1;
     padding: 1em;
-    overflow-y: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     color: #05009A;
 }
 
@@ -69,7 +76,6 @@ html {
 
 
 
-/* ===== CONTEÚDO PRINCIPAL ===== */
 .dashboard-main {
     flex: 1;
     padding: 0.8em 1em;
@@ -82,42 +88,44 @@ html {
 .dashboard-main h1 {
     font-size: 2.2em;
     font-weight: 700;
-    margin: 0.3em 0 0.5em 0;
+    /* margin: 0.3em 0 0.5em 0; */
 }
 
-/* ===== LINHAS E CARDS ===== */
+
+
+
+
 .dashboard-row {
     display: flex;
     gap: 0.8em;
-    margin-bottom: 0.8em;
+    align-items: flex-start;
+    flex-direction: column;
     flex-wrap: nowrap;
-    justify-content: space-between;
 }
 
 .dashboard-card {
-    flex: 0.9;
-    border-radius: 14px;
-    padding: 1.3em;
-    background: #fff;
-    box-shadow: 0 3px 6px rgba(0, 30, 255, 0.18);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s ease-in-out;
+   flex: 0 0 300;   
+    width: 600px;
+    border-radius: 10px;
+    padding: 1em;
+    background: #F8F9FA;
 }
 
-.dashboard-card:hover {
+/* .dashboard-card:hover {
     transform: translateY(-3px);
-}
+} */
 
-.dashboard-card h2 {
-    margin-bottom: 0.2em;
-    font-size: 1.15em;
+.dashboard-row .dashboard-card h2 {
+   
+    font-weight:bold;
+    color: #0033FF;
 }
 
 .card-date {
     font-size: 0.8em;
-    color: #666;
+    color: #05009A;
     margin-bottom: 0.4em;
+    font-weight: bold;
 }
 
 
@@ -129,77 +137,98 @@ html {
 
 #chart-filmes,
 #chart-series {
-    width: 60%;
-    height: 190px; 
-}
-
-.dashboard-card-pie {
-    max-width: 600px;
+    height: 140px !important;
+    width: 100%;
 }
 
 #chart-generos {
-    width: 100%;
-    height: 200px; 
+    width: 200px !important;
+    height: 120px !important;
+    margin: 0 auto;
 }
 
 
-
-
-
-
-
-
-
-.dashboard-side {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8em;
-    flex: 0.9;
-    min-width: 220px;
-    max-width: 380px;
-}
+/* info */
 
 .dashboard-info {
-    background: #FFFFFF;
-    border-radius: 14px;
-    box-shadow: 0 3px 6px rgba(0, 30, 255, 0.2);
-    padding: 1em 2em;
-    display: flex;
-    flex-direction: column;
-    /* gap: 1.2em; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1em;
+    padding: 1em;
 }
+
 
 .info-item {
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 0.8em;
+    flex-direction: row;
+    gap: 1em;
+    background-color: #F8F9FA;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 1.2em;
+    padding: 1.5em;
+    width: 250px; 
 }
 
 .info-item img {
     width: 26px;
     height: 26px;
-        padding: 0.6em;
+    padding: 0.6em;
     background: #F4F7FE;
     border-radius: 50%;
+}
+
+
+
+.info-conteudo{
+    display: flex;
+    flex-direction: column;
+
 }
 
 .info-label {
     font-size: 0.85em;
     color: #7b7b7b;
+} 
+
+.infos-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    min-width: 180px;
+    max-width: 220px;
 }
 
-.info-value {
-    font-size: 1.05em;
-    font-weight: 700;
-    color: #05009A;
+
+.card-row {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    width: 100%;
 }
 
+.card-narrow {
+    max-width: 900px;
+}
 
+.column {
+    flex: 1;
+    min-width: 0;
+}
 
+.columns {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    align-items: flex-start;
+}
 
-
-
+.card-wide {
+    flex: 1 1 0;
+    max-width: calc(100% - 220px); 
+    min-width: 220px;
+}
 
 
 
@@ -221,45 +250,7 @@ html {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 900px) {
-    .dashboard-row {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 60px;
-    }
-
-    .dashboard-main h1 {
-        font-size: 1.8em;
-    }
-
-    #chart-filmes,
-    #chart-series {
-        height: 110px;
-    }
-
-    #chart-generos {
-        height: 140px;
-    }
+.info-item:last-child {
+    grid-column: 1 / span 4;
+    justify-self: center;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,17 @@
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="shortcut icon" href="assets/imgs/icon.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+
 </head>
 
 <body>
     <div class="dashboard-container">
-        <!-- SIDEBAR -->
         <aside class="sidebar">
             <ul>
                 <li><a href="#"><img src="assets/imgs/icon.png" alt="Logo"></a></li>
-                <li class="active"><a href="inicialDash.html"><img src="assets/imgs/ion--person-outline.png" alt="Perfil"></a></li>
+                <li class="active"><a href="inicialDash.html"><img src="assets/imgs/ion--person-outline.png"
+                            alt="Perfil"></a></li>
                 <li><a href="dashboard.html"><img src="assets/imgs/ion--analytics.png" alt="Análises"></a></li>
                 <li><a href="pesquisa.html"><img src="assets/imgs/ion--search-outline.png" alt="Pesquisa"></a></li>
                 <li><a href="favoritos.html"><img src="assets/imgs/ion--star-outline (2).png" alt="Favoritos"></a></li>
@@ -25,26 +28,71 @@
         </aside>
 
 
-        <main class="dashboard-main">
-            <h1>Dashboard</h1>
+<main class="dashboard-main">
+    <h1>Dashboard</h1>
 
-            <div class="dashboard-row">
-                <div class="dashboard-card">
-                    <h2 style="color: #0033FF; font-weight: bold;">Filmes de melhor avaliação</h2>
+    <div class="dashboard-row columns">
+        <div class="column">
+            <div class="card-row">
+                <div class="dashboard-card card-wide">
+                    <h2>Filmes de melhor avaliação</h2>
                     <span class="card-date">Dados do dia 05/05/2045</span>
                     <div id="chart-filmes"></div>
                 </div>
 
-                <div class="dashboard-card">
-                    <h2 style="color: #0033FF; font-weight: bold;">Séries de melhor avaliação</h2>
+                <div class="infos-column">
+                    <div class="dashboard-info">
+                        
+
+                        <div class="info-item">
+                            <div class="info-img">
+                                <img src="assets/imgs/ion--person-outline (1).png" alt="Ator">
+                            </div>  
+                            <div class="info-conteudo">
+                                <span class="info-label">Ator do momento</span>
+                                <span class="info-value">Bob Odenkirk</span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="info-item">
+                            <div class="info-img">
+                                <img src="assets/imgs/ion--eyedrop-outline.png" alt="Ator">
+                            </div>  
+                            <div class="info-conteudo">
+                                <span class="info-label">Diretor do momento</span>
+                                <span class="info-value">Kiyoshi Kurosawa</span>
+                            </div>
+                        </div>
+
+
+                        <div class="info-item">
+                            <div class="info-img">
+                                <img src="assets/imgs/ion--play-outline.png" alt="Ator">
+                            </div>  
+                            <div class="info-conteudo">
+                                <span class="info-label">Tipo de conteúdo</span>
+                                <span class="info-value">Filme</span>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card-row">
+                <div class="dashboard-card card-wide">
+                    <h2>Séries de melhor avaliação</h2>
                     <span class="card-date">Dados do dia 05/05/2045</span>
                     <div id="chart-series"></div>
                 </div>
-            </div>
 
-            <div class="dashboard-row">
-                <div class="dashboard-card dashboard-card-pie">
-                    <h2 style="color: #0033FF; font-weight: bold;">Gêneros</h2>
+                <div class="dashboard-card dashboard-card-pie card-narrow">
+                    <h2>Gêneros</h2>
                     <span class="card-date">Dados do dia 05/05/2045</span>
                     <div id="chart-generos"></div>
                     <div class="pie-legend">
@@ -54,72 +102,59 @@
                         <span><span class="dot" style="background:#00033D"></span>Romance 17%</span>
                     </div>
                 </div>
-
-                <div class="dashboard-side">
-                    <div class="dashboard-info">
-                        <div class="info-item">
-                            <img src="assets/imgs/ion--person-outline (1).png" alt="Ator do momento">
-                            <div>
-                                <span class="info-label">Ator do momento</span>
-                                <span class="info-value">Bob Odenkirk</span>
-                            </div>
-                        </div>
-
-                        <div class="info-item">
-                            <img src="assets/imgs/ion--eyedrop-outline.png" alt="Diretor do momento">
-                            <div>
-                                <span class="info-label">Diretor do momento</span>
-                                <span class="info-value">Kiyoshi Kurosawa</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="dashboard-info">
-                        <div class="info-item">
-                            <img src="assets/imgs/ion--play-outline.png" alt="Tipo de conteúdo">
-                            <div>
-                                <span class="info-label">Tipo de conteúdo mais consumido</span>
-                                <span class="info-value">Filme</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </main>
+        </div>
     </div>
 
-    <script src="assets/js/dashboard.js"></script>
+</main>
+    </div>
+
 </body>
+
 </html>
-
-
-
-
+// ...existing code...
 <script>
     var chartFilmes = echarts.init(document.getElementById('chart-filmes'));
     chartFilmes.setOption({
+        legend: {
+            top: '8%',
+            left: 'center',
+            orient: 'horizontal',
+            textStyle: { color: '#05009A' }
+        },
+        title: { show: false },
         xAxis: { type: 'category', data: ['F1', 'F2', 'F3', 'F4', 'F5'] },
         yAxis: { type: 'value', min: 0, max: 5 },
         series: [{
-            data: [3, 5, 4, 4, 4],
+            name: 'Avaliação',
             type: 'bar',
-            itemStyle: { color: '#05009A', borderRadius: [8, 8, 0, 0] }
+            data: [3, 5, 4, 4, 4],
+            barWidth: 34,
+            itemStyle: { color: '#05009A', borderRadius: [1, 1, 0, 0] }
         }],
-        grid: { left: 30, right: 10, top: 30, bottom: 30 },
-        tooltip: {},
+        grid: { left: 30, right: 10, top: '28%', bottom: 30 },
+        tooltip: {}
     });
 
     var chartSeries = echarts.init(document.getElementById('chart-series'));
     chartSeries.setOption({
+        legend: {
+            top: '8%',
+            left: 'center',
+            orient: 'horizontal',
+            textStyle: { color: '#05009A' }
+        },
         xAxis: { type: 'category', data: ['S1', 'S2', 'S3', 'S4', 'S5'] },
         yAxis: { type: 'value', min: 0, max: 5 },
         series: [{
-            data: [4, 5, 4, 5, 3],
+            name: 'Avaliação',
             type: 'bar',
-            itemStyle: { color: '#05009A', borderRadius: [8, 8, 0, 0] }
+            data: [4, 5, 4, 5, 3],
+            barWidth: 34,
+            itemStyle: { color: '#05009A', borderRadius: [1, 1, 0, 0] }
         }],
-        grid: { left: 30, right: 10, top: 30, bottom: 30 },
-        tooltip: {},
+        grid: { left: 30, right: 10, top: '28%', bottom: 30 },
+        tooltip: {}
     });
 
     var chartGeneros = echarts.init(document.getElementById('chart-generos'));
@@ -127,14 +162,15 @@
         tooltip: { trigger: 'item' },
         series: [{
             type: 'pie',
-            radius: '70%',
+            radius: '100%',
             data: [
                 { value: 8, name: 'Comédia', itemStyle: { color: '#0FBBFF' } },
                 { value: 50, name: 'Ficção', itemStyle: { color: '#0033FF' } },
                 { value: 25, name: 'Ação', itemStyle: { color: '#05009A' } },
-                { value: 17, name: 'Romance', itemStyle: { color: '#00033D  ' } }
+                { value: 17, name: 'Romance', itemStyle: { color: '#00033D' } }
             ],
             label: { show: false }
         }]
     });
 </script>
+// ...existing code...
