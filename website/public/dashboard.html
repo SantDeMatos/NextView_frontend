@@ -121,8 +121,24 @@
             textStyle: { color: '#05009A' }
         },
         title: { show: false },
-        xAxis: { type: 'category', data: ['F1', 'F2', 'F3', 'F4', 'F5'] },
-        yAxis: { type: 'value', min: 0, max: 5 },
+        xAxis: {
+            type: 'category',
+            data: ['F1', 'F2', 'F3', 'F4', 'F5'],
+            name: 'Filme',
+            nameLocation: 'middle',
+            nameGap: 22,
+            nameTextStyle: { color: '#05009A', fontSize: 10 }
+        },
+        yAxis: {
+            type: 'value',
+            min: 0,
+            max: 5,
+            name: 'Avaliação',
+            nameLocation: 'middle',
+            nameGap: 40,
+            nameTextStyle: { color: '#05009A', fontSize: 10 },
+            nameRotate: 90
+        },
         series: [{
             name: 'Avaliação',
             type: 'bar',
@@ -130,7 +146,7 @@
             barWidth: 34,
             itemStyle: { color: '#05009A', borderRadius: [1, 1, 0, 0] }
         }],
-        grid: { left: 30, right: 10, top: '28%', bottom: 30 },
+        grid: { left: 50, right: 10, top: '28%', bottom: 30 },
         tooltip: {}
     });
 
@@ -142,8 +158,24 @@
             orient: 'horizontal',
             textStyle: { color: '#05009A' }
         },
-        xAxis: { type: 'category', data: ['S1', 'S2', 'S3', 'S4', 'S5'] },
-        yAxis: { type: 'value', min: 0, max: 5 },
+        xAxis: {
+            type: 'category',
+            data: ['S1', 'S2', 'S3', 'S4', 'S5'],
+            name: 'Série',
+            nameLocation: 'middle',
+            nameGap: 22,
+            nameTextStyle: { color: '#05009A', fontSize: 10 }
+        },
+        yAxis: {
+            type: 'value',
+            min: 0,
+            max: 5,
+            name: 'Avaliação',
+            nameLocation: 'middle',
+            nameGap: 40,
+            nameTextStyle: { color: '#05009A', fontSize: 10 },
+            nameRotate: 90
+        },
         series: [{
             name: 'Avaliação',
             type: 'bar',
@@ -151,7 +183,7 @@
             barWidth: 34,
             itemStyle: { color: '#05009A', borderRadius: [1, 1, 0, 0] }
         }],
-        grid: { left: 30, right: 10, top: '28%', bottom: 30 },
+        grid: { left: 50, right: 10, top: '28%', bottom: 30 },
         tooltip: {}
     });
 
@@ -171,3 +203,4 @@
         }]
     });
 </script>
+
