@@ -45,20 +45,10 @@ html {
 }
 
 
-
 .sidebar img {
     width: 28px;
     height: 28px;
 }
-
-
-
-
-
-
-
-
-
 
 .dashboard-main {
     flex: 1;
@@ -74,8 +64,6 @@ html {
     margin-bottom: 0.5em;
 }
 
-
-
 .dashboard-main {
     flex: 1;
     padding: 0.8em 1em;
@@ -90,10 +78,6 @@ html {
     font-weight: 700;
     /* margin: 0.3em 0 0.5em 0; */
 }
-
-
-
-
 
 .dashboard-row {
     display: flex;
@@ -111,12 +95,9 @@ html {
     background: #F8F9FA;
 }
 
-/* .dashboard-card:hover {
-    transform: translateY(-3px);
-} */
+
 
 .dashboard-row .dashboard-card h2 {
-   
     font-weight:bold;
     color: #0033FF;
 }
@@ -128,16 +109,9 @@ html {
     font-weight: bold;
 }
 
-
-
-
-
-
-
-
 #chart-filmes,
 #chart-series {
-    height: 140px !important;
+    height: 160px !important;
     width: 100%;
 }
 
@@ -149,7 +123,6 @@ html {
 
 
 /* info */
-
 .dashboard-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -157,7 +130,6 @@ html {
     gap: 1em;
     padding: 1em;
 }
-
 
 .info-item {
     display: flex;
@@ -179,12 +151,9 @@ html {
     border-radius: 50%;
 }
 
-
-
 .info-conteudo{
     display: flex;
     flex-direction: column;
-
 }
 
 .info-label {
@@ -199,7 +168,6 @@ html {
     min-width: 180px;
     max-width: 220px;
 }
-
 
 .card-row {
     display: flex;
@@ -230,8 +198,6 @@ html {
     min-width: 220px;
 }
 
-
-
 .pie-legend {
     display: flex;
     justify-content: center;
@@ -248,7 +214,6 @@ html {
     border-radius: 50%;
     display: inline-block;
 }
-
 
 .info-item:last-child {
     grid-column: 1 / span 4;
