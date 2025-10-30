@@ -38,27 +38,15 @@
             <div class="profile-info-cards">
                 <div class="profile-info-card">
                     <span class="label">Empresa</span>
-                    <span>XptoFlix</span>
+                    <span id="nome"></span>
                 </div>
                 <div class="profile-info-card">
                     <span class="label">CNPJ</span>
-                    <span>70.658.106/0001-62</span>
+                    <span id="cnpj"></span>
                 </div>
                 <div class="profile-info-card">
-                    <span class="label">Departamento</span>
-                    <span>Administração</span>
-                </div>
-                <div class="profile-info-card">
-                    <span class="label">Responsável</span>
-                    <span>Marlene Santani</span>
-                </div>
-                <div class="profile-info-card">
-                    <span class="label">E-mail</span>
-                    <span>XptoFlix@SPmail.com</span>
-                </div>
-                <div class="profile-info-card">
-                    <span class="label">Endereço</span>
-                    <span>Rua Haddock Lobo, 595 – Cerqueira César, <br>São Paulo – SP, 01414-001</span>
+                    <span class="label">Email</span>
+                    <span id="email"></span>
                 </div>
             </div>
         </main>
@@ -82,3 +70,16 @@
         }
     });
 </script> -->
+
+<script>
+    var nome = sessionStorage.NOME_EMPRESA;
+    var cnpj = sessionStorage.CNPJ_EMPRESA;
+    var email = sessionStorage.EMAIL_EMPRESA;
+    var id = sessionStorage.ID_EMPRESA;
+
+    document.getElementById("nome").innerHTML = nome;
+    document.getElementById("cnpj").innerHTML = cnpj;
+    document.getElementById("email").innerHTML = email;
+
+
+</script>
