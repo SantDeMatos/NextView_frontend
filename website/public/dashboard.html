@@ -112,6 +112,12 @@
 
 </html>
 <script>
+    var nome = sessionStorage.NOME_EMPRESA;
+    var cnpj = sessionStorage.CNPJ_EMPRESA;
+    var email = sessionStorage.EMAIL_EMPRESA;
+    var id = sessionStorage.ID_EMPRESA;
+
+    alert(nome + id + email + "cpnj" + cnpj);
     var chartFilmes = echarts.init(document.getElementById('chart-filmes'));
     chartFilmes.setOption({
         legend: {

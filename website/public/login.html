@@ -102,13 +102,11 @@
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
-                        sessionStorage.EMAIL_USUARIO = json.emailEmpresa;
-                        sessionStorage.NOME_USUARIO = json.nomeEmpresa;
+                        sessionStorage.EMAIL_EMPRESA = json.emailEmpresa;
+                        sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
                         sessionStorage.ID_EMPRESA = json.idEmpresa;
-                        // sessionStorage.ID_USUARIO = json.id;
-                        // sessionStorage.CARGO = json.cargo;
+                        sessionStorage.CNPJ_EMPRESA = json.cnpjEmpresa;
 
-                        // document.getElementById('aviso2').style.display = 'flex'
                         mostrarAlerta("bom");
                         setTimeout(() => {
                             window.location = "dashboard.html";
