@@ -14,10 +14,14 @@
 
     <title>NextView</title>
 </head>
-
 <body>
 
     <div class="cadastro-container">
+
+        <div class="alerta-ruim" id="ruim">
+            <p>Email ou senha incorretos!</p>
+        </div>
+
         <div class="alerta-bom" id="bom">
             <p>Cadastro realizado com sucesso</p>
         </div>
@@ -143,8 +147,8 @@
     }
 
     function mostrarAlerta(id) {
-        // document.getElementById('bom').style.display = 'none'
-        // document.getElementById('ruim').style.display = 'none'
+        document.getElementById('bom').style.display = 'none'
+        document.getElementById('ruim').style.display = 'none'
 
         var alerta = document.getElementById(id);
         var pos = -9;

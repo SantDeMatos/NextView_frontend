@@ -125,19 +125,34 @@ input::placeholder {
     color: red;
 }
 
-.alerta-bom{
-    top:-9vh;
-    display: flex;
-    background-color: rgb(8, 176, 8);
+.alerta-ruim {
+    background-color: rgb(223, 83, 83);
+    top: 4vh;
     position: absolute;
     justify-content: center;
     align-items: center;
-    border-radius: 0.8vw;
+    border-radius: 2vw;
     color: white;
-    right: 10.5vw;
-    font-size: 1.2vw;
+    right: 14vw;
+    display: none;
     padding: 0vh 0.4vw;
-    font-weight: 600;
+    font-size: 1vw;
+    font-weight: 500;
+}
+
+.alerta-bom {
+    background-color: rgb(120, 240, 120);
+    top: 4vh;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2vw;
+    color: rgb(34, 34, 34);
+    right: 12vw;
+    display: none;
+    padding: 0vh 0.4vw;
+    font-size: 1vw;
+    font-weight: 500;
 }
 
 /* Responsividade */

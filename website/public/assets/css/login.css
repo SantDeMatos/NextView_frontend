@@ -123,33 +123,33 @@ html {
 }
 
 .alerta-ruim {
-    background-color: red;
-    top: -9vh;
+    background-color: rgb(223, 83, 83);
+    top: 6vh;
     position: absolute;
     justify-content: center;
     align-items: center;
-    border-radius: 0.8vw;
+    border-radius: 2vw;
     color: white;
     left: 13vw;
     display: none;
     padding: 0vh 0.4vw;
-    font-size: 1.2vw;
-    font-weight: 600;
+    font-size: 1vw;
+    font-weight: 500;
 }
 
 .alerta-bom {
-    background-color: rgb(8, 176, 8);
-    top: -9vh;
+    background-color: rgb(120, 240, 120);
+    top: 6vh;
     position: absolute;
     justify-content: center;
     align-items: center;
-    border-radius: 0.8vw;
-    color: white;
+    border-radius: 2vw;
+    color: rgb(34, 34, 34);
     left: 12vw;
     display: none;
     padding: 0vh 0.4vw;
-    font-size: 1.2vw;
-    font-weight: 600;
+    font-size: 1vw;
+    font-weight: 500;
 }
 
 .textoVazio {

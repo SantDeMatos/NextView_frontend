@@ -14,11 +14,11 @@
 
 <body>
     <div class="alerta-ruim" id="ruim">
-        <p>Email ou senha incorretos</p>
+        <p>Email ou senha incorretos!</p>
     </div>
 
     <div class="alerta-bom" id="bom">
-        <p>Login realizado com sucesso</p>
+        <p>Login realizado com sucesso!</p>
     </div>
 
     <div class="cadastro-container">
@@ -139,7 +139,7 @@
     }
 
     function mostrarAlerta(id) {
-        // document.getElementById('bom').style.display = 'none'
+        document.getElementById('bom').style.display = 'none'
         document.getElementById('ruim').style.display = 'none'
 
         var alerta = document.getElementById(id);
