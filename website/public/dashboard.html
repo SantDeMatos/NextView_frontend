@@ -15,102 +15,137 @@
 <body>
     <div class="dashboard-container">
         <aside class="sidebar">
-            <ul>
-                <li><a href="#"><img src="assets/imgs/icon.png" alt="Logo"></a></li>
-                <li class="active"><a href="inicialDash.html"><img src="assets/imgs/ion--person-outline.png"
-                            alt="Perfil"></a></li>
-                <li><a href="dashboard.html"><img src="assets/imgs/ion--analytics.png" alt="Análises"></a></li>
-                <li><a href="pesquisa.html"><img src="assets/imgs/ion--search-outline.png" alt="Pesquisa"></a></li>
-                <li><a href="favoritos.html"><img src="assets/imgs/ion--star-outline (2).png" alt="Favoritos"></a></li>
-                <li><a href="index.html"><img src="assets/imgs/ion--log-out-outline.png" alt="Sair"></a></li>
+            <ul id="menu">
+                <li><img id="logo" src="assets/imgs/Logo.png" alt=""></li>
+                <li>
+                    <a href="dashboard.html">
+                        <img src="assets/imgs/002-google-analytics.png" alt="Análises">
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="pesquisa.html">
+                        <img src="assets/imgs/ion--search-outline (2).png" alt="Pesquisa">
+                        <p>Pesquisar conteúdo</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="favoritos.html">
+                        <img src="assets/imgs/ion--star-outline.png" alt="Favoritos">
+                        <p>Favoritos</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <img src="assets/imgs/001-sair.png" alt="Sair">
+                        <p>Logout</p>
+                    </a>
+                </li>
             </ul>
         </aside>
 
+        <main class="dashboard-main">
+            <div class="dashboard-row columns">
+                <div class="column">
+                    <div class="card-row">
+                        <div class="dashboard-card card-wide">
+                            <h2>Filmes de melhor avaliação</h2>
+                            <span class="card-date">Dados do dia 05/05/2045</span>
+                            <div id="chart-filmes"></div>
+                        </div>
 
-<main class="dashboard-main">
-    <h1>Dashboard</h1>
+                        <div class="infos-column">
+                            <div class="dashboard-info">
 
-    <div class="dashboard-row columns">
-        <div class="column">
-            <div class="card-row">
-                <div class="dashboard-card card-wide">
-                    <h2>Filmes de melhor avaliação</h2>
-                    <span class="card-date">Dados do dia 05/05/2045</span>
-                    <div id="chart-filmes"></div>
+
+                                <div class="info-item">
+                                    <div class="info-img">
+                                        <img src="assets/imgs/ion--person-outline (1).png" alt="Ator">
+                                    </div>
+                                    <div class="info-conteudo">
+                                        <span class="info-label">Ator do momento</span>
+                                        <span class="info-value">Bob Odenkirk</span>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="info-item">
+                                    <div class="info-img">
+                                        <img src="assets/imgs/ion--eyedrop-outline.png" alt="Ator">
+                                    </div>
+                                    <div class="info-conteudo">
+                                        <span class="info-label">Diretor do momento</span>
+                                        <span class="info-value">Kiyoshi Kurosawa</span>
+                                    </div>
+                                </div>
+
+
+                                <div class="info-item">
+                                    <div class="info-img">
+                                        <img src="assets/imgs/ion--play-outline.png" alt="Ator">
+                                    </div>
+                                    <div class="info-conteudo">
+                                        <span class="info-label">Tipo de conteúdo</span>
+                                        <span class="info-value">Filme</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="infos-column">
-                    <div class="dashboard-info">
-                        
-
-                        <div class="info-item">
-                            <div class="info-img">
-                                <img src="assets/imgs/ion--person-outline (1).png" alt="Ator">
-                            </div>  
-                            <div class="info-conteudo">
-                                <span class="info-label">Ator do momento</span>
-                                <span class="info-value">Bob Odenkirk</span>
-                            </div>
+                <div class="column">
+                    <div class="card-row">
+                        <div class="dashboard-card card-wide">
+                            <h2>Séries de melhor avaliação</h2>
+                            <span class="card-date">Dados do dia 05/05/2045</span>
+                            <div id="chart-series"></div>
                         </div>
 
-
-
-                        <div class="info-item">
-                            <div class="info-img">
-                                <img src="assets/imgs/ion--eyedrop-outline.png" alt="Ator">
-                            </div>  
-                            <div class="info-conteudo">
-                                <span class="info-label">Diretor do momento</span>
-                                <span class="info-value">Kiyoshi Kurosawa</span>
+                        <div class="dashboard-card dashboard-card-pie card-narrow">
+                            <h2>Gêneros</h2>
+                            <span class="card-date">Dados do dia 05/05/2045</span>
+                            <div id="chart-generos"></div>
+                            <div class="pie-legend">
+                                <span><span class="dot" style="background:#0FBBFF"></span>Comédia 8%</span>
+                                <span><span class="dot" style="background:#0033FF"></span>Ficção 50%</span>
+                                <span><span class="dot" style="background:#05009A"></span>Ação 25%</span>
+                                <span><span class="dot" style="background:#00033D"></span>Romance 17%</span>
                             </div>
                         </div>
-
-
-                        <div class="info-item">
-                            <div class="info-img">
-                                <img src="assets/imgs/ion--play-outline.png" alt="Ator">
-                            </div>  
-                            <div class="info-conteudo">
-                                <span class="info-label">Tipo de conteúdo</span>
-                                <span class="info-value">Filme</span>
-                            </div>
-                        </div>
-
-                        
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="column">
-            <div class="card-row">
-                <div class="dashboard-card card-wide">
-                    <h2>Séries de melhor avaliação</h2>
-                    <span class="card-date">Dados do dia 05/05/2045</span>
-                    <div id="chart-series"></div>
-                </div>
-
-                <div class="dashboard-card dashboard-card-pie card-narrow">
-                    <h2>Gêneros</h2>
-                    <span class="card-date">Dados do dia 05/05/2045</span>
-                    <div id="chart-generos"></div>
-                    <div class="pie-legend">
-                        <span><span class="dot" style="background:#0FBBFF"></span>Comédia 8%</span>
-                        <span><span class="dot" style="background:#0033FF"></span>Ficção 50%</span>
-                        <span><span class="dot" style="background:#05009A"></span>Ação 25%</span>
-                        <span><span class="dot" style="background:#00033D"></span>Romance 17%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</main>
+        </main>
     </div>
 
 </body>
-
 </html>
+
+<script>
+    
+    const paginaAtual = window.location.pathname.split("/").pop();
+
+    const links = document.querySelectorAll("#menu a");
+
+    links.forEach(link => {
+        const linkHref = link.getAttribute("href");
+
+        if (paginaAtual === linkHref) {
+            link.classList.add("ativo");
+        }
+
+        link.addEventListener("click", () => {
+            links.forEach(l => l.classList.remove("ativo"));
+            link.classList.add("ativo");
+        });
+    });
+</script>
+
 <script>
 
     var chartFilmes = echarts.init(document.getElementById('chart-filmes'));
@@ -203,5 +238,5 @@
             label: { show: false }
         }]
     });
-</script>
 
+</script>
