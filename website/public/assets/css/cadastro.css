@@ -131,7 +131,7 @@ input::placeholder {
     position: absolute;
     justify-content: center;
     align-items: center;
-    border-radius: 2vw;
+    border-radius: 3vw;
     color: white;
     right: 14vw;
     display: none;
