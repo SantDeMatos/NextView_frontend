@@ -13,12 +13,9 @@
 </head>
 
 <body>
-    <div class="alerta-ruim" id="ruim">
-        <p>Email ou senha incorretos!</p>
-    </div>
 
-    <div class="alerta-bom" id="bom">
-        <p>Login realizado com sucesso!</p>
+    <div class="pop-up-notification" id="popup">
+        <p id="popup-message">Envio realizado com sucesso!</p>
     </div>
 
     <div class="cadastro-container">
@@ -65,20 +62,21 @@
         }
     });
 
-
-
     function entrar() {
         var emailVar = email.value;
         var senhaVar = senha.value;
 
         if (!senhaVar || !emailVar) {
-                document.getElementById("emailVazio").style.display = "none"
-                document.getElementById("senhaVazio").style.display = "none"
+            document.getElementById("emailVazio").style.display = "none"
+            document.getElementById("senhaVazio").style.display = "none"
             if (!senhaVar) {
                 document.getElementById("senhaVazio").style.display = "flex"
-            } if (!emailVar){
+            } if (!emailVar) {
                 document.getElementById("emailVazio").style.display = "flex"
             }
+
+            mostrarPopup("Preencha os campos!", "erro");
+
         } else {
 
             console.log("FORM LOGIN: ", emailVar);
@@ -107,7 +105,7 @@
                         sessionStorage.ID_EMPRESA = json.idEmpresa;
                         sessionStorage.CNPJ_EMPRESA = json.cnpjEmpresa;
 
-                        mostrarAlerta("bom");
+                        mostrarPopup("Entrando no sistema!", "sucesso");
                         setTimeout(() => {
                             window.location = "dashboard.html";
                         }, "2000");
@@ -119,12 +117,13 @@
 
                     resposta.text().then(texto => {
                         console.error(texto);
-                        mostrarAlerta("ruim");
+                        mostrarPopup("Erro ao realizar login!", "erro");
                     });
                 }
 
             }).catch(function (erro) {
                 console.log(erro);
+                mostrarPopup("Erro no sistema!", "erro");
             })
 
             return false;
@@ -138,21 +137,21 @@
         window.location = "index.html";
     }
 
-    function mostrarAlerta(id) {
-        document.getElementById('bom').style.display = 'none'
-        document.getElementById('ruim').style.display = 'none'
+    function mostrarPopup(mensagem, tipo) {
 
-        var alerta = document.getElementById(id);
-        var pos = -9;
-        alerta.style.display = "flex";
-        var timer = setInterval(() => {
-            if (pos < 3.3) {
-                pos += 0.6;
-                alerta.style.top = pos + "vh";
-            } else {
-                clearInterval(timer);
-            }
-        },10);
+        const popup = document.getElementById('popup');
+        const texto = document.getElementById('popup-message');
+
+        texto.textContent = mensagem;
+
+        popup.classList.remove('pop-up-success', 'pop-up-error');
+        popup.classList.add(tipo === 'sucesso' ? 'pop-up-success' : 'pop-up-error');
+
+        popup.classList.add('show');
+
+        setTimeout(() => {
+            popup.classList.remove('show');
+        }, 3000);
     }
 
 </script>
