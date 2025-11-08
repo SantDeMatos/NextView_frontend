@@ -209,16 +209,13 @@
         const popup = document.getElementById('popup');
         const texto = document.getElementById('popup-message');
 
-        // Define o texto e a cor
         texto.textContent = mensagem;
 
         popup.classList.remove('pop-up-success', 'pop-up-error');
         popup.classList.add(tipo === 'sucesso' ? 'pop-up-success' : 'pop-up-error');
 
-        // Exibe suavemente
         popup.classList.add('show');
 
-        // Oculta após alguns segundos
         setTimeout(() => {
             popup.classList.remove('show');
         }, 3000);
@@ -230,12 +227,6 @@
         var email = emailContato.value
         var telefone = telefoneContato.value
         var mensagem = mensagemContato.value
-
-        if (nome == "juan" && email == "juan@gmail.com" && telefone == "(11)11111-1111" && mensagem == "teste") {
-            mostrarPopup("Mensagem enviada com sucesso!", "sucesso");
-        } else {
-            mostrarPopup("Dados incorretos! Tente novamente.", "erro");
-        }
 
         if (nome == "" || email == "" || telefone == "" || mensagem == "") {
             mostrarPopup("Preencha todos os dados!", "erro");

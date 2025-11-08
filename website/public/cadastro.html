@@ -18,12 +18,8 @@
 
     <div class="cadastro-container">
 
-        <div class="alerta-ruim" id="ruim">
-            <p>Email ou senha incorretos!</p>
-        </div>
-
-        <div class="alerta-bom" id="bom">
-            <p>Cadastro realizado com sucesso</p>
+        <div class="pop-up-notification" id="popup">
+            <p id="popup-message">Envio realizado com sucesso!</p>
         </div>
 
         <div class="cadastro-form-bg">
@@ -73,7 +69,6 @@
 </script>
 <script>
 
-
     function cadastro() {
 
         var nomeEmpresaVar = nomeEmpresa.value
@@ -110,6 +105,9 @@
             if (!telefoneVar) {
                 document.getElementById("telefoneVazio").style.display = "flex"
             }
+            
+            mostrarPopup("Preencha todos os dados!", "erro");
+
         } else {
             fetch("/usuarios/cadastrar", {
                 method: "POST",
@@ -128,13 +126,14 @@
             })
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
-                    mostrarAlerta("bom");
+                    mostrarPopup("Dados cadastrados!", "sucesso");
                     setTimeout(() => {
                         window.location = "login.html"
                     }, 2000)
                 })
                 .catch(function (resposta) {
                     console.log(`#ERRO: ${resposta}`);
+                    mostrarPopup("Falha no cadastro!", "erro");
                 });
         }
     }
@@ -143,24 +142,23 @@
 
         window.location = "index.html";
 
-
     }
 
-    function mostrarAlerta(id) {
-        document.getElementById('bom').style.display = 'none'
-        document.getElementById('ruim').style.display = 'none'
+    function mostrarPopup(mensagem, tipo) {
 
-        var alerta = document.getElementById(id);
-        var pos = -9;
-        alerta.style.display = "flex";
+        const popup = document.getElementById('popup');
+        const texto = document.getElementById('popup-message');
 
-        var timer = setInterval(() => {
-            if (pos < 0.5) {
-                pos += 0.8;
-                alerta.style.top = pos + "vh";
-            } else {
-                clearInterval(timer);
-            }
-        }, 10);
+        texto.textContent = mensagem;
+
+        popup.classList.remove('pop-up-success', 'pop-up-error');
+        popup.classList.add(tipo === 'sucesso' ? 'pop-up-success' : 'pop-up-error');
+
+        popup.classList.add('show');
+
+        setTimeout(() => {
+            popup.classList.remove('show');
+        }, 3000);
     }
+    
 </script>

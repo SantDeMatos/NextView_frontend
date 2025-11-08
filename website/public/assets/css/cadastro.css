@@ -125,34 +125,34 @@ input::placeholder {
     color: red;
 }
 
-.alerta-ruim {
-    background-color: rgb(223, 83, 83);
-    top: 4vh;
-    position: absolute;
+.pop-up-notification{
+    display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 3vw;
-    color: white;
-    right: 14vw;
-    display: none;
-    padding: 0vh 0.4vw;
-    font-size: 1vw;
-    font-weight: 500;
+    position: absolute;
+    z-index: 100;
+    right: 170px;
+    top: 30px;
+    width: 280px;
+    height: 60px;
+    background-color: rgb(120, 240, 120);
+    border-radius: 15px;
+    font-weight: 400;
+    font-size: 15px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
 }
 
-.alerta-bom {
-    background-color: rgb(120, 240, 120);
-    top: 4vh;
-    position: absolute;
-    justify-content: center;
-    align-items: center;
-    border-radius: 2vw;
-    color: rgb(34, 34, 34);
-    right: 12vw;
-    display: none;
-    padding: 0vh 0.4vw;
-    font-size: 1vw;
-    font-weight: 500;
+.pop-up-notification.show {
+  opacity: 1;
+}
+
+.pop-up-success {
+  background-color: rgb(120, 240, 120);
+}
+
+.pop-up-error {
+  background-color: rgb(223, 83, 83);
 }
 
 /* Responsividade */
