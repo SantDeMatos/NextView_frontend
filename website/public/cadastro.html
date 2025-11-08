@@ -14,15 +14,16 @@
 
     <title>NextView</title>
 </head>
+
 <body>
 
     <div class="cadastro-container">
 
-        <div class="pop-up-notification" id="popup">
-            <p id="popup-message">Envio realizado com sucesso!</p>
-        </div>
-
         <div class="cadastro-form-bg">
+
+            <div class="pop-up-notification" id="popup">
+                <p id="popup-message">Envio realizado com sucesso!</p>
+            </div>
 
             <button class="btn_back" onclick="voltar()"><i class="fa-solid fa-arrow-left"></i></button>
 
@@ -105,7 +106,7 @@
             if (!telefoneVar) {
                 document.getElementById("telefoneVazio").style.display = "flex"
             }
-            
+
             mostrarPopup("Preencha todos os dados!", "erro");
 
         } else {
@@ -160,5 +161,5 @@
             popup.classList.remove('show');
         }, 3000);
     }
-    
+
 </script>

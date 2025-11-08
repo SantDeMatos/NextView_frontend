@@ -328,6 +328,8 @@ header {
     justify-content: center;
     gap: 1.2em;
     align-items: center;
+    z-index: 101;
+    position: relative;
 }
 
 .contact-form input,
@@ -364,14 +366,14 @@ header {
 
 }
 
-.pop-up-notification{
+.pop-up-notification {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     z-index: 100;
-    right: 330px;
-    top: 2930px;
+    right: 130px;
+    top: 5px;
     width: 300px;
     height: 70px;
     background-color: rgb(120, 240, 120);
@@ -382,15 +384,15 @@ header {
 }
 
 .pop-up-notification.show {
-  opacity: 1;
+    opacity: 1;
 }
 
 .pop-up-success {
-  background-color: rgb(120, 240, 120);
+    background-color: rgb(120, 240, 120);
 }
 
 .pop-up-error {
-  background-color: rgb(223, 83, 83);
+    background-color: rgb(223, 83, 83);
 }
 
 /* missao visao e valores */
@@ -418,7 +420,7 @@ header {
     margin-bottom: 0.5em;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 2px;
-    
+
 }
 
 .mvv-desc {
@@ -447,8 +449,8 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: 
-        transform 0.4s, 
+    transition:
+        transform 0.4s,
         box-shadow 0.4s,
         background 0.6s,
         color 0.6s;
@@ -797,6 +799,12 @@ header {
         color: white;
     }
 
+    .pop-up-notification {
+        right: 35px;
+        width: 180px;
+        height: 40px;
+        font-size: 12px;
+    }
 
 }
 
@@ -983,7 +991,6 @@ header {
     }
 
     .navbar a::after {
-
         content: "";
         width: 0%;
         height: 4px;
@@ -996,6 +1003,13 @@ header {
 
     .navbar li a:hover {
         color: white;
+    }
+
+    .pop-up-notification {
+        right: 60px;
+        width: 180px;
+        height: 40px;
+        font-size: 12px;
     }
 
 }
@@ -1196,6 +1210,13 @@ header {
 
     .navbar li a:hover {
         color: white;
+    }
+
+    .pop-up-notification {
+        right: 70px;
+        width: 200px;
+        height: 50px;
+        font-size: 12px;
     }
 
 }
@@ -1404,7 +1425,6 @@ header {
 
 
     .navbar a::after {
-
         content: "";
         width: 0%;
         height: 4px;
@@ -1419,6 +1439,12 @@ header {
         color: white;
     }
 
+    .pop-up-notification {
+        right: 30px;
+        width: 270px;
+        height: 50px;
+        font-size: 15px;
+    }
 
 }
 
@@ -1625,7 +1651,6 @@ header {
     }
 
     .navbar a::after {
-
         content: "";
         width: 0%;
         height: 4px;
@@ -1638,6 +1663,13 @@ header {
 
     .navbar li a:hover {
         color: white;
+    }
+
+    .pop-up-notification {
+        right: 30px;
+        width: 270px;
+        height: 50px;
+        font-size: 15px;
     }
 
 }

@@ -36,6 +36,8 @@ body {
     width: 60vw;
     min-width: 400px;
     box-shadow: 0 0 20px #00000010;
+    position: relative;
+    z-index: 101;
 }
 
 .btn_back {
@@ -132,7 +134,7 @@ input::placeholder {
     position: absolute;
     z-index: 100;
     right: 170px;
-    top: 30px;
+    top: 80px;
     width: 280px;
     height: 60px;
     background-color: rgb(120, 240, 120);
@@ -230,6 +232,14 @@ input::placeholder {
         margin-top: 1em;
     }
 
+    .pop-up-notification {
+        top: 100px;
+        right: 80px;
+        width: 170px;
+        height: 40px;
+        font-size: 11px;
+    }
+
 }
 
 @media screen and (min-width: 375px) and (max-width: 425px) {
@@ -304,6 +314,14 @@ input::placeholder {
         padding: 1em;
         font-size: 0.8em;
         margin-top: 0.7em;
+    }
+
+    .pop-up-notification {
+        top: 80px;
+        right: 100px;
+        width: 170px;
+        height: 40px;
+        font-size: 11px;
     }
 
 }
@@ -382,6 +400,14 @@ input::placeholder {
         margin-top: 0.7em;
     }
 
+    .pop-up-notification {
+        top: 80px;
+        right: 130px;
+        width: 170px;
+        height: 40px;
+        font-size: 11px;
+    }
+
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -412,7 +438,7 @@ input::placeholder {
     .btn_back {
         position: absolute;
         top: 2.5%;
-        right: 50%;
+        right: 82%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -459,6 +485,14 @@ input::placeholder {
         margin-top: 0.7em;
     }
 
+    .pop-up-notification {
+        top: 80px;
+        right: 140px;
+        width: 200px;
+        height: 50px;
+        font-size: 13px;
+    }
+
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1330px) {
@@ -490,7 +524,7 @@ input::placeholder {
     .btn_back {
         position: absolute;
         top: 2.5%;
-        right: 37%;
+        right: 82%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -536,5 +570,12 @@ input::placeholder {
         margin-top: 0.7em;
     }
 
+    .pop-up-notification {
+        top: 80px;
+        right: 130px;
+        width: 210px;
+        height: 50px;
+        font-size: 14px;
+    }
 
 }
