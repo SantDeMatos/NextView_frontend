@@ -40,6 +40,8 @@ html {
     width: 60vw;
     min-width: 400px;
     box-shadow: 0 0 20px #00000010;
+    position: relative;
+    z-index: 101;
 }
 
 .login-form-bg h2 {
@@ -128,8 +130,8 @@ html {
     align-items: center;
     position: absolute;
     z-index: 100;
-    left: 175px;
-    top: 80px;
+    left: 170px;
+    top: 100px;
     width: 280px;
     height: 60px;
     background-color: rgb(120, 240, 120);
@@ -224,6 +226,14 @@ html {
         font-size: 0.8em;
     }
 
+    .pop-up-notification {
+        top: 50px;
+        left: 100px;
+        width: 180px;
+        height: 40px;
+        font-size: 10px;
+    }
+
 }
 
 @media screen and (min-width: 375px) and (max-width: 425px) {
@@ -286,6 +296,15 @@ html {
         font-size: 0.8em;
     }
 
+    .pop-up-notification {
+        top: 50px;
+        left: 120px;
+        width: 180px;
+        height: 40px;
+        font-size: 11px;
+    }
+
+
 }
 
 @media screen and (min-width: 425px) and (max-width: 768px) {
@@ -345,6 +364,14 @@ html {
     .cadastro-link {
         margin-top: 1em;
         font-size: 0.9em;
+    }
+
+    .pop-up-notification {
+        top: 70px;
+        left: 160px;
+        width: 180px;
+        height: 40px;
+        font-size: 12px;
     }
 
 }
@@ -409,6 +436,14 @@ html {
         font-size: 0.9em;
     }
 
+    .pop-up-notification {
+        top: 70px;
+        left: 120px;
+        width: 220px;
+        height: 50px;
+        font-size: 14px;
+    }
+
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1330px) {
@@ -471,6 +506,14 @@ html {
     .cadastro-link {
         margin-top: 1em;
         font-size: 1em;
+    }
+
+    .pop-up-notification {
+        top: 70px;
+        left: 160px;
+        width: 250px;
+        height: 60px;
+        font-size: 15px;
     }
 
 }
