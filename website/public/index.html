@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/index.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <link rel="shortcut icon" href="assets/imgs/icon.png" type="image/x-icon">
     <script src="assets/js/index.js"></script>
@@ -50,8 +50,7 @@
 
         <img src="assets/imgs/teste.png" alt="">
 
-        <button class="btn_menu" id="btn_menu_fechar"><img src="assets/imgs/fechar.png"
-                alt=""></button>
+        <button class="btn_menu" id="btn_menu_fechar"><img src="assets/imgs/fechar.png" alt=""></button>
 
         <div class="container">
             <ul class="navbar">
@@ -102,28 +101,28 @@
 
 
 
-        <section class="cards-section" id="CardSection">
-            <div class="cards-header">
-                <h2>Quais são os</h2>
-                <p>Benefícios do nosso sistema?</p>
-            </div>
-            <div class="cards-container">
+    <section class="cards-section" id="CardSection">
+        <div class="cards-header">
+            <h2>Quais são os</h2>
+            <p>Benefícios do nosso sistema?</p>
+        </div>
+        <div class="cards-container">
 
-                
-                <div class="card">
-                    <img src="assets/imgs/img-card1.png" alt="Recurso 1">
-                    <h3>Dashboards e Relatórios Personalizados</h3>
-                </div>
-                <div class="card">
-                    <img src="assets/imgs/img-card2.png" alt="Recurso 2">
-                    <h3>Análise de Tendências de Consumo</h3>
-                </div>
-                <div class="card">
-                    <img src="assets/imgs/img-card3.png" alt="Recurso 3">
-                    <h3>Catalogo Atrativo para o usuário</h3>
-                </div>
+
+            <div class="card">
+                <img src="assets/imgs/img-card1.png" alt="Recurso 1">
+                <h3>Dashboards e Relatórios Personalizados</h3>
             </div>
-        </section>
+            <div class="card">
+                <img src="assets/imgs/img-card2.png" alt="Recurso 2">
+                <h3>Análise de Tendências de Consumo</h3>
+            </div>
+            <div class="card">
+                <img src="assets/imgs/img-card3.png" alt="Recurso 3">
+                <h3>Catalogo Atrativo para o usuário</h3>
+            </div>
+        </div>
+    </section>
 
 
     <section class="mvv-section" id="mvvSection">
@@ -151,6 +150,9 @@
 
 
     <section class="contact-section" id="contactSection">
+        <div class="pop-up-notification" id="popup">
+            <p id="popup-message">Envio realizado com sucesso!</p>
+        </div>
         <div class="contact-content">
             <div class="contact-info">
                 <h2>Entre em contato</h2>
@@ -161,7 +163,7 @@
                 <input type="email" placeholder="E-mail" id="emailContato" required>
                 <input type="tel" placeholder="Telefone" id="telefoneContato" required>
                 <textarea placeholder="Digite sua mensagem" id="mensagemContato" required></textarea>
-                <button type="submit" onclick="enviar()">Enviar</button>
+                <button type="button" onclick="enviar()">Enviar</button>
             </form>
         </div>
     </section>
@@ -182,11 +184,11 @@
 
 </html>
 
- <script type="text/javascript">
-                        $("#telefoneContato").mask("(00)00000-0000");
-    </script>
+<script type="text/javascript">
+    $("#telefoneContato").mask("(00)00000-0000");
+</script>
 
-  
+
 <script>
 
     const btnAbrir = document.getElementById('btn_menu_abrir');
@@ -202,6 +204,26 @@
     });
 
 
+    function mostrarPopup(mensagem, tipo) {
+
+        const popup = document.getElementById('popup');
+        const texto = document.getElementById('popup-message');
+
+        // Define o texto e a cor
+        texto.textContent = mensagem;
+
+        popup.classList.remove('pop-up-success', 'pop-up-error');
+        popup.classList.add(tipo === 'sucesso' ? 'pop-up-success' : 'pop-up-error');
+
+        // Exibe suavemente
+        popup.classList.add('show');
+
+        // Oculta após alguns segundos
+        setTimeout(() => {
+            popup.classList.remove('show');
+        }, 3000);
+    }
+
     function enviar() {
 
         var nome = nomeContato.value
@@ -209,8 +231,14 @@
         var telefone = telefoneContato.value
         var mensagem = mensagemContato.value
 
+        if (nome == "juan" && email == "juan@gmail.com" && telefone == "(11)11111-1111" && mensagem == "teste") {
+            mostrarPopup("Mensagem enviada com sucesso!", "sucesso");
+        } else {
+            mostrarPopup("Dados incorretos! Tente novamente.", "erro");
+        }
+
         if (nome == "" || email == "" || telefone == "" || mensagem == "") {
-            alert("Preencha todos os campos!")
+            mostrarPopup("Preencha todos os dados!", "erro");
             return false
         } else {
             fetch("/usuarios/contato", {
@@ -229,16 +257,17 @@
             }).then(function (resposta) {
                 console.log("resposta: ", resposta);
                 if (resposta.ok) {
-                    alert("Mensagem enviada com sucesso!");
+                    mostrarPopup("Mensagem enviada com sucesso!", "sucesso");
                     nomeContato.value = ""
                     emailContato.value = ""
                     telefoneContato.value = ""
                     mensagemContato.value = ""
                 } else {
-                    throw ("Houve um erro ao tentar enviar a mensagem!");
+                    mostrarPopup("Falha no envio!", "erro");
                 }
             })
         }
     }
+
 
 </script>
