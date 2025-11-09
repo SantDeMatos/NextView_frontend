@@ -46,6 +46,62 @@
 
         <main class="dashboard-main">
             <div class="dashboard-row columns">
+                <div class="container-perfil">
+
+                    <p>Bem Vindo!</p>
+                    <button onclick="exibirPerfil()"><img src="assets/imgs/perfil-azul.png" alt=""></button>
+
+                </div>
+
+                <div class="card-perfil" id="cardPerfil">
+
+                    <div class="container-card-info">
+                        <h2>Informações de perfil</h2>
+
+                        <hr>
+
+                        <div class="info-item" id="empresa-item">
+                            <div>
+                                <label>Nome da empresa</label>
+                                <input type="text" id="empresa" value="..." disabled>
+                            </div>
+                            <span class="edit-icon" onclick="habilitarEdit('empresa')"><img class="icon-pencil"
+                                    src="assets/imgs/ferramenta-lapis.png" alt=""></span>
+                        </div>
+
+                        <div class="info-item" id="cnpj-item">
+                            <div>
+                                <label>CNPJ</label>
+                                <input type="text" id="cnpj" value="..." disabled>
+                            </div>
+                            <span class="edit-icon" onclick="habilitarEdit('cnpj')"><img class="icon-pencil"
+                                    src="assets/imgs/ferramenta-lapis.png" alt=""></span>
+                        </div>
+
+                        <div class="info-item" id="email-item">
+                            <div>
+                                <label>E-mail</label>
+                                <input type="text" id="email" value="..." disabled>
+                            </div>
+                            <span class="edit-icon" onclick="habilitarEdit('email')"><img class="icon-pencil"
+                                    src="assets/imgs/ferramenta-lapis.png" alt=""></span>
+                        </div>
+
+                        <div class="info-item" id="telefone-item">
+                            <div>
+                                <label>Telefone</label>
+                                <input type="text" id="telefone" value="..." disabled>
+                            </div>
+                            <span class="edit-icon" onclick="habilitarEdit('telefone')"><img class="icon-pencil"
+                                    src="assets/imgs/ferramenta-lapis.png" alt=""></span>
+                        </div>
+
+                        <button class="confirm-btn" id="confirmBtn" onclick="confirmarEdit()"
+                            disabled>Confirmar</button>
+                    </div>
+
+                </div>
+
                 <div class="column">
                     <div class="card-row">
                         <div class="dashboard-card card-wide">
@@ -56,8 +112,6 @@
 
                         <div class="infos-column">
                             <div class="dashboard-info">
-
-
                                 <div class="info-item">
                                     <div class="info-img">
                                         <img src="assets/imgs/ion--person-outline (1).png" alt="Ator">
@@ -68,8 +122,6 @@
                                     </div>
                                 </div>
 
-
-
                                 <div class="info-item">
                                     <div class="info-img">
                                         <img src="assets/imgs/ion--eyedrop-outline.png" alt="Ator">
@@ -79,7 +131,6 @@
                                         <span class="info-value">Kiyoshi Kurosawa</span>
                                     </div>
                                 </div>
-
 
                                 <div class="info-item">
                                     <div class="info-img">
@@ -127,7 +178,7 @@
 </html>
 
 <script>
-    
+
     const paginaAtual = window.location.pathname.split("/").pop();
 
     const links = document.querySelectorAll("#menu a");
@@ -144,9 +195,44 @@
             link.classList.add("ativo");
         });
     });
-</script>
 
-<script>
+    let editDaVez = null;
+
+    function habilitarEdit(id) {
+
+        if (editDaVez && editDaVez !== id) {
+            document.getElementById(editDaVez).disabled = true;
+            document.getElementById(editDaVez + '-item').classList.remove('active');
+        }
+
+        const input = document.getElementById(id);
+        const item = document.getElementById(id + '-item');
+        input.disabled = false;
+        input.focus();
+        item.classList.add('active');
+
+        document.getElementById('confirmBtn').disabled = false;
+
+        editDaVez = id;
+    }
+
+    function confirmarEdit() {
+        if (!editDaVez) return;
+
+        const input = document.getElementById(editDaVez);
+        const item = document.getElementById(editDaVez + '-item');
+        input.disabled = true;
+        item.classList.remove('active');
+
+        document.getElementById('confirmBtn').disabled = true;
+
+        editDaVez = null;
+    }
+
+    function exibirPerfil() {
+        const card = document.getElementById("cardPerfil");
+        card.classList.toggle("ativo");
+    }
 
     var chartFilmes = echarts.init(document.getElementById('chart-filmes'));
     chartFilmes.setOption({

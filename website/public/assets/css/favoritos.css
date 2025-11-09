@@ -95,7 +95,7 @@ html {
     display: flex;
     flex-direction: column;
     min-width: 0;
-    background-color: #eaeaea;
+    background-color: #f2f0f0;
 }
 
 .pesquisa-header {
@@ -159,7 +159,7 @@ html {
     font-weight: 600;
     text-align: left;
     padding-bottom: 0.7em;
-    background: #fff;
+    background: #f2f0f0;
 }
 
 .pesquisa-table thead th span {
@@ -185,6 +185,171 @@ html {
     height: 18px;
     margin-right: 0.5em;
     vertical-align: middle;
+}
+
+/* Perfil */
+
+.container-perfil {
+    width: max-content;
+    height: 45px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    z-index: 101;
+    top: 12px;
+    right: 30px;
+}
+
+.container-perfil button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.container-perfil button img {
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+}
+
+.card-perfil:not(.ativo) {
+    pointer-events: none;
+}
+
+.container-perfil p {
+    font-size: 17px;
+    color: #0033FF;
+    font-weight: 500;
+}
+
+.card-perfil {
+    width: 400px;
+    height: 450px;
+    border-radius: 20px;
+    background-color: white;
+    border: solid 3px #0033FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 100;
+    top: 60px;
+    right: 50px;
+    opacity: 0;
+    transform: translateY(-15px);
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+}
+
+.card-perfil.ativo {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: all;
+}
+
+.card-perfil h1 {
+    font-size: 20px;
+    color: #0033FF;
+}
+
+.card-perfil hr {
+    width: 80%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.367);
+    border: none;
+    margin: 0;
+}
+
+.container-card-info {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-card-info h2 {
+    text-align: center;
+    color: #0043ff;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f6f7ff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-top: 20px;
+    transition: 0.2s;
+    width: 80%;
+}
+
+.info-item.active {
+    border-color: #0043ff;
+    background: #eef3ff;
+}
+
+.info-item label {
+    font-size: 13px;
+    color: #0043ff;
+    display: block;
+    font-weight: 600;
+}
+
+.info-item input {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    outline: none;
+    width: 180px;
+    color: #333;
+}
+
+.info-item input:disabled {
+    color: #777;
+}
+
+.edit-icon {
+    cursor: pointer;
+    color: #0043ff;
+    transition: 0.2s;
+}
+
+.edit-icon:hover {
+    transform: scale(1.1);
+}
+
+.edit-icon .icon-pencil {
+    width: 22px;
+    height: 22px;
+    border-radius: 0;
+    padding: 0;
+}
+
+.confirm-btn {
+    width: 40%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #0043ff;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.confirm-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
 }
 
 /* Responsivo */

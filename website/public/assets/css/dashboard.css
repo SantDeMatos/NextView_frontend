@@ -50,18 +50,18 @@ html {
 }
 
 .sidebar li a {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 0px 10px;      
-  width: 100%;             
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
-  box-sizing: border-box;
-  border-radius: 10px;
-  font-weight: 600;
-  color: #0033FF;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0px 10px;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #0033FF;
 }
 
 .sidebar img {
@@ -75,17 +75,17 @@ html {
 }
 
 .sidebar a:hover {
-  background-color: #eee;
+    background-color: #eee;
 }
 
 .sidebar a.ativo {
-  background-color: #0033FF;
-  color: white;
-  font-weight: 600;
+    background-color: #0033FF;
+    color: white;
+    font-weight: 600;
 }
 
 .sidebar a.ativo img {
-  filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
 }
 
 .dashboard-main h1 {
@@ -101,7 +101,7 @@ html {
     flex-direction: column;
     color: #05009A;
     overflow: hidden;
-    background-color: #eaeaea;
+    background-color: #f2f0f0;
 }
 
 .dashboard-main h1 {
@@ -120,13 +120,11 @@ html {
 
 .dashboard-card {
     flex: 0 0 300;
-    width: 600px;
+    width: 400px;
     border-radius: 10px;
     padding: 1em;
     background: #F8F9FA;
 }
-
-
 
 .dashboard-row .dashboard-card h2 {
     font-weight: bold;
@@ -170,8 +168,8 @@ html {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin: 1.2em;
-    padding: 1.5em;
-    width: 250px;
+    padding: 0.5em;
+    width: 100px;
 }
 
 .info-item img {
@@ -249,4 +247,164 @@ html {
 .info-item:last-child {
     grid-column: 1 / span 4;
     justify-self: center;
+}
+
+/* Perfil */
+.container-perfil {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+}
+
+.container-perfil button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.container-perfil button img {
+    width: 45px;
+    height: 45px;
+    margin-right: 25px;
+}
+
+.card-perfil:not(.ativo) {
+    pointer-events: none;
+}
+
+.container-perfil p {
+    font-size: 17px;
+    color: #0033FF;
+    font-weight: 500;
+}
+
+.card-perfil {
+    width: 400px;
+    height: 450px;
+    border-radius: 20px;
+    background-color: white;
+    border: solid 3px #0033FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 100;
+    top: 60px;
+    right: 50px;
+    opacity: 0;
+    transform: translateY(-15px);
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+}
+
+.card-perfil.ativo {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: all;
+}
+
+.card-perfil h1 {
+    font-size: 20px;
+    color: #0033FF;
+}
+
+.card-perfil hr {
+    width: 80%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.367);
+    border: none;
+    margin: 0;
+}
+
+.container-card-info {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-card-info h2 {
+    text-align: center;
+    color: #0043ff;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f6f7ff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 5px;
+    transition: 0.2s;
+    width: 80%;
+}
+
+.info-item.active {
+    border-color: #0043ff;
+    background: #eef3ff;
+}
+
+.info-item label {
+    font-size: 13px;
+    color: #0043ff;
+    display: block;
+    font-weight: 600;
+}
+
+.info-item input {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    outline: none;
+    width: 180px;
+    color: #333;
+}
+
+.info-item input:disabled {
+    color: #777;
+}
+
+.edit-icon {
+    cursor: pointer;
+    color: #0043ff;
+    transition: 0.2s;
+}
+
+.edit-icon:hover {
+    transform: scale(1.1);
+}
+
+.edit-icon .icon-pencil {
+    width: 22px;
+    height: 22px;
+    border-radius: 0;
+    padding: 0;
+}
+
+.confirm-btn {
+    width: 40%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #0043ff;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.confirm-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
 }
