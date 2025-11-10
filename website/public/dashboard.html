@@ -62,7 +62,7 @@
                     <div class="info-item" id="empresa-item">
                         <div>
                             <label>Nome da empresa</label>
-                            <input type="text" id="empresa" value="..." disabled>
+                            <input type="text" id="empresa" value="" disabled>
                         </div>
                         <span class="edit-icon" onclick="habilitarEdit('empresa')"><img class="icon-pencil"
                                 src="assets/imgs/ferramenta-lapis.png" alt=""></span>
@@ -71,7 +71,7 @@
                     <div class="info-item" id="cnpj-item">
                         <div>
                             <label>CNPJ</label>
-                            <input type="text" id="cnpj" value="..." disabled>
+                            <input type="text" id="cnpj" value="" disabled>
                         </div>
                         <span class="edit-icon" onclick="habilitarEdit('cnpj')"><img class="icon-pencil"
                                 src="assets/imgs/ferramenta-lapis.png" alt=""></span>
@@ -80,7 +80,7 @@
                     <div class="info-item" id="email-item">
                         <div>
                             <label>E-mail</label>
-                            <input type="text" id="email" value="..." disabled>
+                            <input type="text" id="email" value="" disabled>
                         </div>
                         <span class="edit-icon" onclick="habilitarEdit('email')"><img class="icon-pencil"
                                 src="assets/imgs/ferramenta-lapis.png" alt=""></span>
@@ -89,7 +89,7 @@
                     <div class="info-item" id="telefone-item">
                         <div>
                             <label>Telefone</label>
-                            <input type="text" id="telefone" value="..." disabled>
+                            <input type="text" id="telefone" value="" disabled>
                         </div>
                         <span class="edit-icon" onclick="habilitarEdit('telefone')"><img class="icon-pencil"
                                 src="assets/imgs/ferramenta-lapis.png" alt=""></span>
@@ -173,6 +173,17 @@
 </html>
 
 <script>
+    var nome = sessionStorage.NOME_EMPRESA;
+    var cnpj = sessionStorage.CNPJ_EMPRESA;
+    var email = sessionStorage.EMAIL_EMPRESA;
+    var id = sessionStorage.ID_EMPRESA;
+    var telefone = sessionStorage.TELEFONE_EMPRESA;
+
+
+    document.getElementById("empresa").value = nome;
+    document.getElementById("telefone").value = telefone;
+    document.getElementById("cnpj").value = cnpj;
+    document.getElementById("email").value = email;
 
     const paginaAtual = window.location.pathname.split("/").pop();
 

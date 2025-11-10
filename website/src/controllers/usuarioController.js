@@ -20,7 +20,8 @@ function autenticar(req, res) {
                         idEmpresa: resultadoAutenticar[0].idEmpresa,
                         emailEmpresa: resultadoAutenticar[0].emailEmpresa,
                         nomeEmpresa: resultadoAutenticar[0].nomeEmpresa,
-                        cnpjEmpresa: resultadoAutenticar[0].cnpjEmpresa
+                        cnpjEmpresa: resultadoAutenticar[0].cnpjEmpresa,
+                        telefoneEmpresa:resultadoAutenticar[0].telefoneEmpresa
                     });
                 } else if (resultadoAutenticar.length == 0) {
                     res.status(403).send("Email e/ou senha inválido(s)");
