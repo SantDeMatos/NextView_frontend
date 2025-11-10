@@ -169,6 +169,14 @@
 </html>
 
 <script>
+    function buscarDados() {
+        document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
+        document.getElementById("telefone").value = sessionStorage.TELEFONE_EMPRESA;
+        document.getElementById("cnpj").value = sessionStorage.CNPJ_EMPRESA;
+        document.getElementById("email").value = sessionStorage.EMAIL_EMPRESA;
+    }
+
+    window.onload = buscarDados(); 
 
     const paginaAtual = window.location.pathname.split("/").pop();
 

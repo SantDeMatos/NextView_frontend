@@ -173,17 +173,15 @@
 </html>
 
 <script>
-    var nome = sessionStorage.NOME_EMPRESA;
-    var cnpj = sessionStorage.CNPJ_EMPRESA;
-    var email = sessionStorage.EMAIL_EMPRESA;
-    var id = sessionStorage.ID_EMPRESA;
-    var telefone = sessionStorage.TELEFONE_EMPRESA;
 
+    function buscarDados() {
+        document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
+        document.getElementById("telefone").value = sessionStorage.TELEFONE_EMPRESA;
+        document.getElementById("cnpj").value = sessionStorage.CNPJ_EMPRESA;
+        document.getElementById("email").value = sessionStorage.EMAIL_EMPRESA;
+    }
 
-    document.getElementById("empresa").value = nome;
-    document.getElementById("telefone").value = telefone;
-    document.getElementById("cnpj").value = cnpj;
-    document.getElementById("email").value = email;
+    window.onload = buscarDados(); 
 
     const paginaAtual = window.location.pathname.split("/").pop();
 
