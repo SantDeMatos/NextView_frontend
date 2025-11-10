@@ -294,8 +294,6 @@
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    // crie um atributo que recebe o valor recuperado aqui
-                    // Agora vá para o arquivo routes/usuario.js
                     emailServer: emailRecebido,
                     empresaServer: empresaRecebido,
                     cnpjServer: cnpjRecebido,
@@ -305,9 +303,6 @@
             })
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
-                    setTimeout(() => {
-                        window.location = "login.html"
-                    }, 2000)
                 })
                 .catch(function (resposta) {
                     console.log(`#ERRO: ${resposta}`);
