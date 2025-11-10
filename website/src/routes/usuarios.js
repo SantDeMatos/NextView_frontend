@@ -16,4 +16,9 @@ router.post("/contato", function (req, res) {
     usuarioController.contato(req, res);
 });
 
+router.post("/atualizar", function (req, res) {
+    usuarioController.atualizar(req, res);
+});
+
+
 module.exports = router;

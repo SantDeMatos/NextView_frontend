@@ -95,7 +95,7 @@
                                 src="assets/imgs/ferramenta-lapis.png" alt=""></span>
                     </div>
 
-                    <button class="confirm-btn" id="confirmBtn" onclick="confirmarEdit()" disabled>Confirmar</button>
+                    <button class="confirm-btn" id="confirmBtn" onclick="atualizar(empresa.value, telefone.value,cnpj.value, email.value, sessionStorage.ID_EMPRESA)" disabled>Confirmar</button>
                 </div>
             </div>
 
@@ -220,7 +220,7 @@
         editDaVez = id;
     }
 
-    function confirmarEdit() {
+    function atualizar(empresa, telefone, cnpj, email, id) {
         if (!editDaVez) return;
 
         const input = document.getElementById(editDaVez);
@@ -231,6 +231,39 @@
         document.getElementById('confirmBtn').disabled = true;
 
         editDaVez = null;
+
+        var emailRecebido = email
+        var telefoneRecebido = telefone
+        var cnpjRecebido = cnpj
+        var empresaRecebido = empresa
+        var idRecebido = id
+
+
+        fetch("/usuarios/atualizar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    emailServer: emailRecebido,
+                    empresaServer: empresaRecebido,
+                    cnpjServer: cnpjRecebido,
+                    telefoneServer: telefoneRecebido,
+                    idServer: idRecebido
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                    setTimeout(() => {
+                        window.location = "login.html"
+                    }, 2000)
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    mostrarPopup("Falha na atualização!", "erro");
+                });
     }
 
     function exibirPerfil() {

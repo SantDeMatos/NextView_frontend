@@ -21,7 +21,7 @@ function autenticar(req, res) {
                         emailEmpresa: resultadoAutenticar[0].emailEmpresa,
                         nomeEmpresa: resultadoAutenticar[0].nomeEmpresa,
                         cnpjEmpresa: resultadoAutenticar[0].cnpjEmpresa,
-                        telefoneEmpresa:resultadoAutenticar[0].telefoneEmpresa
+                        telefoneEmpresa: resultadoAutenticar[0].telefoneEmpresa
                     });
                 } else if (resultadoAutenticar.length == 0) {
                     res.status(403).send("Email e/ou senha inválido(s)");
@@ -58,7 +58,7 @@ function cadastrar(req, res) {
     } else if (telefone == undefined) {
         res.status(400).send("Seu telefone está undefined!");
     }
-     else {
+    else {
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         usuarioModel.cadastrar(nomeEmpresa, cnpj, email, senha, telefone)
             .then(
@@ -135,9 +135,28 @@ function contato(req, res) {
     }
 }
 
+function atualizar(req, res) {
+    var empresa = req.body.empresaServer
+    var email = req.body.emailServer
+    var telefone = req.body.telefoneServer
+    var cnpj = req.body.cnpjServer
+    var id = req.body.idServer
+
+    usuarioModel.atualizar(empresa, email, telefone, cnpj, id)
+        .then(function (resultado) {
+            res.json(resultado);
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar o cadastro! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+
+}
+
 
 module.exports = {
     autenticar,
     cadastrar,
-    contato
+    contato,
+    atualizar
 }

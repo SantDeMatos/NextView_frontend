@@ -11,8 +11,8 @@ function autenticar(email, senha) {
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function cadastrar(nomeEmpresa, cnpj, email, senha, telefone) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",nomeEmpresa, cnpj, email, senha, telefone);
-    
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nomeEmpresa, cnpj, email, senha, telefone);
+
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
@@ -24,7 +24,7 @@ function cadastrar(nomeEmpresa, cnpj, email, senha, telefone) {
 
 function contato(nome, email, telefone, mensagem) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, telefone, mensagem);
-    
+
     var instrucaoSql = `
         INSERT INTO Contato (nomeContato, emailContato, telefoneContato, mensagemContato) VALUES 
         ('${nome}', '${email}', '${telefone}', '${mensagem}');
@@ -33,8 +33,19 @@ function contato(nome, email, telefone, mensagem) {
     return database.executar(instrucaoSql);
 }
 
+function atualizar(empresa, email, telefone, cnpj, id) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function atualizar():", empresa, email, cnpj, telefone);
+
+    var instrucaoSql = `
+        UPDATE empresa SET nomeEmpresa = '${empresa}', emailEmpresa = "${email}", cnpjEmpresa = "${cnpj}" , telefoneEmpresa = "${telefone}" WHERE idEmpresa = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    contato
+    contato,
+    atualizar
 };
