@@ -352,6 +352,38 @@ html {
     cursor: not-allowed;
 }
 
+/* pop-up */
+.pop-up-notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 101;
+    right: 110px;
+    top: 60px;
+    width: 280px;
+    height: 60px;
+    background-color: rgb(120, 240, 120);
+    border-radius: 15px;
+    font-weight: 400;
+    font-size: 15px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    color: black;
+}
+
+.pop-up-notification.show {
+    opacity: 1;
+}
+
+.pop-up-success {
+    background-color: rgb(120, 240, 120);
+}
+
+.pop-up-error {
+    background-color: rgb(223, 83, 83);
+}
+
 /* Responsivo */
 @media (max-width: 900px) {
     .pesquisa-main {

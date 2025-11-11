@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
     width: 100vw;
     height: 100vh;
     margin: 0;
@@ -48,18 +49,18 @@ body, html {
 }
 
 .sidebar li a {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 0px 10px;      
-  width: 100%;             
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
-  box-sizing: border-box;
-  border-radius: 10px;
-  font-weight: 600;
-  color: #0033FF;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0px 10px;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #0033FF;
 }
 
 .sidebar img {
@@ -70,21 +71,21 @@ body, html {
 .sidebar #logo {
     width: 170px;
     height: 45px;
-    
+
 }
 
 .sidebar a:hover {
-  background-color: #eee;
+    background-color: #eee;
 }
 
 .sidebar a.ativo {
-  background-color: #0033FF;
-  color: white;
-  font-weight: 600;
+    background-color: #0033FF;
+    color: white;
+    font-weight: 600;
 }
 
 .sidebar a.ativo img {
-  filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
 }
 
 .pesquisa-main {
@@ -128,7 +129,7 @@ body, html {
     font-size: 1em;
     width: 100%;
     font-family: 'Poppins', sans-serif;
-    padding-right: 2.2em; 
+    padding-right: 2.2em;
 }
 
 .pesquisa-search .search-icon {
@@ -352,20 +353,55 @@ body, html {
     cursor: not-allowed;
 }
 
+/* pop-up */
+.pop-up-notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 101;
+    right: 110px;
+    top: 60px;
+    width: 280px;
+    height: 60px;
+    background-color: rgb(120, 240, 120);
+    border-radius: 15px;
+    font-weight: 400;
+    font-size: 15px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    color: black;
+}
+
+.pop-up-notification.show {
+    opacity: 1;
+}
+
+.pop-up-success {
+    background-color: rgb(120, 240, 120);
+}
+
+.pop-up-error {
+    background-color: rgb(223, 83, 83);
+}
+
 /* Responsivo */
 @media (max-width: 900px) {
     .pesquisa-main {
         padding: 1.2em 0.5em;
     }
+
     .pesquisa-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 1em;
     }
+
     .pesquisa-search {
         min-width: 180px;
         width: 100%;
     }
+
     .pesquisa-table {
         font-size: 0.95em;
     }

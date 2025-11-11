@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="shortcut icon" href="assets/imgs/icon.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-    <script src="assets/js/dashboard.js"></script>
-
 </head>
 
 <body>
@@ -54,7 +52,7 @@
 
 
             <div class="pop-up-notification" id="popup">
-                <p id="popup-message">Envio realizado com sucesso!</p>
+                <p id="popup-message"></p>
             </div>
 
             <div class="card-perfil" id="cardPerfil">
@@ -76,7 +74,7 @@
                     <div class="info-item" id="cnpj-item">
                         <div>
                             <label>CNPJ</label>
-                            <input type="text" id="cnpj" value="" disabled>
+                            <input type="text" id="cnpj" value="" maxlength="14" disabled>
                         </div>
                         <span class="edit-icon" onclick="habilitarEdit('cnpj')"><img class="icon-pencil"
                                 src="assets/imgs/ferramenta-lapis.png" alt=""></span>
@@ -238,41 +236,41 @@
         } else {
 
             var emailRecebido = email
-        var telefoneRecebido = telefone
-        var cnpjRecebido = cnpj
-        var empresaRecebido = empresa
-        var idRecebido = id
+            var telefoneRecebido = telefone
+            var cnpjRecebido = cnpj
+            var empresaRecebido = empresa
+            var idRecebido = id
 
 
-        fetch("/usuarios/atualizar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                emailServer: emailRecebido,
-                empresaServer: empresaRecebido,
-                cnpjServer: cnpjRecebido,
-                telefoneServer: telefoneRecebido,
-                idServer: idRecebido
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    mostrarPopup("Dados atualizados!", "sucesso");
-                } else {
-                    mostrarPopup("Falha na atualização!", "erro");
-                }
-
+            fetch("/usuarios/atualizar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    emailServer: emailRecebido,
+                    empresaServer: empresaRecebido,
+                    cnpjServer: cnpjRecebido,
+                    telefoneServer: telefoneRecebido,
+                    idServer: idRecebido
+                }),
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                mostrarPopup("Falha na atualização!", "erro");
-            });
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-        }        
+                    if (resposta.ok) {
+                        mostrarPopup("Dados atualizados!", "sucesso");
+                    } else {
+                        mostrarPopup("Falha na atualização!", "erro");
+                    }
+
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    mostrarPopup("Falha na atualização!", "erro");
+                });
+
+        }
     }
 
     function exibirPerfil() {
