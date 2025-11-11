@@ -263,7 +263,11 @@
                     console.log("resposta: ", resposta);
 
                     if (resposta.ok) {
-                        
+                        sessionStorage.EMAIL_EMPRESA = emailRecebido;
+                        sessionStorage.NOME_EMPRESA = empresaRecebido;
+                        sessionStorage.ID_EMPRESA = idRecebido;
+                        sessionStorage.TELEFONE_EMPRESA = telefoneRecebido;
+                        sessionStorage.CNPJ_EMPRESA = cnpjRecebido;
                         mostrarPopup("Dados atualizados!", "sucesso");
                         
                         if (!editDaVez) return;
