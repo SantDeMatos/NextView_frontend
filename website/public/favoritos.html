@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="assets/css/favoritos.css">
     <link rel="shortcut icon" href="assets/imgs/icon.png" type="image/x-icon">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
     <title>NextView</title>
 </head>
 
@@ -174,6 +177,14 @@
 
 </html>
 
+<script type="text/javascript">
+    $("#telefone").mask("(00)00000-0000");
+</script>
+
+<script type="text/javascript">
+    $("#cnpj").mask("00.000.000/0000-00");
+</script>
+
 <script>
     function buscarDados() {
         document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
@@ -222,16 +233,6 @@
     }
 
     function atualizar(empresa, telefone, cnpj, email, id) {
-        if (!editDaVez) return;
-
-        const input = document.getElementById(editDaVez);
-        const item = document.getElementById(editDaVez + '-item');
-        input.disabled = true;
-        item.classList.remove('active');
-
-        document.getElementById('confirmBtn').disabled = true;
-
-        editDaVez = null;
 
         if (!empresa || !telefone || !cnpj || !email) {
 
@@ -263,7 +264,19 @@
                     console.log("resposta: ", resposta);
 
                     if (resposta.ok) {
+                        
                         mostrarPopup("Dados atualizados!", "sucesso");
+                        if (!editDaVez) return;
+                        
+
+                        const input = document.getElementById(editDaVez);
+                        const item = document.getElementById(editDaVez + '-item');
+                        input.disabled = true;
+                        item.classList.remove('active');
+
+                        document.getElementById('confirmBtn').disabled = true;
+
+                        editDaVez = null;
                     } else {
                         mostrarPopup("Falha na atualização!", "erro");
                     }
