@@ -52,6 +52,11 @@
 
             </div>
 
+
+            <div class="pop-up-notification" id="popup">
+                <p id="popup-message">Envio realizado com sucesso!</p>
+            </div>
+
             <div class="card-perfil" id="cardPerfil">
 
                 <div class="container-card-info">
@@ -95,7 +100,9 @@
                                 src="assets/imgs/ferramenta-lapis.png" alt=""></span>
                     </div>
 
-                    <button class="confirm-btn" id="confirmBtn" onclick="atualizar(empresa.value, telefone.value,cnpj.value, email.value, sessionStorage.ID_EMPRESA)" disabled>Confirmar</button>
+                    <button class="confirm-btn" id="confirmBtn"
+                        onclick="atualizar(empresa.value, telefone.value,cnpj.value, email.value, sessionStorage.ID_EMPRESA)"
+                        disabled>Confirmar</button>
                 </div>
             </div>
 
@@ -113,28 +120,20 @@
 
                 <div class="card-info">
 
-                    <div class="card-info">
-
-                        <img src="assets/imgs/projetor-de-cinema.png" alt="">
-                        <div class="info-text">
-                            <h1>Diretor do momento</h1>
-                            <p>Kiyoshi Kurosawa</p>
-                        </div>
-
+                    <img src="assets/imgs/projetor-de-cinema.png" alt="">
+                    <div class="info-text">
+                        <h1>Diretor do momento</h1>
+                        <p>Kiyoshi Kurosawa</p>
                     </div>
 
                 </div>
 
                 <div class="card-info">
 
-                    <div class="card-info">
-
-                        <img src="assets/imgs/botao-play.png" alt="">
-                        <div class="info-text">
-                            <h1>Gênero mais consumido</h1>
-                            <p>Comédia</p>
-                        </div>
-
+                    <img src="assets/imgs/botao-play.png" alt="">
+                    <div class="info-text">
+                        <h1>Gênero mais consumido</h1>
+                        <p>Comédia</p>
                     </div>
 
                 </div>
@@ -181,7 +180,7 @@
         document.getElementById("email").value = sessionStorage.EMAIL_EMPRESA;
     }
 
-    window.onload = buscarDados(); 
+    window.onload = buscarDados();
 
     const paginaAtual = window.location.pathname.split("/").pop();
 
@@ -232,7 +231,13 @@
 
         editDaVez = null;
 
-        var emailRecebido = email
+        if (!empresa || !telefone || !cnpj || !email) {
+
+            mostrarPopup("Preencha os dados!", "erro");
+
+        } else {
+
+            var emailRecebido = email
         var telefoneRecebido = telefone
         var cnpjRecebido = cnpj
         var empresaRecebido = empresa
@@ -240,30 +245,56 @@
 
 
         fetch("/usuarios/atualizar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    emailServer: emailRecebido,
-                    empresaServer: empresaRecebido,
-                    cnpjServer: cnpjRecebido,
-                    telefoneServer: telefoneRecebido,
-                    idServer: idRecebido
-                }),
-            })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                emailServer: emailRecebido,
+                empresaServer: empresaRecebido,
+                cnpjServer: cnpjRecebido,
+                telefoneServer: telefoneRecebido,
+                idServer: idRecebido
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    mostrarPopup("Dados atualizados!", "sucesso");
+                } else {
                     mostrarPopup("Falha na atualização!", "erro");
-                });
+                }
+
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                mostrarPopup("Falha na atualização!", "erro");
+            });
+
+        }        
     }
 
     function exibirPerfil() {
         const card = document.getElementById("cardPerfil");
         card.classList.toggle("ativo");
+    }
+
+    function mostrarPopup(mensagem, tipo) {
+
+        const popup = document.getElementById('popup');
+        const texto = document.getElementById('popup-message');
+
+        texto.textContent = mensagem;
+
+        popup.classList.remove('pop-up-success', 'pop-up-error');
+        popup.classList.add(tipo === 'sucesso' ? 'pop-up-success' : 'pop-up-error');
+
+        popup.classList.add('show');
+
+        setTimeout(() => {
+            popup.classList.remove('show');
+        }, 1500);
     }
 
     var chartFilmes = echarts.init(document.getElementById('chart-filmes'));
