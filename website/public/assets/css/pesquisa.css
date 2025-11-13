@@ -16,12 +16,15 @@ html {
 
 .sidebar {
     width: 260px;
+    height: 100vh;
     background: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 2em;
-    border-right: solid 2px rgba(0, 0, 0, 0.255);
+    padding-top: 3em;
+    box-shadow: 4px 0 5px rgba(0, 0, 0, 0.3);
+    transition: left 0.4s ease;
+    z-index: 998;
 }
 
 .sidebar #menu {
@@ -384,12 +387,87 @@ html {
     background-color: rgb(223, 83, 83);
 }
 
+/* Menu hambúrguer */
+#btn_menu_abrir {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 998;
+}
+
+#btn_menu_abrir img {
+    width: 32px;
+    height: 32px;
+}
+
+/* Quando aberto */
+.sidebar.aberto {
+    left: 0;
+}
+
+#btn_menu_fechar {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#btn_menu_fechar img {
+    width: 25px;
+    height: 25px;
+}
+
 /* Responsivividade */
 @media screen and (min-width: 320px) and (max-width: 375px) {
 
+    #btn_menu_abrir {
+        display: block !important;
+        top: 39px;
+        left: 15px;
+    }
+
+    #btn_menu_abrir img {
+        width: 25px;
+        height: 25px;
+    }
 
     .sidebar {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 150px;
+    }
+
+    .sidebar #logo {
+        width: 110px;
+        height: 30px;
+    }
+
+    .sidebar li a p {
+        font-size: 12px;
+    }
+
+    .sidebar img {
+        width: 18px;
+        height: 18px;
+    }
+
+    #btn_menu_fechar {
+        display: flex;
+        top: 15px;
+        right: 5px;
+    }
+
+    #btn_menu_fechar img {
+        width: 20px;
+        height: 20px;
     }
 
     .pesquisa-main {
@@ -510,6 +588,7 @@ html {
 
     .pesquisa-header {
         margin-bottom: 1.3em;
+        padding-left: 50px;
     }
 
     .pop-up-notification {
@@ -524,8 +603,47 @@ html {
 
 @media screen and (min-width: 375px) and (max-width: 425px) {
 
+    #btn_menu_abrir {
+        display: block !important;
+        top: 41px;
+        left: 15px;
+    }
+
+    #btn_menu_abrir img {
+        width: 28px;
+        height: 28px;
+    }
+
     .sidebar {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 180px;
+    }
+
+    .sidebar #logo {
+        width: 130px;
+        height: 35px;
+    }
+
+    .sidebar li a p {
+        font-size: 13px;
+    }
+
+    .sidebar img {
+        width: 20px;
+        height: 20px;
+    }
+
+    #btn_menu_fechar {
+        display: flex;
+        top: 15px;
+        right: 5px;
+    }
+
+    #btn_menu_fechar img {
+        width: 20px;
+        height: 20px;
     }
 
     .pesquisa-main {
@@ -637,6 +755,7 @@ html {
 
     .pesquisa-header {
         margin-bottom: 1.3em;
+        padding-left: 50px;
     }
 
     .pop-up-notification {
@@ -649,10 +768,50 @@ html {
     }
 }
 
-@media screen and (min-width: 425px) and (max-width: 767px) {
+@media screen and (min-width: 425px) and (max-width: 768px) {
+
+
+    #btn_menu_abrir {
+        display: block !important;
+        top: 41px;
+        left: 15px;
+    }
+
+    #btn_menu_abrir img {
+        width: 28px;
+        height: 28px;
+    }
 
     .sidebar {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 200px;
+    }
+
+    .sidebar #logo {
+        width: 130px;
+        height: 35px;
+    }
+
+    .sidebar li a p {
+        font-size: 13px;
+    }
+
+    .sidebar img {
+        width: 20px;
+        height: 20px;
+    }
+
+    #btn_menu_fechar {
+        display: flex;
+        top: 15px;
+        right: 5px;
+    }
+
+    #btn_menu_fechar img {
+        width: 20px;
+        height: 20px;
     }
 
     .pesquisa-table tbody td {
@@ -755,6 +914,7 @@ html {
 
     .pesquisa-header {
         margin-bottom: 1.3em;
+        padding-left: 45px;
     }
 
     .pop-up-notification {
@@ -768,10 +928,50 @@ html {
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+
+    #btn_menu_abrir {
+        display: block !important;
+        top: 40px;
+        left: 40px;
+    }
+
+    #btn_menu_abrir img {
+        width: 35px;
+        height: 35px;
+    }
 
     .sidebar {
-        display: none;
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 220px;
+    }
+
+    .sidebar #logo {
+        width: 160px;
+        height: 42px;
+    }
+
+    .sidebar li a p {
+        font-size: 16px;
+    }
+
+    .sidebar img {
+        width: 23px;
+        height: 23px;
+    }
+
+    #btn_menu_fechar {
+        display: flex;
+        top: 15px;
+        right: 5px;
+    }
+
+    #btn_menu_fechar img {
+        width: 20px;
+        height: 20px;
     }
 
     .pesquisa-table tbody td {
@@ -817,6 +1017,10 @@ html {
         min-width: 250px;
     }
 
+    .pesquisa-header {
+        padding-left: 45px;
+    }
+
     .pop-up-notification {
         right: 80px;
         top: 70px;
@@ -827,7 +1031,7 @@ html {
 
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1330px) {
+@media screen and (min-width: 1025px) and (max-width: 1330px) {
 
     .sidebar {
         width: 200px;
