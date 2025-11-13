@@ -16,7 +16,15 @@
 <body>
 
     <div class="dashboard-container">
-        <aside class="sidebar">
+
+        <!-- Botão menu lateral -->
+        <button class="btn_menu" id="btn_menu_abrir"><img src="assets/imgs/menu-black.png" alt=""></button>
+
+        <aside class="sidebar" id="sidebar_id">
+
+            <!-- Botão para fechar menu lateral -->
+            <button class="btn_menu" id="btn_menu_fechar"><img src="assets/imgs/fechar-black.png" alt=""></button>
+
             <ul id="menu">
                 <li><img id="logo" src="assets/imgs/Logo.png" alt=""></li>
                 <li>
@@ -264,7 +272,7 @@
                     console.log("resposta: ", resposta);
 
                     if (resposta.ok) {
-                        
+
                         sessionStorage.EMAIL_EMPRESA = emailRecebido;
                         sessionStorage.NOME_EMPRESA = empresaRecebido;
                         sessionStorage.ID_EMPRESA = idRecebido;
@@ -272,7 +280,7 @@
                         sessionStorage.CNPJ_EMPRESA = cnpjRecebido;
                         mostrarPopup("Dados atualizados!", "sucesso");
                         if (!editDaVez) return;
-                        
+
 
                         const input = document.getElementById(editDaVez);
                         const item = document.getElementById(editDaVez + '-item');
@@ -316,5 +324,18 @@
             popup.classList.remove('show');
         }, 1500);
     }
+
+    // Funcionalidade menu hambúrguer
+    const btnAbrir = document.getElementById('btn_menu_abrir');
+    const btnFechar = document.getElementById('btn_menu_fechar');
+    const sidebarID = document.getElementById('sidebar_id');
+
+    btnAbrir.addEventListener('click', () => {
+        sidebarID.classList.add('aberto');
+    });
+
+    btnFechar.addEventListener('click', () => {
+        sidebarID.classList.remove('aberto');
+    });
 
 </script>
