@@ -18,7 +18,15 @@
 
 <body>
     <div class="dashboard-container">
-        <aside class="sidebar">
+
+        <!-- Botão menu lateral -->
+        <button class="btn_menu" id="btn_menu_abrir"><img src="assets/imgs/menu-black.png" alt=""></button>
+
+        <aside class="sidebar" id="sidebar_id">
+
+            <!-- Botão para fechar menu lateral -->
+            <button class="btn_menu" id="btn_menu_fechar"><img src="assets/imgs/fechar-black.png" alt=""></button>
+
             <ul id="menu">
                 <li><img id="logo" src="assets/imgs/Logo.png" alt=""></li>
                 <li>
@@ -269,7 +277,7 @@
                         sessionStorage.TELEFONE_EMPRESA = telefoneRecebido;
                         sessionStorage.CNPJ_EMPRESA = cnpjRecebido;
                         mostrarPopup("Dados atualizados!", "sucesso");
-                        
+
                         if (!editDaVez) return;
 
                         const input = document.getElementById(editDaVez);
@@ -354,7 +362,7 @@
             type: 'bar',
             data: [3, 5, 4, 2, 4],
             barWidth: 34,
-            itemStyle: { color: 'white', borderRadius: [7, 7, 7, 7] }
+            itemStyle: { color: 'white', borderRadius: [10, 10, 3, 3] }
         }],
         grid: { left: 70, right: 50, top: '10%', bottom: 35 },
         tooltip: {}
@@ -398,7 +406,7 @@
             type: 'bar',
             data: [3, 5, 4, 2, 4],
             barWidth: 34,
-            itemStyle: { color: 'white', borderRadius: [7, 7, 7, 7] }
+            itemStyle: { color: 'white', borderRadius: [10, 10, 3, 3] }
         }],
         grid: { left: 70, right: 50, top: '10%', bottom: 35 },
         tooltip: {}
@@ -465,6 +473,54 @@
             },
             icon: 'circle'
         }
+    });
+
+    function ajustarTamanhoBarras() {
+        let largura = window.innerWidth;
+
+        let larguraBarra = 34;
+
+        if (largura < 425) {
+            larguraBarra = 10;
+        }
+
+        chartFilmes.setOption({ series: [{ barWidth: larguraBarra }] });
+        chartSeries.setOption({ series: [{ barWidth: larguraBarra }] });
+    }
+
+    function ajustarPizza() {
+        let largura = window.innerWidth;
+
+        let radius = ['50%', '80%'];
+
+        if (largura < 425) {
+            radius = ['35%', '60%'];
+        }
+
+        chartGeneros.setOption({ series: [{ radius }] });
+    }
+
+    ajustarPizza();
+    window.addEventListener("resize", ajustarPizza);
+    ajustarTamanhoBarras();
+    window.addEventListener("resize", ajustarTamanhoBarras);
+
+    window.addEventListener("resize", () => {
+        chartFilmes.resize();
+        chartSeries.resize();
+    });
+
+    // Funcionalidade menu hambúrguer
+    const btnAbrir = document.getElementById('btn_menu_abrir');
+    const btnFechar = document.getElementById('btn_menu_fechar');
+    const sidebarID = document.getElementById('sidebar_id');
+
+    btnAbrir.addEventListener('click', () => {
+        sidebarID.classList.add('aberto');
+    });
+
+    btnFechar.addEventListener('click', () => {
+        sidebarID.classList.remove('aberto');
     });
 
 </script>
