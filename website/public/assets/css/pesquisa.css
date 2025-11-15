@@ -16,7 +16,6 @@ html {
 
 .sidebar {
     width: 260px;
-    height: 100vh;
     background: white;
     display: flex;
     flex-direction: column;
@@ -443,6 +442,7 @@ html {
         top: 0;
         left: -280px;
         width: 150px;
+        height: 100vh;
     }
 
     .sidebar #logo {
@@ -619,6 +619,7 @@ html {
         top: 0;
         left: -280px;
         width: 180px;
+        height: 100vh;
     }
 
     .sidebar #logo {
@@ -787,6 +788,7 @@ html {
         top: 0;
         left: -280px;
         width: 200px;
+        height: 100vh;
     }
 
     .sidebar #logo {
@@ -947,6 +949,7 @@ html {
         top: 0;
         left: -280px;
         width: 220px;
+        height: 100vh;
     }
 
     .sidebar #logo {
