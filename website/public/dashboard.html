@@ -224,7 +224,6 @@
                     texto = dados.generosConteudo;
                     var lista = texto.split(", ");
                     for (var itemDaVez of lista) {
-
                         var existe = listaGeneros.find(g => g.genero === itemDaVez);
                         if (existe) {
                             existe.quantidade += 1;
@@ -235,21 +234,36 @@
                 });
                 listaGeneros.sort((a, b) => b.quantidade - a.quantidade);
 
-                teste = 300;
-                nome = 'pipip'
+                var total = 0;
+                var valor = 0;
+                var valorPorcentagem = 0;
+                var listaPorcentagem = []
+
+                for (var i = 0; i < 5; i++) {
+                    total += parseInt(listaGeneros[i].quantidade);
+                }
+
+                for (var i = 0; i < 5; i++) {
+                    valorPorcentagem = (parseInt(listaGeneros[i].quantidade) / total ) * 100;
+                    listaPorcentagem.push(valorPorcentagem.toFixed(0))
+                }
+
                 chartGeneros.setOption({
                     series: [{
                         data: [
-                            { value: teste, name: nome, itemStyle: { color: '#0d0a9a' } },
-                            { value: 11, name: 'Ficção', itemStyle: { color: '#2aa9e3' } },
-                            { value: 10, name: 'Ação', itemStyle: { color: '#2a52e3' } },
-                            { value: 30, name: 'Romance', itemStyle: { color: '#09174b' } },
+                            { value: listaGeneros[0].quantidade, name: listaGeneros[0].genero, itemStyle: { color: '#0d0a9a' } },
+                            { value: listaGeneros[1].quantidade, name: listaGeneros[1].genero, itemStyle: { color: '#2aa9e3' } },
+                            { value: listaGeneros[2].quantidade, name: listaGeneros[2].genero, itemStyle: { color: '#2a52e3' } },
+                            { value: listaGeneros[3].quantidade, name: listaGeneros[3].genero, itemStyle: { color: '#09174b' } },
+                            { value: listaGeneros[4].quantidade, name: listaGeneros[4].genero, itemStyle: { color: '#09174b' } },
                         ]
                     }],
                     legend: {
-                        
+
                         formatter: function (name) {
-                            var valores = {[nome]: teste, 'Ficção': '50%', 'Ação': '25%', 'Romance': '17%' };
+                            var valores = { [listaGeneros[0].genero]: listaPorcentagem[0] + '%', 'Ficção': '50%', 'Ação': '25%', 'Romance': '17%' };
+
+                            
                             return `${name}  ${valores[name]}`;
                         }
                     }
@@ -493,7 +507,7 @@
         },
         tooltip: {
             trigger: 'item',
-            formatter: '{b}: {c}%'
+            formatter: '{b}: {c}'
         },
         series: [
             {
