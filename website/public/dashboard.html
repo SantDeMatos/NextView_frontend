@@ -201,6 +201,46 @@
     }
 
     window.onload = buscarDados();
+    window.onload = buscarDadosGenero();
+
+    var listaTipoGenero = [];
+    var listaGeneros = [];
+
+    function buscarDadosGenero() {
+        var texto = '';
+        var lista = []
+
+        fetch(`/dashboard/listarGeneros`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar dados de generos");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                dashs.forEach(dados => {
+                    texto = dados.generosConteudo;
+                    var lista = texto.split(", ");
+                    for (var itemDaVez of lista) {
+                        
+                        var existe = listaGeneros.find(g => g.genero === itemDaVez);
+                        if (existe) {
+                            existe.quantidade += 1;
+                        } else {
+                            listaGeneros.push({ genero: itemDaVez, quantidade: 1 });
+                        }
+                    }
+                });
+                alert(listaGeneros[0].genero); 
+                alert(listaGeneros[0].quantidade )
+            })
+            .catch(error => {
+                console.error("Erro ao buscar dados de generos 2:", error);
+            });
+    }
+
 
     const paginaAtual = window.location.pathname.split("/").pop();
 
@@ -347,7 +387,7 @@
         yAxis: {
             type: 'value',
             min: 0,
-            max: 5,
+            max: 10,
             name: 'Avaliação',
             nameLocation: 'middle',
             nameGap: 40,
@@ -391,7 +431,7 @@
         yAxis: {
             type: 'value',
             min: 0,
-            max: 5,
+            max: 10,
             name: 'Avaliação',
             nameLocation: 'middle',
             nameGap: 40,
