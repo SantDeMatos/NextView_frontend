@@ -233,8 +233,8 @@
                         }
                     }
                 });
-                alert(listaGeneros[0].genero); 
-                alert(listaGeneros[0].quantidade )
+                listaGeneros.sort((a, b) => b.quantidade - a.quantidade);
+                alert(JSON.stringify(listaGeneros));
             })
             .catch(error => {
                 console.error("Erro ao buscar dados de generos 2:", error);
