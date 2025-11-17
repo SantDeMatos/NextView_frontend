@@ -205,7 +205,7 @@
 
     var listaTipoGenero = [];
     var listaGeneros = [];
-
+    var teste;
     function buscarDadosGenero() {
         var texto = '';
         var lista = []
@@ -224,7 +224,7 @@
                     texto = dados.generosConteudo;
                     var lista = texto.split(", ");
                     for (var itemDaVez of lista) {
-                        
+
                         var existe = listaGeneros.find(g => g.genero === itemDaVez);
                         if (existe) {
                             existe.quantidade += 1;
@@ -234,7 +234,26 @@
                     }
                 });
                 listaGeneros.sort((a, b) => b.quantidade - a.quantidade);
-                alert(JSON.stringify(listaGeneros));
+
+                teste = 300;
+                nome = 'pipip'
+                chartGeneros.setOption({
+                    series: [{
+                        data: [
+                            { value: teste, name: nome, itemStyle: { color: '#0d0a9a' } },
+                            { value: 11, name: 'Ficção', itemStyle: { color: '#2aa9e3' } },
+                            { value: 10, name: 'Ação', itemStyle: { color: '#2a52e3' } },
+                            { value: 30, name: 'Romance', itemStyle: { color: '#09174b' } },
+                        ]
+                    }],
+                    legend: {
+                        
+                        formatter: function (name) {
+                            var valores = {[nome]: teste, 'Ficção': '50%', 'Ação': '25%', 'Romance': '17%' };
+                            return `${name}  ${valores[name]}`;
+                        }
+                    }
+                });
             })
             .catch(error => {
                 console.error("Erro ao buscar dados de generos 2:", error);
@@ -364,6 +383,7 @@
         }, 1500);
     }
 
+
     var chartFilmes = echarts.init(document.getElementById('chart-filmes'));
     chartFilmes.setOption({
         // legend: {
@@ -455,7 +475,7 @@
     var chartGeneros = echarts.init(document.getElementById('chart-generos'));
 
     chartGeneros.setOption({
-        backgroundColor: '#e4f4fa', // cor de fundo parecida com a imagem
+        backgroundColor: '#e4f4fa',
         title: {
             text: 'Gêneros',
             subtext: 'Dados do dia 05/05/2025',
@@ -492,12 +512,6 @@
                 },
                 label: { show: false },
                 labelLine: { show: false },
-                data: [
-                    { value: 8, name: 'Comédia', itemStyle: { color: '#0d0a9a' } },
-                    { value: 50, name: 'Ficção', itemStyle: { color: '#2aa9e3' } },
-                    { value: 25, name: 'Ação', itemStyle: { color: '#2a52e3' } },
-                    { value: 17, name: 'Romance', itemStyle: { color: '#09174b' } },
-                ]
             }
         ],
         legend: {
@@ -507,13 +521,11 @@
                 color: '#000F69',
                 fontSize: 13
             },
-            formatter: function (name) {
-                const valores = { 'Comédia': '8%', 'Ficção': '50%', 'Ação': '25%', 'Romance': '17%' };
-                return `${name}  ${valores[name]}`;
-            },
             icon: 'circle'
         }
     });
+
+
 
     function ajustarTamanhoBarras() {
         let largura = window.innerWidth;
