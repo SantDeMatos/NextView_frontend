@@ -361,10 +361,10 @@ html {
     align-items: center;
     position: absolute;
     z-index: 101;
-    right: 110px;
-    top: 60px;
-    width: 280px;
-    height: 60px;
+    right: 60px;
+    top: 70px;
+    width: 250px;
+    height: 50px;
     background-color: rgb(120, 240, 120);
     border-radius: 15px;
     font-weight: 400;
@@ -440,7 +440,8 @@ html {
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 74%;
+    left: 68%;
+    margin-bottom: 10px;
 }
 
 .filter-gender-btn {
@@ -452,6 +453,8 @@ html {
     display: flex;
     align-items: center;
     gap: 6px;
+    height: 100%;
+    width: 100%;
 }
 
 .filter-gender-btn img {
@@ -465,7 +468,7 @@ html {
 
 .filter-gender-content {
     position: absolute;
-    top: 45px;
+    top: 40px;
     left: 0px;
     width: 180px;
     background: white;
@@ -486,7 +489,7 @@ html {
 }
 
 .filter-gender-content label input[type="checkbox"] {
-    accent-color: #0033FF; 
+    accent-color: #0033FF;
 }
 
 .filter-gender-content input {
@@ -498,6 +501,88 @@ html {
     border: none;
     border-top: 1px solid #e1e1e1;
     margin: 6px 0;
+}
+
+.filter-date {
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 45%;
+}
+
+.filter-date-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #8d8a8a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 100%;
+    width: 100%;
+}
+
+.filter-date-btn img {
+    width: 17px;
+    height: 17px;
+}
+
+.filter-date-btn p {
+    margin: 0;
+}
+
+.filter-date-content {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    width: 250px;
+    height: max-content;
+    background: white;
+    padding: 30px 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6em;
+}
+
+.filter-date-content span {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.filter-date-content p {
+    font-weight: 600;
+    color: #0033FF;
+}
+
+.filter-date-content input {
+    border-radius: 20px;
+    height: 25px;
+    padding-left: 15px;
+    border: solid 2px rgba(0, 0, 0, 0.397);
+}
+
+.filter-date-content input:focus {
+    border: solid 3px #0033FF;
+    outline: none;
+}
+
+.filter-date-content .confirm-filter-date {
+    width: 150px;
+    height: 35px;
+    border-radius: 10px;
+    background-color: #0033FF;
+    border: none;
+    color: white;
+    font-weight: 500;
 }
 
 /* Responsivividade */
@@ -674,6 +759,144 @@ html {
         width: 140px;
         height: 25px;
         font-size: 10px;
+    }
+
+    .filter {
+        width: 97%;
+    }
+
+    .filter-gender {
+        top: 5px;
+        left: 47%;
+    }
+
+    .filter-gender-btn {
+        font-size: 10px;
+    }
+
+    .filter-gender-btn img {
+        width: 11px;
+        height: 11px;
+    }
+
+    .filter-gender-content {
+        position: absolute;
+        top: 30px;
+        left: 0px;
+        width: 80px;
+        background: white;
+        padding: 12px 10px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        display: none;
+    }
+
+    .filter-gender-content label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 4px;
+        font-size: 10px;
+        color: #555;
+        cursor: pointer;
+    }
+
+    .filter-gender-content label input[type="checkbox"] {
+        accent-color: #0033FF;
+    }
+
+    .filter-gender-content input {
+        width: 13px;
+        height: 13px;
+    }
+
+    .filter-gender-content hr {
+        border: none;
+        border-top: 1px solid #e1e1e1;
+        margin: 6px 0;
+    }
+
+    .filter-date {
+        width: max-content;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: 22%;
+        background-color: red;
+    }
+
+    .filter-date-btn {
+        background: none;
+        border: none;
+        font-size: 10px;
+        color: #8d8a8a;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        height: 100%;
+        width: 100%;
+    }
+
+    .filter-date-btn img {
+        width: 11px;
+        height: 11px;
+    }
+
+    .filter-date-btn p {
+        margin: 0;
+    }
+
+    .filter-date-content {
+        position: absolute;
+        top: 40px;
+        left: 0px;
+        width: 250px;
+        height: max-content;
+        background: white;
+        padding: 30px 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.6em;
+    }
+
+    .filter-date-content span {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .filter-date-content p {
+        font-weight: 600;
+        color: #0033FF;
+    }
+
+    .filter-date-content input {
+        border-radius: 20px;
+        height: 25px;
+        padding-left: 15px;
+        border: solid 2px rgba(0, 0, 0, 0.397);
+    }
+
+    .filter-date-content input:focus {
+        border: solid 3px #0033FF;
+        outline: none;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 150px;
+        height: 35px;
+        border-radius: 10px;
+        background-color: #0033FF;
+        border: none;
+        color: white;
+        font-weight: 500;
     }
 
 }

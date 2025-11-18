@@ -121,6 +121,37 @@
 
             <div class="filter">
 
+                <div class="filter-date">
+
+                    <button class="filter-date-btn" onclick="exibirAno()">
+                        <p>Ano</p>
+                        <img src="assets/imgs/seta.png" alt=""></span>
+                    </button>
+
+                    <div class="filter-date-content" id="filterDateContent">
+
+                        <span>
+                            <p>De:</p>
+                            <input id="inputDe" type="number"
+                                oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                maxlength="4">
+                        </span>
+
+                        <span>
+                            <p>Até:</p>
+                            <input id="inputAte" type="number"
+                                oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                maxlength="4">
+                        </span>
+
+                        <button class="confirm-filter-date" onclick="confimarFiltroData()">Confirmar</button>
+
+                        <p class="msg_erro"></p>
+
+                    </div>
+
+                </div>
+
                 <div class="filter-gender">
                     <button class="filter-gender-btn" onclick="exibirGeneros()">
                         <p>Gêneros</p>
@@ -370,6 +401,23 @@
         } else {
             filterGenderContent.style.display = 'block';
         }
+
+    }
+
+    function exibirAno() {
+
+        if (filterDateContent.style.display === 'flex') {
+            filterDateContent.style.display = 'none';
+        } else {
+            filterDateContent.style.display = 'flex';
+        }
+
+    }
+
+    function confimarFiltroData() {
+
+        
+
 
     }
 
