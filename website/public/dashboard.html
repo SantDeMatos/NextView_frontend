@@ -145,7 +145,7 @@
                     <img src="assets/imgs/botao-play.png" alt="">
                     <div class="info-text">
                         <h1>Gênero mais consumido</h1>
-                        <p>Comédia</p>
+                        <p id="generoConsumido">Comédia</p>
                     </div>
 
                 </div>
@@ -246,6 +246,8 @@
                     valorPorcentagem = (parseInt(listaGeneros[i].quantidade) / total) * 100;
                     listaPorcentagem.push(valorPorcentagem.toFixed(0))
                 }
+
+                document.getElementById('generoConsumido').innerHTML = listaGeneros[0].genero
 
                 chartGeneros.setOption({
                     series: [{
