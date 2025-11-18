@@ -203,7 +203,6 @@
     window.onload = buscarDados();
     window.onload = buscarDadosGenero();
 
-    var listaTipoGenero = [];
     var listaGeneros = [];
     var teste;
     function buscarDadosGenero() {
@@ -244,7 +243,7 @@
                 }
 
                 for (var i = 0; i < 5; i++) {
-                    valorPorcentagem = (parseInt(listaGeneros[i].quantidade) / total ) * 100;
+                    valorPorcentagem = (parseInt(listaGeneros[i].quantidade) / total) * 100;
                     listaPorcentagem.push(valorPorcentagem.toFixed(0))
                 }
 
@@ -259,11 +258,14 @@
                         ]
                     }],
                     legend: {
-
                         formatter: function (name) {
-                            var valores = { [listaGeneros[0].genero]: listaPorcentagem[0] + '%', 'Ficção': '50%', 'Ação': '25%', 'Romance': '17%' };
-
-                            
+                            var valores = {
+                                [listaGeneros[0].genero]: listaPorcentagem[0] + '%',
+                                [listaGeneros[1].genero]: listaPorcentagem[1] + '%',
+                                [listaGeneros[2].genero]: listaPorcentagem[2] + '%',
+                                [listaGeneros[3].genero]: listaPorcentagem[3] + '%',
+                                [listaGeneros[4].genero]: listaPorcentagem[4] + '%'
+                            };
                             return `${name}  ${valores[name]}`;
                         }
                     }
@@ -491,7 +493,7 @@
     chartGeneros.setOption({
         backgroundColor: '#e4f4fa',
         title: {
-            text: 'Gêneros',
+            text: 'Top 5 gêneros',
             subtext: 'Dados do dia 05/05/2025',
             left: 'center',
             top: 10,
