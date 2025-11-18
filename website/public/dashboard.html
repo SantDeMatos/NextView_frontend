@@ -145,7 +145,7 @@
                     <img src="assets/imgs/botao-play.png" alt="">
                     <div class="info-text">
                         <h1>Gênero mais consumido</h1>
-                        <p id="generoConsumido">Comédia</p>
+                        <p id="generoConsumido"></p>
                     </div>
 
                 </div>
@@ -281,6 +281,10 @@
     }
 
     function buscarFilmesTop() {
+        var listaFilmes = [];
+        var tituloFilme = '';
+        var notaFilme;
+
         fetch(`/dashboard/listarFilmesTop`, {
             method: 'GET'
         })
@@ -292,20 +296,34 @@
             })
             .then(dashs => {
                 dashs.forEach(dados => {
-                    teste = dados.generosConteudo;
+                    tituloFilme = dados.tituloConteudo;
+                    notaFilme = dados.notaConteudo;
 
-                    // var lista = texto.split(", ");
-                    // for (var itemDaVez of lista) {
-                    //     var existe = listaGeneros.find(g => g.genero === itemDaVez);
-                    //     if (existe) {
-                    //         existe.quantidade += 1;
-                    //     } else {
-                    //         listaGeneros.push({ genero: itemDaVez, quantidade: 1 });
-                    //     }
-                    // }
+                    listaFilmes.push({tituloLista: tituloFilme, notaLista: notaFilme })
                 });
-                
-                document.getElementById('generoConsumido').innerHTML = listaGeneros[0].genero;
+
+                chartFilmes.setOption({
+                    xAxis: {
+                        data: [
+                            listaFilmes[0].tituloLista,
+                            listaFilmes[1].tituloLista,
+                            listaFilmes[2].tituloLista,
+                            listaFilmes[3].tituloLista,
+                            listaFilmes[4].tituloLista,
+                        ],     
+                    },
+                    series: [{
+                        data: [
+                            listaFilmes[0].notaLista,
+                            listaFilmes[1].notaLista,
+                            listaFilmes[2].notaLista,
+                            listaFilmes[3].notaLista,
+                            listaFilmes[4].notaLista
+                        ],
+                    }],
+                    grid: { left: 70, right: 50, top: '10%', bottom: 35 },
+                    tooltip: {}
+                });
 
             })
             .catch(error => {
