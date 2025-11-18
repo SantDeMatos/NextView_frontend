@@ -119,6 +119,31 @@
                 <span class="pesquisa-title">Favoritos</span>
             </div>
 
+            <div class="filter">
+
+                <div class="filter-gender">
+                    <button class="filter-gender-btn" onclick="exibirGeneros()">
+                        <p>Gêneros</p>
+                        <img src="assets/imgs/seta.png" alt=""></span>
+                    </button>
+
+                    <div class="filter-gender-content" id="filterGenderContent">
+                        <label><input type="checkbox"> Terror</label>
+                        <hr>
+                        <label><input type="checkbox"> Ação</label>
+                        <hr>
+                        <label><input type="checkbox"> Drama</label>
+                        <hr>
+                        <label><input type="checkbox"> Ficção</label>
+                        <hr>
+                        <label><input type="checkbox"> Romance</label>
+                        <hr>
+                        <label><input type="checkbox"> Suspense</label>
+                    </div>
+                </div>
+
+            </div>
+
             <table class="pesquisa-table">
                 <thead>
                     <tr>
@@ -337,5 +362,15 @@
     btnFechar.addEventListener('click', () => {
         sidebarID.classList.remove('aberto');
     });
+
+    function exibirGeneros() {
+
+        if (filterGenderContent.style.display === 'block') {
+            filterGenderContent.style.display = 'none';
+        } else {
+            filterGenderContent.style.display = 'block';
+        }
+
+    }
 
 </script>
