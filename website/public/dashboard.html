@@ -202,10 +202,12 @@
 
     window.onload = buscarDados();
     window.onload = buscarDadosGenero();
+    window.onload = buscarFilmesTop();
 
     var listaGeneros = [];
-    var teste;
+
     function buscarDadosGenero() {
+
         var texto = '';
         var lista = []
 
@@ -247,7 +249,7 @@
                     listaPorcentagem.push(valorPorcentagem.toFixed(0))
                 }
 
-                document.getElementById('generoConsumido').innerHTML = listaGeneros[0].genero
+                document.getElementById('generoConsumido').innerHTML = listaGeneros[0].genero;
 
                 chartGeneros.setOption({
                     series: [{
@@ -272,6 +274,39 @@
                         }
                     }
                 });
+            })
+            .catch(error => {
+                console.error("Erro ao buscar dados de generos 2:", error);
+            });
+    }
+
+    function buscarFilmesTop() {
+        fetch(`/dashboard/listarFilmesTop`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar dados de generos");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                dashs.forEach(dados => {
+                    teste = dados.generosConteudo;
+
+                    // var lista = texto.split(", ");
+                    // for (var itemDaVez of lista) {
+                    //     var existe = listaGeneros.find(g => g.genero === itemDaVez);
+                    //     if (existe) {
+                    //         existe.quantidade += 1;
+                    //     } else {
+                    //         listaGeneros.push({ genero: itemDaVez, quantidade: 1 });
+                    //     }
+                    // }
+                });
+                
+                document.getElementById('generoConsumido').innerHTML = listaGeneros[0].genero;
+
             })
             .catch(error => {
                 console.error("Erro ao buscar dados de generos 2:", error);

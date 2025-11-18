@@ -8,6 +8,16 @@ function listarGeneros(req, res) {
     })
 }
 
+function listarFilmesTop(req, res) {
+    dashboardModel.listarFilmesTop().then(function (resultado) {
+        res.status(200).json(resultado);
+    }).catch(function (erro) {
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
+
 module.exports = {
-    listarGeneros
+    listarGeneros,
+    listarFilmesTop
 }

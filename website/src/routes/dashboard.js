@@ -7,4 +7,10 @@ router.get("/listarGeneros", function (req, res) {
     dashboardController.listarGeneros(req, res);
 });
 
+router.get("/listarFilmesTop", function (req, res) {
+    dashboardController.listarFilmesTop(req, res);
+});
+
+
+
 module.exports = router;
