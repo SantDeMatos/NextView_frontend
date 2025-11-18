@@ -387,6 +387,83 @@ html {
     height: 25px;
 }
 
+/* Filtros */
+.filter {
+    background-color: #f2f0f0;
+    width: 93%;
+    height: 40px;
+    border-bottom: solid 2px rgba(0, 0, 0, 0.145);
+    display: flex;
+    align-items: center;
+}
+
+.filter-gender {
+    width: max-content;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 74%;
+}
+
+.filter-gender-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #8d8a8a;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.filter-gender-btn img {
+    width: 17px;
+    height: 17px;
+}
+
+.filter-gender-btn p {
+    margin: 0;
+}
+
+.filter-gender-content {
+    position: absolute;
+    top: 45px;
+    left: 0px;
+    width: 180px;
+    background: white;
+    padding: 12px 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    display: none;
+}
+
+.filter-gender-content label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 4px;
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+}
+
+.filter-gender-content label input[type="checkbox"] {
+    accent-color: #0033FF; 
+}
+
+.filter-gender-content input {
+    width: 18px;
+    height: 18px;
+}
+
+.filter-gender-content hr {
+    border: none;
+    border-top: 1px solid #e1e1e1;
+    margin: 6px 0;
+}
+
 /* Responsivividade */
 @media screen and (min-width: 320px) and (max-width: 375px) {
 
