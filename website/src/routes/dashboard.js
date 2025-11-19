@@ -15,6 +15,9 @@ router.get("/listarSeriesTop", function (req, res) {
     dashboardController.listarSeriesTop(req, res);
 });
 
+router.get("/diretorDoMomento", function (req, res) {
+    dashboardController.diretorDoMomento(req, res);
+});
 
 
 module.exports = router;

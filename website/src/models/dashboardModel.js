@@ -26,9 +26,31 @@ function listarSeriesTop() {
     return database.executar(instrucao);
 }
 
+function diretorDoMomento() {
+    var instrucao = `
+        select
+        diretorConteudo,
+        COUNT(*) as total,
+        (
+        (avg(numVotosCont) / (avg(numVotosCont) + 1000)) * avg(notaConteudo) +
+        (1000 / (avg(numVotosCont) + 1000)) * (select avg(notaConteudo) from conteudo)
+        ) as notaPonderada
+        from conteudo
+        where dtLancamentoCont > '2020-01-01' 
+        and numVotosCont >= 200
+        and diretorConteudo != ''
+        group by diretorConteudo
+        order by total desc limit 1;
+    `;
+    
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 
 module.exports = {
     listarGeneros,
     listarFilmesTop,
-    listarSeriesTop
+    listarSeriesTop,
+    diretorDoMomento
 };
