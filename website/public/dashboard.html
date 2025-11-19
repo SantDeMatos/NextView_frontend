@@ -490,13 +490,16 @@
         tooltip: {}
     });
 
+    
     var chartGeneros = echarts.init(document.getElementById('chart-generos'));
-
+    
+    const dataAtual = new Date().toLocaleDateString('pt-BR');
+    
     chartGeneros.setOption({
         backgroundColor: '#e4f4fa',
         title: {
             text: 'Top 5 gêneros',
-            subtext: 'Dados do dia 05/05/2025',
+            subtext: 'Dados do dia ' + dataAtual,
             left: 'center',
             top: 10,
             textStyle: {
