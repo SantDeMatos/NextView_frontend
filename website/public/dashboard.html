@@ -354,6 +354,8 @@
                     listaSeries.push({tituloLista: tituloSerie, notaLista: notaSerie })
                 });
 
+                // alert(listaSeries[1].tituloLista)
+
                 chartSeries.setOption({
                     xAxis: {
                         data: [
@@ -524,7 +526,7 @@
             nameGap: 26,
             nameTextStyle: { color: 'white', fontSize: 10 },
             axisLabel: {
-                color: 'white',
+                color: 'white', fontSize: 9.5,
             },
         },
         yAxis: {
@@ -559,10 +561,10 @@
             data: ['S1', 'S2', 'S3', 'S4', 'S5'],
             name: 'Série',
             nameLocation: 'middle',
-            nameGap: 26,
+            nameGap: 24,
             nameTextStyle: { color: 'white', fontSize: 10 },
             axisLabel: {
-                color: 'white',
+                color: 'white', fontSize: 9.5
             },
         },
         yAxis: {
