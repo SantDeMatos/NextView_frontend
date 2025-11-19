@@ -407,9 +407,6 @@
             });
     }
 
-
-
-
     const paginaAtual = window.location.pathname.split("/").pop();
 
     const links = document.querySelectorAll("#menu a");
@@ -435,7 +432,7 @@
             document.getElementById(editDaVez).disabled = true;
             document.getElementById(editDaVez + '-item').classList.remove('active');
         }
-
+        
         const input = document.getElementById(id);
         const item = document.getElementById(id + '-item');
         input.disabled = false;

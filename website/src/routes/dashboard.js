@@ -19,5 +19,8 @@ router.get("/diretorDoMomento", function (req, res) {
     dashboardController.diretorDoMomento(req, res);
 });
 
+router.get("/atorDoMomento", function (req, res) {
+    dashboardController.atorDoMomento(req, res);
+});
 
 module.exports = router;

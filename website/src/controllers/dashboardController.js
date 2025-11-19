@@ -32,10 +32,19 @@ function diretorDoMomento(req, res) {
     })
 }
 
+function atorDoMomento(req, res) {
+    dashboardModel.atorDoMomento().then(function (resultado) {
+        res.status(200).json(resultado);
+    }).catch(function (erro) {
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 
 module.exports = {
     listarGeneros,
     listarFilmesTop,
     listarSeriesTop,
-    diretorDoMomento
+    diretorDoMomento,
+    atorDoMomento
 }
