@@ -590,6 +590,14 @@ html {
     transform: scale(1.1);
 }
 
+#msg_erro {
+    display: none;
+    color: rgb(203, 26, 26);
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+}
+
 /* Responsivividade */
 @media screen and (min-width: 320px) and (max-width: 375px) {
 
@@ -838,6 +846,10 @@ html {
         font-size: 11px;
     }
 
+    #msg_erro {
+        font-size: 10px;
+    }
+
 }
 
 @media screen and (min-width: 375px) and (max-width: 425px) {
@@ -1077,6 +1089,11 @@ html {
         height: 22px;
         font-size: 12px;
     }
+
+    #msg_erro {
+        font-size: 12px;
+    }
+
 }
 
 @media screen and (min-width: 425px) and (max-width: 768px) {
@@ -1310,6 +1327,10 @@ html {
         font-size: 13px;
     }
 
+    #msg_erro {
+        font-size: 13px;
+    }
+
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -1487,6 +1508,10 @@ html {
         font-size: 15px;
     }
 
+    #msg_erro {
+        font-size: 13px;
+    }
+
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1330px) {
@@ -1589,6 +1614,10 @@ html {
         width: 120px;
         height: 33px;
         font-size: 16px;
+    }
+
+    #msg_erro {
+        font-size: 14px;
     }
 
 }

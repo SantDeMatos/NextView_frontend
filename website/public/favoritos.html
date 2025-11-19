@@ -132,21 +132,21 @@
 
                         <span>
                             <p>De:</p>
-                            <input id="inputDe" type="number"
+                            <input id="input_de" type="number"
                                 oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                 maxlength="4">
                         </span>
 
                         <span>
                             <p>Até:</p>
-                            <input id="inputAte" type="number"
+                            <input id="input_ate" type="number"
                                 oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                 maxlength="4">
                         </span>
 
-                        <button class="confirm-filter-date" onclick="confimarFiltroData()">Confirmar</button>
+                        <button class="confirm-filter-date" onclick="confirmarFiltroData()">Confirmar</button>
 
-                        <!-- <p class="msg_erro"></p> -->
+                        <p id="msg_erro"></p>
 
                     </div>
 
@@ -414,11 +414,48 @@
 
     }
 
-    function confimarFiltroData() {
+    function confirmarFiltroData() {
 
-        
+        const msgErro = document.getElementById('msg_erro');
+        let inputDe = document.getElementById('input_de').value;
+        let inputAte = document.getElementById('input_ate').value;
 
+        let anoDe = Number(inputDe);
+        let anoAte = Number(inputAte);
 
+        const anoAtual = new Date().getFullYear();
+
+        if (inputDe.trim() === "" || inputAte.trim() === "") {
+            msgErro.textContent = "Preencha os campos!";
+            msgErro.style.display = 'block';
+
+            limparMensagemErro(msgErro);
+            return;
+        }
+
+        if (anoDe < 0 || anoAte < 0 || anoDe > anoAtual || anoAte > anoAtual) {
+            msgErro.textContent = "Data inválida!";
+            msgErro.style.display = 'block';
+
+            limparMensagemErro(msgErro);
+            return;
+        }
+
+        if (anoDe > anoAte) {
+            msgErro.textContent = "Ano inicial deve ser menor que final!";
+            msgErro.style.display = 'block';
+
+            limparMensagemErro(msgErro);
+            return;
+        }
+
+    }
+
+    function limparMensagemErro(msgErro) {
+        setTimeout(() => {
+            msgErro.style.display = "none";
+            msgErro.textContent = "";
+        }, 3000);
     }
 
 </script>
