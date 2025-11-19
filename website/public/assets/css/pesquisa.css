@@ -583,6 +583,11 @@ html {
     border: none;
     color: white;
     font-weight: 500;
+    transition: 0.2s;
+}
+
+.filter-date-content .confirm-filter-date:hover {
+    transform: scale(1.1);
 }
 
 /* Responsivividade */
@@ -1403,10 +1408,83 @@ html {
 
     .pop-up-notification {
         right: 80px;
-        top: 70px;
+        top: 120px;
         width: 240px;
         height: 50px;
         font-size: 14px;
+    }
+
+    .filter {
+        width: 97%;
+    }
+
+    .filter-gender {
+        top: 5px;
+        left: 65%;
+    }
+
+    .filter-gender-btn {
+        font-size: 15px;
+    }
+
+    .filter-gender-btn img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .filter-gender-content {
+        top: 30px;
+        left: 0px;
+        width: 120px;
+    }
+
+    .filter-gender-content label {
+        font-size: 14px;
+    }
+
+    .filter-gender-content input {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-date {
+        top: 2px;
+        left: 42%;
+    }
+
+    .filter-date-btn {
+        font-size: 15px;
+    }
+
+    .filter-date-btn img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .filter-date-content {
+        top: 30px;
+        left: 0px;
+        width: 180px;
+        gap: 1em;
+    }
+
+    .filter-date-content span {
+        gap: 10px;
+    }
+
+    .filter-date-content p {
+        font-size: 15px;
+    }
+
+    .filter-date-content input {
+        width: 110px;
+        height: 22px;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 110px;
+        height: 28px;
+        font-size: 15px;
     }
 
 }
@@ -1435,5 +1513,82 @@ html {
         font-size: 0.9em;
     }
 
+    .pop-up-notification {
+        top: 120px;
+        right: 120px;
+    }
+
+    .filter {
+        width: 95%;
+    }
+
+    .filter-gender {
+        top: 5px;
+        left: 67%;
+    }
+
+    .filter-gender-btn {
+        font-size: 16px;
+    }
+
+    .filter-gender-btn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-gender-content {
+        top: 35px;
+        left: 0px;
+        width: 140px;
+    }
+
+    .filter-gender-content label {
+        font-size: 16px;
+    }
+
+    .filter-gender-content input {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-date {
+        top: 2px;
+        left: 43%;
+    }
+
+    .filter-date-btn {
+        font-size: 16px;
+    }
+
+    .filter-date-btn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-date-content {
+        top: 30px;
+        left: 0px;
+        width: 195px;
+        gap: 0.7em;
+    }
+
+    .filter-date-content span {
+        gap: 10px;
+    }
+
+    .filter-date-content p {
+        font-size: 16px;
+    }
+
+    .filter-date-content input {
+        width: 120px;
+        height: 23px;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 120px;
+        height: 33px;
+        font-size: 16px;
+    }
 
 }

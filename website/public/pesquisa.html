@@ -138,12 +138,16 @@
 
                         <span>
                             <p>De:</p>
-                            <input type="number" id="">
+                            <input id="inputDe" type="number"
+                                oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                maxlength="4">
                         </span>
 
                         <span>
                             <p>Até:</p>
-                            <input type="number" id="">
+                            <input id="inputAte" type="number"
+                                oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                maxlength="4">
                         </span>
 
                         <button class="confirm-filter-date" onclick="confirmarFiltroData()">Confirmar</button>
@@ -467,7 +471,7 @@
     }
 
     function confirmarFiltroData() {
-        
+
     }
 
 </script>

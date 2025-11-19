@@ -708,181 +708,91 @@ html {
         padding-left: 50px;
     }
 
+    .pesquisa-table {
+        margin-top: 10px;
+    }
+
     .pop-up-notification {
         right: 40px;
-        top: 70px;
+        top: 100px;
         width: 140px;
         height: 25px;
         font-size: 10px;
     }
 
     .filter {
-        background-color: #f2f0f0;
-        width: 93%;
-        height: 40px;
-        border-bottom: solid 2px rgba(0, 0, 0, 0.145);
-        display: flex;
-        align-items: center;
+        width: 97%;
+        height: max-content;
+        margin-top: 15px;
     }
 
     .filter-gender {
-        width: max-content;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        left: 68%;
-        margin-bottom: 10px;
+        top: 5px;
+        left: 47%;
     }
 
     .filter-gender-btn {
-        background: none;
-        border: none;
-        font-size: 18px;
-        color: #8d8a8a;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        height: 100%;
-        width: 100%;
+        font-size: 10px;
     }
 
     .filter-gender-btn img {
-        width: 17px;
-        height: 17px;
-    }
-
-    .filter-gender-btn p {
-        margin: 0;
+        width: 11px;
+        height: 11px;
     }
 
     .filter-gender-content {
-        position: absolute;
-        top: 40px;
+        top: 30px;
         left: 0px;
-        width: 180px;
-        background: white;
-        padding: 12px 10px;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        display: none;
+        width: 80px;
     }
 
     .filter-gender-content label {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 4px;
-        font-size: 16px;
-        color: #555;
-        cursor: pointer;
-    }
-
-    .filter-gender-content label input[type="checkbox"] {
-        accent-color: #0033FF;
+        font-size: 10px;
     }
 
     .filter-gender-content input {
-        width: 18px;
-        height: 18px;
-    }
-
-    .filter-gender-content hr {
-        border: none;
-        border-top: 1px solid #e1e1e1;
-        margin: 6px 0;
+        width: 13px;
+        height: 13px;
     }
 
     .filter-date {
-        width: max-content;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        left: 45%;
+        left: 22%;
     }
 
     .filter-date-btn {
-        background: none;
-        border: none;
-        font-size: 18px;
-        color: #8d8a8a;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        height: 100%;
-        width: 100%;
+        font-size: 10px;
     }
 
     .filter-date-btn img {
-        width: 17px;
-        height: 17px;
-    }
-
-    .filter-date-btn p {
-        margin: 0;
+        width: 11px;
+        height: 11px;
     }
 
     .filter-date-content {
-        position: absolute;
-        top: 40px;
+        top: 30px;
         left: 0px;
-        width: 250px;
-        height: max-content;
-        background: white;
-        padding: 30px 15px;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1.6em;
+        width: 120px;
+        gap: 0.7em;
     }
 
     .filter-date-content span {
-        display: flex;
-        align-items: center;
-        gap: 15px;
+        gap: 8px;
     }
 
     .filter-date-content p {
-        font-weight: 600;
-        color: #0033FF;
+        font-size: 10px;
     }
 
     .filter-date-content input {
-        border-radius: 20px;
-        height: 25px;
-        padding-left: 15px;
-        border: solid 2px rgba(0, 0, 0, 0.397);
-    }
-
-    .filter-date-content input:focus {
-        border: solid 3px #0033FF;
-        outline: none;
+        width: 80px;
+        height: 12px;
     }
 
     .filter-date-content .confirm-filter-date {
-        width: 150px;
-        height: 35px;
-        border-radius: 10px;
-        background-color: #0033FF;
-        border: none;
-        color: white;
-        font-weight: 500;
-        cursor: pointer;
-        transition: 0.2s;
+        width: 90px;
+        height: 20px;
+        font-size: 11px;
     }
-
-    .filter-date-content .confirm-filter-date:hover {
-        transform: scale(1.1);
-    }
-
 }
 
 @media screen and (min-width: 375px) and (max-width: 425px) {
@@ -1033,13 +943,92 @@ html {
         padding-left: 50px;
     }
 
+    .pesquisa-table {
+        margin-top: 10px;
+    }
+
     .pop-up-notification {
-        right: 45px;
-        top: 70px;
+        right: 40px;
+        top: 120px;
         width: 150px;
         height: 35px;
         font-size: 10px;
     }
+
+    .filter {
+        width: 97%;
+        height: max-content;
+        margin-top: 17px;
+    }
+
+    .filter-gender {
+        top: 5px;
+        left: 53%;
+    }
+
+    .filter-gender-btn {
+        font-size: 11px;
+    }
+
+    .filter-gender-btn img {
+        width: 12px;
+        height: 12px;
+    }
+
+    .filter-gender-content {
+        top: 30px;
+        left: 0px;
+        width: 90px;
+    }
+
+    .filter-gender-content label {
+        font-size: 11px;
+    }
+
+    .filter-gender-content input {
+        width: 14px;
+        height: 14px;
+    }
+
+    .filter-date {
+        left: 28%;
+    }
+
+    .filter-date-btn {
+        font-size: 11px;
+    }
+
+    .filter-date-btn img {
+        width: 12px;
+        height: 12px;
+    }
+
+    .filter-date-content {
+        top: 30px;
+        left: 0px;
+        width: 120px;
+        gap: 0.7em;
+    }
+
+    .filter-date-content span {
+        gap: 8px;
+    }
+
+    .filter-date-content p {
+        font-size: 11px;
+    }
+
+    .filter-date-content input {
+        width: 80px;
+        height: 15px;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 90px;
+        height: 22px;
+        font-size: 12px;
+    }
+
 }
 
 @media screen and (min-width: 425px) and (max-width: 768px) {
@@ -1181,13 +1170,91 @@ html {
         padding-left: 45px;
     }
 
+    .pesquisa-table {
+        margin-top: 10px;
+    }
+
     .pop-up-notification {
         right: 60px;
-        top: 80px;
+        top: 130px;
         width: 180px;
         height: 40px;
         font-size: 12px;
-        opacity: 0;
+    }
+
+    .filter {
+        width: 97%;
+        height: max-content;
+        margin-top: 17px;
+    }
+
+    .filter-gender {
+        top: 5px;
+        left: 56%;
+    }
+
+    .filter-gender-btn {
+        font-size: 12px;
+    }
+
+    .filter-gender-btn img {
+        width: 13px;
+        height: 13px;
+    }
+
+    .filter-gender-content {
+        top: 30px;
+        left: 0px;
+        width: 100px;
+    }
+
+    .filter-gender-content label {
+        font-size: 13px;
+    }
+
+    .filter-gender-content input {
+        width: 15px;
+        height: 15px;
+    }
+
+    .filter-date {
+        top: 2px;
+        left: 33%;
+    }
+
+    .filter-date-btn {
+        font-size: 12px;
+    }
+
+    .filter-date-btn img {
+        width: 13px;
+        height: 13px;
+    }
+
+    .filter-date-content {
+        top: 30px;
+        left: 0px;
+        width: 140px;
+        gap: 0.7em;
+    }
+
+    .filter-date-content span {
+        gap: 8px;
+    }
+
+    .filter-date-content p {
+        font-size: 12px;
+    }
+
+    .filter-date-content input {
+        width: 80px;
+        height: 15px;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 90px;
+        height: 22px;
+        font-size: 13px;
     }
 
 }
@@ -1288,10 +1355,83 @@ html {
 
     .pop-up-notification {
         right: 80px;
-        top: 70px;
+        top: 120px;
         width: 240px;
         height: 50px;
         font-size: 14px;
+    }
+
+    .filter {
+        width: 97%;
+    }
+
+    .filter-gender {
+        top: 5px;
+        left: 65%;
+    }
+
+    .filter-gender-btn {
+        font-size: 15px;
+    }
+
+    .filter-gender-btn img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .filter-gender-content {
+        top: 30px;
+        left: 0px;
+        width: 120px;
+    }
+
+    .filter-gender-content label {
+        font-size: 14px;
+    }
+
+    .filter-gender-content input {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-date {
+        top: 2px;
+        left: 42%;
+    }
+
+    .filter-date-btn {
+        font-size: 15px;
+    }
+
+    .filter-date-btn img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .filter-date-content {
+        top: 30px;
+        left: 0px;
+        width: 180px;
+        gap: 1em;
+    }
+
+    .filter-date-content span {
+        gap: 10px;
+    }
+
+    .filter-date-content p {
+        font-size: 15px;
+    }
+
+    .filter-date-content input {
+        width: 110px;
+        height: 22px;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 110px;
+        height: 28px;
+        font-size: 15px;
     }
 
 }
@@ -1320,5 +1460,82 @@ html {
         font-size: 0.9em;
     }
 
+    .pop-up-notification {
+        top: 120px;
+        right: 120px;
+    }
+
+    .filter {
+        width: 95%;
+    }
+
+    .filter-gender {
+        top: 5px;
+        left: 67%;
+    }
+
+    .filter-gender-btn {
+        font-size: 16px;
+    }
+
+    .filter-gender-btn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-gender-content {
+        top: 35px;
+        left: 0px;
+        width: 140px;
+    }
+
+    .filter-gender-content label {
+        font-size: 16px;
+    }
+
+    .filter-gender-content input {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-date {
+        top: 2px;
+        left: 43%;
+    }
+
+    .filter-date-btn {
+        font-size: 16px;
+    }
+
+    .filter-date-btn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-date-content {
+        top: 30px;
+        left: 0px;
+        width: 195px;
+        gap: 0.7em;
+    }
+
+    .filter-date-content span {
+        gap: 10px;
+    }
+
+    .filter-date-content p {
+        font-size: 16px;
+    }
+
+    .filter-date-content input {
+        width: 120px;
+        height: 23px;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 120px;
+        height: 33px;
+        font-size: 16px;
+    }
 
 }
