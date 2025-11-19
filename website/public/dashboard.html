@@ -203,6 +203,7 @@
     window.onload = buscarDados();
     window.onload = buscarDadosGenero();
     window.onload = buscarFilmesTop();
+    window.onload = buscarSeriesTop();
 
     var listaGeneros = [];
 
@@ -290,7 +291,7 @@
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("Erro ao buscar dados de generos");
+                    throw new Error("Erro ao buscar os filmes mais assistidos");
                 }
                 return response.json();
             })
@@ -327,7 +328,58 @@
 
             })
             .catch(error => {
-                console.error("Erro ao buscar dados de generos 2:", error);
+                console.error("Erro ao buscar dados dos filmes 2:", error);
+            });
+    }
+
+    function buscarSeriesTop() {
+        var listaSeries = [];
+        var tituloSerie = '';
+        var notaSerie;
+
+        fetch(`/dashboard/listarSeriesTop`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar as séries mais assistidas");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                dashs.forEach(dados => {
+                    tituloSerie = dados.tituloConteudo;
+                    notaSerie = dados.notaConteudo;
+
+                    listaSeries.push({tituloLista: tituloSerie, notaLista: notaSerie })
+                });
+
+                chartSeries.setOption({
+                    xAxis: {
+                        data: [
+                            listaSeries[0].tituloLista,
+                            listaSeries[1].tituloLista,
+                            listaSeries[2].tituloLista,
+                            listaSeries[3].tituloLista,
+                            listaSeries[4].tituloLista,
+                        ],     
+                    },
+                    series: [{
+                        data: [
+                            listaSeries[0].notaLista,
+                            listaSeries[1].notaLista,
+                            listaSeries[2].notaLista,
+                            listaSeries[3].notaLista,
+                            listaSeries[4].notaLista
+                        ],
+                    }],
+                    grid: { left: 70, right: 50, top: '10%', bottom: 35 },
+                    tooltip: {}
+                });
+
+            })
+            .catch(error => {
+                console.error("Erro ao buscar dados das séries 2:", error);
             });
     }
 
@@ -501,12 +553,6 @@
 
     var chartSeries = echarts.init(document.getElementById('chart-series'));
     chartSeries.setOption({
-        // legend: {
-        //     top: '8%',
-        //     left: 'center',
-        //     orient: 'horizontal',
-        //     textStyle: { color: '#05009A' }
-        // },
         title: { show: false },
         xAxis: {
             type: 'category',

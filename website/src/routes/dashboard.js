@@ -11,6 +11,10 @@ router.get("/listarFilmesTop", function (req, res) {
     dashboardController.listarFilmesTop(req, res);
 });
 
+router.get("/listarSeriesTop", function (req, res) {
+    dashboardController.listarSeriesTop(req, res);
+});
+
 
 
 module.exports = router;

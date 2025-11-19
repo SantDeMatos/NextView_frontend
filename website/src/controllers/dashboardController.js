@@ -16,8 +16,17 @@ function listarFilmesTop(req, res) {
     })
 }
 
+function listarSeriesTop(req, res) {
+    dashboardModel.listarSeriesTop().then(function (resultado) {
+        res.status(200).json(resultado);
+    }).catch(function (erro) {
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 
 module.exports = {
     listarGeneros,
-    listarFilmesTop
+    listarFilmesTop,
+    listarSeriesTop
 }
