@@ -135,7 +135,7 @@
                     <img src="assets/imgs/projetor-de-cinema.png" alt="">
                     <div class="info-text">
                         <h1>Diretor do momento</h1>
-                        <p>Kiyoshi Kurosawa</p>
+                        <p id="diretorMomento"></p>
                     </div>
 
                 </div>
@@ -204,6 +204,7 @@
     window.onload = buscarDadosGenero();
     window.onload = buscarFilmesTop();
     window.onload = buscarSeriesTop();
+    window.onload = buscarDiretorMomento();
 
     var listaGeneros = [];
 
@@ -384,6 +385,29 @@
                 console.error("Erro ao buscar dados das séries 2:", error);
             });
     }
+
+    function buscarDiretorMomento() {
+        fetch(`/dashboard/diretorDoMomento`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar diretor do momento");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                dashs.forEach(dados => {
+                    var diretor = dados.diretorConteudo;
+                    document.getElementById("diretorMomento").innerHTML = diretor;
+                });    
+            })
+            .catch(error => {
+                console.error("Erro ao buscar diretor do momento 2:", error);
+            });
+    }
+
+
 
 
     const paginaAtual = window.location.pathname.split("/").pop();
