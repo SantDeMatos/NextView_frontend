@@ -28,19 +28,20 @@ function listarSeriesTop() {
 
 function diretorDoMomento() {
     var instrucao = `
-        select
-        diretorConteudo,
-        COUNT(*) as total,
-        (
+   select
+    diretorConteudo,
+    COUNT(*) as total,
+    (
         (avg(numVotosCont) / (avg(numVotosCont) + 1000)) * avg(notaConteudo) +
-        (1000 / (avg(numVotosCont) + 1000)) * (select avg(notaConteudo) from conteudo)
-        ) as notaPonderada
-        from Conteudo
-        where dtLancamentoCont > '2020-01-01' 
-        and numVotosCont >= 200
-        and diretorConteudo != ''
-        group by diretorConteudo
-        order by total desc limit 1;
+        (1000 / (avg(numVotosCont) + 1000)) * (select avg(notaConteudo) from Conteudo)
+    ) as notaPonderada
+from Conteudo
+where dtLancamentoCont > '2020-01-01' 
+  and numVotosCont >= 200
+  and diretorConteudo != ''
+group by diretorConteudo
+order by total desc limit 1;
+
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);

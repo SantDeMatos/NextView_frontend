@@ -125,7 +125,7 @@
                     <img src="assets/imgs/perfil-branco.png" alt="">
                     <div class="info-text">
                         <h1>Ator do momento</h1>
-                        <p>Bob Odenkirk</p>
+                        <p id="atorMomento"></p>
                     </div>
 
                 </div>
@@ -205,11 +205,10 @@
     window.onload = buscarFilmesTop();
     window.onload = buscarSeriesTop();
     window.onload = buscarDiretorMomento();
-
-    var listaGeneros = [];
+    window.onload = buscarAtorMomento();
 
     function buscarDadosGenero() {
-
+        var listaGeneros = [];
         var texto = '';
         var lista = []
 
@@ -301,7 +300,7 @@
                     tituloFilme = dados.tituloConteudo;
                     notaFilme = dados.notaConteudo;
 
-                    listaFilmes.push({tituloLista: tituloFilme, notaLista: notaFilme })
+                    listaFilmes.push({ tituloLista: tituloFilme, notaLista: notaFilme })
                 });
 
                 chartFilmes.setOption({
@@ -312,7 +311,7 @@
                             listaFilmes[2].tituloLista,
                             listaFilmes[3].tituloLista,
                             listaFilmes[4].tituloLista,
-                        ],     
+                        ],
                     },
                     series: [{
                         data: [
@@ -352,7 +351,7 @@
                     tituloSerie = dados.tituloConteudo;
                     notaSerie = dados.notaConteudo;
 
-                    listaSeries.push({tituloLista: tituloSerie, notaLista: notaSerie })
+                    listaSeries.push({ tituloLista: tituloSerie, notaLista: notaSerie })
                 });
 
                 // alert(listaSeries[1].tituloLista)
@@ -365,7 +364,7 @@
                             listaSeries[2].tituloLista,
                             listaSeries[3].tituloLista,
                             listaSeries[4].tituloLista,
-                        ],     
+                        ],
                     },
                     series: [{
                         data: [
@@ -400,12 +399,51 @@
                 dashs.forEach(dados => {
                     var diretor = dados.diretorConteudo;
                     document.getElementById("diretorMomento").innerHTML = diretor;
-                });    
+                });
             })
             .catch(error => {
                 console.error("Erro ao buscar diretor do momento 2:", error);
             });
     }
+
+    function buscarAtorMomento() {
+        var texto = '';
+        var lista = []
+        var listaAtores = [];
+
+        fetch(`/dashboard/atorDoMomento`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar dados do ator do momento");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                dashs.forEach(dados => {
+                    texto = dados.atoresConteudo;
+                    var lista = texto.split(", ");
+                    for (var itemDaVez of lista) {
+                        var existe = listaAtores.find(g => g.ator === itemDaVez);
+                        if (existe) {
+                            existe.quantidade += 1;
+                        } else {
+                            listaAtores.push({ ator: itemDaVez, quantidade: 1 });
+                        }
+                    }   
+                });
+                
+                listaAtores.sort((a, b) => b.quantidade - a.quantidade);
+
+                document.getElementById('atorMomento').innerHTML = listaAtores[0].ator;
+
+            })
+            .catch(error => {
+                console.error("Erro ao buscar dados do ator do momento 2:", error);
+            });
+    }
+
 
     const paginaAtual = window.location.pathname.split("/").pop();
 
@@ -432,7 +470,7 @@
             document.getElementById(editDaVez).disabled = true;
             document.getElementById(editDaVez + '-item').classList.remove('active');
         }
-        
+
         const input = document.getElementById(id);
         const item = document.getElementById(id + '-item');
         input.disabled = false;
@@ -612,11 +650,11 @@
         tooltip: {}
     });
 
-    
+
     var chartGeneros = echarts.init(document.getElementById('chart-generos'));
-    
+
     const dataAtual = new Date().toLocaleDateString('pt-BR');
-    
+
     chartGeneros.setOption({
         backgroundColor: '#e4f4fa',
         title: {
