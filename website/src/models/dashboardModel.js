@@ -20,7 +20,7 @@ function listarFilmesTop() {
 
 function listarSeriesTop() {
     var instrucao = `
-        select tituloConteudo, notaConteudo from conteudo where tipoConteudo = "Tv Show" and dtLancamentoCont > '2023-01-01' and numVotosCont > 200 order by notaConteudo desc limit 5;
+        select tituloConteudo, notaConteudo from Conteudo where tipoConteudo = "Tv Show" and dtLancamentoCont > '2023-01-01' and numVotosCont > 200 order by notaConteudo desc limit 5;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
