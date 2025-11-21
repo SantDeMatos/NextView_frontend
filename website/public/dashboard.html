@@ -424,16 +424,15 @@
                 dashs.forEach(dados => {
                     texto = dados.atoresConteudo;
                     var lista = texto.split(", ");
-                    for (var itemDaVez of lista) {
-                        var existe = listaAtores.find(g => g.ator === itemDaVez);
-                        if (existe) {
-                            existe.quantidade += 1;
-                        } else {
-                            listaAtores.push({ ator: itemDaVez, quantidade: 1 });
-                        }
-                    }   
+
+                    var existe = listaAtores.find(g => g.ator === lista[0]);
+                    if (existe) {
+                        existe.quantidade += 1;
+                    } else {
+                        listaAtores.push({ ator: lista[0], quantidade: 1 });
+                    }
                 });
-                
+
                 listaAtores.sort((a, b) => b.quantidade - a.quantidade);
 
                 document.getElementById('atorMomento').innerHTML = listaAtores[0].ator;
@@ -519,6 +518,7 @@
                         sessionStorage.ID_EMPRESA = idRecebido;
                         sessionStorage.TELEFONE_EMPRESA = telefoneRecebido;
                         sessionStorage.CNPJ_EMPRESA = cnpjRecebido;
+                        alert(cnpjRecebido)
                         mostrarPopup("Dados atualizados!", "sucesso");
 
                         if (!editDaVez) return;
