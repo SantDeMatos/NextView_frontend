@@ -44,7 +44,7 @@ function atorDoMomento(req, res) {
 function listarPesquisa(req, res) {
     var ultimoId = req.params.ultimoId;
 
-    viveiroModel.listarPesquisa(ultimoId)
+    dashboardModel.listarPesquisa(ultimoId)
         .then(function (resultado) {
             res.status(200).json(resultado);
         })

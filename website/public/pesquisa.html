@@ -183,127 +183,24 @@
 
             <div class="table-container">
 
-                <table class="pesquisa-table">
+                <table class="pesquisa-table" id="table-container">
                     <thead>
                         <tr>
                             <th>Título <span></span></th>
-                            <th>Data <span></span></th>
+                            <th>Ano De Lançamento <span></span></th>
                             <th>Avaliação <span></span></th>
                             <th>Gênero <span></span></th>
-                            <th></th>
                         </tr>
                     </thead>
 
-                    <tr>
-                        <td><img src="assets/imgs/ion--star-outline.png" class="star"> O Poderoso Chefão</td>
-                        <td>23/12/2022</td>
-                        <td>3.7</td>
-                        <td>drama</td>
-                        <td>24.Jan.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Titanic</td>
-                        <td>28/11/2016</td>
-                        <td>4.0</td>
-                        <td>romance</td>
-                        <td>12.Jun.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star-outline.png" class="star"> Vingadores: Ultimato</td>
-                        <td>11/07/2019</td>
-                        <td>4.8</td>
-                        <td>ação</td>
-                        <td>5.Jan.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Parasita</td>
-                        <td>09/02/2020</td>
-                        <td>4.9</td>
-                        <td>drama</td>
-                        <td>7.Mar.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Interestelar</td>
-                        <td>22/04/2015</td>
-                        <td>4.3</td>
-                        <td>ficção</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star-outline.png" class="star"> Corra!</td>
-                        <td>19/04/2017</td>
-                        <td>4.7</td>
-                        <td>terror</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> La La Land</td>
-                        <td>20/09/2016</td>
-                        <td>4.3</td>
-                        <td>romance</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Inception</td>
-                        <td>04/08/2010</td>
-                        <td>4.8</td>
-                        <td>suspense</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star-outline.png" class="star"> 007: Operação Skyfall</td>
-                        <td>11/01/2012</td>
-                        <td>4.1</td>
-                        <td>ação</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star-outline.png" class="star"> O Iluminado</td>
-                        <td>24/10/1980</td>
-                        <td>4.2</td>
-                        <td>terror</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Me Chame Pelo Seu Nome</td>
-                        <td>01/07/2017</td>
-                        <td>3.9</td>
-                        <td>romance</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Me Chame Pelo Seu Nome</td>
-                        <td>01/07/2017</td>
-                        <td>3.9</td>
-                        <td>romance</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Me Chame Pelo Seu Nome</td>
-                        <td>01/07/2017</td>
-                        <td>3.9</td>
-                        <td>romance</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Me Chame Pelo Seu Nome</td>
-                        <td>01/07/2017</td>
-                        <td>3.9</td>
-                        <td>romance</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
                 </table>
 
-                <button class="btn-ver-mais">Ver mais...</button>
+                <button onclick="listarConteudos()" class="btn-ver-mais">Ver mais...</button>
 
             </div>
 
         </main>
-        
+
     </div>
 
 </body>
@@ -319,6 +216,11 @@
 </script>
 
 <script>
+    var ultimoId = 0;
+
+
+    window.onload = listarConteudos();
+    window.onload = buscarDados();
 
     function buscarDados() {
         document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
@@ -327,8 +229,40 @@
         document.getElementById("email").value = sessionStorage.EMAIL_EMPRESA;
     }
 
-    window.onload = buscarDados();
 
+    function listarConteudos() {
+        fetch(`/dashboard/listarPesquisa/${ultimoId}`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar diretor do momento");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                var data = ""
+                dashs.forEach(dados => {
+                    var data = dados.dtLancamentoCont
+                    var partes = data.split('-');
+                    var ano = partes[0];
+
+                    document.getElementById("table-container").innerHTML +=
+                        `
+                    <tr>
+                        <td><img src="assets/imgs/ion--star-outline.png" class="star">${dados.tituloConteudo}</td>
+                        <td>${ano}</td>
+                        <td>${dados.notaConteudo}</td>
+                        <td>${dados.generosConteudo}</td>
+                    </tr>
+                    `
+                });
+            })
+        ultimoId += 50
+            .catch(error => {
+                console.error("Erro ao buscar diretor do momento 2:", error);
+            });
+    }
 
     //filtra os filmes que estão na lista com base no que digita no input
     document.getElementById('searchInput').addEventListener('input', function () {
@@ -343,9 +277,6 @@
             }
         });
     });
-</script>
-
-<script>
 
     const paginaAtual = window.location.pathname.split("/").pop();
 

@@ -23,7 +23,7 @@ router.get("/atorDoMomento", function (req, res) {
     dashboardController.atorDoMomento(req, res);
 });
 
-router.get("/listarPesquisa/: ultimoId", function (req, res) {
+router.get("/listarPesquisa/:ultimoId", function (req, res) {
     dashboardController.listarPesquisa(req, res);
 });
 
