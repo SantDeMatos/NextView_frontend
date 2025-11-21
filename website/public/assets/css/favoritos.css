@@ -1,1596 +1,1621 @@
-body,
-html {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-.dashboard-container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-}
-
-.sidebar {
-    width: 260px;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 3em;
-    box-shadow: 4px 0 5px rgba(0, 0, 0, 0.3);
-    transition: left 0.4s ease;
-    z-index: 998;
-}
-
-.sidebar #menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 2em;
-    width: 85%;
-    display: flex;
-    list-style: none;
-}
-
-.sidebar li {
-    width: 100%;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.sidebar li a {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 0px 10px;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
-    color: inherit;
-    box-sizing: border-box;
-    border-radius: 10px;
-    font-weight: 600;
-    color: #0033FF;
-}
-
-.sidebar img {
-    width: 28px;
-    height: 28px;
-}
-
-.sidebar #logo {
-    width: 170px;
-    height: 45px;
-}
-
-.sidebar a:hover {
-    background-color: #eee;
-}
-
-.sidebar a.ativo {
-    background-color: #0033FF;
-    color: white;
-    font-weight: 600;
-}
-
-.sidebar a.ativo img {
-    filter: brightness(0) invert(1);
-}
-
-.pesquisa-main {
-    flex: 1;
-    background: #fff;
-    padding: 2.5em 3em;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    background-color: #f2f0f0;
-}
-
-.pesquisa-header {
-    display: flex;
-    align-items: center;
-    gap: 2em;
-    margin-bottom: 2em;
-}
-
-.pesquisa-title {
-    font-size: 1.5em;
-    font-weight: 700;
-    color: #05009A;
-}
-
-.table-container {
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    margin-top: 1em;
-}
-
-.table-container::-webkit-scrollbar {
-    width: 8px;              /* largura do scroll */
-}
-
-.table-container::-webkit-scrollbar-track {
-    background: #ffffff;      /* fundo do trilho */
-    border-radius: 15px;
-    border: solid 1px rgba(0, 0, 0, 0.47);
-}
-
-.table-container::-webkit-scrollbar-thumb {
-    background: #001f99;      /* cor da barra */
-    border-radius: 15px;
-}
-
-.pesquisa-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1.5em;
-    font-family: 'Poppins', sans-serif;
-}
-
-.pesquisa-table thead th {
-    color: #0033FF;
-    font-size: 1em;
-    font-weight: 600;
-    text-align: left;
-    padding-bottom: 0.7em;
-    background: #f2f0f0;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.pesquisa-table thead th span {
-    font-size: 0.8em;
-    margin-left: 0.2em;
-}
-
-.pesquisa-table tbody td {
-    color: #05009A;
-    font-size: 1.1em;
-    font-weight: 500;
-    padding: 0.7em 0;
-    border-bottom: 1px solid #f0f0f0;
-    vertical-align: middle;
-}
-
-.pesquisa-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-.star {
-    width: 18px;
-    height: 18px;
-    margin-right: 0.5em;
-    vertical-align: middle;
-}
-
-/* Perfil */
-
-.container-perfil {
-    width: max-content;
-    height: 45px;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    gap: 10px;
-    position: absolute;
-    z-index: 101;
-    top: 12px;
-    right: 30px;
-}
-
-.container-perfil button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.container-perfil button img {
-    width: 45px;
-    height: 45px;
-    margin-right: 10px;
-}
-
-.card-perfil:not(.ativo) {
-    pointer-events: none;
-}
-
-.container-perfil p {
-    font-size: 17px;
-    color: #0033FF;
-    font-weight: 500;
-}
-
-.card-perfil {
-    width: 400px;
-    height: 450px;
-    border-radius: 20px;
-    background-color: white;
-    border: solid 3px #0033FF;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 100;
-    top: 60px;
-    right: 50px;
-    opacity: 0;
-    transform: translateY(-15px);
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
-}
-
-.card-perfil.ativo {
-    opacity: 1;
-    transform: translateY(0);
-    visibility: visible;
-    pointer-events: all;
-}
-
-.card-perfil h1 {
-    font-size: 20px;
-    color: #0033FF;
-}
-
-.card-perfil hr {
-    width: 80%;
-    height: 2px;
-    background-color: rgba(0, 0, 0, 0.367);
-    border: none;
-    margin: 0;
-}
-
-.container-card-info {
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.container-card-info h2 {
-    text-align: center;
-    color: #0043ff;
-    font-size: 20px;
-    margin-bottom: 15px;
-}
-
-.info-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f6f7ff;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 10px 14px;
-    margin-top: 20px;
-    transition: 0.2s;
-    width: 80%;
-}
-
-.info-item.active {
-    border-color: #0043ff;
-    background: #eef3ff;
-}
-
-.info-item label {
-    font-size: 13px;
-    color: #0043ff;
-    display: block;
-    font-weight: 600;
-}
-
-.info-item input {
-    border: none;
-    background: transparent;
-    font-size: 14px;
-    outline: none;
-    width: 180px;
-    color: #333;
-}
-
-.info-item input:disabled {
-    color: #777;
-}
-
-.edit-icon {
-    cursor: pointer;
-    color: #0043ff;
-    transition: 0.2s;
-}
-
-.edit-icon:hover {
-    transform: scale(1.1);
-}
-
-.edit-icon .icon-pencil {
-    width: 22px;
-    height: 22px;
-    border-radius: 0;
-    padding: 0;
-}
-
-.confirm-btn {
-    width: 40%;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    background: #0043ff;
-    color: white;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 20px;
-}
-
-.confirm-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
-
-/* pop-up */
-.pop-up-notification {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 101;
-    right: 60px;
-    top: 70px;
-    width: 250px;
-    height: 50px;
-    background-color: rgb(120, 240, 120);
-    border-radius: 15px;
-    font-weight: 400;
-    font-size: 15px;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-    color: black;
-}
-
-.pop-up-notification.show {
-    opacity: 1;
-}
-
-.pop-up-success {
-    background-color: rgb(120, 240, 120);
-}
-
-.pop-up-error {
-    background-color: rgb(223, 83, 83);
-}
-
-/* Menu hambúrguer */
-#btn_menu_abrir {
-    display: none;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 998;
-}
-
-#btn_menu_abrir img {
-    width: 32px;
-    height: 32px;
-}
-
-/* Quando aberto */
-.sidebar.aberto {
-    left: 0;
-}
-
-#btn_menu_fechar {
-    display: none;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-#btn_menu_fechar img {
-    width: 25px;
-    height: 25px;
-}
-
-/* Filtros */
-.filter {
-    background-color: #f2f0f0;
-    width: 93%;
-    height: 40px;
-    border-bottom: solid 2px rgba(0, 0, 0, 0.145);
-    display: flex;
-    align-items: center;
-}
-
-.filter-gender {
-    width: max-content;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: 68%;
-    margin-bottom: 10px;
-}
-
-.filter-gender-btn {
-    background: none;
-    border: none;
-    font-size: 18px;
-    color: #8d8a8a;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    height: 100%;
-    width: 100%;
-}
-
-.filter-gender-btn img {
-    width: 17px;
-    height: 17px;
-}
-
-.filter-gender-btn p {
-    margin: 0;
-}
-
-.filter-gender-content {
-    position: absolute;
-    top: 40px;
-    left: 0px;
-    z-index: 11;
-    width: 180px;
-    background: white;
-    padding: 12px 10px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    display: none;
-}
-
-.filter-gender-content label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 4px;
-    font-size: 16px;
-    color: #555;
-    cursor: pointer;
-}
-
-.filter-gender-content label input[type="checkbox"] {
-    accent-color: #0033FF;
-}
-
-.filter-gender-content input {
-    width: 18px;
-    height: 18px;
-}
-
-.filter-gender-content hr {
-    border: none;
-    border-top: 1px solid #e1e1e1;
-    margin: 6px 0;
-}
-
-.filter-date {
-    width: max-content;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: 45%;
-}
-
-.filter-date-btn {
-    background: none;
-    border: none;
-    font-size: 18px;
-    color: #8d8a8a;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    height: 100%;
-    width: 100%;
-}
-
-.filter-date-btn img {
-    width: 17px;
-    height: 17px;
-}
-
-.filter-date-btn p {
-    margin: 0;
-}
-
-.filter-date-content {
-    position: absolute;
-    top: 40px;
-    left: 0px;
-    z-index: 11;
-    width: 250px;
-    height: max-content;
-    background: white;
-    padding: 30px 15px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.6em;
-}
-
-.filter-date-content span {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.filter-date-content p {
-    font-weight: 600;
-    color: #0033FF;
-}
-
-.filter-date-content input {
-    border-radius: 20px;
-    height: 25px;
-    padding-left: 15px;
-    border: solid 2px rgba(0, 0, 0, 0.397);
-}
-
-.filter-date-content input:focus {
-    border: solid 3px #0033FF;
-    outline: none;
-}
-
-.filter-date-content .confirm-filter-date {
-    width: 150px;
-    height: 35px;
-    border-radius: 10px;
-    background-color: #0033FF;
-    border: none;
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.filter-date-content .confirm-filter-date:hover {
-    transform: scale(1.1);
-}
-
-#msg_erro {
-    display: none;
-    color: rgb(203, 26, 26);
-    font-weight: 600;
-    font-size: 15px;
-    text-align: center;
-}
-
-/* Responsivividade */
-@media screen and (min-width: 320px) and (max-width: 375px) {
-
+    body,
+    html {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .dashboard-container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+    }
+
+    .sidebar {
+        width: 260px;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 3em;
+        box-shadow: 4px 0 5px rgba(0, 0, 0, 0.3);
+        transition: left 0.4s ease;
+        z-index: 998;
+    }
+
+    .sidebar #menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2em;
+        width: 85%;
+        display: flex;
+        list-style: none;
+    }
+
+    .sidebar li {
+        width: 100%;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .sidebar li a {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 0px 10px;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: inherit;
+        box-sizing: border-box;
+        border-radius: 10px;
+        font-weight: 600;
+        color: #0033FF;
+    }
+
+    .sidebar img {
+        width: 28px;
+        height: 28px;
+    }
+
+    .sidebar #logo {
+        width: 170px;
+        height: 45px;
+    }
+
+    .sidebar a:hover {
+        background-color: #eee;
+    }
+
+    .sidebar a.ativo {
+        background-color: #0033FF;
+        color: white;
+        font-weight: 600;
+    }
+
+    .sidebar a.ativo img {
+        filter: brightness(0) invert(1);
+    }
+
+    .pesquisa-main {
+        flex: 1;
+        background: #fff;
+        padding: 2.5em 3em;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        background-color: #f2f0f0;
+    }
+
+    .pesquisa-header {
+        display: flex;
+        align-items: center;
+        gap: 2em;
+        margin-bottom: 2em;
+    }
+
+    .pesquisa-title {
+        font-size: 1.5em;
+        font-weight: 700;
+        color: #05009A;
+    }
+
+    .table-container {
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        margin-top: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .table-container::-webkit-scrollbar {
+        width: 8px;
+        /* largura do scroll */
+    }
+
+    .table-container::-webkit-scrollbar-track {
+        background: #ffffff;
+        /* fundo do trilho */
+        border-radius: 15px;
+        border: solid 1px rgba(0, 0, 0, 0.47);
+    }
+
+    .table-container::-webkit-scrollbar-thumb {
+        background: #001f99;
+        /* cor da barra */
+        border-radius: 15px;
+    }
+
+    .pesquisa-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.5em;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .pesquisa-table thead th {
+        color: #0033FF;
+        font-size: 1em;
+        font-weight: 600;
+        text-align: left;
+        padding-bottom: 0.7em;
+        background: #f2f0f0;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .pesquisa-table thead th span {
+        font-size: 0.8em;
+        margin-left: 0.2em;
+    }
+
+    .pesquisa-table tbody td {
+        color: #05009A;
+        font-size: 1.1em;
+        font-weight: 500;
+        padding: 0.7em 0;
+        border-bottom: 1px solid #f0f0f0;
+        vertical-align: middle;
+    }
+
+    .pesquisa-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .star {
+        width: 18px;
+        height: 18px;
+        margin-right: 0.5em;
+        vertical-align: middle;
+    }
+
+    .btn-ver-mais {
+        width: max-content;
+        font-size: 20px;
+        margin: 10px 20px 20px 0px;
+        cursor: pointer;
+        color: white;
+        font-weight: 600;
+        transition: 0.2s;
+        background-color: #0033FF;
+        border-radius: 10px;
+        border: solid 2px rgba(0, 0, 0, 0.273);
+        padding: 10px 20px;
+        transition: 0.2s;
+    }
+
+    .btn-ver-mais:hover {
+        transform: scale(1.05);
+    }
+
+    /* Perfil */
+
+    .container-perfil {
+        width: max-content;
+        height: 45px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 10px;
+        position: absolute;
+        z-index: 101;
+        top: 12px;
+        right: 30px;
+    }
+
+    .container-perfil button {
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .container-perfil button img {
+        width: 45px;
+        height: 45px;
+        margin-right: 10px;
+    }
+
+    .card-perfil:not(.ativo) {
+        pointer-events: none;
+    }
+
+    .container-perfil p {
+        font-size: 17px;
+        color: #0033FF;
+        font-weight: 500;
+    }
+
+    .card-perfil {
+        width: 400px;
+        height: 450px;
+        border-radius: 20px;
+        background-color: white;
+        border: solid 3px #0033FF;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 100;
+        top: 60px;
+        right: 50px;
+        opacity: 0;
+        transform: translateY(-15px);
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+    }
+
+    .card-perfil.ativo {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+        pointer-events: all;
+    }
+
+    .card-perfil h1 {
+        font-size: 20px;
+        color: #0033FF;
+    }
+
+    .card-perfil hr {
+        width: 80%;
+        height: 2px;
+        background-color: rgba(0, 0, 0, 0.367);
+        border: none;
+        margin: 0;
+    }
+
+    .container-card-info {
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-card-info h2 {
+        text-align: center;
+        color: #0043ff;
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .info-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f6f7ff;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 10px 14px;
+        margin-top: 20px;
+        transition: 0.2s;
+        width: 80%;
+    }
+
+    .info-item.active {
+        border-color: #0043ff;
+        background: #eef3ff;
+    }
+
+    .info-item label {
+        font-size: 13px;
+        color: #0043ff;
+        display: block;
+        font-weight: 600;
+    }
+
+    .info-item input {
+        border: none;
+        background: transparent;
+        font-size: 14px;
+        outline: none;
+        width: 180px;
+        color: #333;
+    }
+
+    .info-item input:disabled {
+        color: #777;
+    }
+
+    .edit-icon {
+        cursor: pointer;
+        color: #0043ff;
+        transition: 0.2s;
+    }
+
+    .edit-icon:hover {
+        transform: scale(1.1);
+    }
+
+    .edit-icon .icon-pencil {
+        width: 22px;
+        height: 22px;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .confirm-btn {
+        width: 40%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #0043ff;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 20px;
+    }
+
+    .confirm-btn:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+    }
+
+    /* pop-up */
+    .pop-up-notification {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 101;
+        right: 60px;
+        top: 70px;
+        width: 250px;
+        height: 50px;
+        background-color: rgb(120, 240, 120);
+        border-radius: 15px;
+        font-weight: 400;
+        font-size: 15px;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        color: black;
+    }
+
+    .pop-up-notification.show {
+        opacity: 1;
+    }
+
+    .pop-up-success {
+        background-color: rgb(120, 240, 120);
+    }
+
+    .pop-up-error {
+        background-color: rgb(223, 83, 83);
+    }
+
+    /* Menu hambúrguer */
     #btn_menu_abrir {
-        display: block !important;
-        top: 39px;
+        display: none;
+        position: fixed;
+        top: 15px;
         left: 15px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 998;
     }
 
     #btn_menu_abrir img {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* Quando aberto */
+    .sidebar.aberto {
+        left: 0;
+    }
+
+    #btn_menu_fechar {
+        display: none;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    #btn_menu_fechar img {
         width: 25px;
         height: 25px;
     }
 
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -280px;
-        width: 150px;
-        height: 100vh;
-    }
-
-    .sidebar #logo {
-        width: 110px;
-        height: 30px;
-    }
-
-    .sidebar li a p {
-        font-size: 12px;
-    }
-
-    .sidebar img {
-        width: 18px;
-        height: 18px;
-    }
-
-    #btn_menu_fechar {
+    /* Filtros */
+    .filter {
+        background-color: #f2f0f0;
+        width: 93%;
+        height: 40px;
+        border-bottom: solid 2px rgba(0, 0, 0, 0.145);
         display: flex;
-        top: 15px;
-        right: 5px;
-    }
-
-    #btn_menu_fechar img {
-        width: 20px;
-        height: 20px;
-    }
-
-    .pesquisa-main {
-        overflow-y: auto;
-        padding: 2.5em 0.7em;
-    }
-
-    .pesquisa-table tbody td {
-        font-size: 0.6em;
-        padding-left: 0.5em;
         align-items: center;
     }
 
-    .pesquisa-table thead th {
-        font-size: 0.8em;
-        padding-bottom: 0.7em;
-        padding-left: 0.5em;
-    }
-
-    .star {
-        width: 12px;
-        height: 12px;
-    }
-
-    .container-card-info {
-        width: 230px;
-    }
-
-    .container-perfil {
-        right: 10px;
-        top: 38px;
+    .filter-gender {
         width: max-content;
-        height: max-content;
-    }
-
-    .container-perfil button {
-        width: max-content;
-        height: max-content;
-        padding: 0px;
-    }
-
-    .container-perfil button img {
-        width: 27px;
-        height: 27px;
-        margin: 0;
-    }
-
-    .container-perfil p {
-        font-size: 11px;
+        height: 100%;
         display: flex;
-    }
-
-    .card-perfil {
-        top: 70px;
-        right: 15px;
-        width: 180px;
-        height: 280px;
-    }
-
-    .card-perfil h2 {
-        font-size: 12px;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: 68%;
         margin-bottom: 10px;
     }
 
-    .info-item {
-        padding: 5px 14px;
-        margin-top: 10px;
-        width: 45%;
-    }
-
-    .info-item label {
-        font-size: 10px;
-    }
-
-    .info-item input {
-        width: 90px;
-        font-size: 10px;
-    }
-
-    .edit-icon .icon-pencil {
-        width: 13px;
-        height: 13px;
-    }
-
-    .card-perfil hr {
-        width: 55%;
-        height: 1px;
-    }
-
-    .confirm-btn {
-        margin-top: 9px;
-        height: 20px;
-        padding: 0;
-        font-size: 11px;
-        width: max-content;
-        padding-inline: 5px;
-    }
-
-    .pesquisa-title {
-        font-size: 1.1em;
-        display: none;
-    }
-
-    .pesquisa-header {
-        margin-bottom: 1.3em;
-        padding-left: 50px;
-    }
-
-    .pesquisa-table {
-        margin-top: 10px;
-    }
-
-    .pop-up-notification {
-        right: 40px;
-        top: 100px;
-        width: 140px;
-        height: 25px;
-        font-size: 10px;
-    }
-
-    .filter {
-        width: 97%;
-        height: max-content;
-        margin-top: 15px;
-    }
-
-    .filter-gender {
-        top: 5px;
-        left: 47%;
-    }
-
     .filter-gender-btn {
-        font-size: 10px;
+        background: none;
+        border: none;
+        font-size: 18px;
+        color: #8d8a8a;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        height: 100%;
+        width: 100%;
     }
 
     .filter-gender-btn img {
-        width: 11px;
-        height: 11px;
+        width: 17px;
+        height: 17px;
     }
 
-    .filter-gender-content {
-        top: 30px;
-        left: 0px;
-        width: 80px;
-    }
-
-    .filter-gender-content label {
-        font-size: 10px;
-    }
-
-    .filter-gender-content input {
-        width: 13px;
-        height: 13px;
-    }
-
-    .filter-date {
-        left: 22%;
-    }
-
-    .filter-date-btn {
-        font-size: 10px;
-    }
-
-    .filter-date-btn img {
-        width: 11px;
-        height: 11px;
-    }
-
-    .filter-date-content {
-        top: 30px;
-        left: 0px;
-        width: 120px;
-        gap: 0.7em;
-    }
-
-    .filter-date-content span {
-        gap: 8px;
-    }
-
-    .filter-date-content p {
-        font-size: 10px;
-    }
-
-    .filter-date-content input {
-        width: 80px;
-        height: 12px;
-    }
-
-    .filter-date-content .confirm-filter-date {
-        width: 90px;
-        height: 20px;
-        font-size: 11px;
-    }
-
-    #msg_erro {
-        font-size: 10px;
-    }
-}
-
-@media screen and (min-width: 375px) and (max-width: 425px) {
-
-    #btn_menu_abrir {
-        display: block !important;
-        top: 41px;
-        left: 15px;
-    }
-
-    #btn_menu_abrir img {
-        width: 28px;
-        height: 28px;
-    }
-
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -280px;
-        width: 180px;
-        height: 100vh;
-    }
-
-    .sidebar #logo {
-        width: 130px;
-        height: 35px;
-    }
-
-    .sidebar li a p {
-        font-size: 13px;
-    }
-
-    .sidebar img {
-        width: 20px;
-        height: 20px;
-    }
-
-    #btn_menu_fechar {
-        display: flex;
-        top: 15px;
-        right: 5px;
-    }
-
-    #btn_menu_fechar img {
-        width: 20px;
-        height: 20px;
-    }
-
-    .pesquisa-main {
-        overflow-y: auto;
-        padding: 2.5em 0.7em;
-    }
-
-    .pesquisa-table tbody td {
-        font-size: 0.6em;
-        padding-left: 1.5em;
-        align-items: center;
-    }
-
-    .pesquisa-table thead th {
-        font-size: 0.8em;
-        padding-bottom: 0.7em;
-        padding-left: 1em;
-    }
-
-    .star {
-        width: 15px;
-        height: 15px;
-    }
-
-    .container-card-info {
-        width: 230px;
-    }
-
-    .container-perfil {
-        right: 10px;
-        top: 38px;
-        width: max-content;
-        height: max-content;
-    }
-
-    .container-perfil button {
-        width: max-content;
-        height: max-content;
-        padding: 0px;
-    }
-
-    .container-perfil button img {
-        width: 34px;
-        height: 34px;
+    .filter-gender-btn p {
         margin: 0;
     }
 
-    .container-perfil p {
-        font-size: 12px;
-        display: flex;
-    }
-
-    .card-perfil {
-        top: 75px;
-        right: 15px;
-        width: 200px;
-        height: 330px;
-    }
-
-    .card-perfil h2 {
-        font-size: 13px;
-    }
-
-    .info-item {
-        padding: 5px 14px;
-        margin-top: 15px;
-        width: 55%;
-    }
-
-    .info-item label {
-        font-size: 10px;
-    }
-
-    .info-item input {
-        width: 110px;
-        font-size: 10px;
-    }
-
-    .edit-icon .icon-pencil {
-        width: 15px;
-        height: 15px;
-    }
-
-    .card-perfil hr {
-        width: 65%;
-    }
-
-    .confirm-btn {
-        margin-top: 17px;
-        height: 25px;
-        padding: 0;
-        font-size: 12px;
-    }
-
-    .pesquisa-title {
-        font-size: 1.1em;
+    .filter-gender-content {
+        position: absolute;
+        top: 40px;
+        left: 0px;
+        z-index: 11;
+        width: 180px;
+        background: white;
+        padding: 12px 10px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         display: none;
     }
 
-    .pesquisa-header {
-        margin-bottom: 1.3em;
-        padding-left: 50px;
-    }
-
-    .pesquisa-table {
-        margin-top: 10px;
-    }
-
-    .pop-up-notification {
-        right: 40px;
-        top: 120px;
-        width: 150px;
-        height: 35px;
-        font-size: 10px;
-    }
-
-    .filter {
-        width: 97%;
-        height: max-content;
-        margin-top: 17px;
-    }
-
-    .filter-gender {
-        top: 5px;
-        left: 53%;
-    }
-
-    .filter-gender-btn {
-        font-size: 11px;
-    }
-
-    .filter-gender-btn img {
-        width: 12px;
-        height: 12px;
-    }
-
-    .filter-gender-content {
-        top: 30px;
-        left: 0px;
-        width: 90px;
-    }
-
     .filter-gender-content label {
-        font-size: 11px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 4px;
+        font-size: 16px;
+        color: #555;
+        cursor: pointer;
+    }
+
+    .filter-gender-content label input[type="checkbox"] {
+        accent-color: #0033FF;
     }
 
     .filter-gender-content input {
-        width: 14px;
-        height: 14px;
-    }
-
-    .filter-date {
-        left: 28%;
-    }
-
-    .filter-date-btn {
-        font-size: 11px;
-    }
-
-    .filter-date-btn img {
-        width: 12px;
-        height: 12px;
-    }
-
-    .filter-date-content {
-        top: 30px;
-        left: 0px;
-        width: 120px;
-        gap: 0.7em;
-    }
-
-    .filter-date-content span {
-        gap: 8px;
-    }
-
-    .filter-date-content p {
-        font-size: 11px;
-    }
-
-    .filter-date-content input {
-        width: 80px;
-        height: 15px;
-    }
-
-    .filter-date-content .confirm-filter-date {
-        width: 90px;
-        height: 22px;
-        font-size: 12px;
-    }
-
-    #msg_erro {
-        font-size: 12px;
-    }
-
-}
-
-@media screen and (min-width: 425px) and (max-width: 768px) {
-
-
-    #btn_menu_abrir {
-        display: block !important;
-        top: 41px;
-        left: 25px;
-    }
-
-    #btn_menu_abrir img {
-        width: 28px;
-        height: 28px;
-    }
-
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -280px;
-        width: 200px;
-        height: 100vh;
-    }
-
-    .sidebar #logo {
-        width: 130px;
-        height: 35px;
-    }
-
-    .sidebar li a p {
-        font-size: 13px;
-    }
-
-    .sidebar img {
-        width: 20px;
-        height: 20px;
-    }
-
-    #btn_menu_fechar {
-        display: flex;
-        top: 15px;
-        right: 5px;
-    }
-
-    #btn_menu_fechar img {
-        width: 20px;
-        height: 20px;
-    }
-
-    .pesquisa-table tbody td {
-        font-size: 0.6em;
-        padding-left: 1.5em;
-        align-items: center;
-    }
-
-    .pesquisa-table thead th {
-        font-size: 0.8em;
-        padding-bottom: 0.7em;
-        padding-left: 1em;
-    }
-
-    .star {
-        width: 15px;
-        height: 15px;
-    }
-
-    .container-card-info {
-        width: 230px;
-    }
-
-    .container-perfil {
-        right: 10px;
-        top: 35px;
-    }
-
-    .container-perfil button img {
-        width: 34px;
-        height: 34px;
-    }
-
-    .container-perfil p {
-        font-size: 13px;
-        display: flex;
-    }
-
-    .card-perfil {
-        top: 80px;
-        right: 30px;
-        width: 230px;
-        height: 370px;
-    }
-
-    .card-perfil h2 {
-        font-size: 15px;
-    }
-
-    .info-item {
-        padding: 5px 14px;
-        margin-top: 15px;
-        width: 70%;
-    }
-
-    .info-item label {
-        font-size: 11px;
-    }
-
-    .info-item input {
-        width: 100px;
-        font-size: 11px;
-    }
-
-    .edit-icon .icon-pencil {
         width: 18px;
         height: 18px;
     }
 
-    .card-perfil hr {
-        width: 65%;
-    }
-
-    .confirm-btn {
-        margin-top: 17px;
-        height: 30px;
-        padding: 0;
-    }
-
-    .pesquisa-main {
-        overflow-y: auto;
-        padding: 2.5em 1.3em;
-    }
-
-    .pesquisa-title {
-        font-size: 1.1em;
-        display: none;
-    }
-
-    .pesquisa-header {
-        margin-bottom: 1.3em;
-        padding-left: 45px;
-    }
-
-    .pesquisa-table {
-        margin-top: 10px;
-    }
-
-    .pop-up-notification {
-        right: 60px;
-        top: 100px;
-        width: 180px;
-        height: 40px;
-        font-size: 12px;
-    }
-
-    .filter {
-        width: 97%;
-        height: max-content;
-        margin-top: 17px;
-    }
-
-    .filter-gender {
-        top: 5px;
-        left: 56%;
-    }
-
-    .filter-gender-btn {
-        font-size: 12px;
-    }
-
-    .filter-gender-btn img {
-        width: 13px;
-        height: 13px;
-    }
-
-    .filter-gender-content {
-        top: 30px;
-        left: 0px;
-        width: 100px;
-    }
-
-    .filter-gender-content label {
-        font-size: 13px;
-    }
-
-    .filter-gender-content input {
-        width: 15px;
-        height: 15px;
+    .filter-gender-content hr {
+        border: none;
+        border-top: 1px solid #e1e1e1;
+        margin: 6px 0;
     }
 
     .filter-date {
-        top: 2px;
-        left: 33%;
-    }
-
-    .filter-date-btn {
-        font-size: 12px;
-    }
-
-    .filter-date-btn img {
-        width: 13px;
-        height: 13px;
-    }
-
-    .filter-date-content {
-        top: 30px;
-        left: 0px;
-        width: 140px;
-        gap: 0.7em;
-    }
-
-    .filter-date-content span {
-        gap: 8px;
-    }
-
-    .filter-date-content p {
-        font-size: 12px;
-    }
-
-    .filter-date-content input {
-        width: 80px;
-        height: 15px;
-    }
-
-    .filter-date-content .confirm-filter-date {
-        width: 90px;
-        height: 22px;
-        font-size: 13px;
-    }
-
-    #msg_erro {
-        font-size: 13px;
-    }
-
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-
-
-    #btn_menu_abrir {
-        display: block !important;
-        top: 34px;
-        left: 40px;
-    }
-
-    #btn_menu_abrir img {
-        width: 35px;
-        height: 35px;
-    }
-
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -280px;
-        width: 220px;
-        height: 100vh;
-    }
-
-    .sidebar #logo {
-        width: 160px;
-        height: 42px;
-    }
-
-    .sidebar li a p {
-        font-size: 16px;
-    }
-
-    .sidebar img {
-        width: 23px;
-        height: 23px;
-    }
-
-    #btn_menu_fechar {
-        display: flex;
-        top: 15px;
-        right: 5px;
-    }
-
-    #btn_menu_fechar img {
-        width: 20px;
-        height: 20px;
-    }
-
-    .pesquisa-table tbody td {
-        font-size: 0.9em;
-    }
-
-    .container-perfil {
-        right: 10px;
-        top: 35px;
-    }
-
-    .container-perfil p {
-        font-size: 15px;
-        display: flex;
-    }
-
-    .card-perfil {
-        top: 80px;
-        right: 30px;
-        width: 330px;
-        height: 400px;
-    }
-
-    .card-perfil h2 {
-        font-size: 17px;
-    }
-
-    .info-item {
-        padding: 8px 14px;
-        margin-top: 15px;
         width: max-content;
-    }
-
-    .card-perfil hr {
-        width: 65%;
-    }
-
-    .confirm-btn {
-        margin-top: 17px;
-    }
-
-    .pesquisa-title {
-        font-size: 1.3em;
-    }
-
-    .pesquisa-header {
-        padding-left: 45px;
-    }
-
-    .pop-up-notification {
-        right: 80px;
-        top: 120px;
-        width: 240px;
-        height: 50px;
-        font-size: 14px;
-    }
-
-    .filter {
-        width: 97%;
-    }
-
-    .filter-gender {
-        top: 5px;
-        left: 65%;
-    }
-
-    .filter-gender-btn {
-        font-size: 15px;
-    }
-
-    .filter-gender-btn img {
-        width: 15px;
-        height: 15px;
-    }
-
-    .filter-gender-content {
-        top: 30px;
-        left: 0px;
-        width: 120px;
-    }
-
-    .filter-gender-content label {
-        font-size: 14px;
-    }
-
-    .filter-gender-content input {
-        width: 16px;
-        height: 16px;
-    }
-
-    .filter-date {
-        top: 2px;
-        left: 42%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: 45%;
     }
 
     .filter-date-btn {
-        font-size: 15px;
+        background: none;
+        border: none;
+        font-size: 18px;
+        color: #8d8a8a;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        height: 100%;
+        width: 100%;
     }
 
     .filter-date-btn img {
-        width: 15px;
-        height: 15px;
+        width: 17px;
+        height: 17px;
+    }
+
+    .filter-date-btn p {
+        margin: 0;
     }
 
     .filter-date-content {
-        top: 30px;
+        position: absolute;
+        top: 40px;
         left: 0px;
-        width: 180px;
-        gap: 1em;
+        z-index: 11;
+        width: 250px;
+        height: max-content;
+        background: white;
+        padding: 30px 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.6em;
     }
 
     .filter-date-content span {
-        gap: 10px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
     }
 
     .filter-date-content p {
-        font-size: 15px;
+        font-weight: 600;
+        color: #0033FF;
     }
 
     .filter-date-content input {
-        width: 110px;
-        height: 22px;
+        border-radius: 20px;
+        height: 25px;
+        padding-left: 15px;
+        border: solid 2px rgba(0, 0, 0, 0.397);
+    }
+
+    .filter-date-content input:focus {
+        border: solid 3px #0033FF;
+        outline: none;
     }
 
     .filter-date-content .confirm-filter-date {
-        width: 110px;
-        height: 28px;
+        width: 150px;
+        height: 35px;
+        border-radius: 10px;
+        background-color: #0033FF;
+        border: none;
+        color: white;
+        font-weight: 500;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .filter-date-content .confirm-filter-date:hover {
+        transform: scale(1.1);
+    }
+
+    #msg_erro {
+        display: none;
+        color: rgb(203, 26, 26);
+        font-weight: 600;
         font-size: 15px;
+        text-align: center;
     }
 
-    #msg_erro {
-        font-size: 13px;
+    /* Responsivividade */
+    @media screen and (min-width: 320px) and (max-width: 375px) {
+
+        #btn_menu_abrir {
+            display: block !important;
+            top: 39px;
+            left: 15px;
+        }
+
+        #btn_menu_abrir img {
+            width: 25px;
+            height: 25px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 150px;
+            height: 100vh;
+        }
+
+        .sidebar #logo {
+            width: 110px;
+            height: 30px;
+        }
+
+        .sidebar li a p {
+            font-size: 12px;
+        }
+
+        .sidebar img {
+            width: 18px;
+            height: 18px;
+        }
+
+        #btn_menu_fechar {
+            display: flex;
+            top: 15px;
+            right: 5px;
+        }
+
+        #btn_menu_fechar img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .pesquisa-main {
+            overflow-y: auto;
+            padding: 2.5em 0.7em;
+        }
+
+        .pesquisa-table tbody td {
+            font-size: 0.6em;
+            padding-left: 0.5em;
+            align-items: center;
+        }
+
+        .pesquisa-table thead th {
+            font-size: 0.8em;
+            padding-bottom: 0.7em;
+            padding-left: 0.5em;
+        }
+
+        .star {
+            width: 12px;
+            height: 12px;
+        }
+
+        .container-card-info {
+            width: 230px;
+        }
+
+        .container-perfil {
+            right: 10px;
+            top: 38px;
+            width: max-content;
+            height: max-content;
+        }
+
+        .container-perfil button {
+            width: max-content;
+            height: max-content;
+            padding: 0px;
+        }
+
+        .container-perfil button img {
+            width: 27px;
+            height: 27px;
+            margin: 0;
+        }
+
+        .container-perfil p {
+            font-size: 11px;
+            display: flex;
+        }
+
+        .card-perfil {
+            top: 70px;
+            right: 15px;
+            width: 180px;
+            height: 280px;
+        }
+
+        .card-perfil h2 {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .info-item {
+            padding: 5px 14px;
+            margin-top: 10px;
+            width: 45%;
+        }
+
+        .info-item label {
+            font-size: 10px;
+        }
+
+        .info-item input {
+            width: 90px;
+            font-size: 10px;
+        }
+
+        .edit-icon .icon-pencil {
+            width: 13px;
+            height: 13px;
+        }
+
+        .card-perfil hr {
+            width: 55%;
+            height: 1px;
+        }
+
+        .confirm-btn {
+            margin-top: 9px;
+            height: 20px;
+            padding: 0;
+            font-size: 11px;
+            width: max-content;
+            padding-inline: 5px;
+        }
+
+        .pesquisa-title {
+            font-size: 1.1em;
+            display: none;
+        }
+
+        .pesquisa-header {
+            margin-bottom: 1.3em;
+            padding-left: 50px;
+        }
+
+        .pesquisa-table {
+            margin-top: 10px;
+        }
+
+        .pop-up-notification {
+            right: 40px;
+            top: 100px;
+            width: 140px;
+            height: 25px;
+            font-size: 10px;
+        }
+
+        .filter {
+            width: 97%;
+            height: max-content;
+            margin-top: 15px;
+        }
+
+        .filter-gender {
+            top: 5px;
+            left: 47%;
+        }
+
+        .filter-gender-btn {
+            font-size: 10px;
+        }
+
+        .filter-gender-btn img {
+            width: 11px;
+            height: 11px;
+        }
+
+        .filter-gender-content {
+            top: 30px;
+            left: 0px;
+            width: 80px;
+        }
+
+        .filter-gender-content label {
+            font-size: 10px;
+        }
+
+        .filter-gender-content input {
+            width: 13px;
+            height: 13px;
+        }
+
+        .filter-date {
+            left: 22%;
+        }
+
+        .filter-date-btn {
+            font-size: 10px;
+        }
+
+        .filter-date-btn img {
+            width: 11px;
+            height: 11px;
+        }
+
+        .filter-date-content {
+            top: 30px;
+            left: 0px;
+            width: 120px;
+            gap: 0.7em;
+        }
+
+        .filter-date-content span {
+            gap: 8px;
+        }
+
+        .filter-date-content p {
+            font-size: 10px;
+        }
+
+        .filter-date-content input {
+            width: 80px;
+            height: 12px;
+        }
+
+        .filter-date-content .confirm-filter-date {
+            width: 90px;
+            height: 20px;
+            font-size: 11px;
+        }
+
+        #msg_erro {
+            font-size: 10px;
+        }
     }
 
-}
+    @media screen and (min-width: 375px) and (max-width: 425px) {
 
-@media screen and (min-width: 1025px) and (max-width: 1330px) {
+        #btn_menu_abrir {
+            display: block !important;
+            top: 41px;
+            left: 15px;
+        }
 
-    .sidebar {
-        width: 200px;
+        #btn_menu_abrir img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 180px;
+            height: 100vh;
+        }
+
+        .sidebar #logo {
+            width: 130px;
+            height: 35px;
+        }
+
+        .sidebar li a p {
+            font-size: 13px;
+        }
+
+        .sidebar img {
+            width: 20px;
+            height: 20px;
+        }
+
+        #btn_menu_fechar {
+            display: flex;
+            top: 15px;
+            right: 5px;
+        }
+
+        #btn_menu_fechar img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .pesquisa-main {
+            overflow-y: auto;
+            padding: 2.5em 0.7em;
+        }
+
+        .pesquisa-table tbody td {
+            font-size: 0.6em;
+            padding-left: 1.5em;
+            align-items: center;
+        }
+
+        .pesquisa-table thead th {
+            font-size: 0.8em;
+            padding-bottom: 0.7em;
+            padding-left: 1em;
+        }
+
+        .star {
+            width: 15px;
+            height: 15px;
+        }
+
+        .container-card-info {
+            width: 230px;
+        }
+
+        .container-perfil {
+            right: 10px;
+            top: 38px;
+            width: max-content;
+            height: max-content;
+        }
+
+        .container-perfil button {
+            width: max-content;
+            height: max-content;
+            padding: 0px;
+        }
+
+        .container-perfil button img {
+            width: 34px;
+            height: 34px;
+            margin: 0;
+        }
+
+        .container-perfil p {
+            font-size: 12px;
+            display: flex;
+        }
+
+        .card-perfil {
+            top: 75px;
+            right: 15px;
+            width: 200px;
+            height: 330px;
+        }
+
+        .card-perfil h2 {
+            font-size: 13px;
+        }
+
+        .info-item {
+            padding: 5px 14px;
+            margin-top: 15px;
+            width: 55%;
+        }
+
+        .info-item label {
+            font-size: 10px;
+        }
+
+        .info-item input {
+            width: 110px;
+            font-size: 10px;
+        }
+
+        .edit-icon .icon-pencil {
+            width: 15px;
+            height: 15px;
+        }
+
+        .card-perfil hr {
+            width: 65%;
+        }
+
+        .confirm-btn {
+            margin-top: 17px;
+            height: 25px;
+            padding: 0;
+            font-size: 12px;
+        }
+
+        .pesquisa-title {
+            font-size: 1.1em;
+            display: none;
+        }
+
+        .pesquisa-header {
+            margin-bottom: 1.3em;
+            padding-left: 50px;
+        }
+
+        .pesquisa-table {
+            margin-top: 10px;
+        }
+
+        .pop-up-notification {
+            right: 40px;
+            top: 120px;
+            width: 150px;
+            height: 35px;
+            font-size: 10px;
+        }
+
+        .filter {
+            width: 97%;
+            height: max-content;
+            margin-top: 17px;
+        }
+
+        .filter-gender {
+            top: 5px;
+            left: 53%;
+        }
+
+        .filter-gender-btn {
+            font-size: 11px;
+        }
+
+        .filter-gender-btn img {
+            width: 12px;
+            height: 12px;
+        }
+
+        .filter-gender-content {
+            top: 30px;
+            left: 0px;
+            width: 90px;
+        }
+
+        .filter-gender-content label {
+            font-size: 11px;
+        }
+
+        .filter-gender-content input {
+            width: 14px;
+            height: 14px;
+        }
+
+        .filter-date {
+            left: 28%;
+        }
+
+        .filter-date-btn {
+            font-size: 11px;
+        }
+
+        .filter-date-btn img {
+            width: 12px;
+            height: 12px;
+        }
+
+        .filter-date-content {
+            top: 30px;
+            left: 0px;
+            width: 120px;
+            gap: 0.7em;
+        }
+
+        .filter-date-content span {
+            gap: 8px;
+        }
+
+        .filter-date-content p {
+            font-size: 11px;
+        }
+
+        .filter-date-content input {
+            width: 80px;
+            height: 15px;
+        }
+
+        .filter-date-content .confirm-filter-date {
+            width: 90px;
+            height: 22px;
+            font-size: 12px;
+        }
+
+        #msg_erro {
+            font-size: 12px;
+        }
+
     }
 
-    .sidebar #logo {
-        width: 140px;
-        height: 40px;
+    @media screen and (min-width: 425px) and (max-width: 768px) {
+
+
+        #btn_menu_abrir {
+            display: block !important;
+            top: 41px;
+            left: 25px;
+        }
+
+        #btn_menu_abrir img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 200px;
+            height: 100vh;
+        }
+
+        .sidebar #logo {
+            width: 130px;
+            height: 35px;
+        }
+
+        .sidebar li a p {
+            font-size: 13px;
+        }
+
+        .sidebar img {
+            width: 20px;
+            height: 20px;
+        }
+
+        #btn_menu_fechar {
+            display: flex;
+            top: 15px;
+            right: 5px;
+        }
+
+        #btn_menu_fechar img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .pesquisa-table tbody td {
+            font-size: 0.6em;
+            padding-left: 1.5em;
+            align-items: center;
+        }
+
+        .pesquisa-table thead th {
+            font-size: 0.8em;
+            padding-bottom: 0.7em;
+            padding-left: 1em;
+        }
+
+        .star {
+            width: 15px;
+            height: 15px;
+        }
+
+        .container-card-info {
+            width: 230px;
+        }
+
+        .container-perfil {
+            right: 10px;
+            top: 35px;
+        }
+
+        .container-perfil button img {
+            width: 34px;
+            height: 34px;
+        }
+
+        .container-perfil p {
+            font-size: 13px;
+            display: flex;
+        }
+
+        .card-perfil {
+            top: 80px;
+            right: 30px;
+            width: 230px;
+            height: 370px;
+        }
+
+        .card-perfil h2 {
+            font-size: 15px;
+        }
+
+        .info-item {
+            padding: 5px 14px;
+            margin-top: 15px;
+            width: 70%;
+        }
+
+        .info-item label {
+            font-size: 11px;
+        }
+
+        .info-item input {
+            width: 100px;
+            font-size: 11px;
+        }
+
+        .edit-icon .icon-pencil {
+            width: 18px;
+            height: 18px;
+        }
+
+        .card-perfil hr {
+            width: 65%;
+        }
+
+        .confirm-btn {
+            margin-top: 17px;
+            height: 30px;
+            padding: 0;
+        }
+
+        .pesquisa-main {
+            overflow-y: auto;
+            padding: 2.5em 1.3em;
+        }
+
+        .pesquisa-title {
+            font-size: 1.1em;
+            display: none;
+        }
+
+        .pesquisa-header {
+            margin-bottom: 1.3em;
+            padding-left: 45px;
+        }
+
+        .pesquisa-table {
+            margin-top: 10px;
+        }
+
+        .pop-up-notification {
+            right: 60px;
+            top: 100px;
+            width: 180px;
+            height: 40px;
+            font-size: 12px;
+        }
+
+        .filter {
+            width: 97%;
+            height: max-content;
+            margin-top: 17px;
+        }
+
+        .filter-gender {
+            top: 5px;
+            left: 56%;
+        }
+
+        .filter-gender-btn {
+            font-size: 12px;
+        }
+
+        .filter-gender-btn img {
+            width: 13px;
+            height: 13px;
+        }
+
+        .filter-gender-content {
+            top: 30px;
+            left: 0px;
+            width: 100px;
+        }
+
+        .filter-gender-content label {
+            font-size: 13px;
+        }
+
+        .filter-gender-content input {
+            width: 15px;
+            height: 15px;
+        }
+
+        .filter-date {
+            top: 2px;
+            left: 33%;
+        }
+
+        .filter-date-btn {
+            font-size: 12px;
+        }
+
+        .filter-date-btn img {
+            width: 13px;
+            height: 13px;
+        }
+
+        .filter-date-content {
+            top: 30px;
+            left: 0px;
+            width: 140px;
+            gap: 0.7em;
+        }
+
+        .filter-date-content span {
+            gap: 8px;
+        }
+
+        .filter-date-content p {
+            font-size: 12px;
+        }
+
+        .filter-date-content input {
+            width: 80px;
+            height: 15px;
+        }
+
+        .filter-date-content .confirm-filter-date {
+            width: 90px;
+            height: 22px;
+            font-size: 13px;
+        }
+
+        #msg_erro {
+            font-size: 13px;
+        }
+
     }
 
-    .sidebar img {
-        width: 22px;
-        height: 22px;
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+
+
+        #btn_menu_abrir {
+            display: block !important;
+            top: 34px;
+            left: 40px;
+        }
+
+        #btn_menu_abrir img {
+            width: 35px;
+            height: 35px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 220px;
+            height: 100vh;
+        }
+
+        .sidebar #logo {
+            width: 160px;
+            height: 42px;
+        }
+
+        .sidebar li a p {
+            font-size: 16px;
+        }
+
+        .sidebar img {
+            width: 23px;
+            height: 23px;
+        }
+
+        #btn_menu_fechar {
+            display: flex;
+            top: 15px;
+            right: 5px;
+        }
+
+        #btn_menu_fechar img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .pesquisa-table tbody td {
+            font-size: 0.9em;
+        }
+
+        .container-perfil {
+            right: 10px;
+            top: 35px;
+        }
+
+        .container-perfil p {
+            font-size: 15px;
+            display: flex;
+        }
+
+        .card-perfil {
+            top: 80px;
+            right: 30px;
+            width: 330px;
+            height: 400px;
+        }
+
+        .card-perfil h2 {
+            font-size: 17px;
+        }
+
+        .info-item {
+            padding: 8px 14px;
+            margin-top: 15px;
+            width: max-content;
+        }
+
+        .card-perfil hr {
+            width: 65%;
+        }
+
+        .confirm-btn {
+            margin-top: 17px;
+        }
+
+        .pesquisa-title {
+            font-size: 1.3em;
+        }
+
+        .pesquisa-header {
+            padding-left: 45px;
+        }
+
+        .pop-up-notification {
+            right: 80px;
+            top: 120px;
+            width: 240px;
+            height: 50px;
+            font-size: 14px;
+        }
+
+        .filter {
+            width: 97%;
+        }
+
+        .filter-gender {
+            top: 5px;
+            left: 65%;
+        }
+
+        .filter-gender-btn {
+            font-size: 15px;
+        }
+
+        .filter-gender-btn img {
+            width: 15px;
+            height: 15px;
+        }
+
+        .filter-gender-content {
+            top: 30px;
+            left: 0px;
+            width: 120px;
+        }
+
+        .filter-gender-content label {
+            font-size: 14px;
+        }
+
+        .filter-gender-content input {
+            width: 16px;
+            height: 16px;
+        }
+
+        .filter-date {
+            top: 2px;
+            left: 42%;
+        }
+
+        .filter-date-btn {
+            font-size: 15px;
+        }
+
+        .filter-date-btn img {
+            width: 15px;
+            height: 15px;
+        }
+
+        .filter-date-content {
+            top: 30px;
+            left: 0px;
+            width: 180px;
+            gap: 1em;
+        }
+
+        .filter-date-content span {
+            gap: 10px;
+        }
+
+        .filter-date-content p {
+            font-size: 15px;
+        }
+
+        .filter-date-content input {
+            width: 110px;
+            height: 22px;
+        }
+
+        .filter-date-content .confirm-filter-date {
+            width: 110px;
+            height: 28px;
+            font-size: 15px;
+        }
+
+        #msg_erro {
+            font-size: 13px;
+        }
+
     }
 
-    .sidebar p {
-        font-size: 14px;
-    }
+    @media screen and (min-width: 1025px) and (max-width: 1330px) {
 
-    .pesquisa-table tbody td {
-        font-size: 0.9em;
-    }
+        .sidebar {
+            width: 200px;
+        }
 
-    .pop-up-notification {
-        top: 120px;
-        right: 120px;
-    }
+        .sidebar #logo {
+            width: 140px;
+            height: 40px;
+        }
 
-    .filter {
-        width: 95%;
-    }
+        .sidebar img {
+            width: 22px;
+            height: 22px;
+        }
 
-    .filter-gender {
-        top: 5px;
-        left: 67%;
-    }
+        .sidebar p {
+            font-size: 14px;
+        }
 
-    .filter-gender-btn {
-        font-size: 16px;
-    }
+        .pesquisa-table tbody td {
+            font-size: 0.9em;
+        }
 
-    .filter-gender-btn img {
-        width: 16px;
-        height: 16px;
-    }
+        .pop-up-notification {
+            top: 120px;
+            right: 120px;
+        }
 
-    .filter-gender-content {
-        top: 35px;
-        left: 0px;
-        width: 140px;
-    }
+        .filter {
+            width: 95%;
+        }
 
-    .filter-gender-content label {
-        font-size: 16px;
-    }
+        .filter-gender {
+            top: 5px;
+            left: 67%;
+        }
 
-    .filter-gender-content input {
-        width: 16px;
-        height: 16px;
-    }
+        .filter-gender-btn {
+            font-size: 16px;
+        }
 
-    .filter-date {
-        top: 2px;
-        left: 43%;
-    }
+        .filter-gender-btn img {
+            width: 16px;
+            height: 16px;
+        }
 
-    .filter-date-btn {
-        font-size: 16px;
-    }
+        .filter-gender-content {
+            top: 35px;
+            left: 0px;
+            width: 140px;
+        }
 
-    .filter-date-btn img {
-        width: 16px;
-        height: 16px;
-    }
+        .filter-gender-content label {
+            font-size: 16px;
+        }
 
-    .filter-date-content {
-        top: 30px;
-        left: 0px;
-        width: 195px;
-        gap: 0.7em;
-    }
+        .filter-gender-content input {
+            width: 16px;
+            height: 16px;
+        }
 
-    .filter-date-content span {
-        gap: 10px;
-    }
+        .filter-date {
+            top: 2px;
+            left: 43%;
+        }
 
-    .filter-date-content p {
-        font-size: 16px;
-    }
+        .filter-date-btn {
+            font-size: 16px;
+        }
 
-    .filter-date-content input {
-        width: 120px;
-        height: 23px;
-    }
+        .filter-date-btn img {
+            width: 16px;
+            height: 16px;
+        }
 
-    .filter-date-content .confirm-filter-date {
-        width: 120px;
-        height: 33px;
-        font-size: 16px;
-    }
+        .filter-date-content {
+            top: 30px;
+            left: 0px;
+            width: 195px;
+            gap: 0.7em;
+        }
 
-    #msg_erro {
-        font-size: 14px;
-    }
+        .filter-date-content span {
+            gap: 10px;
+        }
 
-}
+        .filter-date-content p {
+            font-size: 16px;
+        }
+
+        .filter-date-content input {
+            width: 120px;
+            height: 23px;
+        }
+
+        .filter-date-content .confirm-filter-date {
+            width: 120px;
+            height: 33px;
+            font-size: 16px;
+        }
+
+        #msg_erro {
+            font-size: 14px;
+        }
+
+    }

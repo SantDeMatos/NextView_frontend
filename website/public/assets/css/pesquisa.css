@@ -153,6 +153,9 @@ html {
     overflow-y: auto;
     overflow-x: hidden;
     margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .table-container::-webkit-scrollbar {
@@ -212,6 +215,25 @@ html {
     height: 18px;
     margin-right: 0.5em;
     vertical-align: middle;
+}
+
+.btn-ver-mais {
+    width: max-content;
+    font-size: 20px;
+    margin: 10px 20px 20px 0px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    transition: 0.2s;
+    background-color: #0033FF;
+    border-radius: 10px;
+    border: solid 2px rgba(0, 0, 0, 0.273);
+    padding: 10px 20px;
+    transition: 0.2s;
+}
+
+.btn-ver-mais:hover {
+    transform: scale(1.05);
 }
 
 /* Perfil */
