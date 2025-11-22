@@ -251,7 +251,7 @@
 
 
     function listarConteudos() {
-        fetch(`/dashboard/listarPesquisa/${ultimoId}`, {
+        fetch(`/pesquisa/listarPesquisa/${ultimoId}`, {
             method: 'GET'
         })
             .then(response => {
@@ -385,22 +385,17 @@
 
         }
     }
-    
-    function favoritar(id,titulo, ano,nota,genero){
-          const img = document.getElementById("filme" + id);
 
-    // pega o estado atual
-    let marcado = img.dataset.favorito === "true";
-
-    if (marcado) {
-        // desfavoritar
-        img.src = "assets/imgs/ion--star-outline.png";
-        img.dataset.favorito = "false";
-    } else {
-        // favoritar
-        img.src = "assets/imgs/ion--star.png";
-        img.dataset.favorito = "true";
-    }
+    function favoritar(id, titulo, ano, nota, genero) {
+        var img = document.getElementById("filme" + id);
+        var marcado = img.dataset.favorito == "true";
+        if (marcado) {
+            img.src = "assets/imgs/ion--star-outline.png";
+            img.dataset.favorito = "false";
+        } else {
+            img.src = "assets/imgs/ion--star.png";
+            img.dataset.favorito = "true";
+        }
     }
 
     function exibirPerfil() {

@@ -41,19 +41,6 @@ function atorDoMomento(req, res) {
 }
 
 
-function listarPesquisa(req, res) {
-    var ultimoId = req.params.ultimoId;
-
-    dashboardModel.listarPesquisa(ultimoId)
-        .then(function (resultado) {
-            res.status(200).json(resultado);
-        })
-        .catch(function (erro) {
-            res.status(500).json(erro.sqlMessage);
-        });
-}
-
-
 
 module.exports = {
     listarGeneros,
@@ -61,5 +48,4 @@ module.exports = {
     listarSeriesTop,
     diretorDoMomento,
     atorDoMomento,
-    listarPesquisa
 }

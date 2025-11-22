@@ -16,6 +16,7 @@ var HOST_APP = process.env.APP_HOST;
 var app = express();
 
 var usuarioRouter = require("./src/routes/usuarios");
+var pesquisaRouter = require("./src/routes/pesquisa");
 var dashboardRouter = require("./src/routes/dashboard");
 
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use(cors());
 
 app.use("/usuarios", usuarioRouter);
 app.use("/dashboard", dashboardRouter);
+app.use("/pesquisa", pesquisaRouter);
 
 
 app.listen(PORTA_APP, function () {
