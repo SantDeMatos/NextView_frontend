@@ -120,7 +120,7 @@
             <div class="pesquisa-header">
                 <span class="pesquisa-title">Pesquisa</span>
                 <div class="pesquisa-search">
-                    <input type="text" id="searchInput" placeholder=" ">
+                    <input type="text" id="searchInput" placeholder="" oninput="pesquisarConteudo(this.value)">
                     <img src="assets/imgs/ion--search-outline (2).png">
                 </div>
             </div>
@@ -178,11 +178,8 @@
                         <label><input type="checkbox"> Suspense</label>
                     </div>
                 </div>
-
             </div>
-
             <div class="table-container">
-
                 <table class="pesquisa-table" id="table-container">
                     <thead>
                         <tr>
@@ -192,7 +189,6 @@
                             <th>Gênero <span></span></th>
                         </tr>
                     </thead>
-
                 </table>
 
                 <button onclick="listarConteudos()" class="btn-ver-mais">Ver mais...</button>
@@ -218,9 +214,33 @@
 <script>
     var ultimoId = 0;
 
-
     window.onload = listarConteudos();
     window.onload = buscarDados();
+
+    // function pesquisarConteudo(texto){
+    //     if (texto.length == null || texto.length == "" ){
+    //         alert('vazio')
+    //         listarConteudos
+    //     }else{
+    //         alert('com algo')
+    //     }
+    // }
+
+    //filtra os filmes que estão na lista com base no que digita no input
+    document.getElementById('searchInput').addEventListener('input', function () {
+        var filter = this.value.toLowerCase();
+        var rows = document.querySelectorAll('.pesquisa-table tr');
+        rows.forEach(row => {
+            var titleCell = row.querySelector('td');
+            if (titleCell && titleCell.textContent.toLowerCase().includes(filter)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    });
+
+
 
     function buscarDados() {
         document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
@@ -250,33 +270,19 @@
                     document.getElementById("table-container").innerHTML +=
                         `
                     <tr>
-                        <td><img src="assets/imgs/ion--star-outline.png" class="star">${dados.tituloConteudo}</td>
+                        <td><img src="assets/imgs/ion--star-outline.png" id = "filme${dados.idConteudo}" class="star" onclick="favoritar('${dados.idConteudo}' ,'${dados.tituloConteudo}', '${ano}', ${dados.notaConteudo}, '${dados.generosConteudo}')">${dados.tituloConteudo}</td>
                         <td>${ano}</td>
                         <td>${dados.notaConteudo}</td>
                         <td>${dados.generosConteudo}</td>
                     </tr>
                     `
                 });
+                ultimoId += 50
             })
-        ultimoId += 50
             .catch(error => {
                 console.error("Erro ao buscar diretor do momento 2:", error);
             });
     }
-
-    //filtra os filmes que estão na lista com base no que digita no input
-    document.getElementById('searchInput').addEventListener('input', function () {
-        var filter = this.value.toLowerCase();
-        var rows = document.querySelectorAll('.pesquisa-table tr');
-        rows.forEach(row => {
-            var titleCell = row.querySelector('td');
-            if (titleCell && titleCell.textContent.toLowerCase().includes(filter)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    });
 
     const paginaAtual = window.location.pathname.split("/").pop();
 
@@ -378,6 +384,23 @@
                 });
 
         }
+    }
+    
+    function favoritar(id,titulo, ano,nota,genero){
+          const img = document.getElementById("filme" + id);
+
+    // pega o estado atual
+    let marcado = img.dataset.favorito === "true";
+
+    if (marcado) {
+        // desfavoritar
+        img.src = "assets/imgs/ion--star-outline.png";
+        img.dataset.favorito = "false";
+    } else {
+        // favoritar
+        img.src = "assets/imgs/ion--star.png";
+        img.dataset.favorito = "true";
+    }
     }
 
     function exibirPerfil() {
