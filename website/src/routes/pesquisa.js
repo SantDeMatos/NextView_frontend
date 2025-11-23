@@ -7,4 +7,9 @@ router.get("/listarPesquisa/:ultimoId", function (req, res) {
     pesquisaController.listarPesquisa(req, res);
 });
 
+router.post("/favoritar", function (req, res) {
+    pesquisaController.favoritar(req, res);
+})
+
+
 module.exports = router;

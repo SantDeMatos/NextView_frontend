@@ -12,6 +12,20 @@ function listarPesquisa(req, res) {
         });
 }
 
+function favoritar(req, res) {
+    var idFilmeRecebido = req.body.idFilmeServer;
+    var idEmpresaRecebido = req.body.idEmpresaServer;
+
+    pesquisaModel.favoritar(idFilmeRecebido, idEmpresaRecebido)
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function (erro) {
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
-    listarPesquisa
+    listarPesquisa,
+    favoritar
 }

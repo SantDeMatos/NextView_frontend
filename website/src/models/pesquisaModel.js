@@ -10,7 +10,16 @@ function listarPesquisa(ultimoId) {
     return database.executar(instrucao);
 }
 
+function favoritar(idFilme, idEmpresa) {
+    var instrucao = `
+    insert into conteudosFavoritos (fkEmpresa, fkConteudo) values(${idEmpresa},${idFilme});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 
 module.exports = {
-    listarPesquisa
+    listarPesquisa,
+    favoritar
 };

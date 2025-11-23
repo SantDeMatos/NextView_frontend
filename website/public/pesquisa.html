@@ -217,30 +217,6 @@
     window.onload = listarConteudos();
     window.onload = buscarDados();
 
-    // function pesquisarConteudo(texto){
-    //     if (texto.length == null || texto.length == "" ){
-    //         alert('vazio')
-    //         listarConteudos
-    //     }else{
-    //         alert('com algo')
-    //     }
-    // }
-
-    //filtra os filmes que estão na lista com base no que digita no input
-    document.getElementById('searchInput').addEventListener('input', function () {
-        var filter = this.value.toLowerCase();
-        var rows = document.querySelectorAll('.pesquisa-table tr');
-        rows.forEach(row => {
-            var titleCell = row.querySelector('td');
-            if (titleCell && titleCell.textContent.toLowerCase().includes(filter)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    });
-
-
 
     function buscarDados() {
         document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
@@ -386,15 +362,33 @@
         }
     }
 
-    function favoritar(id, titulo, ano, nota, genero) {
+    function favoritar(id) {
         var img = document.getElementById("filme" + id);
         var marcado = img.dataset.favorito == "true";
+        
         if (marcado) {
             img.src = "assets/imgs/ion--star-outline.png";
             img.dataset.favorito = "false";
         } else {
             img.src = "assets/imgs/ion--star.png";
             img.dataset.favorito = "true";
+
+            fetch(`/pesquisa/favoritar`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    idFilmeServer: id,
+                    idEmpresaServer: sessionStorage.ID_EMPRESA
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
         }
     }
 

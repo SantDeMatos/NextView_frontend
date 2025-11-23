@@ -50,8 +50,6 @@ order by total desc limit 1;
 
 function atorDoMomento() {
     var instrucao = ` 
-        
-
         select atoresConteudo from Conteudo where  atoresConteudo != '' and dtLancamentoCont > '2022-01-01' and numVotosCont > 300 order by notaConteudo;
 
     `;
