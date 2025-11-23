@@ -32,8 +32,18 @@ function favoritar(idFilme, idEmpresa) {
     return database.executar(instrucao);
 }
 
+function desfavoritar(idFilme, idEmpresa) {
+    var instrucao = `
+    delete from conteudosFavoritos where fkConteudo = ${idFilme} and fkEmpresa = ${idEmpresa};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+
 
 module.exports = {
     listarPesquisa,
-    favoritar
+    favoritar,
+    desfavoritar
 };

@@ -11,5 +11,9 @@ router.post("/favoritar", function (req, res) {
     pesquisaController.favoritar(req, res);
 })
 
+router.delete("/desfavoritar/:id/:idEmpresa", function (req, res) {
+    pesquisaController.desfavoritar(req, res);
+})
+
 
 module.exports = router;

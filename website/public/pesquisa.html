@@ -369,6 +369,16 @@
         if (favorito == "1") {
             img.src = "assets/imgs/ion--star-outline.png";
             img.dataset.favoritado = "0";
+
+            fetch(`/pesquisa/desfavoritar/${id}/${sessionStorage.ID_EMPRESA}`, {
+                method: "DELETE"
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
         } else {
             img.src = "assets/imgs/ion--star.png";
             img.dataset.favoritado = "1";
