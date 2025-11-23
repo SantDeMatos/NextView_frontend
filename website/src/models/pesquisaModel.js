@@ -1,10 +1,24 @@
 var database = require("../database/config")
 
-function listarPesquisa(ultimoId) {
+function listarPesquisa(ultimoId,idEmpresa) {
     var instrucao = `
 
-    select idConteudo, tituloConteudo, dtLancamentoCont, notaConteudo, generosConteudo from Conteudo where idConteudo > ${ultimoId} limit 50;
-
+    SELECT 
+    c.idConteudo,
+    c.tituloConteudo,
+    c.dtLancamentoCont,
+    c.notaConteudo,
+    c.generosConteudo,
+    CASE 
+        WHEN cf.fkConteudo IS NOT NULL THEN 1 
+        ELSE 0 
+    END AS favoritado
+    FROM Conteudo c
+    LEFT JOIN conteudosFavoritos cf
+    ON cf.fkConteudo = c.idConteudo
+    AND cf.fkEmpresa = ${idEmpresa}
+    WHERE c.idConteudo > ${ultimoId}
+LIMIT 50;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -12,7 +26,7 @@ function listarPesquisa(ultimoId) {
 
 function favoritar(idFilme, idEmpresa) {
     var instrucao = `
-    insert into conteudosFavoritos (fkEmpresa, fkConteudo) values(${idEmpresa},${idFilme});
+    insert into ConteudosFavoritos (fkEmpresa, fkConteudo) values(${idEmpresa},${idFilme});
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

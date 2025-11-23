@@ -2,8 +2,9 @@ var pesquisaModel = require("../models/pesquisaModel");
 
 function listarPesquisa(req, res) {
     var ultimoId = req.params.ultimoId;
+    var idEmpresa = req.params.idEmpresa;
 
-    pesquisaModel.listarPesquisa(ultimoId)
+    pesquisaModel.listarPesquisa(ultimoId, idEmpresa)
         .then(function (resultado) {
             res.status(200).json(resultado);
         })

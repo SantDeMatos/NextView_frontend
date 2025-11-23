@@ -3,7 +3,7 @@ var router = express.Router();
 
 var pesquisaController = require("../controllers/pesquisaController");
 
-router.get("/listarPesquisa/:ultimoId", function (req, res) {
+router.get("/listarPesquisa/:ultimoId/:idEmpresa", function (req, res) {
     pesquisaController.listarPesquisa(req, res);
 });
 

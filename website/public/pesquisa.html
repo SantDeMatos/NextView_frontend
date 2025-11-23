@@ -227,7 +227,7 @@
 
 
     function listarConteudos() {
-        fetch(`/pesquisa/listarPesquisa/${ultimoId}`, {
+        fetch(`/pesquisa/listarPesquisa/${ultimoId}/${sessionStorage.ID_EMPRESA}`, {
             method: 'GET'
         })
             .then(response => {
@@ -246,7 +246,7 @@
                     document.getElementById("table-container").innerHTML +=
                         `
                     <tr>
-                        <td><img src="assets/imgs/ion--star-outline.png" id = "filme${dados.idConteudo}" class="star" onclick="favoritar('${dados.idConteudo}' ,'${dados.tituloConteudo}', '${ano}', ${dados.notaConteudo}, '${dados.generosConteudo}')">${dados.tituloConteudo}</td>
+                        <td><img data-favoritado = "${dados.favoritado}" id = "filme${dados.idConteudo}" src="assets/imgs/${dados.favoritado == 1 ? 'ion--star.png' : 'ion--star-outline.png'}" class="star" onclick="favoritar('${dados.idConteudo}' ,'${dados.tituloConteudo}', '${ano}', ${dados.notaConteudo}, '${dados.generosConteudo}')">${dados.tituloConteudo}</td>
                         <td>${ano}</td>
                         <td>${dados.notaConteudo}</td>
                         <td>${dados.generosConteudo}</td>
@@ -364,14 +364,14 @@
 
     function favoritar(id) {
         var img = document.getElementById("filme" + id);
-        var marcado = img.dataset.favorito == "true";
+        var favorito = img.dataset.favoritado;
         
-        if (marcado) {
+        if (favorito == "1") {
             img.src = "assets/imgs/ion--star-outline.png";
-            img.dataset.favorito = "false";
+            img.dataset.favoritado = "0";
         } else {
             img.src = "assets/imgs/ion--star.png";
-            img.dataset.favorito = "true";
+            img.dataset.favoritado = "1";
 
             fetch(`/pesquisa/favoritar`, {
                 method: "POST",
