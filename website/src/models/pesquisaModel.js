@@ -1,24 +1,24 @@
 var database = require("../database/config")
 
-function listarPesquisa(ultimoId,idEmpresa) {
+function listarPesquisa(ultimoId, idEmpresa) {
     var instrucao = `
 
-    SELECT 
+    select
     c.idConteudo,
     c.tituloConteudo,
     c.dtLancamentoCont,
     c.notaConteudo,
     c.generosConteudo,
-    CASE 
-        WHEN cf.fkConteudo IS NOT NULL THEN 1 
-        ELSE 0 
-    END AS favoritado
-    FROM Conteudo c
-    LEFT JOIN conteudosFavoritos cf
-    ON cf.fkConteudo = c.idConteudo
-    AND cf.fkEmpresa = ${idEmpresa}
-    WHERE c.idConteudo > ${ultimoId}
-LIMIT 50;
+    case 
+        when cf.fkConteudo IS NOT NULL THEN 1 
+        else 0 
+    end as favoritado
+    from Conteudo c
+    left join ConteudosFavoritos cf
+    on cf.fkConteudo = c.idConteudo
+    and cf.fkEmpresa = ${idEmpresa}
+    where c.idConteudo > ${ultimoId}
+    limit 50;
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -34,7 +34,7 @@ function favoritar(idFilme, idEmpresa) {
 
 function desfavoritar(idFilme, idEmpresa) {
     var instrucao = `
-    delete from conteudosFavoritos where fkConteudo = ${idFilme} and fkEmpresa = ${idEmpresa};
+    delete from ConteudosFavoritos where fkConteudo = ${idFilme} and fkEmpresa = ${idEmpresa};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
