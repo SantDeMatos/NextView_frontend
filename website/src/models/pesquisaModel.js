@@ -2,7 +2,6 @@ var database = require("../database/config")
 
 function listarPesquisa(linhasPassadas, idEmpresa) {
     var instrucao = `
-
     select
     c.idConteudo,
     c.tituloConteudo,
@@ -28,7 +27,6 @@ function listarPesquisa(linhasPassadas, idEmpresa) {
 
 function listarPesquisaData(linhasPassadasData, idEmpresa, de,ate) {
     var instrucao = `
-
     select
     c.idConteudo,
     c.tituloConteudo,
@@ -44,8 +42,8 @@ function listarPesquisaData(linhasPassadasData, idEmpresa, de,ate) {
     on cf.fkConteudo = c.idConteudo
     and cf.fkEmpresa = ${idEmpresa}
     where numVotosCont > 200 and
-    dtLancamentoCont >= '${de}-01-01' and dtLancamentoCont <= '${ate}-01-01'
-    order by notaConteudo desc
+    dtLancamentoCont >= '${de}-01-01' and dtLancamentoCont < '${parseInt(ate) + 1}-01-01'
+    order by dtLancamentoCont, notaConteudo desc
     limit 50
     offset ${linhasPassadasData};
     `;
