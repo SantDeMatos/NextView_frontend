@@ -1,10 +1,11 @@
 var pesquisaModel = require("../models/pesquisaModel");
 
-function listarPesquisa(req, res) {
+function listarPesquisaGeneros(req, res) {
     var linhasPassadas = req.params.linhasPassadas;
     var idEmpresa = req.params.idEmpresa;
+    var generosString = req.params.generosString;
 
-    pesquisaModel.listarPesquisa(linhasPassadas, idEmpresa)
+    pesquisaModel.listarPesquisaGeneros(linhasPassadas, idEmpresa,generosString)
         .then(function (resultado) {
             res.status(200).json(resultado);
         })
@@ -55,7 +56,7 @@ function desfavoritar(req, res) {
 }
 
 module.exports = {
-    listarPesquisa,
+    listarPesquisaGeneros,
     favoritar,
     desfavoritar,
     listarPesquisaData

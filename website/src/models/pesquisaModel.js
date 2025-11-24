@@ -1,31 +1,41 @@
 var database = require("../database/config")
 
-function listarPesquisa(linhasPassadas, idEmpresa) {
+function listarPesquisaGeneros(linhasPassadas, idEmpresa, generosString) {
+    let filtroGeneroSQL = "";
+    if (generosString) {
+        const arrayGeneros = generosString.split(',');
+
+        const condicoes = arrayGeneros.map(g => `c.generosConteudo like '%${g}%'`).join(' OR ');
+
+        filtroGeneroSQL = `AND (${condicoes})`;
+    }
+
     var instrucao = `
-    select
+   SELECT
     c.idConteudo,
     c.tituloConteudo,
     c.dtLancamentoCont,
     c.notaConteudo,
     c.generosConteudo,
-    case 
-        when cf.fkConteudo IS NOT NULL THEN 1 
-        else 0 
-    end as favoritado
-    from Conteudo c
-    left join ConteudosFavoritos cf
-    on cf.fkConteudo = c.idConteudo
-    and cf.fkEmpresa = ${idEmpresa}
-    where numVotosCont > 200
-    order by notaConteudo desc
-    limit 50
-    offset ${linhasPassadas};
+    CASE 
+        WHEN cf.fkConteudo IS NOT NULL THEN 1 
+        ELSE 0 
+    END AS favoritado
+    FROM Conteudo c
+    LEFT JOIN ConteudosFavoritos cf
+        ON cf.fkConteudo = c.idConteudo
+        AND cf.fkEmpresa = ${idEmpresa}
+    WHERE c.numVotosCont > 200
+        ${filtroGeneroSQL} -- <== INSERE O FILTRO SE ELE EXISTIR
+    ORDER BY c.notaConteudo DESC
+    LIMIT 50
+    OFFSET ${linhasPassadas};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function listarPesquisaData(linhasPassadasData, idEmpresa, de,ate) {
+function listarPesquisaData(linhasPassadasData, idEmpresa, de, ate) {
     var instrucao = `
     select
     c.idConteudo,
@@ -70,7 +80,7 @@ function desfavoritar(idFilme, idEmpresa) {
 
 
 module.exports = {
-    listarPesquisa,
+    listarPesquisaGeneros,
     favoritar,
     desfavoritar,
     listarPesquisaData
