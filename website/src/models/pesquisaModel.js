@@ -19,14 +19,14 @@ function listarPesquisa(linhasPassadas, idEmpresa) {
     and cf.fkEmpresa = ${idEmpresa}
     where numVotosCont > 200
     order by notaConteudo desc
-    limit 75
+    limit 50
     offset ${linhasPassadas};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function listarPesquisaData(linhasPassadas, idEmpresa, de,ate) {
+function listarPesquisaData(linhasPassadasData, idEmpresa, de,ate) {
     var instrucao = `
 
     select
@@ -46,8 +46,8 @@ function listarPesquisaData(linhasPassadas, idEmpresa, de,ate) {
     where numVotosCont > 200 and
     dtLancamentoCont >= '${de}-01-01' and dtLancamentoCont <= '${ate}-01-01'
     order by notaConteudo desc
-    limit 75
-    offset ${linhasPassadas};
+    limit 50
+    offset ${linhasPassadasData};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

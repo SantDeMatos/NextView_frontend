@@ -150,7 +150,8 @@
                                 maxlength="4">
                         </span>
 
-                        <button class="confirm-filter-date" onclick="confirmarFiltroData()">Confirmar</button>
+                        <button class="confirm-filter-date"
+                            onclick="iniciarListarConteudosData(document.getElementById('input_de').value, document.getElementById('input_ate').value)">Confirmar</button>
 
                         <p id="msg_erro"></p>
 
@@ -191,7 +192,7 @@
                     </thead>
                 </table>
 
-                <button onclick="listarConteudos()" class="btn-ver-mais">Ver mais...</button>
+                <button onclick="exibirMais()" class="btn-ver-mais">Ver mais...</button>
 
             </div>
 
@@ -213,9 +214,48 @@
 
 <script>
     var linhasPassadas = 0;
+    var linhasPassadasData = 0;
+    var tipo = "listarConteudo";
 
     window.onload = listarConteudos();
     window.onload = buscarDados();
+
+    function iniciarListarConteudos() {
+         document.getElementById("table-container").innerHTML = `<thead>
+                        <tr>
+                            <th>Título <span></span></th>
+                            <th>Ano De Lançamento <span></span></th>
+                            <th>Avaliação <span></span></th>
+                            <th>Gênero <span></span></th>
+                        </tr>
+                    </thead>`;
+        linhasPassadas = 0;
+        tipo = "listarConteudo";
+        listarConteudos();
+    }
+    
+    function iniciarListarConteudosData(de, ate) {
+         document.getElementById("table-container").innerHTML = `<thead>
+                        <tr>
+                            <th>Título <span></span></th>
+                            <th>Ano De Lançamento <span></span></th>
+                            <th>Avaliação <span></span></th>
+                            <th>Gênero <span></span></th>
+                        </tr>
+                    </thead>`;
+        linhasPassadasData = 0; 
+        tipo = "listarConteudosData";
+        listarConteudosData(de, ate);
+    }
+
+    function exibirMais() {
+        if (tipo == "listarConteudo") {
+            listarConteudos();
+        }
+        if (tipo == "listarConteudosData") {
+            listarConteudosData(document.getElementById('input_de').value, document.getElementById('input_ate').value);
+        }
+    }
 
     function buscarDados() {
         document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
@@ -226,6 +266,8 @@
 
 
     function listarConteudos() {
+        tipo = "listarConteudo"
+
         fetch(`/pesquisa/listarPesquisa/${linhasPassadas}/${sessionStorage.ID_EMPRESA}`, {
             method: 'GET'
         })
@@ -252,7 +294,41 @@
                     </tr>
                     `
                 });
-                linhasPassadas += 75
+                linhasPassadas += 50
+            })
+            .catch(error => {
+                console.error("Erro ao buscar diretor do momento 2:", error);
+            });
+    }
+
+    function listarConteudosData(de, ate) {
+        tipo = "listarConteudosData";
+        fetch(`/pesquisa/listarPesquisaData/${linhasPassadasData}/${sessionStorage.ID_EMPRESA}/${de}/${ate}`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar diretor do momento");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                var data = ""
+                dashs.forEach(dados => {
+                    var data = dados.dtLancamentoCont
+                    var partes = data.split('-');
+                    var ano = partes[0];
+                    document.getElementById("table-container").innerHTML +=
+                        `
+                    <tr>
+                        <td><img data-favoritado = "${dados.favoritado}" id = "filme${dados.idConteudo}" src="assets/imgs/${dados.favoritado == 1 ? 'ion--star.png' : 'ion--star-outline.png'}" class="star" onclick="favoritar('${dados.idConteudo}' ,'${dados.tituloConteudo}', '${ano}', ${dados.notaConteudo}, '${dados.generosConteudo}')">${dados.tituloConteudo}</td>
+                        <td>${ano}</td>
+                        <td>${dados.notaConteudo}</td>
+                        <td>${dados.generosConteudo}</td>
+                    </tr>
+                    `
+                });
+                linhasPassadasData += 50
             })
             .catch(error => {
                 console.error("Erro ao buscar diretor do momento 2:", error);
@@ -364,7 +440,7 @@
     function favoritar(id) {
         var img = document.getElementById("filme" + id);
         var favorito = img.dataset.favoritado;
-        
+
         if (favorito == "1") {
             img.src = "assets/imgs/ion--star-outline.png";
             img.dataset.favoritado = "0";

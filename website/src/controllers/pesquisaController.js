@@ -14,12 +14,12 @@ function listarPesquisa(req, res) {
 }
 
 function listarPesquisaData(req, res) {
-    var linhasPassadas = req.params.linhasPassadas;
+    var linhasPassadasData = req.params.linhasPassadasData;
     var idEmpresa = req.params.idEmpresa;
     var de = req.params.de;
     var ate = req.params.ate;
 
-    pesquisaModel.listarPesquisaData(linhasPassadas, idEmpresa,de ,ate)
+    pesquisaModel.listarPesquisaData(linhasPassadasData, idEmpresa,de ,ate)
         .then(function (resultado) {
             res.status(200).json(resultado);
         })

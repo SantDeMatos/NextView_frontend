@@ -7,7 +7,7 @@ router.get("/listarPesquisa/:linhasPassadas/:idEmpresa", function (req, res) {
     pesquisaController.listarPesquisa(req, res);
 });
 
-router.get("/listarPesquisaData/:linhasPassadas/:idEmpresa/:de/:ate", function (req, res) {
+router.get("/listarPesquisaData/:linhasPassadasData/:idEmpresa/:de/:ate", function (req, res) {
     pesquisaController.listarPesquisaData(req, res);
 });
 
