@@ -158,13 +158,13 @@
 
                     <div class="card-graphic-bar">
                         <h2>Filmes de melhor avaliação</h2>
-                        <p>Dados do dia <span id="data_atual"></span></p>
+                        <p>Dados do dia <span id="data_filme"></span></p>
                         <div id="chart-filmes"></div>
                     </div>
 
                     <div class="card-graphic-bar">
                         <h2>Séries de melhor avaliação</h2>
-                        <p>Dados do dia <span id="data_atual"></span></p>
+                        <p>Dados do dia <span id="data_serie"></span></p>
                         <div id="chart-series"></div>
                     </div>
 
@@ -567,10 +567,10 @@
     }
 
     const dataAtual = new Date().toLocaleDateString('pt-BR');
-    const data_filme = document.getElementById("data_atual")
-    const data_serie = document.getElementById("data_atual")
-    data_filme.textContent = dataAtual;
-    data_serie.textContent = dataAtual;
+    const dataFilme = document.getElementById("data_filme")
+    const dataSerie = document.getElementById("data_serie")
+    dataFilme.textContent = dataAtual;
+    dataSerie.textContent = dataAtual;
 
 
     var chartFilmes = echarts.init(document.getElementById('chart-filmes'));
