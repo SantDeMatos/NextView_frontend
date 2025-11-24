@@ -226,7 +226,7 @@
     var tipo = "listarConteudo";
     var listaGenerosCheck = []
 
-    window.onload = iniciarListarConteudosGeneros();
+    window.onload = iniciarListarConteudos();
     window.onload = buscarDados();
 
     document.addEventListener('DOMContentLoaded', (event) => {
@@ -250,6 +250,20 @@
             iniciarListarConteudosGeneros();
         });
     });
+
+    function iniciarListarConteudos() {
+        document.getElementById("table-container").innerHTML = `<thead>
+                        <tr>
+                            <th>Título <span></span></th>
+                            <th>Ano De Lançamento <span></span></th>
+                            <th>Avaliação <span></span></th>
+                            <th>Gênero <span></span></th>
+                        </tr>
+                    </thead>`;
+        linhasPassadas = 0;
+        tipo = "listarConteudo";
+        listarConteudos();
+    }
 
     function iniciarListarConteudosGeneros() {
         document.getElementById("table-container").innerHTML = `<thead>
@@ -283,6 +297,11 @@
         if (tipo == "listarConteudoGeneros") {
             listarConteudosGeneros();
         }
+
+        if (tipo == "listarConteudo") {
+            listarConteudos();
+        }
+
         if (tipo == "listarConteudosData") {
             listarConteudosData(document.getElementById('input_de').value, document.getElementById('input_ate').value);
         }
@@ -330,6 +349,42 @@
             })
             .catch(error => {
                 console.error("Erro ao listar Conteudos 2:", error);
+            });
+    }
+
+      function listarConteudos() {
+        tipo = "listarConteudo"
+
+        fetch(`/pesquisa/listarPesquisa/${linhasPassadas}/${sessionStorage.ID_EMPRESA}`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar diretor do momento");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                var data = ""
+                dashs.forEach(dados => {
+                    var data = dados.dtLancamentoCont
+                    var partes = data.split('-');
+                    var ano = partes[0];
+
+                    document.getElementById("table-container").innerHTML +=
+                        `
+                    <tr>
+                        <td><img data-favoritado = "${dados.favoritado}" id = "filme${dados.idConteudo}" src="assets/imgs/${dados.favoritado == 1 ? 'ion--star.png' : 'ion--star-outline.png'}" class="star" onclick="favoritar('${dados.idConteudo}' ,'${dados.tituloConteudo}', '${ano}', ${dados.notaConteudo}, '${dados.generosConteudo}')">${dados.tituloConteudo}</td>
+                        <td>${ano}</td>
+                        <td>${dados.notaConteudo}</td>
+                        <td>${dados.generosConteudo}</td>
+                    </tr>
+                    `
+                });
+                linhasPassadas += 50
+            })
+            .catch(error => {
+                console.error("Erro ao buscar diretor do momento 2:", error);
             });
     }
 

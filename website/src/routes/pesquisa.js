@@ -3,6 +3,11 @@ var router = express.Router();
 
 var pesquisaController = require("../controllers/pesquisaController");
 
+router.get("/listarPesquisa/:linhasPassadas/:idEmpresa", function (req, res) {
+    pesquisaController.listarPesquisa(req, res);
+});
+
+
 router.get("/listarPesquisaGeneros/:linhasPassadas/:idEmpresa/:generosString", function (req, res) {
     pesquisaController.listarPesquisaGeneros(req, res);
 });
