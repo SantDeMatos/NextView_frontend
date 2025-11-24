@@ -212,11 +212,10 @@
 </script>
 
 <script>
-    var ultimoId = 0;
+    var linhasPassadas = 0;
 
     window.onload = listarConteudos();
     window.onload = buscarDados();
-
 
     function buscarDados() {
         document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
@@ -227,7 +226,7 @@
 
 
     function listarConteudos() {
-        fetch(`/pesquisa/listarPesquisa/${ultimoId}/${sessionStorage.ID_EMPRESA}`, {
+        fetch(`/pesquisa/listarPesquisa/${linhasPassadas}/${sessionStorage.ID_EMPRESA}`, {
             method: 'GET'
         })
             .then(response => {
@@ -253,7 +252,7 @@
                     </tr>
                     `
                 });
-                ultimoId += 50
+                linhasPassadas += 75
             })
             .catch(error => {
                 console.error("Erro ao buscar diretor do momento 2:", error);

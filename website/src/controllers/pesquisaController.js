@@ -1,10 +1,25 @@
 var pesquisaModel = require("../models/pesquisaModel");
 
 function listarPesquisa(req, res) {
-    var ultimoId = req.params.ultimoId;
+    var linhasPassadas = req.params.linhasPassadas;
     var idEmpresa = req.params.idEmpresa;
 
-    pesquisaModel.listarPesquisa(ultimoId, idEmpresa)
+    pesquisaModel.listarPesquisa(linhasPassadas, idEmpresa)
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function (erro) {
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function listarPesquisaData(req, res) {
+    var linhasPassadas = req.params.linhasPassadas;
+    var idEmpresa = req.params.idEmpresa;
+    var de = req.params.de;
+    var ate = req.params.ate;
+
+    pesquisaModel.listarPesquisaData(linhasPassadas, idEmpresa,de ,ate)
         .then(function (resultado) {
             res.status(200).json(resultado);
         })
@@ -42,5 +57,6 @@ function desfavoritar(req, res) {
 module.exports = {
     listarPesquisa,
     favoritar,
-    desfavoritar
+    desfavoritar,
+    listarPesquisaData
 }

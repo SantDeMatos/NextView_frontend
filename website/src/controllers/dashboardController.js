@@ -40,8 +40,6 @@ function atorDoMomento(req, res) {
     })
 }
 
-
-
 module.exports = {
     listarGeneros,
     listarFilmesTop,

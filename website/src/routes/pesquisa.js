@@ -3,8 +3,12 @@ var router = express.Router();
 
 var pesquisaController = require("../controllers/pesquisaController");
 
-router.get("/listarPesquisa/:ultimoId/:idEmpresa", function (req, res) {
+router.get("/listarPesquisa/:linhasPassadas/:idEmpresa", function (req, res) {
     pesquisaController.listarPesquisa(req, res);
+});
+
+router.get("/listarPesquisaData/:linhasPassadas/:idEmpresa/:de/:ate", function (req, res) {
+    pesquisaController.listarPesquisaData(req, res);
 });
 
 router.post("/favoritar", function (req, res) {
