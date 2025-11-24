@@ -49,7 +49,7 @@
                 <p class="textoVazio" id="telefoneVazio">Campo obrigatório</p>
 
                 <label for="nomeEmpresa">Senha:</label>
-                <input placeholder="Senha" required id="senhaEmpresa" maxlength="50">
+                <input placeholder="Senha" required id="senhaEmpresa" maxlength="50" type="password">
                 <p class="textoVazio" id="senhaVazio">Campo obrigatório</p>
 
                 <button onclick=" cadastro()">Registrar</button>
@@ -61,28 +61,34 @@
 
 </html>
 
-<script type="text/javascript">
-    $("#telefoneEmpresa").mask("(00)00000-0000");
-</script>
+    <script type="text/javascript">
+        $("#telefoneEmpresa").mask("(00)00000-0000");
+    </script>
 
-<script type="text/javascript">
-    $("#cnpjEmpresa").mask("00.000.000/0000-00");
-</script>
+    <script type="text/javascript">
+        $("#cnpjEmpresa").mask("00.000.000/0000-00");
+    </script>
+
 <script>
 
     function cadastro() {
 
+        console.log(cnpjEmpresa.value);
+
         var nomeEmpresaVar = nomeEmpresa.value
         var emailVar = emailEmpresa.value;
         var senhaVar = senhaEmpresa.value;
-        var cpnjVar = cnpjEmpresa.value;
-        var telefoneVar = telefoneEmpresa.value;
+        var cnpjVar = cnpjEmpresa.value.replace(/[^a-zA-Z0-9]/g, '');
+        var telefoneVar = telefoneEmpresa.value.replace(/[^a-zA-Z0-9]/g, '');
+
+        console.log(cnpjVar);
+        console.log(telefoneVar);
 
         if (
             !emailVar ||
             !senhaVar ||
             !nomeEmpresaVar ||
-            !cpnjVar ||
+            !cnpjVar ||
             !telefoneVar
         ) {
             document.getElementById("emailVazio").style.display = "none"
@@ -100,7 +106,7 @@
             if (!nomeEmpresaVar) {
                 document.getElementById("nomeVazio").style.display = "flex"
             }
-            if (!cpnjVar) {
+            if (!cnpjVar) {
                 document.getElementById("cnpjVazio").style.display = "flex"
             }
             if (!telefoneVar) {
@@ -120,7 +126,7 @@
                     // Agora vá para o arquivo routes/usuario.js
                     emailServer: emailVar,
                     senhaServer: senhaVar,
-                    cnpjServer: cpnjVar,
+                    cnpjServer: cnpjVar,
                     telefoneServer: telefoneVar,
                     nomeEmpresaServer: nomeEmpresaVar
                 }),

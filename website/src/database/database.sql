@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS Empresa (
   idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
   nomeEmpresa VARCHAR(50) NOT NULL,
   emailEmpresa VARCHAR(50) NOT NULL,
-  cnpjEmpresa VARCHAR(18) UNIQUE NOT NULL,
+  cnpjEmpresa VARCHAR(14)UNIQUE NOT NULL,
   telefoneEmpresa VARCHAR(14) NOT NULL,
   senhaEmpresa VARCHAR(128) NOT NULL
 );
@@ -28,7 +28,6 @@ tipo VARCHAR(50)
 
 
 CREATE TABLE IF NOT EXISTS Conteudo(
-
 idConteudo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 tipoConteudo VARCHAR(8) NOT NULL,
 CONSTRAINT checktipo CHECK (tipoConteudo IN('Movie', 'TV Show')),
@@ -40,8 +39,6 @@ generosConteudo VARCHAR(255) NOT NULL,
 notaConteudo DECIMAL(5,2) NOT NULL,
 sinopseCont VARCHAR(255) NOT NULL,
 numVotosCont INT NOT NULL
-
-
 );
 
 CREATE TABLE IF NOT EXISTS ConteudosFavoritos(

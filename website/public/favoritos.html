@@ -405,8 +405,8 @@
         } else {
 
             var emailRecebido = email
-            var telefoneRecebido = telefone
-            var cnpjRecebido = cnpj
+            var telefoneRecebido = removerMascaraAlfanumerica(telefone);
+            var cnpjRecebido = removerMascaraAlfanumerica(cnpj);
             var empresaRecebido = empresa
             var idRecebido = id
 
@@ -556,6 +556,10 @@
             msgErro.style.display = "none";
             msgErro.textContent = "";
         }, 3000);
+    }
+
+    function removerMascaraAlfanumerica(mensagem) {
+        return mensagem.replace(/[^a-zA-Z0-9]/g, '');
     }
 
 </script>
