@@ -26,7 +26,7 @@ function listarPesquisaGeneros(linhasPassadas, idEmpresa, generosString) {
         on cf.fkConteudo = c.idConteudo
         and cf.fkEmpresa = ${idEmpresa}
     where c.numVotosCont > 200
-        ${filtroGeneroSQL} 
+        ${filtroGeneroSQL}
     order by c.notaConteudo desc
     limit 50
     offset ${linhasPassadas};
@@ -44,7 +44,7 @@ function listarPesquisaData(linhasPassadasData, idEmpresa, de, ate) {
     c.notaConteudo,
     c.generosConteudo,
     case 
-        when cf.fkConteudo IS NOT NULL THEN 1 
+        when cf.fkConteudo is not null then 1 
         else 0 
     end as favoritado
     from Conteudo c
@@ -111,7 +111,7 @@ function listarResultado(linhasPassadasResultado, idEmpresa, busca) {
     c.notaConteudo,
     c.generosConteudo,
     case 
-        when cf.fkConteudo is not null then 1 
+        when cf.fkConteudo IS NOT NULL THEN 1 
         else 0 
     end as favoritado
     from Conteudo c
