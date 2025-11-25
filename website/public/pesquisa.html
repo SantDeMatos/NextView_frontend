@@ -257,6 +257,11 @@
                     listaGenerosCheck.splice(indice, 1);
                 }
             }
+
+            if(listaGenerosCheck.length == 0){
+                iniciarListarConteudos();
+            }
+            
             iniciarListarConteudosGeneros();
         });
     });
