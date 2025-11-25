@@ -69,7 +69,6 @@
 
             </div>
 
-
             <div class="pop-up-notification" id="popup">
                 <p id="popup-message"></p>
             </div>
@@ -144,9 +143,13 @@
 
                 <input type="text" placeholder="Título" id="tituloConteudo">
 
-                <input type="text" placeholder="Ano de Lançamento" id="anoConteudo">
+                <input type="number" id="anoConteudo" placeholder="Ano de Lançamento"
+                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    maxlength="4">
 
-                <input type="text" placeholder="Avaliação" maxlength="2" id="notaConteudo">
+                <input type="number" id="notaConteudo" placeholder="Avaliação"
+                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    maxlength="4">
 
                 <button class="select_genero" onclick="exibirGenero()">
                     <p>Gênero</p>
@@ -183,6 +186,8 @@
                 </button>
 
                 <button id="btn_adicionar" onclick="adicionarConteudo()">Adicionar Conteúdo</button>
+
+                <p id="msg_erro"></p>
 
             </div>
 
@@ -272,8 +277,8 @@
         } else {
 
             var emailRecebido = email
-            var telefoneRecebido = telefone
-            var cnpjRecebido = cnpj
+            var telefoneRecebido = removerMascaraAlfanumerica(telefone);
+            var cnpjRecebido = removerMascaraAlfanumerica(cnpj);
             var empresaRecebido = empresa
             var idRecebido = id
 
@@ -326,35 +331,56 @@
         }
     }
 
-    function adicionarConteudo() {
-        var tipoSelecionado = document.querySelector('input[name="tipoConteudo"]:checked');
+    const anoAtual = new Date().getFullYear();
 
-        var tipo = tipoSelecionado.value;
-        var titulo = tituloConteudo.value;
-        var ano = anoConteudo.value;
-        var nota = notaConteudo.value;
+    function adicionarConteudo() {
+
+        const msgErro = document.getElementById('msg_erro');
+
+        var tipo = document.querySelector('input[name="tipoConteudo"]:checked').value;
+        var ano = document.getElementById("anoConteudo").value;
+        var titulo = document.getElementById("tituloConteudo").value;
+        var nota = document.getElementById("notaConteudo").value;
         var generos = listaGenerosCheck.join(', ');
 
-        fetch(`/pesquisa/adicionarConteudo/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                tipoServer: tipo,
-                tituloServer: titulo,
-                anoServer: ano,
-                notaServer: nota,
-                generosServer: generos
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
+        if (ano < 0 || ano > anoAtual) {
+
+            msgErro.textContent = "Data inválida!";
+            msgErro.style.display = 'block';
+            limparMensagemErro(msgErro);
+
+        } else if (nota < 0 || nota > 10) {
+
+            msgErro.textContent = "Avaliação deve ser entre 0 e 10!";
+            msgErro.style.display = 'block';
+            limparMensagemErro(msgErro);
+
+        } else {
+
+            fetch(`/pesquisa/adicionarConteudo/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    tipoServer: tipo,
+                    tituloServer: titulo,
+                    anoServer: ano,
+                    notaServer: nota,
+                    generosServer: generos
+                }),
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                mostrarPopup("Falha no adição do contéudo!", "erro");
-            });
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    mostrarPopup("Falha no adição do contéudo!", "erro");
+                });
+
+        }
+
+
     }
 
     function exibirPerfil() {
@@ -417,6 +443,17 @@
         const conteudo = document.querySelector('.card_generos');
         conteudo.classList.toggle('ativo');
 
+    }
+
+    function limparMensagemErro(msgErro) {
+        setTimeout(() => {
+            msgErro.style.display = "none";
+            msgErro.textContent = "";
+        }, 2000);
+    }
+
+    function removerMascaraAlfanumerica(mensagem) {
+        return mensagem.replace(/[^a-zA-Z0-9]/g, '');
     }
 
 </script>
