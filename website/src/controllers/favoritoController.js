@@ -13,21 +13,6 @@ function listarPesquisa(req, res) {
         });
 }
 
-function listarResultado(req, res) {
-    var linhasPassadasResultado = req.params.linhasPassadasResultado;
-    var idEmpresa = req.params.idEmpresa;
-    var busca = req.params.busca
-
-    favoritoModel.listarResultado(linhasPassadasResultado, idEmpresa,busca)
-        .then(function (resultado) {
-            res.status(200).json(resultado);
-        })
-        .catch(function (erro) {
-            res.status(500).json(erro.sqlMessage);
-        });
-}
-
-
 
 function listarPesquisaGeneros(req, res) {
     var linhasPassadas = req.params.linhasPassadas;
@@ -58,18 +43,6 @@ function listarPesquisaData(req, res) {
         });
 }
 
-function favoritar(req, res) {
-    var idFilmeRecebido = req.body.idFilmeServer;
-    var idEmpresaRecebido = req.body.idEmpresaServer;
-
-    favoritoModel.favoritar(idFilmeRecebido, idEmpresaRecebido)
-        .then(function (resultado) {
-            res.status(200).json(resultado);
-        })
-        .catch(function (erro) {
-            res.status(500).json(erro.sqlMessage);
-        });
-}
 
 function desfavoritar(req, res) {
     var idFilme = req.params.id;
@@ -87,8 +60,6 @@ function desfavoritar(req, res) {
 module.exports = {
     listarPesquisa,
     listarPesquisaGeneros,
-    favoritar,
     desfavoritar,
     listarPesquisaData,
-    listarResultado,
 }

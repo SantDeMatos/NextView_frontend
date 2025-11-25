@@ -15,14 +15,6 @@ router.get("/listarPesquisaData/:linhasPassadasData/:idEmpresa/:de/:ate", functi
     favoritoController.listarPesquisaData(req, res);
 });
 
-router.get("/listarResultado/:linhasPassadasResultado/:idEmpresa/:busca", function (req, res) {
-    favoritoController.listarResultado(req, res);
-});
-
-router.post("/favoritar", function (req, res) {
-    favoritoController.favoritar(req, res);
-})
-
 router.delete("/desfavoritar/:id/:idEmpresa", function (req, res) {
     favoritoController.desfavoritar(req, res);
 })
