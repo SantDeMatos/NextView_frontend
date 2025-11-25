@@ -125,7 +125,9 @@ html {
     justify-content: center;
     border-radius: 15px;
     box-shadow: 0px 7px 15px 8px rgba(0, 0, 0, 0.245);
-    gap: 30px;
+    gap: 25px;
+    position: relative;
+    padding-bottom: 25px;
 }
 
 .card-add-conteudo input {
@@ -212,7 +214,7 @@ html {
     border: solid 1px rgb(0, 0, 0);
     width: 96.7%;
     left: -2px;
-    max-height: 350px;
+    max-height: 330px;
     position: absolute;
     bottom: 50px;
     border-radius: 10px;
@@ -498,6 +500,16 @@ html {
 #btn_menu_fechar img {
     width: 25px;
     height: 25px;
+}
+
+#msg_erro {
+    display: none;
+    color: rgb(203, 26, 26);
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
 }
 
 /* Responsivividade */

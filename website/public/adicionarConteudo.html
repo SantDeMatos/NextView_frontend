@@ -187,6 +187,8 @@
 
                 <button id="btn_adicionar" onclick="adicionarConteudo()">Adicionar Conteúdo</button>
 
+                <p id="msg_erro"></p>
+
             </div>
 
         </main>
@@ -333,40 +335,52 @@
 
     function adicionarConteudo() {
 
-        var tipoSelecionado = document.querySelector('input[name="tipoConteudo"]:checked');
+        const msgErro = document.getElementById('msg_erro');
 
-        var tipo = tipoSelecionado.value;
-        var titulo = tituloConteudo.value;
-        var ano = anoConteudo.value;
-        var nota = notaConteudo.value;
+        var tipo = document.querySelector('input[name="tipoConteudo"]:checked').value;
+        var ano = document.getElementById("anoConteudo").value;
+        var titulo = document.getElementById("tituloConteudo").value;
+        var nota = document.getElementById("notaConteudo").value;
         var generos = listaGenerosCheck.join(', ');
 
+        if (ano < 0 || ano > anoAtual) {
 
-        if (Number(ano) > 10) {
-            alert("Erro!");
+            msgErro.textContent = "Data inválida!";
+            msgErro.style.display = 'block';
+            limparMensagemErro(msgErro);
+
+        } else if (nota < 0 || nota > 10) {
+
+            msgErro.textContent = "Avaliação deve ser entre 0 e 10!";
+            msgErro.style.display = 'block';
+            limparMensagemErro(msgErro);
+
+        } else {
+
+            fetch(`/pesquisa/adicionarConteudo/`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    tipoServer: tipo,
+                    tituloServer: titulo,
+                    anoServer: ano,
+                    notaServer: nota,
+                    generosServer: generos
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    mostrarPopup("Falha no adição do contéudo!", "erro");
+                });
+
         }
 
-        fetch(`/pesquisa/adicionarConteudo/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                tipoServer: tipo,
-                tituloServer: titulo,
-                anoServer: ano,
-                notaServer: nota,
-                generosServer: generos
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                mostrarPopup("Falha no adição do contéudo!", "erro");
-            });
-            
+
     }
 
     function exibirPerfil() {
@@ -435,7 +449,7 @@
         setTimeout(() => {
             msgErro.style.display = "none";
             msgErro.textContent = "";
-        }, 3000);
+        }, 2000);
     }
 
     function removerMascaraAlfanumerica(mensagem) {
