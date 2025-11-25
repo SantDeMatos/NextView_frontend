@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextView</title>
     <link rel="stylesheet" href="assets/css/adicionarConteudo.css">
+    <link rel="shortcut icon" href="assets/imgs/icon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -55,7 +56,12 @@
             </ul>
         </aside>
 
-        <main class="dashboard-main">
+        <main class="add-conteudo-main">
+
+            <div class="add-conteudo-header">
+                <span class="add-conteudo-title">Adicionar Conteúdo</span>
+            </div>
+
             <div class="container-perfil">
 
                 <p>Bem Vindo!</p>
@@ -117,6 +123,54 @@
                 </div>
             </div>
 
+            <div class="card-add-conteudo">
+
+                <button class="select_conteudo" onclick="exibirConteudo()">
+                    <p>Selecione o tipo de conteúdo</p>
+                    <img src="assets/imgs/seta_azul.png" alt=""></span>
+
+                    <div class="tipo_conteudo">
+                        <label><input class="check" type="checkbox" value="Filme">Filme</label>
+                        <hr>
+                        <label><input class="check" type="checkbox" value="Serie">Série</label>
+                    </div>
+                </button>
+
+                <input type="text" placeholder="Título">
+
+                <input type="text" placeholder="Data de Lançamento">
+
+                <input type="text" placeholder="Avaliação" maxlength="2">
+
+                <button class="select_genero" onclick="exibirGenero()">
+                    <p>Gênero</p>
+                    <img src="assets/imgs/seta_azul.png" alt=""></span>
+
+                    <div class="card_generos">
+                        <label><input class="check" type="checkbox" value="Filme">Drama</label>
+                        <hr>
+                        <label><input class="check" type="checkbox" value="Serie">Comédia</label>
+                        <hr>
+                        <label><input class="check" type="checkbox" value="Filme">Ação</label>
+                        <hr>
+                        <label><input class="check" type="checkbox" value="Serie">Romance</label>
+                        <hr>
+                        <label><input class="check" type="checkbox" value="Filme">Terror</label>
+                        <hr>
+                        <label><input class="check" type="checkbox" value="Serie">Suspense</label>
+                        <hr>
+                        <label><input class="check" type="checkbox" value="Filme">Comédia</label>
+                        <hr>
+                        <label><input class="check" type="checkbox" value="Serie">Sci-fi</label>
+                    </div>
+
+                </button>
+
+                <button id="btn_adicionar" onclick="adicionarConteudo()">Adicionar Conteúdo</button>
+
+            </div>
+
+        </main>
     </div>
 
 </body>
@@ -124,7 +178,8 @@
 </html>
 
 <script>
-function buscarDados() {
+
+    function buscarDados() {
         document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
         document.getElementById("telefone").value = sessionStorage.TELEFONE_EMPRESA;
         document.getElementById("cnpj").value = sessionStorage.CNPJ_EMPRESA;
@@ -273,5 +328,19 @@ function buscarDados() {
     btnFechar.addEventListener('click', () => {
         sidebarID.classList.remove('aberto');
     });
+
+    function exibirConteudo() {
+
+        const conteudo = document.querySelector('.tipo_conteudo');
+        conteudo.classList.toggle('ativo');
+
+    }
+
+    function exibirGenero() {
+
+        const conteudo = document.querySelector('.card_generos');
+        conteudo.classList.toggle('ativo');
+
+    }
 
 </script>
