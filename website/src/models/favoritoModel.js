@@ -38,20 +38,13 @@ function listarPesquisaGeneros(linhasPassadas, idEmpresa, generosString) {
 function listarPesquisaData(linhasPassadasData, idEmpresa, de, ate) {
     var instrucao = `
     select
-    c.idConteudo,
-    c.tituloConteudo,
-    c.dtLancamentoCont,
-    c.notaConteudo,
-    c.generosConteudo,
-    case 
-        when cf.fkConteudo is not null then 1 
-        else 0 
-    end as favoritado
-    from Conteudo c
-    left join ConteudosFavoritos cf
-    on cf.fkConteudo = c.idConteudo
-    and cf.fkEmpresa = ${idEmpresa}
-    where numVotosCont > 200 and
+	idContFavoritos, fkConteudo,
+    C.tituloConteudo, C.dtLancamentoCont, C.notaConteudo ,C.generosConteudo
+    from
+    ConteudosFavoritos CF
+    inner join
+    Conteudo C on CF.fkConteudo = C.idConteudo
+    where CF.fkEmpresa = ${idEmpresa} and
     dtLancamentoCont >= '${de}-01-01' and dtLancamentoCont < '${parseInt(ate) + 1}-01-01'
     order by dtLancamentoCont, notaConteudo desc
     limit 50

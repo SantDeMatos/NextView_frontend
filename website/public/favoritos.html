@@ -144,7 +144,7 @@
                                 maxlength="4">
                         </span>
 
-                        <button class="confirm-filter-date" onclick="confirmarFiltroData()">Confirmar</button>
+                        <button class="confirm-filter-date" onclick="iniciarListarConteudosData(document.getElementById('input_de').value, document.getElementById('input_ate').value)">Confirmar</button>
 
                         <p id="msg_erro"></p>
 
@@ -341,6 +341,42 @@
             });
     }
 
+       function listarConteudosData(de, ate) {
+        tipo = "listarConteudosData";
+        fetch(`/favorito/listarPesquisaData/${linhasPassadasData}/${sessionStorage.ID_EMPRESA}/${de}/${ate}`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar diretor do momento");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                var data = ""
+                dashs.forEach(dados => {
+                    var data = dados.dtLancamentoCont
+                    var partes = data.split('-');
+                    var ano = partes[0];
+                    document.getElementById("table-container").innerHTML +=
+                        `
+                    <tr>
+                        <tr>
+                        <td><img id = "filme${dados.fkConteudo}" src="assets/imgs/ion--star.png" class="star" onclick="favoritar('${dados.fkConteudo}')">${dados.tituloConteudo}</td>
+                        <td>${ano}</td>
+                        <td>${dados.notaConteudo}</td>
+                        <td>${dados.generosConteudo}</td>
+                    </tr>
+                    </tr>
+                    `
+                });
+                linhasPassadasData += 50
+            })
+            .catch(error => {
+                console.error("Erro ao buscar diretor do momento 2:", error);
+            });
+    }
+
 
     function favoritar(id) {
         fetch(`/pesquisa/desfavoritar/${id}/${sessionStorage.ID_EMPRESA}`, {
@@ -354,8 +390,6 @@
                 console.log(`#ERRO: ${resposta}`);
             })
     }
-
-
 
     const paginaAtual = window.location.pathname.split("/").pop();
 
