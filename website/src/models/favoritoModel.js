@@ -1,37 +1,42 @@
 var database = require("../database/config")
 
 function listarPesquisaGeneros(linhasPassadas, idEmpresa, generosString) {
-    let filtroGeneroSQL = "";
+    var filtroGeneroSQL = "";
+
+    // 1. Constrói a condição de filtro de gênero se generosString não estiver vazia
     if (generosString) {
         const arrayGeneros = generosString.split(',');
+        // Usa C.generosConteudo, que é a coluna na tabela Conteudo
+        const condicoes = arrayGeneros.map(g => `C.generosConteudo like '%${g.trim()}%'`).join(' OR ');
 
-        const condicoes = arrayGeneros.map(g => `c.generosConteudo like '%${g}%'`).join(' OR ');
-
+        // Note: O 'AND' será colocado DIRETAMENTE na cláusula WHERE abaixo.
+        // Se houver condições, a string de filtro fica assim: "AND (condicao1 OR condicao2...)"
         filtroGeneroSQL = `AND (${condicoes})`;
     }
 
+    // 2. Monta a instrução SQL
     var instrucao = `
-    select
-    c.idConteudo,
-    c.tituloConteudo,
-    c.dtLancamentoCont,
-    c.notaConteudo,
-    c.generosConteudo,
-    case 
-        when cf.fkConteudo is not null then 1 
-        else 0 
-    end as favoritado
-    from Conteudo c
-    left join ConteudosFavoritos cf
-        on cf.fkConteudo = c.idConteudo
-        and cf.fkEmpresa = ${idEmpresa}
-    where c.numVotosCont > 200
-        ${filtroGeneroSQL}
-    order by c.notaConteudo desc
-    limit 50
-    offset ${linhasPassadas};
+    SELECT
+        CF.idContFavoritos,
+        CF.fkConteudo,
+        C.tituloConteudo,
+        C.dtLancamentoCont,
+        C.notaConteudo,
+        C.generosConteudo
+    FROM
+        ConteudosFavoritos CF
+    INNER JOIN
+        Conteudo C ON CF.fkConteudo = C.idConteudo
+    WHERE 
+        CF.fkEmpresa = ${idEmpresa}
+        ${filtroGeneroSQL} 
+    ORDER BY 
+        C.notaConteudo DESC
+    LIMIT 50
+    OFFSET ${linhasPassadas};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
+
+    console.log("Executando a instrução SQL de favoritos por gênero: \n" + instrucao);
     return database.executar(instrucao);
 }
 

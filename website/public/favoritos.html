@@ -144,7 +144,8 @@
                                 maxlength="4">
                         </span>
 
-                        <button class="confirm-filter-date" onclick="iniciarListarConteudosData(document.getElementById('input_de').value, document.getElementById('input_ate').value)">Confirmar</button>
+                        <button class="confirm-filter-date"
+                            onclick="iniciarListarConteudosData(document.getElementById('input_de').value, document.getElementById('input_ate').value)">Confirmar</button>
 
                         <p id="msg_erro"></p>
 
@@ -159,17 +160,25 @@
                     </button>
 
                     <div class="filter-gender-content" id="filterGenderContent">
-                        <label><input type="checkbox"> Terror</label>
+                        <label><input type="checkbox" value="Drama"> Drama</label>
                         <hr>
-                        <label><input type="checkbox"> Ação</label>
+                        <label><input type="checkbox" value="Comedy"> Comédia</label>
                         <hr>
-                        <label><input type="checkbox"> Drama</label>
+                        <label><input type="checkbox" value="Action"> Ação</label>
                         <hr>
-                        <label><input type="checkbox"> Ficção</label>
+                        <label><input type="checkbox" value="Thriller"> Suspense</label>
                         <hr>
-                        <label><input type="checkbox"> Romance</label>
+                        <label><input type="checkbox" value="Horror"> Horror</label>
                         <hr>
-                        <label><input type="checkbox"> Suspense</label>
+                        <label><input type="checkbox" value="Crime"> Crime</label>
+                        <hr>
+                        <label><input type="checkbox" value="Science Fiction"> Ficção Científica</label>
+                        <hr>
+                        <label><input type="checkbox" value="Adventure"> Aventura</label>
+                        <hr>
+                        <label><input type="checkbox" value="Romance"> Romance</label>
+                        <hr>
+                        <label><input type="checkbox" value="Animation"> Animação</label>
                     </div>
                 </div>
 
@@ -341,7 +350,7 @@
             });
     }
 
-       function listarConteudosData(de, ate) {
+    function listarConteudosData(de, ate) {
         tipo = "listarConteudosData";
         fetch(`/favorito/listarPesquisaData/${linhasPassadasData}/${sessionStorage.ID_EMPRESA}/${de}/${ate}`, {
             method: 'GET'
@@ -367,13 +376,49 @@
                         <td>${dados.notaConteudo}</td>
                         <td>${dados.generosConteudo}</td>
                     </tr>
-                    </tr>
                     `
                 });
                 linhasPassadasData += 50
             })
             .catch(error => {
                 console.error("Erro ao buscar diretor do momento 2:", error);
+            });
+    }
+
+    function listarConteudosGeneros() {
+        tipo = "listarConteudoGeneros"
+        const generosString = listaGenerosCheck.join(',');
+
+        fetch(`/favorito/listarPesquisaGeneros/${linhasPassadas}/${sessionStorage.ID_EMPRESA}/${generosString}`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar diretor do momento");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                var data = ""
+                dashs.forEach(dados => {
+                    var data = dados.dtLancamentoCont
+                    var partes = data.split('-');
+                    var ano = partes[0];
+
+                    document.getElementById("table-container").innerHTML +=
+                        `
+                   <tr>
+                        <td><img id = "filme${dados.fkConteudo}" src="assets/imgs/ion--star.png" class="star" onclick="favoritar('${dados.fkConteudo}')">${dados.tituloConteudo}</td>
+                        <td>${ano}</td>
+                        <td>${dados.notaConteudo}</td>
+                        <td>${dados.generosConteudo}</td>
+                    </tr>
+                    `
+                });
+                linhasPassadas += 50
+            })
+            .catch(error => {
+                console.error("Erro ao listar Conteudos 2:", error);
             });
     }
 

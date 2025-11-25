@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
 function listarPesquisaGeneros(linhasPassadas, idEmpresa, generosString) {
-    let filtroGeneroSQL = "";
+    var filtroGeneroSQL = "";
     if (generosString) {
         const arrayGeneros = generosString.split(',');
 
