@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Empresa (
   nomeEmpresa VARCHAR(50) NOT NULL,
   emailEmpresa VARCHAR(50) NOT NULL,
   cnpjEmpresa VARCHAR(14)UNIQUE NOT NULL,
-  telefoneEmpresa VARCHAR(14) NOT NULL,
+  telefoneEmpresa VARCHAR(11) NOT NULL,
   senhaEmpresa VARCHAR(128) NOT NULL
 );
 CREATE TABLE IF NOT EXISTS Contato (
