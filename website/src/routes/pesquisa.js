@@ -7,6 +7,11 @@ router.get("/listarPesquisa/:linhasPassadas/:idEmpresa", function (req, res) {
     pesquisaController.listarPesquisa(req, res);
 });
 
+
+router.get("/listarPesquisaGeneros/:linhasPassadas/:idEmpresa/:generosString", function (req, res) {
+    pesquisaController.listarPesquisaGeneros(req, res);
+});
+
 router.get("/listarPesquisaData/:linhasPassadasData/:idEmpresa/:de/:ate", function (req, res) {
     pesquisaController.listarPesquisaData(req, res);
 });

@@ -166,17 +166,25 @@
                     </button>
 
                     <div class="filter-gender-content" id="filterGenderContent">
-                        <label><input type="checkbox"> Terror</label>
+                        <label><input type="checkbox" value="Drama"> Drama</label>
                         <hr>
-                        <label><input type="checkbox"> Ação</label>
+                        <label><input type="checkbox" value="Comedy"> Comédia</label>
                         <hr>
-                        <label><input type="checkbox"> Drama</label>
+                        <label><input type="checkbox" value="Action"> Ação</label>
                         <hr>
-                        <label><input type="checkbox"> Ficção</label>
+                        <label><input type="checkbox" value="Thriller"> Suspense</label>
                         <hr>
-                        <label><input type="checkbox"> Romance</label>
+                        <label><input type="checkbox" value="Horror"> Horror</label>
                         <hr>
-                        <label><input type="checkbox"> Suspense</label>
+                        <label><input type="checkbox" value="Crime"> Crime</label>
+                        <hr>
+                        <label><input type="checkbox" value="Science Fiction"> Ficção Científica</label>
+                        <hr>
+                        <label><input type="checkbox" value="Adventure"> Aventura</label>
+                        <hr>
+                        <label><input type="checkbox" value="Romance"> Romance</label>
+                        <hr>
+                        <label><input type="checkbox" value="Animation"> Animação</label>
                     </div>
                 </div>
             </div>
@@ -216,12 +224,35 @@
     var linhasPassadas = 0;
     var linhasPassadasData = 0;
     var tipo = "listarConteudo";
+    var listaGenerosCheck = []
 
-    window.onload = listarConteudos();
+    window.onload = iniciarListarConteudos();
     window.onload = buscarDados();
 
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var containerGeneros = document.getElementById('filterGenderContent');
+
+        containerGeneros.addEventListener('change', (e) => {
+
+            if (e.target.matches('input[type="checkbox"]')) {
+
+                var checkboxAlterado = e.target;
+                var valorDoCheckbox = checkboxAlterado.value;
+
+                if (checkboxAlterado.checked) {
+                    listaGenerosCheck.push(valorDoCheckbox)
+                }
+                if (!checkboxAlterado.checked) {
+                    var indice = listaGenerosCheck.indexOf(valorDoCheckbox)
+                    listaGenerosCheck.splice(indice, 1);
+                }
+            }
+            iniciarListarConteudosGeneros();
+        });
+    });
+
     function iniciarListarConteudos() {
-         document.getElementById("table-container").innerHTML = `<thead>
+        document.getElementById("table-container").innerHTML = `<thead>
                         <tr>
                             <th>Título <span></span></th>
                             <th>Ano De Lançamento <span></span></th>
@@ -233,9 +264,9 @@
         tipo = "listarConteudo";
         listarConteudos();
     }
-    
-    function iniciarListarConteudosData(de, ate) {
-         document.getElementById("table-container").innerHTML = `<thead>
+
+    function iniciarListarConteudosGeneros() {
+        document.getElementById("table-container").innerHTML = `<thead>
                         <tr>
                             <th>Título <span></span></th>
                             <th>Ano De Lançamento <span></span></th>
@@ -243,15 +274,34 @@
                             <th>Gênero <span></span></th>
                         </tr>
                     </thead>`;
-        linhasPassadasData = 0; 
+        linhasPassadas = 0;
+        tipo = "listarConteudo";
+        listarConteudosGeneros();
+    }
+
+    function iniciarListarConteudosData(de, ate) {
+        document.getElementById("table-container").innerHTML = `<thead>
+                        <tr>
+                            <th>Título <span></span></th>
+                            <th>Ano De Lançamento <span></span></th>
+                            <th>Avaliação <span></span></th>
+                            <th>Gênero <span></span></th>
+                        </tr>
+                    </thead>`;
+        linhasPassadasData = 0;
         tipo = "listarConteudosData";
         listarConteudosData(de, ate);
     }
 
     function exibirMais() {
+        if (tipo == "listarConteudoGeneros") {
+            listarConteudosGeneros();
+        }
+
         if (tipo == "listarConteudo") {
             listarConteudos();
         }
+
         if (tipo == "listarConteudosData") {
             listarConteudosData(document.getElementById('input_de').value, document.getElementById('input_ate').value);
         }
@@ -265,7 +315,44 @@
     }
 
 
-    function listarConteudos() {
+    function listarConteudosGeneros() {
+        tipo = "listarConteudoGeneros"
+        const generosString = listaGenerosCheck.join(',');
+
+        fetch(`/pesquisa/listarPesquisaGeneros/${linhasPassadas}/${sessionStorage.ID_EMPRESA}/${generosString}`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar diretor do momento");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                var data = ""
+                dashs.forEach(dados => {
+                    var data = dados.dtLancamentoCont
+                    var partes = data.split('-');
+                    var ano = partes[0];
+
+                    document.getElementById("table-container").innerHTML +=
+                        `
+                    <tr>
+                        <td><img data-favoritado = "${dados.favoritado}" id = "filme${dados.idConteudo}" src="assets/imgs/${dados.favoritado == 1 ? 'ion--star.png' : 'ion--star-outline.png'}" class="star" onclick="favoritar('${dados.idConteudo}' ,'${dados.tituloConteudo}', '${ano}', ${dados.notaConteudo}, '${dados.generosConteudo}')">${dados.tituloConteudo}</td>
+                        <td>${ano}</td>
+                        <td>${dados.notaConteudo}</td>
+                        <td>${dados.generosConteudo}</td>
+                    </tr>
+                    `
+                });
+                linhasPassadas += 50
+            })
+            .catch(error => {
+                console.error("Erro ao listar Conteudos 2:", error);
+            });
+    }
+
+      function listarConteudos() {
         tipo = "listarConteudo"
 
         fetch(`/pesquisa/listarPesquisa/${linhasPassadas}/${sessionStorage.ID_EMPRESA}`, {

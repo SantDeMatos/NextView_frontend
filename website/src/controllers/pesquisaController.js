@@ -13,13 +13,27 @@ function listarPesquisa(req, res) {
         });
 }
 
+function listarPesquisaGeneros(req, res) {
+    var linhasPassadas = req.params.linhasPassadas;
+    var idEmpresa = req.params.idEmpresa;
+    var generosString = req.params.generosString;
+
+    pesquisaModel.listarPesquisaGeneros(linhasPassadas, idEmpresa, generosString)
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function (erro) {
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 function listarPesquisaData(req, res) {
     var linhasPassadasData = req.params.linhasPassadasData;
     var idEmpresa = req.params.idEmpresa;
     var de = req.params.de;
     var ate = req.params.ate;
 
-    pesquisaModel.listarPesquisaData(linhasPassadasData, idEmpresa,de ,ate)
+    pesquisaModel.listarPesquisaData(linhasPassadasData, idEmpresa, de, ate)
         .then(function (resultado) {
             res.status(200).json(resultado);
         })
@@ -56,7 +70,8 @@ function desfavoritar(req, res) {
 
 module.exports = {
     listarPesquisa,
+    listarPesquisaGeneros,
     favoritar,
     desfavoritar,
-    listarPesquisaData
+    listarPesquisaData,
 }

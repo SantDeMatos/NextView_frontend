@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextView</title>
+    <link rel="stylesheet" href="assets/css/adicionarConteudo.css">
+</head>
+
+<body>
+
+    <div class="add-conteudo-container">
+
+        <!-- Botão menu lateral -->
+        <button class="btn_menu" id="btn_menu_abrir"><img src="assets/imgs/menu-black.png" alt=""></button>
+
+        <aside class="sidebar" id="sidebar_id">
+
+            <!-- Botão para fechar menu lateral -->
+            <button class="btn_menu" id="btn_menu_fechar"><img src="assets/imgs/fechar-black.png" alt=""></button>
+
+            <ul id="menu">
+                <li><img id="logo" src="assets/imgs/Logo.png" alt=""></li>
+                <li>
+                    <a href="dashboard.html">
+                        <img src="assets/imgs/002-google-analytics.png" alt="Análises">
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="pesquisa.html">
+                        <img src="assets/imgs/ion--search-outline (2).png" alt="Pesquisa">
+                        <p>Pesquisar conteúdo</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="favoritos.html">
+                        <img src="assets/imgs/ion--star-outline.png" alt="Favoritos">
+                        <p>Favoritos</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="adicionarConteudo.html">
+                        <img src="assets/imgs/adicionar_conteudo_azul.png" alt="AdicionarConteudo">
+                        <p>Adicionar Conteúdo</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <img src="assets/imgs/001-sair.png" alt="Sair">
+                        <p>Logout</p>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="container-perfil">
+
+                <p>Bem Vindo!</p>
+                <button onclick="exibirPerfil()"><img src="assets/imgs/perfil-azul.png" alt=""></button>
+
+            </div>
+
+
+            <div class="pop-up-notification" id="popup">
+                <p id="popup-message"></p>
+            </div>
+
+            <div class="card-perfil" id="cardPerfil">
+
+                <div class="container-card-info">
+                    <h2>Informações de perfil</h2>
+
+                    <hr>
+
+                    <div class="info-item" id="empresa-item">
+                        <div>
+                            <label>Nome da empresa</label>
+                            <input type="text" id="empresa" value="" disabled>
+                        </div>
+                        <span class="edit-icon" onclick="habilitarEdit('empresa')"><img class="icon-pencil"
+                                src="assets/imgs/ferramenta-lapis.png" alt=""></span>
+                    </div>
+
+                    <div class="info-item" id="cnpj-item">
+                        <div>
+                            <label>CNPJ</label>
+                            <input type="text" id="cnpj" value="" maxlength="14" disabled>
+                        </div>
+                        <span class="edit-icon" onclick="habilitarEdit('cnpj')"><img class="icon-pencil"
+                                src="assets/imgs/ferramenta-lapis.png" alt=""></span>
+                    </div>
+
+                    <div class="info-item" id="email-item">
+                        <div>
+                            <label>E-mail</label>
+                            <input type="text" id="email" value="" disabled>
+                        </div>
+                        <span class="edit-icon" onclick="habilitarEdit('email')"><img class="icon-pencil"
+                                src="assets/imgs/ferramenta-lapis.png" alt=""></span>
+                    </div>
+
+                    <div class="info-item" id="telefone-item">
+                        <div>
+                            <label>Telefone</label>
+                            <input type="text" id="telefone" value="" disabled>
+                        </div>
+                        <span class="edit-icon" onclick="habilitarEdit('telefone')"><img class="icon-pencil"
+                                src="assets/imgs/ferramenta-lapis.png" alt=""></span>
+                    </div>
+
+                    <button class="confirm-btn" id="confirmBtn"
+                        onclick="atualizar(empresa.value, telefone.value,cnpj.value, email.value, sessionStorage.ID_EMPRESA)"
+                        disabled>Confirmar</button>
+                </div>
+            </div>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+function buscarDados() {
+        document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
+        document.getElementById("telefone").value = sessionStorage.TELEFONE_EMPRESA;
+        document.getElementById("cnpj").value = sessionStorage.CNPJ_EMPRESA;
+        document.getElementById("email").value = sessionStorage.EMAIL_EMPRESA;
+    }
+
+    window.onload = buscarDados();
+
+    const paginaAtual = window.location.pathname.split("/").pop();
+
+    const links = document.querySelectorAll("#menu a");
+
+    links.forEach(link => {
+        const linkHref = link.getAttribute("href");
+
+        if (paginaAtual === linkHref) {
+            link.classList.add("ativo");
+        }
+
+        link.addEventListener("click", () => {
+            links.forEach(l => l.classList.remove("ativo"));
+            link.classList.add("ativo");
+        });
+    });
+
+    let editDaVez = null;
+
+    function habilitarEdit(id) {
+
+        if (editDaVez && editDaVez !== id) {
+            document.getElementById(editDaVez).disabled = true;
+            document.getElementById(editDaVez + '-item').classList.remove('active');
+        }
+
+        const input = document.getElementById(id);
+        const item = document.getElementById(id + '-item');
+        input.disabled = false;
+        input.focus();
+        item.classList.add('active');
+
+        document.getElementById('confirmBtn').disabled = false;
+
+        editDaVez = id;
+    }
+
+    function atualizar(empresa, telefone, cnpj, email, id) {
+
+        if (!empresa || !telefone || !cnpj || !email) {
+
+            mostrarPopup("Preencha os dados!", "erro");
+
+        } else {
+
+            var emailRecebido = email
+            var telefoneRecebido = telefone
+            var cnpjRecebido = cnpj
+            var empresaRecebido = empresa
+            var idRecebido = id
+
+
+            fetch("/usuarios/atualizar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    emailServer: emailRecebido,
+                    empresaServer: empresaRecebido,
+                    cnpjServer: cnpjRecebido,
+                    telefoneServer: telefoneRecebido,
+                    idServer: idRecebido
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        sessionStorage.EMAIL_EMPRESA = emailRecebido;
+                        sessionStorage.NOME_EMPRESA = empresaRecebido;
+                        sessionStorage.ID_EMPRESA = idRecebido;
+                        sessionStorage.TELEFONE_EMPRESA = telefoneRecebido;
+                        sessionStorage.CNPJ_EMPRESA = cnpjRecebido;
+                        mostrarPopup("Dados atualizados!", "sucesso");
+
+                        if (!editDaVez) return;
+
+                        const input = document.getElementById(editDaVez);
+                        const item = document.getElementById(editDaVez + '-item');
+                        input.disabled = true;
+                        item.classList.remove('active');
+
+                        document.getElementById('confirmBtn').disabled = true;
+
+                        editDaVez = null;
+
+                    } else {
+                        mostrarPopup("Falha na atualização!", "erro");
+                    }
+
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    mostrarPopup("Falha na atualização!", "erro");
+                });
+
+        }
+    }
+
+    function exibirPerfil() {
+        const card = document.getElementById("cardPerfil");
+        card.classList.toggle("ativo");
+    }
+
+    function mostrarPopup(mensagem, tipo) {
+
+        const popup = document.getElementById('popup');
+        const texto = document.getElementById('popup-message');
+
+        texto.textContent = mensagem;
+
+        popup.classList.remove('pop-up-success', 'pop-up-error');
+        popup.classList.add(tipo === 'sucesso' ? 'pop-up-success' : 'pop-up-error');
+
+        popup.classList.add('show');
+
+        setTimeout(() => {
+            popup.classList.remove('show');
+        }, 1500);
+    }
+
+    const dataAtual = new Date().toLocaleDateString('pt-BR');
+    const dataFilme = document.getElementById("data_filme")
+    const dataSerie = document.getElementById("data_serie")
+    dataFilme.textContent = dataAtual;
+    dataSerie.textContent = dataAtual;
+
+    // Funcionalidade menu hambúrguer
+    const btnAbrir = document.getElementById('btn_menu_abrir');
+    const btnFechar = document.getElementById('btn_menu_fechar');
+    const sidebarID = document.getElementById('sidebar_id');
+
+    btnAbrir.addEventListener('click', () => {
+        sidebarID.classList.add('aberto');
+    });
+
+    btnFechar.addEventListener('click', () => {
+        sidebarID.classList.remove('aberto');
+    });
+
+</script>
