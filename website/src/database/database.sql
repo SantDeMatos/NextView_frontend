@@ -1,3 +1,4 @@
+
 CREATE DATABASE IF NOT EXISTS nextview;
 USE nextview;
 
@@ -43,9 +44,11 @@ numVotosCont INT NOT NULL
 
 CREATE TABLE IF NOT EXISTS ConteudosFavoritos(
 
-idContFavoritos INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+
+idContFavoritos INT AUTO_INCREMENT NOT NULL,
 fkEmpresa INT NOT NULL,
 fkConteudo INT NOT NULL,
+PRIMARY KEY (idContFavoritos, fkEmpresa, fkConteudo),
 CONSTRAINT ConsfkEmpresa FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
 CONSTRAINT ConsfkConteudo FOREIGN KEY (fkConteudo) REFERENCES Conteudo(idConteudo)
 
