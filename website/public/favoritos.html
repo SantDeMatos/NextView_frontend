@@ -46,6 +46,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="adicionarConteudo.html">
+                        <img src="assets/imgs/adicionar_conteudo_azul.png" alt="AdicionarConteudo">
+                        <p>Adicionar Conteúdo</p>
+                    </a>
+                </li>
+                <li>
                     <a href="index.html">
                         <img src="assets/imgs/001-sair.png" alt="Sair">
                         <p>Logout</p>
@@ -144,7 +150,8 @@
                                 maxlength="4">
                         </span>
 
-                        <button class="confirm-filter-date" onclick="confirmarFiltroData()">Confirmar</button>
+                        <button class="confirm-filter-date"
+                            onclick="iniciarListarConteudosData(document.getElementById('input_de').value, document.getElementById('input_ate').value)">Confirmar</button>
 
                         <p id="msg_erro"></p>
 
@@ -159,25 +166,32 @@
                     </button>
 
                     <div class="filter-gender-content" id="filterGenderContent">
-                        <label><input type="checkbox"> Terror</label>
+                        <label><input type="checkbox" value="Drama"> Drama</label>
                         <hr>
-                        <label><input type="checkbox"> Ação</label>
+                        <label><input type="checkbox" value="Comedy"> Comédia</label>
                         <hr>
-                        <label><input type="checkbox"> Drama</label>
+                        <label><input type="checkbox" value="Action"> Ação</label>
                         <hr>
-                        <label><input type="checkbox"> Ficção</label>
+                        <label><input type="checkbox" value="Thriller"> Suspense</label>
                         <hr>
-                        <label><input type="checkbox"> Romance</label>
+                        <label><input type="checkbox" value="Horror"> Horror</label>
                         <hr>
-                        <label><input type="checkbox"> Suspense</label>
+                        <label><input type="checkbox" value="Crime"> Crime</label>
+                        <hr>
+                        <label><input type="checkbox" value="Science Fiction"> Ficção Científica</label>
+                        <hr>
+                        <label><input type="checkbox" value="Adventure"> Aventura</label>
+                        <hr>
+                        <label><input type="checkbox" value="Romance"> Romance</label>
+                        <hr>
+                        <label><input type="checkbox" value="Animation"> Animação</label>
                     </div>
                 </div>
 
             </div>
 
             <div class="table-container">
-
-                <table class="pesquisa-table">
+                <table class="pesquisa-table" id="table-container">
                     <thead>
                         <tr>
                             <th>Título <span></span></th>
@@ -187,149 +201,9 @@
                             <th></th>
                         </tr>
                     </thead>
-
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Titanic</td>
-                        <td>28/11/2016</td>
-                        <td>4.0</td>
-                        <td>romance</td>
-                        <td>12.Jun.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Parasita</td>
-                        <td>09/02/2020</td>
-                        <td>4.9</td>
-                        <td>drama</td>
-                        <td>7.Mar.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Interestelar</td>
-                        <td>22/04/2015</td>
-                        <td>4.3</td>
-                        <td>ficção</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> La La Land</td>
-                        <td>20/09/2016</td>
-                        <td>4.3</td>
-                        <td>romance</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Inception</td>
-                        <td>04/08/2010</td>
-                        <td>4.8</td>
-                        <td>suspense</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Me Chame Pelo Seu Nome</td>
-                        <td>01/07/2017</td>
-                        <td>3.9</td>
-                        <td>romance</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Titanic</td>
-                        <td>28/11/2016</td>
-                        <td>4.0</td>
-                        <td>romance</td>
-                        <td>12.Jun.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Parasita</td>
-                        <td>09/02/2020</td>
-                        <td>4.9</td>
-                        <td>drama</td>
-                        <td>7.Mar.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Interestelar</td>
-                        <td>22/04/2015</td>
-                        <td>4.3</td>
-                        <td>ficção</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> La La Land</td>
-                        <td>20/09/2016</td>
-                        <td>4.3</td>
-                        <td>romance</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Inception</td>
-                        <td>04/08/2010</td>
-                        <td>4.8</td>
-                        <td>suspense</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Me Chame Pelo Seu Nome</td>
-                        <td>01/07/2017</td>
-                        <td>3.9</td>
-                        <td>romance</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Titanic</td>
-                        <td>28/11/2016</td>
-                        <td>4.0</td>
-                        <td>romance</td>
-                        <td>12.Jun.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Parasita</td>
-                        <td>09/02/2020</td>
-                        <td>4.9</td>
-                        <td>drama</td>
-                        <td>7.Mar.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Interestelar</td>
-                        <td>22/04/2015</td>
-                        <td>4.3</td>
-                        <td>ficção</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> La La Land</td>
-                        <td>20/09/2016</td>
-                        <td>4.3</td>
-                        <td>romance</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Inception</td>
-                        <td>04/08/2010</td>
-                        <td>4.8</td>
-                        <td>suspense</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
-                    <tr>
-                        <td><img src="assets/imgs/ion--star.png" class="star"> Me Chame Pelo Seu Nome</td>
-                        <td>01/07/2017</td>
-                        <td>3.9</td>
-                        <td>romance</td>
-                        <td>17.Dec.2021</td>
-                    </tr>
-
                 </table>
 
-                <button class="btn-ver-mais">Ver mais...</button>
+                <button onclick="exibirMais()" class="btn-ver-mais">Ver mais...</button>
 
             </div>
 
@@ -350,6 +224,7 @@
 </script>
 
 <script>
+
     function buscarDados() {
         document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
         document.getElementById("telefone").value = sessionStorage.TELEFONE_EMPRESA;
@@ -357,7 +232,224 @@
         document.getElementById("email").value = sessionStorage.EMAIL_EMPRESA;
     }
 
+
+    var linhasPassadas = 0;
+    var linhasPassadasData = 0;
+    var linhasPassadasResultado = 0;
+    var tipo = "listarConteudo";
+    var listaGenerosCheck = []
+
+    window.onload = iniciarListarConteudos();
     window.onload = buscarDados();
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var containerGeneros = document.getElementById('filterGenderContent');
+
+        containerGeneros.addEventListener('change', (e) => {
+
+            if (e.target.matches('input[type="checkbox"]')) {
+
+                var checkboxAlterado = e.target;
+                var valorDoCheckbox = checkboxAlterado.value;
+
+                if (checkboxAlterado.checked) {
+                    listaGenerosCheck.push(valorDoCheckbox)
+                }
+                if (!checkboxAlterado.checked) {
+                    var indice = listaGenerosCheck.indexOf(valorDoCheckbox)
+                    listaGenerosCheck.splice(indice, 1);
+                }
+            }
+
+            if (listaGenerosCheck.length == 0) {
+                iniciarListarConteudos();
+            } else {
+                iniciarListarConteudosGeneros();
+            }
+        });
+    });
+
+    function iniciarListarConteudos() {
+        document.getElementById("table-container").innerHTML = `<thead>
+                        <tr>
+                            <th>Título <span></span></th>
+                            <th>Ano De Lançamento <span></span></th>
+                            <th>Avaliação <span></span></th>
+                            <th>Gênero <span></span></th>
+                        </tr>
+                    </thead>`;
+        linhasPassadas = 0;
+        tipo = "listarConteudo";
+        listarConteudos();
+    }
+
+    function iniciarListarConteudosGeneros() {
+        document.getElementById("table-container").innerHTML = `<thead>
+                        <tr>
+                            <th>Título <span></span></th>
+                            <th>Ano De Lançamento <span></span></th>
+                            <th>Avaliação <span></span></th>
+                            <th>Gênero <span></span></th>
+                        </tr>
+                    </thead>`;
+        linhasPassadas = 0;
+        tipo = "listarConteudo";
+        listarConteudosGeneros();
+    }
+
+    function iniciarListarConteudosData(de, ate) {
+        if (de == "" && ate == "") {
+            iniciarListarConteudos();
+        } else {
+            document.getElementById("table-container").innerHTML = `<thead>
+                        <tr>
+                            <th>Título <span></span></th>
+                            <th>Ano De Lançamento <span></span></th>
+                            <th>Avaliação <span></span></th>
+                            <th>Gênero <span></span></th>
+                        </tr>
+                    </thead>`;
+            linhasPassadasData = 0;
+            tipo = "listarConteudosData";
+            listarConteudosData(de, ate);
+        }
+    }
+
+    function exibirMais() {
+        if (tipo == "listarConteudoGeneros") {
+            listarConteudosGeneros();
+        }
+
+        if (tipo == "listarConteudo") {
+            listarConteudos();
+        }
+
+        if (tipo == "listarConteudosData") {
+            listarConteudosData(document.getElementById('input_de').value, document.getElementById('input_ate').value);
+        }
+    }
+
+    function listarConteudos() {
+        tipo = "listarConteudo"
+
+        fetch(`/favorito/listarPesquisa/${linhasPassadas}/${sessionStorage.ID_EMPRESA}`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar conteudos");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                var data = ""
+                dashs.forEach(dados => {
+                    var data = dados.dtLancamentoCont
+                    var partes = data.split('-');
+                    var ano = partes[0];
+
+                    document.getElementById("table-container").innerHTML +=
+                        `
+                    <tr>
+                        <td><img id = "filme${dados.fkConteudo}" src="assets/imgs/ion--star.png" class="star" onclick="favoritar('${dados.fkConteudo}')">${dados.tituloConteudo}</td>
+                        <td>${ano}</td>
+                        <td>${dados.notaConteudo}</td>
+                        <td>${dados.generosConteudo}</td>
+                    </tr>
+                    `
+                });
+                linhasPassadas += 50
+            })
+            .catch(error => {
+                console.error("Erro ao buscar diretor do momento 2:", error);
+            });
+    }
+
+    function listarConteudosData(de, ate) {
+        tipo = "listarConteudosData";
+        fetch(`/favorito/listarPesquisaData/${linhasPassadasData}/${sessionStorage.ID_EMPRESA}/${de}/${ate}`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar diretor do momento");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                var data = ""
+                dashs.forEach(dados => {
+                    var data = dados.dtLancamentoCont
+                    var partes = data.split('-');
+                    var ano = partes[0];
+                    document.getElementById("table-container").innerHTML +=
+                        `
+                    <tr>
+                        <tr>
+                        <td><img id = "filme${dados.fkConteudo}" src="assets/imgs/ion--star.png" class="star" onclick="favoritar('${dados.fkConteudo}')">${dados.tituloConteudo}</td>
+                        <td>${ano}</td>
+                        <td>${dados.notaConteudo}</td>
+                        <td>${dados.generosConteudo}</td>
+                    </tr>
+                    `
+                });
+                linhasPassadasData += 50
+            })
+            .catch(error => {
+                console.error("Erro ao buscar diretor do momento 2:", error);
+            });
+    }
+
+    function listarConteudosGeneros() {
+        tipo = "listarConteudoGeneros"
+        const generosString = listaGenerosCheck.join(',');
+
+        fetch(`/favorito/listarPesquisaGeneros/${linhasPassadas}/${sessionStorage.ID_EMPRESA}/${generosString}`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar diretor do momento");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                var data = ""
+                dashs.forEach(dados => {
+                    var data = dados.dtLancamentoCont
+                    var partes = data.split('-');
+                    var ano = partes[0];
+
+                    document.getElementById("table-container").innerHTML +=
+                        `
+                   <tr>
+                        <td><img id = "filme${dados.fkConteudo}" src="assets/imgs/ion--star.png" class="star" onclick="favoritar('${dados.fkConteudo}')">${dados.tituloConteudo}</td>
+                        <td>${ano}</td>
+                        <td>${dados.notaConteudo}</td>
+                        <td>${dados.generosConteudo}</td>
+                    </tr>
+                    `
+                });
+                linhasPassadas += 50
+            })
+            .catch(error => {
+                console.error("Erro ao listar Conteudos 2:", error);
+            });
+    }
+
+
+    function favoritar(id) {
+        fetch(`/pesquisa/desfavoritar/${id}/${sessionStorage.ID_EMPRESA}`, {
+            method: "DELETE"
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+                iniciarListarConteudos();
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            })
+    }
 
     const paginaAtual = window.location.pathname.split("/").pop();
 

@@ -46,6 +46,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="adicionarConteudo.html">
+                        <img src="assets/imgs/adicionar_conteudo_azul.png" alt="AdicionarConteudo">
+                        <p>Adicionar Conteúdo</p>
+                    </a>
+                </li>
+                <li>
                     <a href="index.html">
                         <img src="assets/imgs/001-sair.png" alt="Sair">
                         <p>Logout</p>
@@ -53,8 +59,6 @@
                 </li>
             </ul>
         </aside>
-
-
 
         <main class="pesquisa-main">
 
@@ -120,8 +124,9 @@
             <div class="pesquisa-header">
                 <span class="pesquisa-title">Pesquisa</span>
                 <div class="pesquisa-search">
-                    <input type="text" id="searchInput" placeholder="" oninput="pesquisarConteudo(this.value)">
-                    <img src="assets/imgs/ion--search-outline (2).png">
+                    <input type="text" id="searchInput" placeholder="">
+                    <img onclick="iniciarListarResultado(document.getElementById('searchInput').value)"
+                        src="assets/imgs/ion--search-outline (2).png">
                 </div>
             </div>
 
@@ -221,8 +226,17 @@
 </script>
 
 <script>
+
+    function buscarDados() {
+        document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
+        document.getElementById("telefone").value = sessionStorage.TELEFONE_EMPRESA;
+        document.getElementById("cnpj").value = sessionStorage.CNPJ_EMPRESA;
+        document.getElementById("email").value = sessionStorage.EMAIL_EMPRESA;
+    }
+
     var linhasPassadas = 0;
     var linhasPassadasData = 0;
+    var linhasPassadasResultado = 0;
     var tipo = "listarConteudo";
     var listaGenerosCheck = []
 
@@ -247,7 +261,12 @@
                     listaGenerosCheck.splice(indice, 1);
                 }
             }
-            iniciarListarConteudosGeneros();
+
+            if (listaGenerosCheck.length == 0) {
+                iniciarListarConteudos();
+            } else {
+                iniciarListarConteudosGeneros();
+            }
         });
     });
 
@@ -265,6 +284,24 @@
         listarConteudos();
     }
 
+    function iniciarListarResultado(busca) {
+        if (busca == "") {
+            iniciarListarConteudos();
+        } else {
+            document.getElementById("table-container").innerHTML = `<thead>
+                        <tr>
+                            <th>Título <span></span></th>
+                            <th>Ano De Lançamento <span></span></th>
+                            <th>Avaliação <span></span></th>
+                            <th>Gênero <span></span></th>
+                        </tr>
+                    </thead>`;
+            linhasPassadasResultado = 0;
+            tipo = "listarResultado";
+            listarResultado(busca);
+        }
+    }
+
     function iniciarListarConteudosGeneros() {
         document.getElementById("table-container").innerHTML = `<thead>
                         <tr>
@@ -280,7 +317,10 @@
     }
 
     function iniciarListarConteudosData(de, ate) {
-        document.getElementById("table-container").innerHTML = `<thead>
+        if (de == "" && ate == "") {
+            iniciarListarConteudos();
+        } else {
+            document.getElementById("table-container").innerHTML = `<thead>
                         <tr>
                             <th>Título <span></span></th>
                             <th>Ano De Lançamento <span></span></th>
@@ -288,14 +328,20 @@
                             <th>Gênero <span></span></th>
                         </tr>
                     </thead>`;
-        linhasPassadasData = 0;
-        tipo = "listarConteudosData";
-        listarConteudosData(de, ate);
+            linhasPassadasData = 0;
+
+            tipo = "listarConteudosData";
+            listarConteudosData(de, ate);
+        }
     }
 
     function exibirMais() {
         if (tipo == "listarConteudoGeneros") {
             listarConteudosGeneros();
+        }
+
+        if (tipo == "listarResultado") {
+            listarResultado(document.getElementById('searchInput').value);
         }
 
         if (tipo == "listarConteudo") {
@@ -305,13 +351,6 @@
         if (tipo == "listarConteudosData") {
             listarConteudosData(document.getElementById('input_de').value, document.getElementById('input_ate').value);
         }
-    }
-
-    function buscarDados() {
-        document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
-        document.getElementById("telefone").value = sessionStorage.TELEFONE_EMPRESA;
-        document.getElementById("cnpj").value = sessionStorage.CNPJ_EMPRESA;
-        document.getElementById("email").value = sessionStorage.EMAIL_EMPRESA;
     }
 
 
@@ -324,7 +363,7 @@
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("Erro ao buscar diretor do momento");
+                    throw new Error("Erro ao listar Conteudo por genero");
                 }
                 return response.json();
             })
@@ -348,19 +387,18 @@
                 linhasPassadas += 50
             })
             .catch(error => {
-                console.error("Erro ao listar Conteudos 2:", error);
+                console.error("Erro ao listar Conteudos por genero 2:", error);
             });
     }
 
-      function listarConteudos() {
-        tipo = "listarConteudo"
+    function listarResultado(busca) {
 
-        fetch(`/pesquisa/listarPesquisa/${linhasPassadas}/${sessionStorage.ID_EMPRESA}`, {
+        fetch(`/pesquisa/listarResultado/${linhasPassadasResultado}/${sessionStorage.ID_EMPRESA}/${busca}`, {
             method: 'GET'
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("Erro ao buscar diretor do momento");
+                    throw new Error("Erro ao buscar");
                 }
                 return response.json();
             })
@@ -374,7 +412,43 @@
                     document.getElementById("table-container").innerHTML +=
                         `
                     <tr>
-                        <td><img data-favoritado = "${dados.favoritado}" id = "filme${dados.idConteudo}" src="assets/imgs/${dados.favoritado == 1 ? 'ion--star.png' : 'ion--star-outline.png'}" class="star" onclick="favoritar('${dados.idConteudo}' ,'${dados.tituloConteudo}', '${ano}', ${dados.notaConteudo}, '${dados.generosConteudo}')">${dados.tituloConteudo}</td>
+                        <td><img data-favoritado = "${dados.favoritado}" id = "filme${dados.idConteudo}" src="assets/imgs/${dados.favoritado == 1 ? 'ion--star.png' : 'ion--star-outline.png'}" class="star" onclick="favoritar('${dados.idConteudo}')">${dados.tituloConteudo}</td>
+                        <td>${ano}</td>
+                        <td>${dados.notaConteudo}</td>
+                        <td>${dados.generosConteudo}</td>
+                    </tr>
+                    `
+                });
+                linhasPassadasResultado += 50
+            })
+            .catch(error => {
+                console.error("Erro ao buscar 2:", error);
+            });
+    }
+
+    function listarConteudos() {
+        tipo = "listarConteudo"
+
+        fetch(`/pesquisa/listarPesquisa/${linhasPassadas}/${sessionStorage.ID_EMPRESA}`, {
+            method: 'GET'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar conteudos");
+                }
+                return response.json();
+            })
+            .then(dashs => {
+                var data = ""
+                dashs.forEach(dados => {
+                    var data = dados.dtLancamentoCont
+                    var partes = data.split('-');
+                    var ano = partes[0];
+
+                    document.getElementById("table-container").innerHTML +=
+                        `
+                    <tr>
+                        <td><img data-favoritado = "${dados.favoritado}" id = "filme${dados.idConteudo}" src="assets/imgs/${dados.favoritado == 1 ? 'ion--star.png' : 'ion--star-outline.png'}" class="star" onclick="favoritar('${dados.idConteudo}')">${dados.tituloConteudo}</td>
                         <td>${ano}</td>
                         <td>${dados.notaConteudo}</td>
                         <td>${dados.generosConteudo}</td>
@@ -395,7 +469,7 @@
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("Erro ao buscar diretor do momento");
+                    throw new Error("Erro ao buscar conteudos pela data");
                 }
                 return response.json();
             })
@@ -418,7 +492,7 @@
                 linhasPassadasData += 50
             })
             .catch(error => {
-                console.error("Erro ao buscar diretor do momento 2:", error);
+                console.error("Erro ao buscar diretor por data 2:", error);
             });
     }
 

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextView</title>
     <link rel="stylesheet" href="assets/css/adicionarConteudo.css">
+    <link rel="shortcut icon" href="assets/imgs/icon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -55,7 +56,12 @@
             </ul>
         </aside>
 
-        <main class="dashboard-main">
+        <main class="add-conteudo-main">
+
+            <div class="add-conteudo-header">
+                <span class="add-conteudo-title">Adicionar Conteúdo</span>
+            </div>
+
             <div class="container-perfil">
 
                 <p>Bem Vindo!</p>
@@ -117,6 +123,70 @@
                 </div>
             </div>
 
+            <div class="card-add-conteudo">
+
+                <button class="select_conteudo" onclick="exibirConteudo()">
+                    <p id="textoTipoFilme">Selecione o tipo de conteúdo</p>
+                    <img src="assets/imgs/seta_azul.png" alt=""></span>
+
+                    <div class="tipo_conteudo">
+                        <label>
+                            <input class="check" type="radio" name="tipoConteudo" value="Movie">
+                            Filme
+                        </label>
+                        <hr>
+                        <label>
+                            <input class="check" type="radio" name="tipoConteudo" value="Tv show">
+                            Série
+                        </label>
+                    </div>
+                </button>
+
+                <input type="text" placeholder="Título" id="tituloConteudo">
+
+                <input type="text" placeholder="Ano de Lançamento" id="anoConteudo">
+
+                <input type="text" placeholder="Avaliação" maxlength="2" id="notaConteudo">
+
+                <button class="select_genero" onclick="exibirGenero()">
+                    <p>Gênero</p>
+                    <img src="assets/imgs/seta_azul.png" alt=""></span>
+
+                    <div class="card_generos" id="filterGenderContent">
+                        <label><input type="checkbox" value="Drama"> Drama</label>
+                        <hr>
+                        <label><input type="checkbox" value="Comedy"> Comédia</label>
+                        <hr>
+                        <label><input type="checkbox" value="Action"> Ação</label>
+                        <hr>
+                        <label><input type="checkbox" value="Thriller"> Suspense</label>
+                        <hr>
+                        <label><input type="checkbox" value="Horror"> Horror</label>
+                        <hr>
+                        <label><input type="checkbox" value="Crime"> Crime</label>
+                        <hr>
+                        <label><input type="checkbox" value="Science Fiction"> Ficção Científica</label>
+                        <hr>
+                        <label><input type="checkbox" value="Adventure"> Aventura</label>
+                        <hr>
+                        <label><input type="checkbox" value="Romance"> Romance</label>
+                        <hr>
+                        <label><input type="checkbox" value="Animation"> Animação</label>
+                        <hr>
+                        <label><input type="checkbox" value="Mystery"> Mistério</label>
+                        <hr>
+                        <label><input type="checkbox" value="Fantasy"> Fantasia</label>
+                        <hr>
+                        <label><input type="checkbox" value="Family"> Família</label>
+                    </div>
+
+                </button>
+
+                <button id="btn_adicionar" onclick="adicionarConteudo()">Adicionar Conteúdo</button>
+
+            </div>
+
+        </main>
     </div>
 
 </body>
@@ -124,7 +194,9 @@
 </html>
 
 <script>
-function buscarDados() {
+    var listaGenerosCheck = [];
+
+    function buscarDados() {
         document.getElementById("empresa").value = sessionStorage.NOME_EMPRESA;
         document.getElementById("telefone").value = sessionStorage.TELEFONE_EMPRESA;
         document.getElementById("cnpj").value = sessionStorage.CNPJ_EMPRESA;
@@ -132,6 +204,27 @@ function buscarDados() {
     }
 
     window.onload = buscarDados();
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var containerGeneros = document.getElementById('filterGenderContent');
+
+        containerGeneros.addEventListener('change', (e) => {
+
+            if (e.target.matches('input[type="checkbox"]')) {
+
+                var checkboxAlterado = e.target;
+                var valorDoCheckbox = checkboxAlterado.value;
+
+                if (checkboxAlterado.checked) {
+                    listaGenerosCheck.push(valorDoCheckbox)
+                }
+                if (!checkboxAlterado.checked) {
+                    var indice = listaGenerosCheck.indexOf(valorDoCheckbox)
+                    listaGenerosCheck.splice(indice, 1);
+                }
+            }
+        });
+    });
 
     const paginaAtual = window.location.pathname.split("/").pop();
 
@@ -233,6 +326,37 @@ function buscarDados() {
         }
     }
 
+    function adicionarConteudo() {
+        var tipoSelecionado = document.querySelector('input[name="tipoConteudo"]:checked');
+
+        var tipo = tipoSelecionado.value;
+        var titulo = tituloConteudo.value;
+        var ano = anoConteudo.value;
+        var nota = notaConteudo.value;
+        var generos = listaGenerosCheck.join(', ');
+
+        fetch(`/pesquisa/adicionarConteudo/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                tipoServer: tipo,
+                tituloServer: titulo,
+                anoServer: ano,
+                notaServer: nota,
+                generosServer: generos
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                mostrarPopup("Falha no adição do contéudo!", "erro");
+            });
+    }
+
     function exibirPerfil() {
         const card = document.getElementById("cardPerfil");
         card.classList.toggle("ativo");
@@ -273,5 +397,26 @@ function buscarDados() {
     btnFechar.addEventListener('click', () => {
         sidebarID.classList.remove('aberto');
     });
+
+    function exibirConteudo() {
+        var tipoSelecionado = document.querySelector('input[name="tipoConteudo"]:checked');
+
+        const conteudo = document.querySelector('.tipo_conteudo');
+        conteudo.classList.toggle('ativo');
+
+        if (tipoSelecionado.value == "Movie") {
+            document.getElementById('textoTipoFilme').innerHTML = "Filme"
+        } else {
+            document.getElementById('textoTipoFilme').innerHTML = "Série"
+        }
+
+    }
+
+    function exibirGenero() {
+
+        const conteudo = document.querySelector('.card_generos');
+        conteudo.classList.toggle('ativo');
+
+    }
 
 </script>
