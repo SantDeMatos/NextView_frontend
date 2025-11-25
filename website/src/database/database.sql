@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Contato (
     nomeContato VARCHAR(50) NOT NULL,
     emailContato VARCHAR(50) NOT NULL,
     mensagemContato VARCHAR(255) NOT NULL,
-    telefoneContato VARCHAR(14) NOT NULL
+    telefoneContato VARCHAR(11) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Log(
@@ -23,7 +23,7 @@ idLog INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 dtLog DATETIME NOT NULL,
 descLog VARCHAR(255) NOT NULL,
 qtdErro INT NOT NULL,
-tipo VARCHAR(50)
+tipo VARCHAR(50) NOT NULL
 );
 
 
