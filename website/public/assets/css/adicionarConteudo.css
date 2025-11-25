@@ -6,7 +6,6 @@ html {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    overflow: hidden;
 }
 
 .add-conteudo-container {
@@ -17,7 +16,6 @@ html {
 
 .sidebar {
     width: 260px;
-    height: 100vh;
     background: white;
     display: flex;
     flex-direction: column;
@@ -91,129 +89,195 @@ html {
     filter: brightness(0) invert(1);
 }
 
-/* Dashboard main */
-
-.dashboard-main {
+.add-conteudo-main {
     flex: 1;
-    padding: 0.8em 1em;
+    background: #fff;
+    padding: 2.5em 3em;
     display: flex;
     flex-direction: column;
-    color: #05009A;
-    overflow-y: auto;
+    min-width: 0;
     background-color: #f2f0f0;
 }
 
-.container-info-item {
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 4em;
-    margin: 10px 0px 20px 0px;
-}
-
-.container-info-item .card-info {
-    background: linear-gradient(180deg, #05009A 0%, #0FBBFF 100%);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.223);
-    width: 350px;
-    height: auto;
-    border-radius: 15px;
+.add-conteudo-header {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    color: white;
+    gap: 2em;
+    margin-bottom: 2em;
 }
 
-.container-info-item .card-info img {
-    width: 50px;
-    height: 50px;
+.add-conteudo-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #05009A;
 }
 
-.container-info-item .card-info .info-text {
-    text-align: center;
-}
+/* Container add conteudo */
 
-.container-info-item .card-info h1 {
-    font-size: 20px;
-}
-
-.container-info-item .card-info p {
-    font-size: 15px;
-}
-
-.container-graphics {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 3.5em;
+.card-add-conteudo {
+    background-color: #ffffff;
     width: 100%;
-}
-
-.container-graphics .container-graphics-bar {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    max-width: 740px;
-}
-
-.container-graphics .container-graphics-bar .card-graphic-bar {
-    background-color: #05009A;
-    width: 100%;
-    height: 240px;
-    border-radius: 15px;
-    color: white;
-}
-
-.container-graphics-bar .card-graphic-bar h2 {
-    font-size: 20px;
-    text-align: center;
-    margin: 10px 0px 10px 0px;
-}
-
-.container-graphics-bar .card-graphic-bar p {
-    width: 100%;
-    font-size: 12px;
-    text-align: center;
-    margin: 10px 0px 10px 0px;
-}
-
-.container-graphics-pizza {
-    width: 100%;
-    max-width: 350px;
-    height: 470px;
-    background-color: #e4f4fa;
-    border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0px 6px 10px 6px rgba(0, 0, 0, 0.314);
-
-    display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    box-shadow: 0px 7px 15px 8px rgba(0, 0, 0, 0.245);
+    gap: 30px;
 }
 
-
-.container-graphics-pizza #chart-generos {
-    width: 100%;
-    height: 470px;
+.card-add-conteudo input {
+    width: 68%;
+    height: 50px;
+    padding-left: 25px;
+    border-radius: 10px;
+    border: solid 3px #0033FF;
+    font-size: 17px;
+    outline: none;
 }
 
-#chart-filmes,
-#chart-series {
-    width: 100%;
+.card-add-conteudo input:focus {
+    border: solid 4px #0033FF;
+}
+
+.card-add-conteudo input::placeholder {
+    color: #576ecd;
+}
+
+.card-add-conteudo #btn_adicionar {
+    width: 40%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: #0033FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card-add-conteudo #btn_adicionar:hover {
+    transform: scale(1.02);
+}
+
+.card-add-conteudo .select_conteudo,
+.select_genero {
+    width: 71%;
+    height: 56.8px;
+    display: flex;
+    align-items: center;
+    border: solid 3px #0033FF;
+    border-radius: 10px;
+    background: none;
+    padding-left: 25px;
+    font-size: 17px;
+    color: #576ecd;
+    gap: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.card-add-conteudo .select_conteudo img,
+.select_genero img {
+    width: 15px;
+    height: 15px;
+}
+
+.card-add-conteudo .tipo_conteudo {
+    background-color: white;
+    border: solid 1px rgb(0, 0, 0);
+    width: 97.5%;
     height: 160px;
+    max-height: 200px;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    border-radius: 10px;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    opacity: 0;
+}
+
+.card-add-conteudo .card_generos {
+    background-color: white;
+    border: solid 1px rgb(0, 0, 0);
+    width: 96%;
+    left: 0px;
+    max-height: 120px;
+    position: absolute;
+    top: 50px;
+    border-radius: 10px;
+    padding: 15px;
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    opacity: 0;
+    overflow-y: auto;
+}
+
+.card-add-conteudo .tipo_conteudo.ativo {
+    opacity: 1;
+    display: flex;
+}
+
+.card-add-conteudo .card_generos.ativo {
+    opacity: 1;
+    display: flex;
+}
+
+.card-add-conteudo .tipo_conteudo label,
+.card_generos label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 4px;
+    font-size: 16px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.card-add-conteudo .tipo_conteudo label input[type="checkbox"],
+.card_generos label input[type="checkbox"] {
+    accent-color: #0033FF;
+}
+
+.card-add-conteudo .tipo_conteudo input,
+.card_generos input {
+    width: 18px;
+    height: 18px;
+}
+
+.card-add-conteudo .tipo_conteudo hr {
+    border: solid 1px rgba(0, 0, 0, 0.226);
+    width: 100%;
+}
+
+.card-add-conteudo .card_generos hr {
+    border: solid 1px rgba(0, 0, 0, 0.226);
+    width: 99%;
 }
 
 /* Perfil */
+
 .container-perfil {
-    width: 100%;
+    width: max-content;
     height: 45px;
     display: flex;
     justify-content: end;
     align-items: center;
     gap: 10px;
+    position: absolute;
+    z-index: 101;
+    top: 12px;
+    right: 30px;
 }
 
 .container-perfil button {
@@ -225,7 +289,7 @@ html {
 .container-perfil button img {
     width: 45px;
     height: 45px;
-    margin-right: 25px;
+    margin-right: 10px;
 }
 
 .card-perfil:not(.ativo) {
@@ -301,7 +365,7 @@ html {
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     padding: 10px 14px;
-    margin: 19.2px 19.2px 5px;
+    margin-top: 20px;
     transition: 0.2s;
     width: 80%;
 }
@@ -358,7 +422,7 @@ html {
     font-size: 15px;
     cursor: pointer;
     transition: 0.3s;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .confirm-btn:disabled {
@@ -373,10 +437,10 @@ html {
     align-items: center;
     position: absolute;
     z-index: 101;
-    right: 110px;
-    top: 60px;
-    width: 280px;
-    height: 60px;
+    right: 60px;
+    top: 70px;
+    width: 250px;
+    height: 50px;
     background-color: rgb(120, 240, 120);
     border-radius: 15px;
     font-weight: 400;
@@ -401,7 +465,7 @@ html {
 /* Menu hambúrguer */
 #btn_menu_abrir {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 15px;
     left: 15px;
     background: none;
@@ -435,12 +499,14 @@ html {
     height: 25px;
 }
 
-/* responsivividade */
+
+
+/* Responsivividade */
 @media screen and (min-width: 320px) and (max-width: 375px) {
 
     #btn_menu_abrir {
         display: block !important;
-        top: 15px;
+        top: 39px;
         left: 15px;
     }
 
@@ -454,6 +520,7 @@ html {
         top: 0;
         left: -280px;
         width: 150px;
+        height: 100vh;
     }
 
     .sidebar #logo {
@@ -481,13 +548,37 @@ html {
         height: 20px;
     }
 
+    .pesquisa-main {
+        overflow-y: auto;
+        padding: 2.5em 0.7em;
+    }
+
+    .pesquisa-table tbody td {
+        font-size: 0.6em;
+        padding-left: 0.5em;
+        align-items: center;
+    }
+
+    .pesquisa-table thead th {
+        font-size: 0.8em;
+        padding-bottom: 0.7em;
+        padding-left: 0.5em;
+    }
+
+    .star {
+        width: 12px;
+        height: 12px;
+    }
+
     .container-card-info {
-        width: 180px;
+        width: 230px;
     }
 
     .container-perfil {
         right: 10px;
         top: 38px;
+        width: max-content;
+        height: max-content;
     }
 
     .container-perfil button {
@@ -503,12 +594,12 @@ html {
     }
 
     .container-perfil p {
+        font-size: 11px;
         display: flex;
-        font-size: 10px;
     }
 
     .card-perfil {
-        top: 45px;
+        top: 70px;
         right: 15px;
         width: 180px;
         height: 280px;
@@ -521,8 +612,8 @@ html {
 
     .info-item {
         padding: 5px 14px;
-        margin-top: 6px;
-        width: 60%;
+        margin-top: 10px;
+        width: 45%;
     }
 
     .info-item label {
@@ -540,7 +631,7 @@ html {
     }
 
     .card-perfil hr {
-        width: 70%;
+        width: 55%;
         height: 1px;
     }
 
@@ -553,70 +644,112 @@ html {
         padding-inline: 5px;
     }
 
+    .pesquisa-title {
+        font-size: 1.1em;
+        display: none;
+    }
+
+    .pesquisa-header {
+        margin-bottom: 1.3em;
+        padding-left: 50px;
+    }
+
+    .pesquisa-table {
+        margin-top: 10px;
+    }
+
     .pop-up-notification {
         right: 40px;
-        top: 70px;
+        top: 100px;
         width: 140px;
         height: 25px;
         font-size: 10px;
     }
 
-    .container-info-item {
-        gap: 0.5em;
+    .filter {
+        width: 97%;
+        height: max-content;
+        margin-top: 15px;
     }
 
-    .container-info-item .card-info {
+    .filter-gender {
+        top: 5px;
+        left: 47%;
+    }
+
+    .filter-gender-btn {
+        font-size: 10px;
+    }
+
+    .filter-gender-btn img {
+        width: 11px;
+        height: 11px;
+    }
+
+    .filter-gender-content {
+        top: 30px;
+        left: 0px;
+        width: 80px;
+    }
+
+    .filter-gender-content label {
+        font-size: 10px;
+    }
+
+    .filter-gender-content input {
+        width: 13px;
+        height: 13px;
+    }
+
+    .filter-date {
+        left: 22%;
+    }
+
+    .filter-date-btn {
+        font-size: 10px;
+    }
+
+    .filter-date-btn img {
+        width: 11px;
+        height: 11px;
+    }
+
+    .filter-date-content {
+        top: 30px;
+        left: 0px;
         width: 120px;
-        height: 70px;
-        padding: 8px;
+        gap: 0.7em;
     }
 
-    .container-info-item .card-info img {
-        width: 22px;
-        height: 22px;
+    .filter-date-content span {
+        gap: 8px;
     }
 
-    .container-info-item .card-info h1 {
+    .filter-date-content p {
         font-size: 10px;
     }
 
-    .container-info-item .card-info p {
+    .filter-date-content input {
+        width: 80px;
+        height: 12px;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 90px;
+        height: 20px;
+        font-size: 11px;
+    }
+
+    #msg_erro {
         font-size: 10px;
     }
-
-    .container-graphics {
-        gap: 2em;
-    }
-
-    .container-graphics-pizza {
-        max-width: 100%;
-        padding: 5px;
-        margin-bottom: 20px;
-    }
-
-    .container-graphics-pizza #chart-generos {
-        width: 100%;
-        height: 380px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .container-graphics-bar .card-graphic-bar h2 {
-        font-size: 15px;
-    }
-
-    .container-graphics-bar .card-graphic-bar p {
-        font-size: 10px;
-    }
-
 }
 
 @media screen and (min-width: 375px) and (max-width: 425px) {
 
     #btn_menu_abrir {
-        display: flex;
-        top: 20px;
+        display: block !important;
+        top: 41px;
         left: 15px;
     }
 
@@ -630,6 +763,7 @@ html {
         top: 0;
         left: -280px;
         width: 180px;
+        height: 100vh;
     }
 
     .sidebar #logo {
@@ -657,18 +791,43 @@ html {
         height: 20px;
     }
 
+    .pesquisa-main {
+        overflow-y: auto;
+        padding: 2.5em 0.7em;
+    }
+
+    .pesquisa-table tbody td {
+        font-size: 0.6em;
+        padding-left: 1.5em;
+        align-items: center;
+    }
+
+    .pesquisa-table thead th {
+        font-size: 0.8em;
+        padding-bottom: 0.7em;
+        padding-left: 1em;
+    }
+
+    .star {
+        width: 15px;
+        height: 15px;
+    }
+
     .container-card-info {
-        width: 200px;
+        width: 230px;
     }
 
     .container-perfil {
         right: 10px;
         top: 38px;
+        width: max-content;
+        height: max-content;
     }
 
     .container-perfil button {
         width: max-content;
         height: max-content;
+        padding: 0px;
     }
 
     .container-perfil button img {
@@ -678,12 +837,12 @@ html {
     }
 
     .container-perfil p {
-        display: flex;
         font-size: 12px;
+        display: flex;
     }
 
     .card-perfil {
-        top: 55px;
+        top: 75px;
         right: 15px;
         width: 200px;
         height: 330px;
@@ -695,8 +854,8 @@ html {
 
     .info-item {
         padding: 5px 14px;
-        margin-top: 12px;
-        width: 65%;
+        margin-top: 15px;
+        width: 55%;
     }
 
     .info-item label {
@@ -718,71 +877,110 @@ html {
     }
 
     .confirm-btn {
-        margin-top: 10px;
+        margin-top: 17px;
         height: 25px;
         padding: 0;
         font-size: 12px;
     }
 
+    .pesquisa-title {
+        font-size: 1.1em;
+        display: none;
+    }
+
+    .pesquisa-header {
+        margin-bottom: 1.3em;
+        padding-left: 50px;
+    }
+
+    .pesquisa-table {
+        margin-top: 10px;
+    }
+
     .pop-up-notification {
-        right: 45px;
-        top: 70px;
+        right: 40px;
+        top: 120px;
         width: 150px;
         height: 35px;
         font-size: 10px;
     }
 
-    .container-info-item {
-        gap: 0.5em;
+    .filter {
+        width: 97%;
+        height: max-content;
+        margin-top: 17px;
     }
 
-    .container-info-item .card-info {
-        width: 150px;
-        height: 70px;
-        padding: 8px;
+    .filter-gender {
+        top: 5px;
+        left: 53%;
     }
 
-    .container-info-item .card-info img {
-        width: 25px;
-        height: 25px;
-    }
-
-    .container-info-item .card-info h1 {
-        font-size: 12px;
-    }
-
-    .container-info-item .card-info p {
-        font-size: 12px;
-    }
-
-    .container-graphics {
-        gap: 2em;
-    }
-
-    .container-graphics-pizza {
-        max-width: 740px;
-        margin-bottom: 20px;
-    }
-
-    .container-graphics-pizza #chart-generos {
-        width: 100%;
-        height: 380px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #chart-filmes,
-    #chart-series {
-        height: 160px;
-    }
-
-    .container-graphics-bar .card-graphic-bar h2 {
-        font-size: 17px;
-    }
-
-    .container-graphics-bar .card-graphic-bar p {
+    .filter-gender-btn {
         font-size: 11px;
+    }
+
+    .filter-gender-btn img {
+        width: 12px;
+        height: 12px;
+    }
+
+    .filter-gender-content {
+        top: 30px;
+        left: 0px;
+        width: 90px;
+    }
+
+    .filter-gender-content label {
+        font-size: 11px;
+    }
+
+    .filter-gender-content input {
+        width: 14px;
+        height: 14px;
+    }
+
+    .filter-date {
+        left: 28%;
+    }
+
+    .filter-date-btn {
+        font-size: 11px;
+    }
+
+    .filter-date-btn img {
+        width: 12px;
+        height: 12px;
+    }
+
+    .filter-date-content {
+        top: 30px;
+        left: 0px;
+        width: 120px;
+        gap: 0.7em;
+    }
+
+    .filter-date-content span {
+        gap: 8px;
+    }
+
+    .filter-date-content p {
+        font-size: 11px;
+    }
+
+    .filter-date-content input {
+        width: 80px;
+        height: 15px;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 90px;
+        height: 22px;
+        font-size: 12px;
+    }
+
+    #msg_erro {
+        font-size: 12px;
     }
 
 }
@@ -792,8 +990,8 @@ html {
 
     #btn_menu_abrir {
         display: block !important;
-        top: 23px;
-        left: 15px;
+        top: 41px;
+        left: 25px;
     }
 
     #btn_menu_abrir img {
@@ -806,6 +1004,7 @@ html {
         top: 0;
         left: -280px;
         width: 200px;
+        height: 100vh;
     }
 
     .sidebar #logo {
@@ -833,6 +1032,23 @@ html {
         height: 20px;
     }
 
+    .pesquisa-table tbody td {
+        font-size: 0.6em;
+        padding-left: 1.5em;
+        align-items: center;
+    }
+
+    .pesquisa-table thead th {
+        font-size: 0.8em;
+        padding-bottom: 0.7em;
+        padding-left: 1em;
+    }
+
+    .star {
+        width: 15px;
+        height: 15px;
+    }
+
     .container-card-info {
         width: 230px;
     }
@@ -845,18 +1061,16 @@ html {
     .container-perfil button img {
         width: 34px;
         height: 34px;
-        margin: 0;
-        padding: 0;
     }
 
     .container-perfil p {
+        font-size: 13px;
         display: flex;
-        font-size: 14px;
     }
 
     .card-perfil {
-        top: 60px;
-        right: 22px;
+        top: 80px;
+        right: 30px;
         width: 230px;
         height: 370px;
     }
@@ -895,54 +1109,110 @@ html {
         padding: 0;
     }
 
+    .pesquisa-main {
+        overflow-y: auto;
+        padding: 2.5em 1.3em;
+    }
+
+    .pesquisa-title {
+        font-size: 1.1em;
+        display: none;
+    }
+
+    .pesquisa-header {
+        margin-bottom: 1.3em;
+        padding-left: 45px;
+    }
+
+    .pesquisa-table {
+        margin-top: 10px;
+    }
+
     .pop-up-notification {
-        right: 50px;
-        top: 80px;
+        right: 60px;
+        top: 100px;
         width: 180px;
         height: 40px;
         font-size: 12px;
-        opacity: 0;
     }
 
-    .container-info-item {
-        gap: 1em;
+    .filter {
+        width: 97%;
+        height: max-content;
+        margin-top: 17px;
     }
 
-    .container-info-item .card-info {
-        width: 170px;
-        height: 70px;
-        padding: 8px;
+    .filter-gender {
+        top: 5px;
+        left: 56%;
     }
 
-    .container-info-item .card-info img {
-        width: 30px;
-        height: 30px;
+    .filter-gender-btn {
+        font-size: 12px;
     }
 
-    .container-info-item .card-info h1 {
+    .filter-gender-btn img {
+        width: 13px;
+        height: 13px;
+    }
+
+    .filter-gender-content {
+        top: 30px;
+        left: 0px;
+        width: 100px;
+    }
+
+    .filter-gender-content label {
         font-size: 13px;
     }
 
-    .container-info-item .card-info p {
+    .filter-gender-content input {
+        width: 15px;
+        height: 15px;
+    }
+
+    .filter-date {
+        top: 2px;
+        left: 33%;
+    }
+
+    .filter-date-btn {
+        font-size: 12px;
+    }
+
+    .filter-date-btn img {
+        width: 13px;
+        height: 13px;
+    }
+
+    .filter-date-content {
+        top: 30px;
+        left: 0px;
+        width: 140px;
+        gap: 0.7em;
+    }
+
+    .filter-date-content span {
+        gap: 8px;
+    }
+
+    .filter-date-content p {
+        font-size: 12px;
+    }
+
+    .filter-date-content input {
+        width: 80px;
+        height: 15px;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 90px;
+        height: 22px;
         font-size: 13px;
     }
 
-    .container-graphics {
-        gap: 2em;
-    }
-
-    .container-graphics-pizza {
-        max-width: 740px;
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-
-    .container-graphics-pizza #chart-generos {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-        height: 470px;
+    #msg_erro {
+        font-size: 13px;
     }
 
 }
@@ -952,8 +1222,8 @@ html {
 
     #btn_menu_abrir {
         display: block !important;
-        top: 20px;
-        left: 30px;
+        top: 34px;
+        left: 40px;
     }
 
     #btn_menu_abrir img {
@@ -966,6 +1236,7 @@ html {
         top: 0;
         left: -280px;
         width: 220px;
+        height: 100vh;
     }
 
     .sidebar #logo {
@@ -993,19 +1264,23 @@ html {
         height: 20px;
     }
 
+    .pesquisa-table tbody td {
+        font-size: 0.9em;
+    }
+
     .container-perfil {
         right: 10px;
         top: 35px;
     }
 
-    .container-perfil button img {
-        margin: 0;
-        padding: 0;
+    .container-perfil p {
+        font-size: 15px;
+        display: flex;
     }
 
     .card-perfil {
-        top: 60px;
-        right: 25px;
+        top: 80px;
+        right: 30px;
         width: 330px;
         height: 400px;
     }
@@ -1025,57 +1300,100 @@ html {
     }
 
     .confirm-btn {
-        margin-top: 10px;
+        margin-top: 17px;
+    }
+
+    .pesquisa-title {
+        font-size: 1.3em;
+    }
+
+    .pesquisa-header {
+        padding-left: 45px;
     }
 
     .pop-up-notification {
-        right: 75px;
-        top: 70px;
+        right: 80px;
+        top: 120px;
         width: 240px;
         height: 50px;
         font-size: 14px;
     }
 
-    .container-info-item {
+    .filter {
+        width: 97%;
+    }
+
+    .filter-gender {
+        top: 5px;
+        left: 65%;
+    }
+
+    .filter-gender-btn {
+        font-size: 15px;
+    }
+
+    .filter-gender-btn img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .filter-gender-content {
+        top: 30px;
+        left: 0px;
+        width: 120px;
+    }
+
+    .filter-gender-content label {
+        font-size: 14px;
+    }
+
+    .filter-gender-content input {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-date {
+        top: 2px;
+        left: 42%;
+    }
+
+    .filter-date-btn {
+        font-size: 15px;
+    }
+
+    .filter-date-btn img {
+        width: 15px;
+        height: 15px;
+    }
+
+    .filter-date-content {
+        top: 30px;
+        left: 0px;
+        width: 180px;
         gap: 1em;
-        margin-top: 20px;
     }
 
-    .container-info-item .card-info {
-        width: 219px;
-        height: 80px;
-        padding: 8px;
+    .filter-date-content span {
+        gap: 10px;
     }
 
-    .container-info-item .card-info img {
-        width: 32px;
-        height: 32px;
-    }
-
-    .container-info-item .card-info h1 {
+    .filter-date-content p {
         font-size: 15px;
     }
 
-    .container-info-item .card-info p {
+    .filter-date-content input {
+        width: 110px;
+        height: 22px;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 110px;
+        height: 28px;
         font-size: 15px;
     }
 
-    .container-graphics {
-        gap: 2em;
-    }
-
-    .container-graphics-pizza {
-        max-width: 740px;
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-
-    .container-graphics-pizza #chart-generos {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-        height: 470px;
+    #msg_erro {
+        font-size: 13px;
     }
 
 }
@@ -1100,90 +1418,90 @@ html {
         font-size: 14px;
     }
 
-    .container-info-item {
-        gap: 1em;
+    .pesquisa-table tbody td {
+        font-size: 0.9em;
     }
 
-    .container-info-item .card-info {
-        width: 220px;
-        height: 80px;
-        padding: 8px;
+    .pop-up-notification {
+        top: 120px;
+        right: 120px;
     }
 
-    .container-info-item .card-info img {
-        width: 33px;
+    .filter {
+        width: 95%;
+    }
+
+    .filter-gender {
+        top: 5px;
+        left: 67%;
+    }
+
+    .filter-gender-btn {
+        font-size: 16px;
+    }
+
+    .filter-gender-btn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-gender-content {
+        top: 35px;
+        left: 0px;
+        width: 140px;
+    }
+
+    .filter-gender-content label {
+        font-size: 16px;
+    }
+
+    .filter-gender-content input {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-date {
+        top: 2px;
+        left: 43%;
+    }
+
+    .filter-date-btn {
+        font-size: 16px;
+    }
+
+    .filter-date-btn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .filter-date-content {
+        top: 30px;
+        left: 0px;
+        width: 195px;
+        gap: 0.7em;
+    }
+
+    .filter-date-content span {
+        gap: 10px;
+    }
+
+    .filter-date-content p {
+        font-size: 16px;
+    }
+
+    .filter-date-content input {
+        width: 120px;
+        height: 23px;
+    }
+
+    .filter-date-content .confirm-filter-date {
+        width: 120px;
         height: 33px;
+        font-size: 16px;
     }
 
-    .container-info-item .card-info h1 {
-        font-size: 15px;
-    }
-
-    .container-info-item .card-info p {
-        font-size: 15px;
-    }
-
-    .container-graphics {
-        gap: 2em;
-    }
-
-    .container-graphics-pizza {
-        max-width: 740px;
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-
-    .container-graphics-pizza #chart-generos {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-        height: 470px;
-    }
-
-}
-
-@media screen and (min-width: 1330px) and (max-width: 1470px) {
-
-    .container-info-item {
-        gap: 1.5em;
-    }
-
-    .container-info-item .card-info {
-        width: 280px;
-        height: 85px;
-        padding: 8px;
-    }
-
-    .container-info-item .card-info img {
-        width: 40px;
-        height: 40px;
-    }
-
-    .container-info-item .card-info h1 {
-        font-size: 18px;
-    }
-
-    .container-info-item .card-info p {
-        font-size: 18px;
-    }
-
-    .container-graphics {
-        gap: 2em;
-    }
-
-    .container-graphics-pizza {
-        max-width: 740px;
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-
-    .container-graphics-pizza #chart-generos {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50%;
-        height: 470px;
+    #msg_erro {
+        font-size: 14px;
     }
 
 }
