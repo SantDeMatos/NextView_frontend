@@ -262,11 +262,11 @@
                 }
             }
 
-            if(listaGenerosCheck.length == 0){
+            if (listaGenerosCheck.length == 0) {
                 iniciarListarConteudos();
+            } else {
+                iniciarListarConteudosGeneros();
             }
-            
-            iniciarListarConteudosGeneros();
         });
     });
 
@@ -285,10 +285,10 @@
     }
 
     function iniciarListarResultado(busca) {
-        if(busca ==""){
+        if (busca == "") {
             iniciarListarConteudos();
-        }
-        document.getElementById("table-container").innerHTML = `<thead>
+        } else {
+            document.getElementById("table-container").innerHTML = `<thead>
                         <tr>
                             <th>Título <span></span></th>
                             <th>Ano De Lançamento <span></span></th>
@@ -296,9 +296,10 @@
                             <th>Gênero <span></span></th>
                         </tr>
                     </thead>`;
-        linhasPassadasResultado = 0;
-        tipo = "listarResultado";
-        listarResultado(busca);
+            linhasPassadasResultado = 0;
+            tipo = "listarResultado";
+            listarResultado(busca);
+        }
     }
 
     function iniciarListarConteudosGeneros() {
@@ -316,7 +317,10 @@
     }
 
     function iniciarListarConteudosData(de, ate) {
-        document.getElementById("table-container").innerHTML = `<thead>
+        if (de == "" && ate == "") {
+            iniciarListarConteudos();
+        } else {
+            document.getElementById("table-container").innerHTML = `<thead>
                         <tr>
                             <th>Título <span></span></th>
                             <th>Ano De Lançamento <span></span></th>
@@ -324,9 +328,11 @@
                             <th>Gênero <span></span></th>
                         </tr>
                     </thead>`;
-        linhasPassadasData = 0;
-        tipo = "listarConteudosData";
-        listarConteudosData(de, ate);
+            linhasPassadasData = 0;
+
+            tipo = "listarConteudosData";
+            listarConteudosData(de, ate);
+        }
     }
 
     function exibirMais() {
@@ -357,7 +363,7 @@
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("Erro ao buscar diretor do momento");
+                    throw new Error("Erro ao listar Conteudo por genero");
                 }
                 return response.json();
             })
@@ -381,7 +387,7 @@
                 linhasPassadas += 50
             })
             .catch(error => {
-                console.error("Erro ao listar Conteudos 2:", error);
+                console.error("Erro ao listar Conteudos por genero 2:", error);
             });
     }
 
@@ -463,7 +469,7 @@
         })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error("Erro ao buscar diretor do momento");
+                    throw new Error("Erro ao buscar conteudos pela data");
                 }
                 return response.json();
             })
@@ -486,7 +492,7 @@
                 linhasPassadasData += 50
             })
             .catch(error => {
-                console.error("Erro ao buscar diretor do momento 2:", error);
+                console.error("Erro ao buscar diretor por data 2:", error);
             });
     }
 

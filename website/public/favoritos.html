@@ -261,11 +261,11 @@
                 }
             }
 
-            if(listaGenerosCheck.length == 0){
+            if (listaGenerosCheck.length == 0) {
                 iniciarListarConteudos();
+            } else {
+                iniciarListarConteudosGeneros();
             }
-            
-            iniciarListarConteudosGeneros();
         });
     });
 
@@ -298,7 +298,10 @@
     }
 
     function iniciarListarConteudosData(de, ate) {
-        document.getElementById("table-container").innerHTML = `<thead>
+        if (de == "" && ate == "") {
+            iniciarListarConteudos();
+        } else {
+            document.getElementById("table-container").innerHTML = `<thead>
                         <tr>
                             <th>Título <span></span></th>
                             <th>Ano De Lançamento <span></span></th>
@@ -306,9 +309,10 @@
                             <th>Gênero <span></span></th>
                         </tr>
                     </thead>`;
-        linhasPassadasData = 0;
-        tipo = "listarConteudosData";
-        listarConteudosData(de, ate);
+            linhasPassadasData = 0;
+            tipo = "listarConteudosData";
+            listarConteudosData(de, ate);
+        }
     }
 
     function exibirMais() {
