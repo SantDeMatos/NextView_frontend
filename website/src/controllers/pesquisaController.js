@@ -18,7 +18,7 @@ function listarResultado(req, res) {
     var idEmpresa = req.params.idEmpresa;
     var busca = req.params.busca
 
-    pesquisaModel.listarResultado(linhasPassadasResultado, idEmpresa,busca)
+    pesquisaModel.listarResultado(linhasPassadasResultado, idEmpresa, busca)
         .then(function (resultado) {
             res.status(200).json(resultado);
         })
@@ -71,6 +71,22 @@ function favoritar(req, res) {
         });
 }
 
+function adicionarConteudo(req, res) {
+    var tipo = req.body.tipoServer;
+    var titulo = req.body.tituloServer;
+    var ano = req.body.anoServer;
+    var nota = req.body.notaServer;
+    var generos = req.body.generosServer;
+
+    pesquisaModel.adicionarConteudo(tipo, titulo, ano, nota, generos)
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function (erro) {
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 function desfavoritar(req, res) {
     var idFilme = req.params.id;
     var idEmpresa = req.params.idEmpresa;
@@ -91,4 +107,5 @@ module.exports = {
     desfavoritar,
     listarPesquisaData,
     listarResultado,
+    adicionarConteudo
 }

@@ -28,6 +28,10 @@ router.delete("/desfavoritar/:id/:idEmpresa", function (req, res) {
     pesquisaController.desfavoritar(req, res);
 })
 
+router.post("/adicionarConteudo", function (req, res) {
+    pesquisaController.adicionarConteudo(req, res);
+})
+
 
 
 module.exports = router;

@@ -128,11 +128,31 @@ function listarResultado(linhasPassadasResultado, idEmpresa, busca) {
     return database.executar(instrucao);
 }
 
+function adicionarConteudo(tipo, titulo, ano, nota, generos) {
+    var instrucao = `
+    insert into Conteudo(tipoConteudo, tituloConteudo, dtLancamentoCont, notaConteudo, generosConteudo, diretorConteudo, atoresConteudo,sinopseCont, numVotosCont) 
+    values(
+	"${tipo}",
+    "${titulo}",
+    '${ano}-01-01',
+    ${nota},
+    "${generos}",
+    "null",
+    "null",
+    "null",
+    "500"
+    )
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     listarPesquisa,
     listarPesquisaGeneros,
     favoritar,
     desfavoritar,
     listarPesquisaData,
-    listarResultado
+    listarResultado,
+    adicionarConteudo
 };
