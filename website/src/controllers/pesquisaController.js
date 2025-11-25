@@ -13,6 +13,22 @@ function listarPesquisa(req, res) {
         });
 }
 
+function listarResultado(req, res) {
+    var linhasPassadasResultado = req.params.linhasPassadasResultado;
+    var idEmpresa = req.params.idEmpresa;
+    var busca = req.params.busca
+
+    pesquisaModel.listarResultado(linhasPassadasResultado, idEmpresa,busca)
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function (erro) {
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+
+
 function listarPesquisaGeneros(req, res) {
     var linhasPassadas = req.params.linhasPassadas;
     var idEmpresa = req.params.idEmpresa;
@@ -74,4 +90,5 @@ module.exports = {
     favoritar,
     desfavoritar,
     listarPesquisaData,
+    listarResultado,
 }

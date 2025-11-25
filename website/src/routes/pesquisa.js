@@ -16,6 +16,10 @@ router.get("/listarPesquisaData/:linhasPassadasData/:idEmpresa/:de/:ate", functi
     pesquisaController.listarPesquisaData(req, res);
 });
 
+router.get("/listarResultado/:linhasPassadasResultado/:idEmpresa/:busca", function (req, res) {
+    pesquisaController.listarResultado(req, res);
+});
+
 router.post("/favoritar", function (req, res) {
     pesquisaController.favoritar(req, res);
 })
@@ -23,6 +27,7 @@ router.post("/favoritar", function (req, res) {
 router.delete("/desfavoritar/:id/:idEmpresa", function (req, res) {
     pesquisaController.desfavoritar(req, res);
 })
+
 
 
 module.exports = router;
