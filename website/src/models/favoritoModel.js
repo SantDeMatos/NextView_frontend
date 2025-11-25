@@ -3,37 +3,32 @@ var database = require("../database/config")
 function listarPesquisaGeneros(linhasPassadas, idEmpresa, generosString) {
     var filtroGeneroSQL = "";
 
-    // 1. Constrói a condição de filtro de gênero se generosString não estiver vazia
     if (generosString) {
         const arrayGeneros = generosString.split(',');
-        // Usa C.generosConteudo, que é a coluna na tabela Conteudo
         const condicoes = arrayGeneros.map(g => `C.generosConteudo like '%${g.trim()}%'`).join(' OR ');
 
-        // Note: O 'AND' será colocado DIRETAMENTE na cláusula WHERE abaixo.
-        // Se houver condições, a string de filtro fica assim: "AND (condicao1 OR condicao2...)"
         filtroGeneroSQL = `AND (${condicoes})`;
     }
 
-    // 2. Monta a instrução SQL
     var instrucao = `
-    SELECT
-        CF.idContFavoritos,
-        CF.fkConteudo,
-        C.tituloConteudo,
-        C.dtLancamentoCont,
-        C.notaConteudo,
-        C.generosConteudo
-    FROM
-        ConteudosFavoritos CF
-    INNER JOIN
-        Conteudo C ON CF.fkConteudo = C.idConteudo
-    WHERE 
-        CF.fkEmpresa = ${idEmpresa}
-        ${filtroGeneroSQL} 
-    ORDER BY 
-        C.notaConteudo DESC
-    LIMIT 50
-    OFFSET ${linhasPassadas};
+    select
+    CF.idContFavoritos,
+    CF.fkConteudo,
+    C.tituloConteudo,
+    C.dtLancamentoCont,
+    C.notaConteudo,
+    C.generosConteudo
+    from
+    ConteudosFavoritos CF
+    inner join
+    Conteudo C on CF.fkConteudo = C.idConteudo
+    where 
+   CF.fkEmpresa = ${idEmpresa}
+    ${filtroGeneroSQL} 
+    order by
+    C.notaConteudo desc
+    limit 50
+    offset ${linhasPassadas};
     `;
 
     console.log("Executando a instrução SQL de favoritos por gênero: \n" + instrucao);
@@ -72,12 +67,12 @@ function listarPesquisa(linhasPassadas, idEmpresa) {
     select
 	idContFavoritos, fkConteudo,
     C.tituloConteudo, C.dtLancamentoCont, C.notaConteudo ,C.generosConteudo
-from
+    from
     ConteudosFavoritos CF
-inner join
+    inner join
     Conteudo C on CF.fkConteudo = C.idConteudo
-where CF.fkEmpresa = ${idEmpresa}
-limit 50
+    where CF.fkEmpresa = ${idEmpresa}
+    limit 50
     offset ${linhasPassadas};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
