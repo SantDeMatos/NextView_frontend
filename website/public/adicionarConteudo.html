@@ -126,20 +126,20 @@
 
                 <button class="select_conteudo" onclick="exibirConteudo()">
                     <p id="textoTipoFilme">Selecione o tipo de conteúdo</p>
-                    <img src="assets/imgs/seta_azul.png" alt=""></span>
-
-                    <div class="tipo_conteudo">
-                        <label>
-                            <input class="check" type="radio" name="tipoConteudo" value="Movie">
-                            Filme
-                        </label>
-                        <hr>
-                        <label>
-                            <input class="check" type="radio" name="tipoConteudo" value="Tv show">
-                            Série
-                        </label>
-                    </div>
+                    <img src="assets/imgs/seta_azul.png" alt="">
                 </button>
+
+                <div class="tipo_conteudo">
+                    <label>
+                        <input class="check" type="radio" name="tipoConteudo" value="Movie">
+                        Filme
+                    </label>
+                    <hr>
+                    <label>
+                        <input class="check" type="radio" name="tipoConteudo" value="Tv show">
+                        Série
+                    </label>
+                </div>
 
                 <input type="text" placeholder="Título" id="tituloConteudo">
 
@@ -152,38 +152,37 @@
                     maxlength="4">
 
                 <button class="select_genero" onclick="exibirGenero()">
-                    <p>Gênero</p>
+                    <p id="textoGenero">Gênero</p>
                     <img src="assets/imgs/seta_azul.png" alt=""></span>
-
-                    <div class="card_generos" id="filterGenderContent">
-                        <label><input type="checkbox" value="Drama"> Drama</label>
-                        <hr>
-                        <label><input type="checkbox" value="Comedy"> Comédia</label>
-                        <hr>
-                        <label><input type="checkbox" value="Action"> Ação</label>
-                        <hr>
-                        <label><input type="checkbox" value="Thriller"> Suspense</label>
-                        <hr>
-                        <label><input type="checkbox" value="Horror"> Horror</label>
-                        <hr>
-                        <label><input type="checkbox" value="Crime"> Crime</label>
-                        <hr>
-                        <label><input type="checkbox" value="Science Fiction"> Ficção Científica</label>
-                        <hr>
-                        <label><input type="checkbox" value="Adventure"> Aventura</label>
-                        <hr>
-                        <label><input type="checkbox" value="Romance"> Romance</label>
-                        <hr>
-                        <label><input type="checkbox" value="Animation"> Animação</label>
-                        <hr>
-                        <label><input type="checkbox" value="Mystery"> Mistério</label>
-                        <hr>
-                        <label><input type="checkbox" value="Fantasy"> Fantasia</label>
-                        <hr>
-                        <label><input type="checkbox" value="Family"> Família</label>
-                    </div>
-
                 </button>
+
+                <div class="card_generos" id="filterGenderContent">
+                    <label><input type="checkbox" value="Drama"> Drama</label>
+                    <hr>
+                    <label><input type="checkbox" value="Comedy"> Comédia</label>
+                    <hr>
+                    <label><input type="checkbox" value="Action"> Ação</label>
+                    <hr>
+                    <label><input type="checkbox" value="Thriller"> Suspense</label>
+                    <hr>
+                    <label><input type="checkbox" value="Horror"> Horror</label>
+                    <hr>
+                    <label><input type="checkbox" value="Crime"> Crime</label>
+                    <hr>
+                    <label><input type="checkbox" value="Science Fiction"> Ficção Científica</label>
+                    <hr>
+                    <label><input type="checkbox" value="Adventure"> Aventura</label>
+                    <hr>
+                    <label><input type="checkbox" value="Romance"> Romance</label>
+                    <hr>
+                    <label><input type="checkbox" value="Animation"> Animação</label>
+                    <hr>
+                    <label><input type="checkbox" value="Mystery"> Mistério</label>
+                    <hr>
+                    <label><input type="checkbox" value="Fantasy"> Fantasia</label>
+                    <hr>
+                    <label><input type="checkbox" value="Family"> Família</label>
+                </div>
 
                 <button id="btn_adicionar" onclick="adicionarConteudo()">Adicionar Conteúdo</button>
 
@@ -227,9 +226,31 @@
                     var indice = listaGenerosCheck.indexOf(valorDoCheckbox)
                     listaGenerosCheck.splice(indice, 1);
                 }
+
+                atualizarTextoGenero();
             }
         });
     });
+
+    function atualizarTextoGenero() {
+        const texto = document.getElementById("textoGenero");
+        const maxVisiveis = 4;
+
+        if (listaGenerosCheck.length === 0) {
+            texto.textContent = "Gênero";
+            return;
+        }
+
+        if (listaGenerosCheck.length <= maxVisiveis) {
+            texto.textContent = listaGenerosCheck.join(', ');
+            return;
+        }
+
+        const visiveis = listaGenerosCheck.slice(0, maxVisiveis);
+        const restantes = listaGenerosCheck.length - maxVisiveis;
+
+        texto.textContent = `${visiveis.join(', ')} +${restantes}`;
+    }
 
     const paginaAtual = window.location.pathname.split("/").pop();
 
@@ -337,51 +358,108 @@
 
         const msgErro = document.getElementById('msg_erro');
 
-        var tipo = document.querySelector('input[name="tipoConteudo"]:checked').value;
-        var ano = document.getElementById("anoConteudo").value;
+        var tipoSelecionado = document.querySelector('input[name="tipoConteudo"]:checked');
+        var ano = Number(document.getElementById("anoConteudo").value);
         var titulo = document.getElementById("tituloConteudo").value;
-        var nota = document.getElementById("notaConteudo").value;
+        var nota = Number(document.getElementById("notaConteudo").value);
         var generos = listaGenerosCheck.join(', ');
 
-        if (ano < 0 || ano > anoAtual) {
+        if (!tipoSelecionado) {
+
+            msgErro.textContent = "Selecione o tipo de conteúdo!";
+            msgErro.style.display = 'block';
+            limparMensagemErro(msgErro);
+            return;
+
+        }
+
+        var tipo = tipoSelecionado.value;
+
+        if (!titulo || !ano || !nota) {
+
+            msgErro.textContent = "Preencha todos os campos!";
+            msgErro.style.display = 'block';
+            limparMensagemErro(msgErro);
+            return;
+
+        }
+
+        if (ano < 1900 || ano > anoAtual) {
 
             msgErro.textContent = "Data inválida!";
             msgErro.style.display = 'block';
             limparMensagemErro(msgErro);
+            return;
 
-        } else if (nota < 0 || nota > 10) {
+        }
+
+        if (nota < 0 || nota > 10) {
 
             msgErro.textContent = "Avaliação deve ser entre 0 e 10!";
             msgErro.style.display = 'block';
             limparMensagemErro(msgErro);
-
-        } else {
-
-            fetch(`/pesquisa/adicionarConteudo/`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    tipoServer: tipo,
-                    tituloServer: titulo,
-                    anoServer: ano,
-                    notaServer: nota,
-                    generosServer: generos
-                }),
-            })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                    mostrarPopup("Falha no adição do contéudo!", "erro");
-                });
+            return;
 
         }
 
+        if (listaGenerosCheck.length === 0) {
+
+            msgErro.textContent = "Selecione ao menos um gênero!";
+            msgErro.style.display = 'block';
+            limparMensagemErro(msgErro);
+            return;
+
+        }
+
+        fetch(`/pesquisa/adicionarConteudo/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                tipoServer: tipo,
+                tituloServer: titulo,
+                anoServer: ano,
+                notaServer: nota,
+                generosServer: generos
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    limparCampos();
+                }
+                
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
 
     }
+
+    function limparCampos() {
+
+        document.getElementById("textoTipoFilme").textContent = "Selecione o tipo de conteúdo";
+
+        const radios = document.querySelectorAll('input[name="tipoConteudo"]');
+        radios.forEach(r => r.checked = false);
+
+        document.getElementById("tituloConteudo").value = "";
+        document.getElementById("anoConteudo").value = "";
+        document.getElementById("notaConteudo").value = "";
+
+        listaGenerosCheck = [];
+
+        const checks = document.querySelectorAll('#filterGenderContent input[type="checkbox"]');
+        checks.forEach(c => c.checked = false);
+
+        document.getElementById("textoGenero").textContent = "Gênero";
+
+        document.querySelector(".tipo_conteudo").classList.remove("ativo");
+        document.querySelector(".card_generos").classList.remove("ativo");
+    }
+
 
     function exibirPerfil() {
         const card = document.getElementById("cardPerfil");
@@ -425,6 +503,7 @@
     });
 
     function exibirConteudo() {
+
         var tipoSelecionado = document.querySelector('input[name="tipoConteudo"]:checked');
 
         const conteudo = document.querySelector('.tipo_conteudo');
