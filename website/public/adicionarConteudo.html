@@ -124,65 +124,77 @@
 
             <div class="card-add-conteudo">
 
-                <button class="select_conteudo" onclick="exibirConteudo()">
-                    <p id="textoTipoFilme">Selecione o tipo de conteúdo</p>
-                    <img src="assets/imgs/seta_azul.png" alt="">
-                </button>
+                <span>
+                    <button class="select_conteudo" onclick="exibirConteudo()">
+                        <p id="textoTipoFilme">Selecione o tipo de conteúdo</p>
+                        <img src="assets/imgs/seta_azul.png" alt="">
+                    </button>
 
-                <div class="tipo_conteudo">
-                    <label>
-                        <input class="check" type="radio" name="tipoConteudo" value="Movie">
-                        Filme
-                    </label>
-                    <hr>
-                    <label>
-                        <input class="check" type="radio" name="tipoConteudo" value="Tv show">
-                        Série
-                    </label>
-                </div>
+                    <div class="tipo_conteudo">
+                        <label>
+                            <input class="check" type="radio" name="tipoConteudo" value="Movie">
+                            Filme
+                        </label>
+                        <hr>
+                        <label>
+                            <input class="check" type="radio" name="tipoConteudo" value="Tv show">
+                            Série
+                        </label>
+                    </div>
 
-                <input type="text" placeholder="Título" id="tituloConteudo">
+                </span>
 
-                <input type="number" id="anoConteudo" placeholder="Ano de Lançamento"
-                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                    maxlength="4">
+                <span>
+                    <input type="text" placeholder="Título" id="tituloConteudo">
+                </span>
 
-                <input type="number" id="notaConteudo" placeholder="Avaliação"
-                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                    maxlength="4">
+                <span>
+                    <input type="number" id="anoConteudo" placeholder="Ano de Lançamento"
+                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        maxlength="4">
+                </span>
 
-                <button class="select_genero" onclick="exibirGenero()">
-                    <p id="textoGenero">Gênero</p>
-                    <img src="assets/imgs/seta_azul.png" alt=""></span>
-                </button>
+                <span>
+                    <input type="number" id="notaConteudo" placeholder="Avaliação"
+                        oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        maxlength="4">
+                </span>
 
-                <div class="card_generos" id="filterGenderContent">
-                    <label><input type="checkbox" value="Drama"> Drama</label>
-                    <hr>
-                    <label><input type="checkbox" value="Comedy"> Comédia</label>
-                    <hr>
-                    <label><input type="checkbox" value="Action"> Ação</label>
-                    <hr>
-                    <label><input type="checkbox" value="Thriller"> Suspense</label>
-                    <hr>
-                    <label><input type="checkbox" value="Horror"> Horror</label>
-                    <hr>
-                    <label><input type="checkbox" value="Crime"> Crime</label>
-                    <hr>
-                    <label><input type="checkbox" value="Science Fiction"> Ficção Científica</label>
-                    <hr>
-                    <label><input type="checkbox" value="Adventure"> Aventura</label>
-                    <hr>
-                    <label><input type="checkbox" value="Romance"> Romance</label>
-                    <hr>
-                    <label><input type="checkbox" value="Animation"> Animação</label>
-                    <hr>
-                    <label><input type="checkbox" value="Mystery"> Mistério</label>
-                    <hr>
-                    <label><input type="checkbox" value="Fantasy"> Fantasia</label>
-                    <hr>
-                    <label><input type="checkbox" value="Family"> Família</label>
-                </div>
+                <span>
+                    <button class="select_genero" onclick="exibirGenero()">
+                        <p id="textoGenero">Gênero</p>
+                        <img src="assets/imgs/seta_azul.png" alt=""></span>
+                    </button>
+    
+                    <div class="card_generos" id="filterGenderContent">
+                        <label><input type="checkbox" value="Drama"> Drama</label>
+                        <hr>
+                        <label><input type="checkbox" value="Comedy"> Comédia</label>
+                        <hr>
+                        <label><input type="checkbox" value="Action"> Ação</label>
+                        <hr>
+                        <label><input type="checkbox" value="Thriller"> Suspense</label>
+                        <hr>
+                        <label><input type="checkbox" value="Horror"> Horror</label>
+                        <hr>
+                        <label><input type="checkbox" value="Crime"> Crime</label>
+                        <hr>
+                        <label><input type="checkbox" value="Science Fiction"> Ficção Científica</label>
+                        <hr>
+                        <label><input type="checkbox" value="Adventure"> Aventura</label>
+                        <hr>
+                        <label><input type="checkbox" value="Romance"> Romance</label>
+                        <hr>
+                        <label><input type="checkbox" value="Animation"> Animação</label>
+                        <hr>
+                        <label><input type="checkbox" value="Mystery"> Mistério</label>
+                        <hr>
+                        <label><input type="checkbox" value="Fantasy"> Fantasia</label>
+                        <hr>
+                        <label><input type="checkbox" value="Family"> Família</label>
+                    </div>
+
+                </span>
 
                 <button id="btn_adicionar" onclick="adicionarConteudo()">Adicionar Conteúdo</button>
 
@@ -430,7 +442,7 @@
                 if (resposta.ok) {
                     limparCampos();
                 }
-                
+
             })
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
