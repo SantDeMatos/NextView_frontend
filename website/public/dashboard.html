@@ -590,14 +590,18 @@
         title: { show: false },
         xAxis: {
             type: 'category',
-            data: ['Filmeeeeeeeeeeeeeeeee', 'Filmeeeeeeeeeeeeeeeee', 'Filmeeeeeeeeeeeeeeeee', 'Filmeeeeeeeeeeeeeeeee', 'Filmeeeeeee'],
+            data: ['A Era do Gelo', 'Vingadores: Ultimato', 'Tudo em Todo Lugar ao Mesmo Tempo', 'Doutor Estranho no Multiverso da Loucura', 'As Aventuras de Tintim: O Segredo do Licorne'],
             name: 'Filme',
             nameLocation: 'middle',
-            nameGap: 26,
+            nameGap: 42,
             nameTextStyle: { color: 'white', fontSize: 10 },
             axisLabel: {
-                color: 'white', 
+                color: 'white',
                 fontSize: 10,
+                interval: 0,
+                formatter: function (value) {
+                    return value.split(/(.{18})/).filter(Boolean).join('\n');
+                }
             },
         },
         yAxis: {
@@ -620,8 +624,10 @@
             barWidth: 34,
             itemStyle: { color: 'white', borderRadius: [10, 10, 3, 3] }
         }],
-        grid: { left: 70, right: 50, top: '10%', bottom: 35 },
-        tooltip: {}
+        grid: { left: 70, right: 50, top: '10%', bottom: 55 },
+        tooltip: {
+            trigger: 'axis'
+        }
     });
 
     var chartSeries = echarts.init(document.getElementById('chart-series'));
@@ -632,10 +638,15 @@
             data: ['S1', 'S2', 'S3', 'S4', 'S5'],
             name: 'Série',
             nameLocation: 'middle',
-            nameGap: 24,
+            nameGap: 45,
             nameTextStyle: { color: 'white', fontSize: 10 },
             axisLabel: {
-                color: 'white', fontSize: 9.5
+                color: 'white',
+                fontSize: 9.5,
+                interval: 0,
+                formatter: function (value) {
+                    return value.split(/(.{18})/).filter(Boolean).join('\n');
+                }
             },
         },
         yAxis: {
@@ -658,8 +669,10 @@
             barWidth: 34,
             itemStyle: { color: 'white', borderRadius: [10, 10, 3, 3] }
         }],
-        grid: { left: 70, right: 50, top: '10%', bottom: 35 },
-        tooltip: {}
+        grid: { left: 70, right: 50, top: '10%', bottom: 55 },
+        tooltip: {
+            trigger: 'axis'
+        }
     });
 
 

@@ -126,9 +126,9 @@
 
                 <div class="card-add-conteudo-description">
                     <h1>Adição Personalizada</h1>
-                    <p>Não achou o conteúdo que buscava? Adicione no formulário ao lado os conteúdos que deseja ter em
+                    <p>Não achou o conteúdo que desejava? Adicione no formulário ao lado os conteúdos que deseja ter em
                         seu sistema.</p>
-                    <img src="assets/imgs/adicionar-icon.png" alt="">
+                    <img src="assets/imgs/adicionar-icon-filme.png" alt="">
                 </div>
 
                 <div class="card-add-conteudo-content">
@@ -468,6 +468,8 @@
                 if (resposta.ok) {
                     msgErro.textContent = "Adicionado com sucesso!";
                     msgErro.style.display = 'block';
+                    msgErro.style.color = "#0bac0b";
+                    msgErro.style.fontWeight = "700";
                     limparCampos();
                     limparMensagemErro(msgErro);
                 }

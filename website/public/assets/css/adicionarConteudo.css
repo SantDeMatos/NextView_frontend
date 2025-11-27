@@ -137,15 +137,18 @@ html {
     display: flex;
     flex-direction: column;
     border-right: solid 1px black;
+    
 }
 
 .card-add-conteudo-description h1 {
     font-size: 40px;
     color: #0033FF;
+    max-width: 420px;
+    padding-right: 30px;
 }
 
 .card-add-conteudo-description p {
-    width: 70%;
+    width: 80%;
     text-align: justify;
     color: #05009A;
 }
@@ -153,6 +156,9 @@ html {
 .card-add-conteudo-description img {
     width: 250px;
     height: 250px;
+    align-self: center;
+    margin-right: 50px;
+    margin-top: 20px;
 }
 
 .card-add-conteudo-content {
@@ -195,7 +201,7 @@ html {
 }
 
 .card-add-conteudo-content #btn_adicionar {
-    width: 40%;
+    width: 60%;
     height: 50px;
     border-radius: 10px;
     border: none;
@@ -1562,8 +1568,8 @@ html {
     }
 
     .card-add-conteudo-description img {
-        width: 210px;
-        height: 210px;
+        width: 190px;
+        height: 190px;
     }
 
     .card-add-conteudo-content {
