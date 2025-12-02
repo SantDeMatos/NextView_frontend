@@ -64,8 +64,7 @@
 
         <main class="dashboard-main">
             <div class="container-perfil">
-
-                <p>Bem Vindo!</p>
+                <p>Bem Vindo, <p id="nome-pego"></p></p>
                 <button onclick="exibirPerfil()"><img src="assets/imgs/perfil-azul.png" alt=""></button>
 
             </div>
@@ -204,6 +203,7 @@
         document.getElementById("telefone").value = sessionStorage.TELEFONE_EMPRESA;
         document.getElementById("cnpj").value = sessionStorage.CNPJ_EMPRESA;
         document.getElementById("email").value = sessionStorage.EMAIL_EMPRESA;
+        document.getElementById("nome-pego").innerHTML = sessionStorage.NOME_EMPRESA;
     }
 
     window.onload = buscarDados();
@@ -265,7 +265,7 @@
                             { value: listaGeneros[1].quantidade, name: listaGeneros[1].genero, itemStyle: { color: '#2aa9e3' } },
                             { value: listaGeneros[2].quantidade, name: listaGeneros[2].genero, itemStyle: { color: '#2a52e3' } },
                             { value: listaGeneros[3].quantidade, name: listaGeneros[3].genero, itemStyle: { color: '#09174b' } },
-                            { value: listaGeneros[4].quantidade, name: listaGeneros[4].genero, itemStyle: { color: '#09174b' } },
+                            { value: listaGeneros[4].quantidade, name: listaGeneros[4].genero, itemStyle: { color: '#9BB7FF' } },
                         ]
                     }],
                     legend: {
@@ -524,7 +524,9 @@
                         sessionStorage.ID_EMPRESA = idRecebido;
                         sessionStorage.TELEFONE_EMPRESA = telefoneRecebido;
                         sessionStorage.CNPJ_EMPRESA = cnpjRecebido;
+                        document.getElementById("nome-pego").innerHTML = sessionStorage.NOME_EMPRESA;
                         mostrarPopup("Dados atualizados!", "sucesso");
+                        
 
                         if (!editDaVez) return;
 
@@ -597,10 +599,10 @@
             nameTextStyle: { color: 'white', fontSize: 10 },
             axisLabel: {
                 color: 'white',
-                fontSize: 10,
+                fontSize: 13,
                 interval: 0,
                 formatter: function (value) {
-                    return value.split(/(.{18})/).filter(Boolean).join('\n');
+                    return value.split(/(.{16})/).filter(Boolean).join('\n');
                 }
             },
         },
@@ -642,10 +644,10 @@
             nameTextStyle: { color: 'white', fontSize: 10 },
             axisLabel: {
                 color: 'white',
-                fontSize: 9.5,
+                fontSize: 13,
                 interval: 0,
                 formatter: function (value) {
-                    return value.split(/(.{18})/).filter(Boolean).join('\n');
+                    return value.split(/(.{16})/).filter(Boolean).join('\n');
                 }
             },
         },

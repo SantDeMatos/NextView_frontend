@@ -63,7 +63,7 @@
         <main class="pesquisa-main">
 
             <div class="container-perfil">
-                <p>Bem Vindo!</p>
+                <p>Bem Vindo, <p id="nome-pego"></p></p>
                 <button onclick="exibirPerfil()"><img src="assets/imgs/perfil-azul.png" alt=""></button>
             </div>
 
@@ -230,6 +230,7 @@
         document.getElementById("telefone").value = sessionStorage.TELEFONE_EMPRESA;
         document.getElementById("cnpj").value = sessionStorage.CNPJ_EMPRESA;
         document.getElementById("email").value = sessionStorage.EMAIL_EMPRESA;
+        document.getElementById("nome-pego").innerHTML = sessionStorage.NOME_EMPRESA;
     }
 
 
@@ -526,6 +527,7 @@
                         sessionStorage.ID_EMPRESA = idRecebido;
                         sessionStorage.TELEFONE_EMPRESA = telefoneRecebido;
                         sessionStorage.CNPJ_EMPRESA = cnpjRecebido;
+                        document.getElementById("nome-pego").innerHTML = sessionStorage.NOME_EMPRESA;
                         mostrarPopup("Dados atualizados!", "sucesso");
                         if (!editDaVez) return;
 
