@@ -172,36 +172,36 @@
                     <span>
                         <button class="select_genero" onclick="exibirGenero()">
                             <p id="textoGenero">Gênero</p>
-                            <img src="assets/imgs/seta_azul.png" alt=""></span>
-                    </button>
+                            <img src="assets/imgs/seta_azul.png" alt="">
+                        </button>
 
-                    <div class="card_generos" id="filterGenderContent">
-                        <label><input type="checkbox" value="Drama"> Drama</label>
-                        <hr>
-                        <label><input type="checkbox" value="Comedy"> Comédia</label>
-                        <hr>
-                        <label><input type="checkbox" value="Action"> Ação</label>
-                        <hr>
-                        <label><input type="checkbox" value="Thriller"> Suspense</label>
-                        <hr>
-                        <label><input type="checkbox" value="Horror"> Horror</label>
-                        <hr>
-                        <label><input type="checkbox" value="Crime"> Crime</label>
-                        <hr>
-                        <label><input type="checkbox" value="Science Fiction"> Ficção Científica</label>
-                        <hr>
-                        <label><input type="checkbox" value="Adventure"> Aventura</label>
-                        <hr>
-                        <label><input type="checkbox" value="Romance"> Romance</label>
-                        <hr>
-                        <label><input type="checkbox" value="Animation"> Animação</label>
-                        <hr>
-                        <label><input type="checkbox" value="Mystery"> Mistério</label>
-                        <hr>
-                        <label><input type="checkbox" value="Fantasy"> Fantasia</label>
-                        <hr>
-                        <label><input type="checkbox" value="Family"> Família</label>
-                    </div>
+                        <div class="card_generos" id="filterGenderContent">
+                            <label><input type="checkbox" value="Drama"> Drama</label>
+                            <hr>
+                            <label><input type="checkbox" value="Comedy"> Comédia</label>
+                            <hr>
+                            <label><input type="checkbox" value="Action"> Ação</label>
+                            <hr>
+                            <label><input type="checkbox" value="Thriller"> Suspense</label>
+                            <hr>
+                            <label><input type="checkbox" value="Horror"> Horror</label>
+                            <hr>
+                            <label><input type="checkbox" value="Crime"> Crime</label>
+                            <hr>
+                            <label><input type="checkbox" value="Science Fiction"> Ficção Científica</label>
+                            <hr>
+                            <label><input type="checkbox" value="Adventure"> Aventura</label>
+                            <hr>
+                            <label><input type="checkbox" value="Romance"> Romance</label>
+                            <hr>
+                            <label><input type="checkbox" value="Animation"> Animação</label>
+                            <hr>
+                            <label><input type="checkbox" value="Mystery"> Mistério</label>
+                            <hr>
+                            <label><input type="checkbox" value="Fantasy"> Fantasia</label>
+                            <hr>
+                            <label><input type="checkbox" value="Family"> Família</label>
+                        </div>
 
                     </span>
 
@@ -528,25 +528,49 @@
 
     function exibirConteudo() {
 
-        var tipoSelecionado = document.querySelector('input[name="tipoConteudo"]:checked');
+        const tipo = document.querySelector('.tipo_conteudo');
+        const genero = document.querySelector('.card_generos');
 
-        const conteudo = document.querySelector('.tipo_conteudo');
-        conteudo.classList.toggle('ativo');
-
-        if (tipoSelecionado.value == "Movie") {
-            document.getElementById('textoTipoFilme').innerHTML = "Filme"
-        } else {
-            document.getElementById('textoTipoFilme').innerHTML = "Série"
-        }
+        genero.classList.remove('ativo');
+        tipo.classList.toggle('ativo');
 
     }
+
+    document.querySelectorAll('input[name="tipoConteudo"]').forEach(radio => {
+        radio.addEventListener("change", () => {
+
+            const texto = document.getElementById("textoTipoFilme");
+            texto.textContent = radio.value === "Movie" ? "Filme" : "Série";
+
+            document.querySelector(".tipo_conteudo").classList.remove("ativo");
+        });
+    });
 
     function exibirGenero() {
 
-        const conteudo = document.querySelector('.card_generos');
-        conteudo.classList.toggle('ativo');
+        const genero = document.querySelector('.card_generos');
+        const tipo = document.querySelector(".tipo_conteudo");
+        tipo.classList.remove('ativo');
+        genero.classList.toggle('ativo');
 
     }
+
+    const dropTipo = document.querySelector(".tipo_conteudo");
+    const dropGenero = document.querySelector(".card_generos");
+    const btnTipo = document.querySelector(".select_conteudo");
+    const btnGenero = document.querySelector(".select_genero");
+
+    document.addEventListener("click", function (e) {
+
+        if (!btnTipo.contains(e.target) && !dropTipo.contains(e.target)) {
+            dropTipo.classList.remove("ativo");
+        }
+
+        if (!btnGenero.contains(e.target) && !dropGenero.contains(e.target)) {
+            dropGenero.classList.remove("ativo");
+        }
+
+    });
 
     function limparMensagemErro(msgErro) {
         setTimeout(() => {
