@@ -31,7 +31,7 @@ tipo VARCHAR(50) NOT NULL
 CREATE TABLE IF NOT EXISTS Conteudo(
 idConteudo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 tipoConteudo VARCHAR(8) NOT NULL,
-CONSTRAINT checktipo CHECK (tipoConteudo IN('Movie', 'TV Show')),
+CONSTRAINT checktipo CHECK (tipoConteudo IN('MOVIE', 'TV_SHOW')),
 tituloConteudo VARCHAR(255) NOT NULL,
 diretorConteudo VARCHAR(255) NOT NULL,
 atoresConteudo VARCHAR(255) NOT NULL,
