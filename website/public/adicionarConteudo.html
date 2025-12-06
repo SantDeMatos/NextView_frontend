@@ -141,12 +141,12 @@
 
                         <div class="tipo_conteudo">
                             <label>
-                                <input class="check" type="radio" name="tipoConteudo" value="Movie">
+                                <input class="check" type="radio" name="tipoConteudo" value="MOVIE">
                                 Filme
                             </label>
                             <hr>
                             <label>
-                                <input class="check" type="radio" name="tipoConteudo" value="Tv show">
+                                <input class="check" type="radio" name="tipoConteudo" value="TV_SHOW">
                                 Série
                             </label>
                         </div>
@@ -542,7 +542,7 @@
         radio.addEventListener("change", () => {
 
             const texto = document.getElementById("textoTipoFilme");
-            texto.textContent = radio.value === "Movie" ? "Filme" : "Série";
+            texto.textContent = radio.value === "MOVIE" ? "Filme" : "Série";
 
             document.querySelector(".tipo_conteudo").classList.remove("ativo");
         });
