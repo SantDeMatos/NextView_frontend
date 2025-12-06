@@ -124,7 +124,7 @@
             <div class="pesquisa-header">
                 <span class="pesquisa-title">Pesquisa</span>
                 <div class="pesquisa-search">
-                    <input type="text" id="searchInput" placeholder="">
+                    <input type="text" id="searchInput" placeholder="" oninput="iniciarListarResultado(document.getElementById('searchInput').value)">
                     <img onclick="iniciarListarResultado(document.getElementById('searchInput').value)"
                         src="assets/imgs/ion--search-outline (2).png">
                 </div>
